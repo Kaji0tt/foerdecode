@@ -144,6 +144,7 @@ export default function PricingSection() {
                   <h3 className="mt-4 text-2xl font-bold text-white">{plan.name}</h3>
 
                   <div className="mt-4 flex items-baseline gap-1">
+                    <span className="text-slate-500 text-sm mr-0.5">{plan.name === "Expert" ? "ab" : ""}</span>
                     <span className={`text-4xl font-bold ${style.price}`}>{plan.price}</span>
                     <span className="text-slate-500 text-sm">€</span>
                   </div>
