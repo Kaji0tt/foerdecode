@@ -1,6 +1,12 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { Check, Globe, Mail, CalendarCheck, ShoppingCart, MapPin } from "lucide-react";
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Check, Plus } from "lucide-react";
+
+const expertExamples = [
+  "Online-Buchungssystem",
+  "Online-Bestellung & Shop",
+  "Chat & direkter Kundenkontakt",
+];
 
 const plans = [
   {
@@ -15,6 +21,7 @@ const plans = [
       "Hosting inklusive",
       "Einrichtung in wenigen Tagen",
     ],
+    addon: null,
     cta: "Basis wählen",
   },
   {
@@ -28,8 +35,8 @@ const plans = [
       "Eigene Wunschadresse (z.B. dein-laden.de)",
       "Eigene E-Mail-Adresse",
       "Suchmaschinen Optimierung",
-      "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
     ],
+    addon: "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
     cta: "Standard wählen",
   },
   {
@@ -39,13 +46,11 @@ const plans = [
     accent: "violet",
     features: [
       "Alles aus Standard, plus:",
-      "Individuelle Sonderwünsche nach Absprache",
-      "z.B. Online-Buchungssystem",
-      "z.B. Online-Bestellungen / Shop",
-      "z.B. Interaktive Karte",
-      "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
+      "Individuelle Sonderwünsche nach Absprache, zum Beispiel:",
     ],
+    addon: "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
     cta: "Expert wählen",
+    expertRotating: true,
   },
 ];
 
@@ -56,6 +61,7 @@ const accentStyles = {
     button: "bg-sky-500 hover:bg-sky-400 shadow-sky-500/20 hover:shadow-sky-400/30",
     check: "text-sky-400",
     glow: "bg-sky-500/10",
+    plus: "text-sky-400",
   },
   cyan: {
     badge: "border-cyan-400/20 bg-cyan-400/5 text-cyan-300",
@@ -63,6 +69,7 @@ const accentStyles = {
     button: "bg-cyan-500 hover:bg-cyan-400 shadow-cyan-500/20 hover:shadow-cyan-400/30",
     check: "text-cyan-400",
     glow: "bg-cyan-500/10",
+    plus: "text-cyan-400",
   },
   violet: {
     badge: "border-violet-400/20 bg-violet-400/5 text-violet-300",
@@ -70,8 +77,38 @@ const accentStyles = {
     button: "bg-violet-500 hover:bg-violet-400 shadow-violet-500/20 hover:shadow-violet-400/30",
     check: "text-violet-400",
     glow: "bg-violet-500/10",
+    plus: "text-violet-400",
   },
 };
+
+function RotatingExample({ accent }) {
+  const [index, setIndex] = useState(0);
+  const style = accentStyles[accent];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % expertExamples.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="h-7 flex items-center">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className={`text-sm font-medium ${style.check}`}
+        >
+          {expertExamples[index]}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function PricingSection() {
   const ref = useRef(null);
@@ -110,7 +147,7 @@ export default function PricingSection() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
           {plans.map((plan, index) => {
             const style = accentStyles[plan.accent];
             return (
@@ -136,7 +173,8 @@ export default function PricingSection() {
                 {/* Glow */}
                 <div className={`absolute -top-20 left-1/2 -translate-x-1/2 w-60 h-40 ${style.glow} rounded-full blur-3xl opacity-50`} />
 
-                <div className="relative">
+                {/* Top content */}
+                <div className="relative flex flex-col flex-1">
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium border ${style.badge}`}>
                     {plan.tagline}
                   </span>
@@ -149,6 +187,7 @@ export default function PricingSection() {
                     <span className="text-slate-500 text-sm">€</span>
                   </div>
 
+                  {/* Features — flex-1 pushes addon+button to bottom */}
                   <ul className="mt-8 space-y-3 flex-1">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
@@ -156,14 +195,29 @@ export default function PricingSection() {
                         <span className="text-slate-300 text-sm">{feature}</span>
                       </li>
                     ))}
+                    {/* Rotating example for Expert */}
+                    {plan.expertRotating && (
+                      <li className="flex items-start gap-3 pl-7">
+                        <RotatingExample accent={plan.accent} />
+                      </li>
+                    )}
                   </ul>
 
-                  <button
-                    onClick={scrollToContact}
-                    className={`mt-8 w-full py-3.5 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg ${style.button}`}
-                  >
-                    {plan.cta}
-                  </button>
+                  {/* Addon + Button pinned to bottom */}
+                  <div className="mt-8">
+                    {plan.addon && (
+                      <div className="flex items-start gap-2 mb-4">
+                        <Plus className={`w-4 h-4 mt-0.5 flex-shrink-0 ${style.plus}`} />
+                        <span className="text-slate-400 text-sm">{plan.addon}</span>
+                      </div>
+                    )}
+                    <button
+                      onClick={scrollToContact}
+                      className={`w-full py-3.5 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg ${style.button}`}
+                    >
+                      {plan.cta}
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );
