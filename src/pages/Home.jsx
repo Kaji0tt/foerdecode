@@ -3,10 +3,11 @@ import NavigationDots from "@/components/portfolio/NavigationDots";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ProblemSection from "@/components/portfolio/ProblemSection";
 import SolutionSection from "@/components/portfolio/SolutionSection";
+import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 
-const sectionIds = ["hero", "problem", "solution", "pricing", "contact"];
+const sectionIds = ["hero", "problem", "solution", "portfolio", "pricing", "contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -48,6 +49,7 @@ export default function Home() {
       <HeroSection />
       <ProblemSection />
       <SolutionSection />
+      <PortfolioSection />
       <PricingSection />
       <ContactSection />
     </div>
