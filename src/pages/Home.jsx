@@ -42,7 +42,7 @@ export default function Home() {
     <div
       ref={containerRef}
       className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
-      style={{ scrollBehavior: "smooth" }}
+      style={{ scrollBehavior: "smooth", scrollbarWidth: "none", msOverflowStyle: "none" }}
     >
       <NavigationDots activeSection={activeSection} />
       <HeroSection />
