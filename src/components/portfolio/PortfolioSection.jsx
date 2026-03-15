@@ -1,54 +1,60 @@
-import React, { useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import React, { useRef, useState, useCallback } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects = [
   {
     title: "Café Nordwind",
     category: "Gastronomie",
-    description: "Moderner Webauftritt für ein Flensburger Café mit Speisekarte und Öffnungszeiten.",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
-    tags: ["Basis"],
+    description: "Moderner Webauftritt mit Speisekarte und Öffnungszeiten.",
+    before: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
+    tag: "Basis",
     accent: "sky",
   },
   {
     title: "Friseursalon Belle",
     category: "Beauty & Wellness",
-    description: "Elegante Website mit Online-Buchungssystem und Galerie für einen lokalen Friseursalon.",
-    image: "https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=80",
-    tags: ["Expert"],
+    description: "Elegante Website mit Online-Buchungssystem und Galerie.",
+    before: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=80",
+    tag: "Expert",
     accent: "violet",
   },
   {
     title: "Tischlerei Brandt",
     category: "Handwerk",
-    description: "Professioneller Webauftritt mit Portfolio, eigener Domain und Kontaktformular.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
-    tags: ["Standard"],
+    description: "Professioneller Auftritt mit Portfolio und eigener Domain.",
+    before: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    tag: "Standard",
     accent: "cyan",
   },
   {
     title: "Blumenladen Petersen",
     category: "Einzelhandel",
-    description: "Farbenfroher Online-Auftritt mit Online-Shop und interaktiver Standortkarte.",
-    image: "https://images.unsplash.com/photo-1487530811015-780a62b5f3fc?w=800&q=80",
-    tags: ["Expert"],
+    description: "Farbenfroher Auftritt mit Online-Shop und Standortkarte.",
+    before: "https://images.unsplash.com/photo-1455793781152-0f5ca4a6e40e?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1487530811015-780a62b5f3fc?w=800&q=80",
+    tag: "Expert",
     accent: "violet",
   },
   {
     title: "Physiotherapie Küste",
     category: "Gesundheit",
-    description: "Vertrauenswürdige Website mit Terminbuchung und Leistungsübersicht.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
-    tags: ["Standard"],
+    description: "Vertrauenswürdige Website mit Terminbuchung.",
+    before: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
+    tag: "Standard",
     accent: "cyan",
   },
   {
     title: "Fahrradladen Pedal",
     category: "Sport & Freizeit",
-    description: "Dynamischer Webauftritt mit Produktübersicht und Reparatur-Service-Buchung.",
-    image: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80",
-    tags: ["Expert"],
+    description: "Dynamischer Auftritt mit Produktübersicht und Service-Buchung.",
+    before: "https://images.unsplash.com/photo-1511994298241-608e28f14fde?w=800&q=80",
+    after: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80",
+    tag: "Expert",
     accent: "violet",
   },
 ];
@@ -59,26 +65,95 @@ const accentTag = {
   violet: "bg-violet-500/15 text-violet-300 border-violet-500/20",
 };
 
+function BeforeAfterSlider({ before, after }) {
+  const [sliderPos, setSliderPos] = useState(50);
+  const containerRef = useRef(null);
+  const dragging = useRef(false);
+
+  const updatePos = useCallback((clientX) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
+    setSliderPos((x / rect.width) * 100);
+  }, []);
+
+  const onMouseDown = (e) => {
+    dragging.current = true;
+    updatePos(e.clientX);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+  };
+
+  const onMouseMove = useCallback((e) => {
+    if (dragging.current) updatePos(e.clientX);
+  }, [updatePos]);
+
+  const onMouseUp = useCallback(() => {
+    dragging.current = false;
+    window.removeEventListener("mousemove", onMouseMove);
+    window.removeEventListener("mouseup", onMouseUp);
+  }, [onMouseMove]);
+
+  const onTouchMove = (e) => {
+    updatePos(e.touches[0].clientX);
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full h-full select-none overflow-hidden cursor-col-resize"
+      onMouseDown={onMouseDown}
+      onTouchMove={onTouchMove}
+      onTouchStart={(e) => updatePos(e.touches[0].clientX)}
+    >
+      {/* After (full) */}
+      <img src={after} alt="Nachher" className="absolute inset-0 w-full h-full object-cover" />
+
+      {/* Before (clipped) */}
+      <div
+        className="absolute inset-0 overflow-hidden"
+        style={{ width: `${sliderPos}%` }}
+      >
+        <img src={before} alt="Vorher" className="absolute inset-0 w-full h-full object-cover" style={{ minWidth: containerRef.current?.offsetWidth || 600 }} />
+      </div>
+
+      {/* Divider line */}
+      <div
+        className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+        style={{ left: `${sliderPos}%` }}
+      />
+
+      {/* Handle */}
+      <div
+        className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-white shadow-xl flex items-center justify-center gap-0.5 z-10"
+        style={{ left: `${sliderPos}%` }}
+      >
+        <ChevronLeft className="w-3.5 h-3.5 text-slate-700" />
+        <ChevronRight className="w-3.5 h-3.5 text-slate-700" />
+      </div>
+
+      {/* Labels */}
+      <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-xs font-semibold backdrop-blur-sm pointer-events-none">
+        Vorher
+      </div>
+      <div className="absolute bottom-3 right-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-xs font-semibold backdrop-blur-sm pointer-events-none">
+        Nachher
+      </div>
+    </div>
+  );
+}
+
 export default function PortfolioSection() {
   const ref = useRef(null);
-  const scrollRef = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [current, setCurrent] = useState(0);
 
-  const checkScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  };
+  const prev = () => setCurrent((c) => (c - 1 + projects.length) % projects.length);
+  const next = () => setCurrent((c) => (c + 1) % projects.length);
 
-  const scroll = (direction) => {
-    const el = scrollRef.current;
-    if (!el) return;
-    el.scrollBy({ left: direction === "left" ? -400 : 400, behavior: "smooth" });
-    setTimeout(checkScroll, 400);
-  };
+  const project = projects[current];
+  const style = accentTag[project.accent];
 
   return (
     <section
@@ -89,13 +164,13 @@ export default function PortfolioSection() {
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-violet-500/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-sky-500/5 rounded-full blur-3xl" />
 
-      <div ref={ref} className="relative z-10 w-full mx-auto py-24">
+      <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-24">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14 px-6"
+          className="text-center mb-14"
         >
           <span className="text-violet-400/80 text-sm font-semibold uppercase tracking-widest">
             Referenzen
@@ -108,82 +183,80 @@ export default function PortfolioSection() {
             </span>
           </h2>
           <p className="mt-6 text-slate-400 text-lg max-w-xl mx-auto">
-            Beispiele für lokale Geschäfte aus Flensburg — modern, schnell und individuell.
+            Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
           </p>
         </motion.div>
 
-        {/* Scroll controls */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-end gap-3 px-6 max-w-6xl mx-auto mb-6"
-        >
-          <button
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft}
-            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300 disabled:opacity-25"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight}
-            className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300 disabled:opacity-25"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </motion.div>
-
-        {/* Horizontal scroll track */}
+        {/* Card with arrows */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          ref={scrollRef}
-          onScroll={checkScroll}
-          className="flex gap-6 overflow-x-auto px-6 pb-4 snap-x snap-mandatory"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          className="flex items-center gap-4"
         >
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              className="flex-shrink-0 w-[320px] sm:w-[360px] rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden snap-start group hover:border-white/10 transition-all duration-500"
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
-                <div className="absolute top-3 right-3">
-                  <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${accentTag[project.accent]}`}>
-                    {project.tags[0]}
-                  </span>
+          {/* Left arrow */}
+          <button
+            onClick={prev}
+            className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Card */}
+          <div className="flex-1 min-w-0">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.35 }}
+                className="rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden"
+              >
+                {/* Before/After image */}
+                <div className="relative h-64 sm:h-80">
+                  <BeforeAfterSlider before={project.before} after={project.after} />
+                  <div className="absolute top-3 right-3 z-10">
+                    <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${style}`}>
+                      {project.tag}
+                    </span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-6">
-                <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">
-                  {project.category}
-                </span>
-                <h3 className="mt-1 text-lg font-semibold text-white">{project.title}</h3>
-                <p className="mt-2 text-slate-400 text-sm leading-relaxed">{project.description}</p>
-              </div>
-            </motion.div>
-          ))}
+                {/* Content */}
+                <div className="p-6 flex items-center justify-between gap-4">
+                  <div>
+                    <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                      {project.category}
+                    </span>
+                    <h3 className="mt-1 text-xl font-semibold text-white">{project.title}</h3>
+                    <p className="mt-1 text-slate-400 text-sm">{project.description}</p>
+                  </div>
+                  {/* Dots */}
+                  <div className="flex gap-1.5 flex-shrink-0">
+                    {projects.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrent(i)}
+                        className={`rounded-full transition-all duration-300 ${
+                          i === current ? "w-4 h-2 bg-white/70" : "w-2 h-2 bg-white/20"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right arrow */}
+          <button
+            onClick={next}
+            className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
         </motion.div>
-
-        {/* Scroll hint */}
-        <p className="text-center text-slate-600 text-xs mt-6 px-6">
-          ← Zum Scrollen wischen oder Pfeile nutzen →
-        </p>
       </div>
     </section>
   );
