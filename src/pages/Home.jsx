@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import NavigationDots from "@/components/portfolio/NavigationDots";
 import HeroSection from "@/components/portfolio/HeroSection";
-import ProblemSection from "@/components/portfolio/ProblemSection";
-import SolutionSection from "@/components/portfolio/SolutionSection";
+import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import ContactSection from "@/components/portfolio/ContactSection";
