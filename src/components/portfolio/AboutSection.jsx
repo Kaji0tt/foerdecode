@@ -8,7 +8,7 @@ const steps = [
     icon: MessageSquare,
     title: "Kurzes Gespräch",
     description:
-      "Wir reden kurz darüber, was dein Geschäft macht und welchen Eindruck du hinterlassen möchtest — kein technisches Vorwissen nötig.",
+      "Wir reden kurz darüber, was dein Geschäft macht und welchen Eindruck du hinterlassen möchtest. Dabei erfahre ich mehr über dich und dein Unternehmen.",
   },
   {
     number: "02",
