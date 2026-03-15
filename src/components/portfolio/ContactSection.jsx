@@ -39,39 +39,8 @@ export default function ContactSection() {
     >
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-indigo-950/50 to-slate-950" />
 
-      {/* Pulsing orb — half-cut at bottom */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 pointer-events-none">
-        {/* Outer pulse rings */}
-        <motion.div
-          className="absolute inset-0 rounded-full"
-          style={{ width: 520, height: 520, marginLeft: -260, marginTop: -260 }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.04, 0.15] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          style={{ background: "radial-gradient(circle, rgba(56,189,248,0.25) 0%, transparent 70%)", width: 520, height: 520, marginLeft: -260, marginTop: -260 }}
-        />
-        <motion.div
-          className="absolute rounded-full"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.05, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-          style={{ background: "radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%)", width: 380, height: 380, left: "50%", top: "50%", marginLeft: -190, marginTop: -190 }}
-        />
-        {/* Core orb */}
-        <motion.div
-          animate={{ scale: [1, 1.06, 1], opacity: [0.85, 1, 0.85] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            width: 260,
-            height: 260,
-            borderRadius: "50%",
-            background: "radial-gradient(circle at 38% 38%, rgba(186,230,255,0.95) 0%, rgba(56,189,248,1) 35%, rgba(99,102,241,0.9) 65%, rgba(30,27,75,0.6) 100%)",
-            boxShadow: "0 0 80px 30px rgba(56,189,248,0.35), 0 0 140px 60px rgba(99,102,241,0.2), inset 0 0 40px rgba(255,255,255,0.15)",
-            position: "relative",
-          }}
-        />
-      </div>
-
-      {/* Subtle top glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-sky-500/5 rounded-full blur-3xl" />
+      {/* Glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-sky-500/5 rounded-full blur-3xl" />
 
       <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-24">
         <motion.div
