@@ -60,9 +60,15 @@ const projects = [
 ];
 
 const accentTag = {
-  sky: "bg-sky-500/15 text-sky-300 border-sky-500/20",
-  cyan: "bg-cyan-500/15 text-cyan-300 border-cyan-500/20",
-  violet: "bg-violet-500/15 text-violet-300 border-violet-500/20",
+  sky: "border text-orange-300",
+  cyan: "border text-amber-300",
+  violet: "border text-red-300",
+};
+
+const accentTagStyle = {
+  sky: { background: "rgba(249,115,22,0.12)", borderColor: "rgba(249,115,22,0.25)" },
+  cyan: { background: "rgba(251,191,36,0.10)", borderColor: "rgba(251,191,36,0.25)" },
+  violet: { background: "rgba(127,29,29,0.15)", borderColor: "rgba(127,29,29,0.4)" },
 };
 
 function BeforeAfterSlider({ before, after }) {
