@@ -223,7 +223,7 @@ export default function PortfolioSection() {
                 <div className="relative h-64 sm:h-80">
                   <BeforeAfterSlider before={project.before} after={project.after} />
                   <div className="absolute top-3 right-3 z-10">
-                    <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${style}`}>
+                    <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${style}`} style={accentTagStyle[project.accent]}>
                       {project.tag}
                     </span>
                   </div>
