@@ -58,14 +58,13 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="mt-8 text-slate-300 text-lg leading-relaxed max-w-2xl">
-            Mir ist aufgefallen, dass viele Geschäfte in Flensburg noch veraltete oder gar keine
-            eigene Website haben. Dabei ist der Zugang zu einer professionellen Online-Präsenz
-            durch moderne KI-Technologie einfacher und erschwinglicher geworden als je zuvor.
+            Viele kleine Unternehmen in Flensburg haben noch keine moderne Website – 
+            oder ihre bestehende Seite wird den heutigen Anforderungen nicht mehr gerecht. 
+            Gleichzeitig war es noch nie so einfach und erschwinglich, eine 
+            professionelle Online-Präsenz aufzubauen.
           </p>
           <p className="mt-4 text-slate-400 text-lg leading-relaxed max-w-2xl">
-            Mit meinem technischen Verständnis und ein bisschen Gespür für gutes Design würde
-            ich mich freuen, Ihnen dabei zu helfen — unkompliziert, persönlich und zu einem
-            fairen Preis.
+            Lass Sie uns das ändern!
           </p>
         </motion.div>
 
