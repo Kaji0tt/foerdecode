@@ -189,7 +189,7 @@ export default function PortfolioSection() {
               für sich sprechen.
             </span>
           </h2>
-          <p className="mt-6 text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="mt-6 text-lg max-w-xl mx-auto" style={{ color: "#8c5e3c" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
           </p>
         </motion.div>
