@@ -233,11 +233,11 @@ export default function PortfolioSection() {
                 {/* Content */}
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#5a3a2a" }}>
                       {project.category}
                     </span>
                     <h3 className="mt-1 text-xl font-semibold text-white">{project.title}</h3>
-                    <p className="mt-1 text-slate-400 text-sm">{project.description}</p>
+                    <p className="mt-1 text-sm" style={{ color: "#8c5e3c" }}>{project.description}</p>
                   </div>
                   {/* Dots */}
                   <div className="flex gap-1.5 flex-shrink-0">
