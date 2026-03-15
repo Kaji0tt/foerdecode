@@ -160,9 +160,9 @@ export default function PortfolioSection() {
       id="portfolio"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900/80 to-slate-950" />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-violet-500/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] bg-sky-500/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #1a0f0a 0%, #221209 50%, #1a0f0a 100%)" }} />
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(127,29,29,0.07)" }} />
+      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(249,115,22,0.05)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-24">
         {/* Header */}
