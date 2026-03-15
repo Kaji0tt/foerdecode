@@ -58,9 +58,10 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#c4956a" }}>
-            Viele kleine Unternehmen in Flensburg haben noch keine moderne Website – 
-            oder ihre bestehende Seite wird den heutigen Anforderungen nicht mehr gerecht. 
-            Gleichzeitig war es noch nie so einfach und erschwinglich, eine 
+            Viele kleine Unternehmen und Läden in Flensburg haben noch immer eine veraltete Website – 
+            oder gar keine. Dabei profitieren gerade Geschäfte des Tagesbedarfs. Neben Informationen für Interessierte, wie Speisekarten, Öffnungszeiten oder Impressionen in die Lokalitäten, 
+            sorgt eine Website für bessere Sichtbarkeit und Außenwarhnehmung.
+            <br />Gleichzeitig war es noch nie so einfach und erschwinglich, eine 
             professionelle Online-Präsenz aufzubauen.
           </p>
           <p className="mt-4 text-lg leading-relaxed max-w-2xl" style={{ color: "#8c5e3c" }}>
