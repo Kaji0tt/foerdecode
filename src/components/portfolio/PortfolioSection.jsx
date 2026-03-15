@@ -172,13 +172,13 @@ export default function PortfolioSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <span className="text-violet-400/80 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "rgba(251,146,60,0.7)" }}>
             Referenzen
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             Websites, die
             <br />
-            <span className="bg-gradient-to-r from-violet-400 via-sky-300 to-cyan-400 bg-clip-text text-transparent">
+            <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               für sich sprechen.
             </span>
           </h2>
