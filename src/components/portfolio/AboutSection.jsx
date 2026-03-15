@@ -48,10 +48,10 @@ export default function AboutSection() {
           className="mb-20"
         >
           <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "rgba(251,146,60,0.7)" }}>
-            Warum ich das mache
+            Mehr für Flensburg.
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-            Eine Website für
+            Eine Website.
             <br />
             <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Ihr Geschäft.
