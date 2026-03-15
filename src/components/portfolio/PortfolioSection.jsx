@@ -160,6 +160,7 @@ export default function PortfolioSection() {
 
   const project = projects[current];
   const style = accentTag[project.accent];
+  const styleInline = accentTagStyle[project.accent];
 
   return (
     <section
