@@ -32,8 +32,8 @@ export default function NavigationDots({ activeSection }) {
             animate={{
               width: activeSection === section.id ? 12 : 8,
               height: activeSection === section.id ? 12 : 8,
-              backgroundColor: activeSection === section.id ? "rgb(56, 189, 248)" : "rgba(255,255,255,0.25)",
-              borderColor: activeSection === section.id ? "rgb(56, 189, 248)" : "rgba(255,255,255,0.2)",
+              backgroundColor: activeSection === section.id ? "rgb(249,115,22)" : "rgba(255,255,255,0.2)",
+              borderColor: activeSection === section.id ? "rgb(249,115,22)" : "rgba(255,255,255,0.15)",
             }}
             transition={{ duration: 0.3 }}
           />
