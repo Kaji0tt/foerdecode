@@ -218,7 +218,7 @@ export default function PortfolioSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.35 }}
-                className="rounded-2xl border border-white/5 bg-white/[0.02] overflow-hidden"
+                className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.02)" }}
               >
                 {/* Before/After image */}
                 <div className="relative h-64 sm:h-80">
