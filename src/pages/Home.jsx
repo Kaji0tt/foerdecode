@@ -46,8 +46,7 @@ export default function Home() {
     >
       <NavigationDots activeSection={activeSection} />
       <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
+      <AboutSection />
       <PortfolioSection />
       <PricingSection />
       <ContactSection />
