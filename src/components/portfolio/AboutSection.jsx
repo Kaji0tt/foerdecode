@@ -51,10 +51,10 @@ export default function AboutSection() {
             Mehr für Flensburg.
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
-            Eine Website.
+            Ihr Geschäft.
             <br />
             <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              Ihr Geschäft.
+              Ihre Website.
             </span>
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#c4956a" }}>
