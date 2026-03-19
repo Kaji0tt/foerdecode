@@ -62,10 +62,11 @@ export default function DomainChecker({ onDomainSelected }) {
           placeholder="wunschadresse.de"
           className="w-full px-6 py-3.5 rounded-xl text-base sm:text-lg outline-none transition-all duration-300"
           style={{
-            border: "1px solid rgba(30,58,110,0.25)",
+            border: "1px solid rgba(30,58,110,0.15)",
             color: "#0f1f3d",
-            background: "white",
-            boxShadow: showSuggestions && suggestions.length > 0 ? "0 8px 24px rgba(30,58,110,0.1)" : "none"
+            background: "rgba(255,255,255,0.6)",
+            backdropFilter: "blur(8px)",
+            boxShadow: showSuggestions && suggestions.length > 0 ? "0 8px 24px rgba(30,58,110,0.08)" : "none"
           }}
         />
 
@@ -77,8 +78,8 @@ export default function DomainChecker({ onDomainSelected }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.15 }}
-              className="absolute top-full left-0 right-0 mt-1 rounded-xl bg-white border z-10"
-              style={{ border: "1px solid rgba(30,58,110,0.15)", boxShadow: "0 8px 24px rgba(30,58,110,0.1)" }}
+              className="absolute top-full left-0 right-0 mt-1 rounded-xl border z-10 backdrop-blur-md"
+              style={{ background: "rgba(255,255,255,0.7)", border: "1px solid rgba(30,58,110,0.15)", boxShadow: "0 8px 24px rgba(30,58,110,0.08)" }}
             >
               {suggestions.map((suggestion) => (
                 <button
