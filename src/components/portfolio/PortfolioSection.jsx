@@ -150,6 +150,69 @@ function BeforeAfterSlider({ before, after }) {
   );
 }
 
+function MobilePortfolio({ current, setCurrent, projects }) {
+  const touchStartX = useRef(null);
+
+  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) setCurrent((c) => (c + 1) % projects.length);
+      else setCurrent((c) => (c - 1 + projects.length) % projects.length);
+    }
+    touchStartX.current = null;
+  };
+
+  const project = projects[current];
+  const style = accentTag[project.accent];
+
+  return (
+    <div className="w-full" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={current}
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -60 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Full-width image */}
+          <div className="relative w-full" style={{ height: "56vw", minHeight: 220 }}>
+            <BeforeAfterSlider before={project.before} after={project.after} />
+            <div className="absolute top-3 right-3 z-10">
+              <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${style}`} style={accentTagStyle[project.accent]}>
+                {project.tag}
+              </span>
+            </div>
+          </div>
+
+          {/* Text below */}
+          <div className="px-6 pt-5 pb-2">
+            <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>
+              {project.category}
+            </span>
+            <h3 className="mt-1 text-xl font-semibold" style={{ color: "#0f1f3d" }}>{project.title}</h3>
+            <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-5">
+        {projects.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className="rounded-full transition-all duration-300"
+            style={{ width: i === current ? 20 : 8, height: 8, background: i === current ? "#1e3a6e" : "rgba(30,58,110,0.2)" }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function PortfolioSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -160,42 +223,46 @@ export default function PortfolioSection() {
 
   const project = projects[current];
   const style = accentTag[project.accent];
-  const styleInline = accentTagStyle[project.accent];
 
   return (
     <section
       id="portfolio"
       className="min-h-screen w-full flex items-center relative snap-start"
     >
-
-
-      <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16">
+      <div ref={ref} className="relative z-10 w-full py-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10"
+          className="mb-10 px-6 max-w-5xl mx-auto"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Websites, die{" "}
-            <span style={{ color: "#1e3a6e" }}>
-              für sich sprechen.
-            </span>
+            <span style={{ color: "#1e3a6e" }}>für sich sprechen.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
           </p>
         </motion.div>
 
-        {/* Card with arrows */}
+        {/* Mobile layout */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="flex items-center gap-4"
+          className="sm:hidden"
         >
-          {/* Left arrow */}
+          <MobilePortfolio current={current} setCurrent={setCurrent} projects={projects} />
+        </motion.div>
+
+        {/* Desktop layout */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="hidden sm:flex items-center gap-4 px-6 max-w-5xl mx-auto"
+        >
           <button
             onClick={prev}
             className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
@@ -206,7 +273,6 @@ export default function PortfolioSection() {
             <ChevronLeft className="w-6 h-6" />
           </button>
 
-          {/* Card */}
           <div className="flex-1 min-w-0">
             <AnimatePresence mode="wait">
               <motion.div
@@ -215,10 +281,10 @@ export default function PortfolioSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.35 }}
-                className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(30,58,110,0.1)", background: "#fff", boxShadow: "0 4px 24px rgba(30,58,110,0.07)" }}
+                className="rounded-2xl overflow-hidden"
+                style={{ border: "1px solid rgba(30,58,110,0.1)", background: "#fff", boxShadow: "0 4px 24px rgba(30,58,110,0.07)" }}
               >
-                {/* Before/After image */}
-                <div className="relative h-64 sm:h-80">
+                <div className="relative h-80">
                   <BeforeAfterSlider before={project.before} after={project.after} />
                   <div className="absolute top-3 right-3 z-10">
                     <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${style}`} style={accentTagStyle[project.accent]}>
@@ -226,17 +292,12 @@ export default function PortfolioSection() {
                     </span>
                   </div>
                 </div>
-
-                {/* Content */}
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>
-                      {project.category}
-                    </span>
+                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>{project.category}</span>
                     <h3 className="mt-1 text-xl font-semibold" style={{ color: "#0f1f3d" }}>{project.title}</h3>
                     <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
                   </div>
-                  {/* Dots */}
                   <div className="flex gap-1.5 flex-shrink-0">
                     {projects.map((_, i) => (
                       <button
@@ -252,7 +313,6 @@ export default function PortfolioSection() {
             </AnimatePresence>
           </div>
 
-          {/* Right arrow */}
           <button
             onClick={next}
             className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
