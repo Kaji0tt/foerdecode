@@ -164,11 +164,15 @@ function MobilePortfolio({ current, setCurrent, projects }) {
     touchStartX.current = null;
   };
 
+  const handleTap = () => {
+    setCurrent((c) => (c + 1) % projects.length);
+  };
+
   const project = projects[current];
   const style = accentTag[project.accent];
 
   return (
-    <div className="w-full" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div className="w-full">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -177,7 +181,7 @@ function MobilePortfolio({ current, setCurrent, projects }) {
           exit={{ opacity: 0, x: -60 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Full-width image */}
+          {/* Full-width image — NO swipe/tap handlers here */}
           <div className="relative w-full" style={{ height: "56vw", minHeight: 220 }}>
             <BeforeAfterSlider before={project.before} after={project.after} />
             <div className="absolute top-3 right-3 z-10">
@@ -187,8 +191,13 @@ function MobilePortfolio({ current, setCurrent, projects }) {
             </div>
           </div>
 
-          {/* Text below */}
-          <div className="px-6 pt-5 pb-2">
+          {/* White text area — swipe & tap only here */}
+          <div
+            className="px-6 pt-5 pb-2 bg-white"
+            onTouchStart={onTouchStart}
+            onTouchEnd={onTouchEnd}
+            onClick={handleTap}
+          >
             <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>
               {project.category}
             </span>
@@ -198,12 +207,16 @@ function MobilePortfolio({ current, setCurrent, projects }) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-5">
+      {/* Dots — also on white background */}
+      <div
+        className="flex justify-center gap-2 pt-3 pb-4 bg-white"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         {projects.map((_, i) => (
           <button
             key={i}
-            onClick={() => setCurrent(i)}
+            onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
             className="rounded-full transition-all duration-300"
             style={{ width: i === current ? 20 : 8, height: 8, background: i === current ? "#1e3a6e" : "rgba(30,58,110,0.2)" }}
           />
