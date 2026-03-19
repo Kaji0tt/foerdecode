@@ -20,7 +20,6 @@ const plans = [
       "Fertige Website auf Basis Ihrer Demo",
       "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
       "Mobilfreundlich & schnell",
-      "Hosting inklusive",
       "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
     ],
     addon: "Optional: Wartung & Pflege ab 18€ / Monat",
