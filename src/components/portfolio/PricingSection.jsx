@@ -132,7 +132,7 @@ export default function PricingSection() {
       <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #221209 0%, #1a0f0a 100%)" }} />
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(127,29,29,0.06)" }} />
 
-      <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-24">
+      <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

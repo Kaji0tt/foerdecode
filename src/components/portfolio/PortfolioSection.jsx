@@ -171,7 +171,7 @@ export default function PortfolioSection() {
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(127,29,29,0.07)" }} />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(249,115,22,0.05)" }} />
 
-      <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-24">
+      <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
