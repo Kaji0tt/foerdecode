@@ -60,22 +60,6 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="mt-3 p-4 rounded-xl overflow-y-auto flex-shrink min-h-0"
-          style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
-        >
-          <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
-            Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
-            Teure Agenturen und eventuelle Wartung schrecken Sie ab?
-          </p>
-          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#1e3a6e" }}>
-            Wir finden eine Lösung, die zu Ihnen passt.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
           className="mt-4 flex flex-col sm:flex-row gap-3 flex-shrink-0"
         >
           <button
