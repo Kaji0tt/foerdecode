@@ -167,7 +167,7 @@ export default function PortfolioSection() {
       id="portfolio"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0 bg-white" />
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(2px)" }} />
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
       <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(185,28,28,0.03)" }} />
