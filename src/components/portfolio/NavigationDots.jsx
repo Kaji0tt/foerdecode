@@ -24,7 +24,9 @@ export default function NavigationDots({ activeSection }) {
           className="group relative flex items-center"
           aria-label={section.label}
         >
-          <span className="absolute right-8 whitespace-nowrap text-xs font-medium text-white/0 group-hover:text-white/80 transition-all duration-300 pointer-events-none">
+          <span className="absolute right-8 whitespace-nowrap text-xs font-medium transition-all duration-300 pointer-events-none" style={{ color: "rgba(30,58,110,0)", }}
+            onMouseEnter={e => e.currentTarget.style.color = "rgba(30,58,110,0.8)"}
+          >
             {section.label}
           </span>
           <motion.div
@@ -32,8 +34,8 @@ export default function NavigationDots({ activeSection }) {
             animate={{
               width: activeSection === section.id ? 12 : 8,
               height: activeSection === section.id ? 12 : 8,
-              backgroundColor: activeSection === section.id ? "rgb(59,130,246)" : "rgba(255,255,255,0.2)",
-              borderColor: activeSection === section.id ? "rgb(59,130,246)" : "rgba(255,255,255,0.15)",
+              backgroundColor: activeSection === section.id ? "#1e3a6e" : "rgba(30,58,110,0.2)",
+              borderColor: activeSection === section.id ? "#1e3a6e" : "rgba(30,58,110,0.15)",
             }}
             transition={{ duration: 0.3 }}
           />

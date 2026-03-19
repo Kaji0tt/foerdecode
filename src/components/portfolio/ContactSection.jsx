@@ -34,32 +34,13 @@ export default function ContactSection() {
     <section
       id="contact"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
-      style={{ background: "#070f1f" }}
+      style={{ background: "#f8fafc" }}
     >
-      {/* Pulsing sun glow — bottom center, half cut off */}
-      <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full"
-        style={{
-          width: 700,
-          height: 700,
-          background: "radial-gradient(circle, rgba(30,77,140,0.45) 0%, rgba(14,50,100,0.2) 40%, transparent 70%)",
-          translateY: "50%",
-        }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      {/* Subtle inner ring */}
-      <motion.div
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full"
-        style={{
-          width: 400,
-          height: 400,
-          background: "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 65%)",
-          translateY: "50%",
-        }}
-        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.9, 0.5] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-      />
+      {/* Top border */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
+
+      {/* Subtle accent stripe at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, #1e3a6e, #b91c1c)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-24">
         {/* Heading */}
@@ -67,19 +48,13 @@ export default function ContactSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <span className="text-blue-400/80 text-sm font-semibold uppercase tracking-widest">
-            Kontakt
-          </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
-            Lass uns
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">
-              loslegen.
-            </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
+            Lass uns{" "}
+            <span style={{ color: "#b91c1c" }}>loslegen.</span>
           </h2>
-          <p className="mt-6 text-slate-400 text-lg max-w-lg mx-auto">
+          <p className="mt-6 text-lg max-w-lg" style={{ color: "#64748b" }}>
             Schreib mir eine Nachricht und ich melde mich innerhalb von 24 Stunden bei dir.
           </p>
         </motion.div>
@@ -98,12 +73,12 @@ export default function ContactSection() {
               { Icon: Phone, title: "Telefon", text: "Auf Anfrage verfügbar" },
             ].map(({ Icon, title, text }) => (
               <div key={title} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-blue-400" />
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "rgba(30,58,110,0.08)", border: "1px solid rgba(30,58,110,0.12)" }}>
+                  <Icon className="w-5 h-5" style={{ color: "#1e3a6e" }} />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium">{title}</h4>
-                  <p className="text-slate-400 text-sm mt-1">{text}</p>
+                  <h4 className="font-semibold" style={{ color: "#0f1f3d" }}>{title}</h4>
+                  <p className="text-sm mt-1" style={{ color: "#64748b" }}>{text}</p>
                 </div>
               </div>
             ))}
@@ -117,13 +92,14 @@ export default function ContactSection() {
             className="lg:col-span-3"
           >
             {sent ? (
-              <div className="text-center py-16 rounded-2xl border border-blue-500/20 bg-blue-500/5">
-                <CheckCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-                <h3 className="text-2xl font-semibold text-white mb-2">Nachricht gesendet!</h3>
-                <p className="text-slate-400">Ich melde mich schnellstmöglich bei dir.</p>
+              <div className="text-center py-16 rounded-2xl" style={{ border: "1px solid rgba(30,58,110,0.15)", background: "white" }}>
+                <CheckCircle className="w-12 h-12 mx-auto mb-4" style={{ color: "#1e3a6e" }} />
+                <h3 className="text-2xl font-semibold mb-2" style={{ color: "#0f1f3d" }}>Nachricht gesendet!</h3>
+                <p style={{ color: "#64748b" }}>Ich melde mich schnellstmöglich bei dir.</p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-6 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
+                  className="mt-6 text-sm font-medium transition-colors"
+                  style={{ color: "#1e3a6e" }}
                 >
                   Weitere Nachricht senden
                 </button>
@@ -132,18 +108,19 @@ export default function ContactSection() {
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
-                    <label className="text-sm text-slate-400 mb-1.5 block">Name *</label>
+                    <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>Name *</label>
                     <Input
                       name="name"
                       value={form.name}
                       onChange={handleChange}
                       required
                       placeholder="Dein Name"
-                      className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-12 focus:border-orange-500/50"
+                      className="h-12 bg-white"
+                      style={{ borderColor: "rgba(30,58,110,0.2)" }}
                     />
                   </div>
                   <div>
-                    <label className="text-sm text-slate-400 mb-1.5 block">E-Mail *</label>
+                    <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>E-Mail *</label>
                     <Input
                       name="email"
                       type="email"
@@ -151,22 +128,24 @@ export default function ContactSection() {
                       onChange={handleChange}
                       required
                       placeholder="deine@email.de"
-                      className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-12 focus:border-orange-500/50"
+                      className="h-12 bg-white"
+                      style={{ borderColor: "rgba(30,58,110,0.2)" }}
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="text-sm text-slate-400 mb-1.5 block">Telefon (optional)</label>
+                  <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>Telefon (optional)</label>
                   <Input
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
                     placeholder="Deine Telefonnummer"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-12 focus:border-orange-500/50"
+                    className="h-12 bg-white"
+                    style={{ borderColor: "rgba(30,58,110,0.2)" }}
                   />
                 </div>
                 <div>
-                  <label className="text-sm text-slate-400 mb-1.5 block">Nachricht *</label>
+                  <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>Nachricht *</label>
                   <Textarea
                     name="message"
                     value={form.message}
@@ -174,13 +153,17 @@ export default function ContactSection() {
                     required
                     rows={5}
                     placeholder="Erzähl mir kurz von deinem Geschäft und was du dir vorstellst..."
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:border-orange-500/50 resize-none"
+                    className="bg-white resize-none"
+                    style={{ borderColor: "rgba(30,58,110,0.2)" }}
                   />
                 </div>
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-full py-4 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-semibold text-lg transition-all duration-300 shadow-lg shadow-blue-700/30 hover:shadow-blue-600/40 flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 rounded-xl text-white font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50"
+                  style={{ background: "#1e3a6e", boxShadow: "0 4px 16px rgba(30,58,110,0.2)" }}
+                  onMouseEnter={e => e.currentTarget.style.background = "#162d5a"}
+                  onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
                 >
                   {sending ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -201,9 +184,10 @@ export default function ContactSection() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-20 pt-8 border-t border-white/5 text-center"
+          className="mt-20 pt-8 text-center"
+          style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}
         >
-          <p className="text-slate-500 text-sm">
+          <p className="text-sm" style={{ color: "#94a3b8" }}>
             © {new Date().getFullYear()} · Webdesign aus Flensburg · Mit KI erstellt, mit Leidenschaft umgesetzt.
           </p>
         </motion.div>
