@@ -115,14 +115,9 @@ function RotatingExample({ tier }) {
   );
 }
 
-export default function PricingSection() {
+export default function PricingSection({ onOrderClick }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredBtn, setHoveredBtn] = useState(null);
-
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <section
