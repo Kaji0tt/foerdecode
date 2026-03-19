@@ -13,9 +13,9 @@ const plans = [
   {
     name: "Basis",
     tagline: "Ihre Seite steht — jetzt muss sie nur noch passen.",
-    price: "99",
+    price: "129",
     tier: "base",
-    rounds: "Bis zu 3 Abstimmungsrunden",
+    rounds: "Bis zu 3 Feedback-Runden",
     features: [
       "Fertige Landing Page auf Basis Ihrer Demo",
       "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
