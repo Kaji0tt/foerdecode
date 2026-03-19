@@ -58,13 +58,32 @@ export default function AboutSection() {
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
             Viele kleine Unternehmen und Läden in Flensburg haben noch immer eine veraltete Website – 
-            oder gar keine. Dabei profitieren gerade Geschäfte des Tagesbedarfs. Neben Informationen für Interessierte, wie Speisekarten, Öffnungszeiten oder Impressionen in die Lokalitäten, 
-            sorgt eine Website für bessere Sichtbarkeit und Außenwahrnehmung.
-            <br />Gleichzeitig war es noch nie so einfach und erschwinglich, eine 
-            professionelle Online-Präsenz aufzubauen.
+            oder gar keine. Dabei profitieren gerade Geschäfte des Tagesbedarfs: Speisekarten, Öffnungszeiten, 
+            Impressionen — all das sorgt für mehr Sichtbarkeit und einen professionellen ersten Eindruck.
           </p>
-          <p className="mt-4 text-lg font-medium leading-relaxed max-w-2xl" style={{ color: "#b91c1c" }}>
-            Lass uns das ändern!
+
+          <p className="mt-5 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
+            Dank moderner KI war es noch nie so einfach, eine professionelle Website zu erstellen. 
+            Was früher Wochen dauerte und viel Geld kostete, ist heute in wenigen Tagen möglich — 
+            zu einem Bruchteil des früheren Preises.
+          </p>
+
+          <div className="mt-6 p-5 rounded-xl max-w-2xl" style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}>
+            <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
+              Ich nehme dir dabei jede Unsicherheit — egal ob du noch nie mit einer Website zu tun hattest 
+              oder einfach nicht weißt, wo du anfangen sollst. Mir liegt es am Herzen, individuelle Lösungen 
+              zu finden, die sich auch langfristig leicht pflegen lassen.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed" style={{ color: "#475569" }}>
+              Ob du per <span className="font-semibold" style={{ color: "#1e3a6e" }}>WhatsApp der KI</span> sagst, 
+              welche Details sie anpassen soll, ob du einfach eine Liste aktualisierst, 
+              oder ob du gar nichts selbst machen möchtest — <span className="font-medium" style={{ color: "#0f1f3d" }}>wir finden gemeinsam 
+              die Lösung, die zu dir passt.</span> Und das zu kleinsten Preisen.
+            </p>
+          </div>
+
+          <p className="mt-6 text-lg font-medium leading-relaxed max-w-2xl" style={{ color: "#b91c1c" }}>
+            Lass uns das angehen!
           </p>
         </motion.div>
 

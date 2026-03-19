@@ -6,20 +6,40 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start bg-white"
+      className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
     >
-      {/* Subtle dot pattern */}
+      {/*
+        ═══════════════════════════════════════════════════
+        HINTERGRUND-VERLAUF — hier kannst du alles anpassen
+        ═══════════════════════════════════════════════════
+
+        FARBE 1 (oben-links) → "from"-Farbe des Verlaufs
+          → Ändere "#bfdbfe" zu z.B. "#93c5fd" für kräftigeres Blau
+             oder "#e0f2fe" für helleres Hellblau
+
+        FARBE 2 (mitte) → mittlere Übergangsfarbe
+          → Ändere "#e0f2fe" für weicheren oder abrupteren Übergang
+
+        FARBE 3 (unten-rechts) → "to"-Farbe = reines Weiß
+          → "#ffffff" lässt es ins Weiß auslaufen
+
+        RICHTUNG → "135deg" = diagonal oben-links → unten-rechts
+          → 180deg = von oben nach unten
+          → 90deg  = von links nach rechts
+
+        STOP-POSITIONEN (z.B. "40%, 75%"):
+          → Erste Zahl: bis wohin die blaue Farbe reicht
+          → Zweite Zahl: ab wann es fast weiß ist
+      */}
       <div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, #1e3a6e 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+          background: "linear-gradient(135deg, #bfdbfe 0%, #e0f2fe 40%, #f0f9ff 70%, #ffffff 100%)",
         }}
       />
 
-      {/* Soft color accents */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.05)" }} />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(185,28,28,0.04)" }} />
+      {/* Wasser-Textur: sanfte Wellen durch radiale Gradienten */}
+      <div className="absolute inset-0 opacity-[0.25]" style={{ background: "radial-gradient(ellipse 80% 50% at 20% 30%, #93c5fd, transparent), radial-gradient(ellipse 60% 40% at 80% 70%, #bae6fd, transparent)" }} />
 
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <motion.div
