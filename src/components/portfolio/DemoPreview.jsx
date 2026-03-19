@@ -37,10 +37,9 @@ Ansprechpartner: ${formData.name}
 - Abstände: Großzügige Padding/Margins, min. 80px zwischen Sections
 - Hover-Effekte: Alle Buttons und Links haben sanfte Transitions
 - Cards: Schatten, border-radius, hover: leicht anheben (translateY)
-- Hero: Mindestens 100vh, zentrierter Content, Hintergrund mit Gradient oder geometrischen CSS-Formen
+- Ein Hero soll vorhanden sein!
 - Responsive: Flexbox/Grid, bricht bei 768px zu Mobile um, Hamburger-Menü mit JS toggle
-- Keine externen Bilder — nutze CSS-Gradienten, Muster oder gut gestaltete Placeholder-Divs
-- Animationen: Mindestens fadeIn bei Scroll (IntersectionObserver) für alle Cards
+- Du darfst externe, passende Place-Holder Bilder verwenden, wenn es die Wirkung der Seite verbessert.
 
 === TECHNISCHE ANFORDERUNGEN ===
 - Vollständiges HTML5-Dokument (<!DOCTYPE html> bis </html>)
