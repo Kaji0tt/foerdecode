@@ -1,149 +1,128 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Check, X } from "lucide-react";
+import { Check, X } from "lucide-react";
 
-const TLDS = [".de", ".com", ".org", ".sh", ".to"];
+const TLDS = [".com", ".de", ".org", ".sh", ".to"];
 
 export default function DomainChecker({ onDomainSelected }) {
-  const [open, setOpen] = useState(false);
-  const [domain, setDomain] = useState("");
-  const [tld, setTld] = useState(".de");
+  const [input, setInput] = useState("");
   const [checked, setChecked] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [customTld, setCustomTld] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const suggestions = useMemo(() => {
+    if (!input.includes(".")) {
+      // Wenn kein Punkt vorhanden, zeige alle TLDs als Vorschläge
+      const baseName = input.trim();
+      if (!baseName) return [];
+      return TLDS.map(tld => baseName + tld);
+    }
+    return [];
+  }, [input]);
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    setShowSuggestions(true);
+  };
+
+  const handleSelectSuggestion = (suggestion) => {
+    setInput(suggestion);
+    setShowSuggestions(false);
+  };
 
   const handleCheck = async () => {
-    if (!domain.trim()) return;
+    if (!input.trim()) return;
     
     setLoading(true);
-    const fullDomain = domain.trim() + (customTld || tld);
     
-    // Simulate domain check (würde hier echte API nutzen)
+    // Simulate domain check
     setTimeout(() => {
-      setChecked({ domain: fullDomain, available: Math.random() > 0.4 });
+      setChecked({ domain: input, available: Math.random() > 0.4 });
       setLoading(false);
       if (onDomainSelected) {
-        onDomainSelected(fullDomain);
+        onDomainSelected(input);
       }
     }, 1000);
   };
 
   return (
-    <div className="mt-6 flex-shrink-0">
-      <motion.button
+    <div className="mt-4 flex-shrink-0">
+      <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        onClick={() => setOpen(!open)}
-        className="px-6 py-3.5 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 flex items-center gap-2"
-        style={{
-          border: "1px solid rgba(30,58,110,0.25)",
-          color: "#1e3a6e",
-          background: open ? "rgba(30,58,110,0.06)" : "transparent",
-        }}
+        className="relative"
       >
-        🌐 Domain prüfen
-        <ChevronDown className="w-4 h-4" style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.3s" }} />
-      </motion.button>
+        <input
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          onKeyPress={(e) => e.key === "Enter" && handleCheck()}
+          onFocus={() => setShowSuggestions(true)}
+          placeholder="wunschadresse.de"
+          className="w-full px-6 py-3.5 rounded-xl text-base sm:text-lg outline-none transition-all duration-300"
+          style={{
+            border: "1px solid rgba(30,58,110,0.25)",
+            color: "#0f1f3d",
+            background: "white",
+            boxShadow: showSuggestions && suggestions.length > 0 ? "0 8px 24px rgba(30,58,110,0.1)" : "none"
+          }}
+        />
 
-      <AnimatePresence>
-        {open && (
+        {/* Auto-complete suggestions */}
+        <AnimatePresence>
+          {showSuggestions && suggestions.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-full left-0 right-0 mt-1 rounded-xl bg-white border z-10"
+              style={{ border: "1px solid rgba(30,58,110,0.15)", boxShadow: "0 8px 24px rgba(30,58,110,0.1)" }}
+            >
+              {suggestions.map((suggestion) => (
+                <button
+                  key={suggestion}
+                  onClick={() => handleSelectSuggestion(suggestion)}
+                  className="w-full text-left px-6 py-2.5 text-sm hover:bg-slate-50 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                  style={{ color: "#475569" }}
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Check result */}
+        {checked && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="mt-3 p-4 rounded-xl"
-            style={{ border: "1px solid rgba(30,58,110,0.15)", background: "rgba(255,255,255,0.8)" }}
+            className="absolute top-full left-0 right-0 mt-2 p-3 rounded-xl flex items-center gap-2 text-sm"
+            style={{ background: checked.available ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)" }}
           >
-            <div className="space-y-3">
-              {/* Domain Input */}
-              <div>
-                <label className="text-xs font-medium mb-1 block" style={{ color: "#64748b" }}>Domain Name</label>
-                <input
-                  type="text"
-                  value={domain}
-                  onChange={(e) => setDomain(e.target.value)}
-                  placeholder="z.B. meine-bäckerei"
-                  className="w-full px-3 py-2 rounded-lg text-sm outline-none"
-                  style={{ border: "1px solid rgba(30,58,110,0.2)", background: "white" }}
-                  onKeyPress={(e) => e.key === "Enter" && handleCheck()}
-                />
-              </div>
-
-              {/* TLD Selection */}
-              <div className="flex gap-2">
-                <select
-                  value={customTld || tld}
-                  onChange={(e) => {
-                    const val = e.target.value;
-                    if (val === "custom") {
-                      setCustomTld("");
-                    } else {
-                      setTld(val);
-                      setCustomTld("");
-                    }
-                  }}
-                  className="flex-1 px-3 py-2 rounded-lg text-sm outline-none"
-                  style={{ border: "1px solid rgba(30,58,110,0.2)", background: "white" }}
-                >
-                  {TLDS.map((t) => (
-                    <option key={t} value={t}>{t}</option>
-                  ))}
-                  <option value="custom">Andere...</option>
-                </select>
-
-                {/* Custom TLD Input */}
-                {customTld !== undefined && (
-                  <input
-                    type="text"
-                    value={customTld}
-                    onChange={(e) => setCustomTld(e.target.value.startsWith(".") ? e.target.value : "." + e.target.value)}
-                    placeholder=".xyz"
-                    className="flex-1 px-3 py-2 rounded-lg text-sm outline-none"
-                    style={{ border: "1px solid rgba(30,58,110,0.2)", background: "white" }}
-                    onKeyPress={(e) => e.key === "Enter" && handleCheck()}
-                  />
-                )}
-              </div>
-
-              {/* Check Button */}
-              <button
-                onClick={handleCheck}
-                disabled={!domain.trim() || loading}
-                className="w-full py-2 rounded-lg font-semibold text-sm transition-all duration-300 text-white disabled:opacity-50"
-                style={{ background: "#1e3a6e" }}
-                onMouseEnter={(e) => !loading && (e.currentTarget.style.background = "#162d5a")}
-                onMouseLeave={(e) => e.currentTarget.style.background = "#1e3a6e"}
-              >
-                {loading ? "Prüfe..." : "Prüfen"}
-              </button>
-
-              {/* Result */}
-              {checked && (
-                <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-2 p-2 rounded-lg flex items-center gap-2 text-sm"
-                  style={{ background: checked.available ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)" }}
-                >
-                  {checked.available ? (
-                    <>
-                      <Check className="w-4 h-4" style={{ color: "#22c55e" }} />
-                      <span style={{ color: "#22c55e" }}>Verfügbar: <strong>{checked.domain}</strong></span>
-                    </>
-                  ) : (
-                    <>
-                      <X className="w-4 h-4" style={{ color: "#ef4444" }} />
-                      <span style={{ color: "#ef4444" }}>Nicht verfügbar</span>
-                    </>
-                  )}
-                </motion.div>
-              )}
-            </div>
+            {checked.available ? (
+              <>
+                <Check className="w-4 h-4 flex-shrink-0" style={{ color: "#22c55e" }} />
+                <span style={{ color: "#22c55e" }}>Verfügbar: <strong>{checked.domain}</strong></span>
+              </>
+            ) : (
+              <>
+                <X className="w-4 h-4 flex-shrink-0" style={{ color: "#ef4444" }} />
+                <span style={{ color: "#ef4444" }}>Nicht verfügbar</span>
+              </>
+            )}
           </motion.div>
         )}
-      </AnimatePresence>
+      </motion.div>
+
+      {/* Loading state */}
+      {loading && (
+        <div className="mt-2 text-center text-xs" style={{ color: "#94a3b8" }}>
+          Prüfe Domain...
+        </div>
+      )}
     </div>
   );
 }
