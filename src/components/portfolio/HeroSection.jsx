@@ -41,8 +41,8 @@ export default function HeroSection() {
           className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] flex-shrink-0"
           style={{ color: "#0f1f3d" }}
         >
-          Starke Websites.{" "}
-          <span style={{ color: "#1e3a6e" }}>Einfach Erstellt.</span>
+          Starke Website.{" "}
+          <span style={{ color: "#1e3a6e" }}>Einfach erstellt.</span>
         </motion.h1>
 
         <motion.p
