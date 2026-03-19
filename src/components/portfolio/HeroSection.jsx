@@ -70,9 +70,9 @@ export default function HeroSection() {
               Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
             </p>
             <p className="mt-4 text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Ob Sie per <span className="font-semibold" style={{ color: "#1e3a6e" }}>WhatsApp der KI</span> sagen,
-              welche Details diese anpassen soll, ob Sie einfach eine <span className="font-semibold" style={{ color: "#1e3a6e" }}>Liste aktualisiersen um Preise anzupassen</span>,
-              ein <span className="font-semibold" style={{ color: "#1e3a6e" }}> Login auf der Seite </span> oder lieber die komplette Wartung abgeben? — <span className="font-semibold" style={{ color: "#1e3a6e" }}>wir finden
+              Ob Sie per WhatsApp der KI sagen,
+              welche Details diese anpassen soll, ob Sie einfach eine Liste aktualisiersen um Preise anzupassen,
+              ein Login auf der Seite oder lieber die komplette Wartung abgeben? — <span className="font-semibold" style={{ color: "#1e3a6e" }}>wir finden
               die Lösung, die zu Ihnen passt.</span> Und das zu kleinsten Preisen.
             </p>
           </div>
