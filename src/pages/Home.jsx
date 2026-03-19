@@ -59,6 +59,25 @@ export default function Home() {
           zIndex: 0,
         }}
       />
+      {/* Rising sun glow — bottom right */}
+      <div
+        className="fixed pointer-events-none"
+        style={{
+          bottom: 0,
+          right: 0,
+          width: "50%",
+          height: "40%",
+          background: "radial-gradient(ellipse 100% 100% at 100% 100%, rgba(251,191,36,0.55) 0%, rgba(249,115,22,0.35) 30%, rgba(251,191,36,0.15) 55%, transparent 75%)",
+          zIndex: 0,
+          animation: "sunPulse 4s ease-in-out infinite",
+        }}
+      />
+      <style>{`
+        @keyframes sunPulse {
+          0%, 100% { opacity: 0.85; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.06); }
+        }
+      `}</style>
 
       <NavigationDots activeSection={activeSection} />
       <HeroSection />
