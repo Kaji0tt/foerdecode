@@ -40,7 +40,7 @@ const plans = [
       "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
     ],
     maintenance: [
-      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
+      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen, die Sie leicht bearbeiten können." },
       { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
       { label: "Rundum-Betreuung", desc: "Ich kümmere mich um alle Änderungswünsche zum nächsten verfügbaren Termin" },
     ],
