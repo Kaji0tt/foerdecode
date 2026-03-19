@@ -33,86 +33,84 @@ export default function HeroSection() {
       */}
       {/* Background handled by fixed layer in Home.jsx */}
 
-      <div className="relative z-10 px-6 max-w-4xl mx-auto w-full" style={{ marginTop: "-6vh" }}>
+      <div className="relative z-10 px-6 max-w-4xl mx-auto w-full flex flex-col" style={{ marginTop: "-4vh", maxHeight: "calc(100vh - 80px)" }}>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1]"
+          className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] flex-shrink-0"
           style={{ color: "#0f1f3d" }}
         >
           Starke Websites.{" "}
           <span style={{ color: "#1e3a6e" }}>Einfache Wartung.</span>
         </motion.h1>
 
-        <div className="mt-8">
-          <motion.p
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg leading-relaxed"
-            style={{ color: "#475569" }}
-          >
-            Professionelle Webauftritte für lokale Geschäfte in Flensburg — 
-            modern, bezahlbar und in Tagen statt Wochen fertig.
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="mt-3 text-base sm:text-lg leading-relaxed flex-shrink-0"
+          style={{ color: "#475569" }}
+        >
+          Professionelle Webauftritte für lokale Geschäfte in Flensburg — 
+          modern, bezahlbar und in Tagen statt Wochen fertig.
+        </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="mt-5 p-5 rounded-xl"
-            style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
-          >
-            <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
-              Teure Agenturen und eventuelle Wartung schrecken Sie ab?
-              Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
-            </p>
-            <ul className="mt-4 space-y-2">
-              {[
-                "Per WhatsApp der KI sagen, welche Details sie anpassen soll",
-                "Eine Liste selbst aktualisieren, um z.B. Preise anzupassen",
-                "Einen eigenen Login auf der Seite nutzen",
-                "Die komplette Wartung abgeben",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-base" style={{ color: "#475569" }}>
-                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#1e3a6e" }} />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-4 text-base font-semibold" style={{ color: "#1e3a6e" }}>
-              Wir finden eine Lösung, die zu Ihnen passt.
-            </p>
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          className="mt-3 p-4 rounded-xl overflow-y-auto flex-shrink min-h-0"
+          style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
+        >
+          <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
+            Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
+            Teure Agenturen und eventuelle Wartung schrecken Sie ab?
+            Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
+          </p>
+          <ul className="mt-3 space-y-1.5">
+            {[
+              "Per WhatsApp der KI sagen, welche Details sie anpassen soll",
+              "Eine Liste selbst aktualisieren, um z.B. Preise anzupassen",
+              "Einen eigenen Login auf der Seite nutzen",
+              "Die komplette Wartung abgeben",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-sm sm:text-base" style={{ color: "#475569" }}>
+                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#1e3a6e" }} />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#1e3a6e" }}>
+            Wir finden eine Lösung, die zu Ihnen passt.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="mt-4 flex flex-col sm:flex-row gap-3 flex-shrink-0"
+        >
+          <button
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-6 py-3.5 rounded-xl text-white font-semibold text-base sm:text-lg transition-all duration-300"
+            style={{ background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.2)" }}
+            onMouseEnter={e => e.currentTarget.style.background = "#162d5a"}
+            onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
           >
-            <button
-              onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 rounded-xl text-white font-semibold text-lg transition-all duration-300"
-              style={{ background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.2)" }}
-              onMouseEnter={e => e.currentTarget.style.background = "#162d5a"}
-              onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
-            >
-              Pakete ansehen
-            </button>
-            <button
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300"
-              style={{ border: "1px solid rgba(30,58,110,0.25)", color: "#1e3a6e" }}
-              onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.06)"; }}
-              onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
-            >
-              Kontakt aufnehmen
-            </button>
-          </motion.div>
-        </div>
+            Pakete ansehen
+          </button>
+          <button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-6 py-3.5 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300"
+            style={{ border: "1px solid rgba(30,58,110,0.25)", color: "#1e3a6e" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.06)"; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
+          >
+            Kontakt aufnehmen
+          </button>
+        </motion.div>
       </div>
 
       <motion.div
