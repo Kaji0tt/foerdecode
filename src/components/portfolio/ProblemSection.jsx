@@ -47,15 +47,15 @@ export default function ProblemSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-red-400/80 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#b91c1c" }}>
             Das Problem
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Deine Website kostet dich
             <br />
-            <span className="text-red-400">Kunden.</span>
+            <span style={{ color: "#b91c1c" }}>Kunden.</span>
           </h2>
-          <p className="mt-6 text-slate-400 text-lg max-w-xl mx-auto">
+          <p className="mt-6 text-lg max-w-xl mx-auto" style={{ color: "#475569" }}>
             Viele lokale Geschäfte in Flensburg verlieren täglich potenzielle Kunden durch veraltete Webauftritte.
           </p>
         </motion.div>
@@ -67,13 +67,14 @@ export default function ProblemSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.15 * index }}
-              className="group p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-sm transition-all duration-500"
+              className="group p-6 rounded-2xl transition-all duration-500"
+              style={{ border: "1px solid rgba(30,58,110,0.12)", background: "rgba(255,255,255,0.7)" }}
             >
-              <div className="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center mb-4 group-hover:bg-red-500/15 transition-colors duration-500">
-                <problem.icon className="w-6 h-6 text-red-400/80" />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-500" style={{ background: "rgba(185,28,28,0.08)" }}>
+                <problem.icon className="w-6 h-6" style={{ color: "#b91c1c" }} />
               </div>
-              <h3 className="text-lg font-semibold text-white mb-2">{problem.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{problem.description}</p>
+              <h3 className="text-lg font-semibold mb-2" style={{ color: "#0f1f3d" }}>{problem.title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{problem.description}</p>
             </motion.div>
           ))}
         </div>

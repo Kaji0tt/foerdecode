@@ -48,13 +48,13 @@ export default function SolutionSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-20"
         >
-          <span className="text-emerald-400/80 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#1e3a6e" }}>
             So einfach geht's
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             In 3 Schritten zur
             <br />
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span style={{ color: "#1e3a6e" }}>
               neuen Website.
             </span>
           </h2>
@@ -62,7 +62,7 @@ export default function SolutionSection() {
 
         <div className="relative max-w-3xl mx-auto">
           {/* Connecting line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-emerald-500/30 via-sky-500/30 to-transparent max-sm:hidden" />
+          <div className="absolute left-6 top-0 bottom-0 w-px max-sm:hidden" style={{ background: "linear-gradient(to bottom, rgba(30,58,110,0.3), rgba(30,58,110,0.1), transparent)" }} />
 
           <div className="space-y-16">
             {steps.map((step, index) => (
@@ -74,18 +74,18 @@ export default function SolutionSection() {
                 className="flex gap-8 items-start"
               >
                 <div className="relative flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 border border-emerald-500/20 flex items-center justify-center">
-                    <step.icon className="w-5 h-5 text-emerald-400" />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(30,58,110,0.08)", border: "1px solid rgba(30,58,110,0.15)" }}>
+                    <step.icon className="w-5 h-5" style={{ color: "#1e3a6e" }} />
                   </div>
                 </div>
                 <div>
-                  <span className="text-emerald-400/60 text-xs font-mono tracking-wider">
+                  <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(30,58,110,0.5)" }}>
                     SCHRITT {step.number}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-semibold text-white mt-1 mb-3">
+                  <h3 className="text-xl sm:text-2xl font-semibold mt-1 mb-3" style={{ color: "#0f1f3d" }}>
                     {step.title}
                   </h3>
-                  <p className="text-slate-400 leading-relaxed">{step.description}</p>
+                  <p className="leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>
                 </div>
               </motion.div>
             ))}
