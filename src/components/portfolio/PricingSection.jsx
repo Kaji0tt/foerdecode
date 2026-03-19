@@ -29,7 +29,7 @@ const plans = [
   {
     name: "Standard",
     tagline: "Für alle, die mehr als eine Visitenkarte brauchen.",
-    price: "249",
+    price: "259",
     tier: "standard",
     popular: true,
     rounds: "Bis zu 8 Feedback-Runden",
