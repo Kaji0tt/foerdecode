@@ -55,29 +55,22 @@ Gib ein JSON-Objekt zurück mit:
       }
     });
 
-    // Schritt 2: HTML generieren mit dem strukturierten Brief (fokussierter, schnellerer Prompt)
+    // Schritt 2: HTML generieren mit dem strukturierten Brief
     setLoadingStep("Erstelle deine Website...");
-    const heroImage = `https://source.unsplash.com/1200x600/?${encodeURIComponent(brief.placeholderImageQuery)}`;
+    const heroImage = `https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80`;
     const result = await base44.integrations.Core.InvokeLLM({
-      model: "gpt_5",
-      prompt: `Erstelle eine vollständige, professionelle einseitige HTML-Website basierend auf diesem Design-Brief. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
+      model: "claude_sonnet_4_6",
+      prompt: `Erstelle eine vollständige einseitige HTML-Website. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
 
-DESIGN-BRIEF:
-- Geschäft: ${brief.businessName} (${brief.businessType})
-- Headline: "${brief.headline}"
-- Subheadline: "${brief.subheadline}"
-- Primärfarbe: ${brief.primaryColor}, Sekundärfarbe: ${brief.secondaryColor}, Akzentfarbe: ${brief.accentColor}
-- Google Font: ${brief.googleFont}
-- Hero-Bild URL: ${heroImage}
+Geschäft: ${brief.businessName} (${brief.businessType})
+Farben: primary=${brief.primaryColor}, secondary=${brief.secondaryColor}, accent=${brief.accentColor}
+Font: ${brief.googleFont}
+Hero: Headline="${brief.headline}", Subheadline="${brief.subheadline}", Hintergrundbild: ${heroImage}
+Leistungen: ${brief.services?.map(s => `${s.icon} ${s.name}`).join(", ")}
+USPs: ${brief.usps?.map(u => `${u.icon} ${u.title}`).join(", ")}
 
-LEISTUNGEN:
-${brief.services?.map(s => `- ${s.icon} ${s.name}: ${s.description}`).join("\n")}
-
-USPs:
-${brief.usps?.map(u => `- ${u.icon} ${u.title}: ${u.text}`).join("\n")}
-
-PFLICHT-SECTIONS: Navigation (sticky), Hero mit Bild-Hintergrund, Leistungen (Cards), USPs, Kontakt mit Formular, Footer.
-TECHNISCH: Alles inline (style-Tag, script-Tag), kein externes CSS außer Google Fonts, responsiv mit Hamburger-Menü, KEIN Lorem Ipsum.`,
+Sections: Sticky-Nav, Hero (Bild-Hintergrund mit Overlay), Leistungen (4 Cards), USPs (3 Items), Kontakt (Formular + Adresse Flensburg), Footer.
+CSS+JS inline, Google Font einbinden, responsiv, kein Lorem Ipsum.`,
     });
 
     setHtml(result);
