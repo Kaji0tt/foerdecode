@@ -27,7 +27,7 @@ const plans = [
   {
     name: "Standard",
     tagline: "Für den professionellen Auftritt",
-    price: "149",
+    price: "249",
     tier: "standard",
     popular: true,
     features: [
