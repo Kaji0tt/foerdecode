@@ -126,7 +126,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
               </button>
             </div>
 
-            <div className="flex-1 px-6 py-6 overflow-y-auto">
+            <div className="flex-1 px-6 py-6 overflow-y-auto" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
 
               {/* STEP: SELECT */}
               {step === "select" && (
