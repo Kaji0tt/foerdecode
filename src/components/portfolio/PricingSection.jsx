@@ -48,7 +48,7 @@ const plans = [
       "Alles aus Standard, plus:",
       "Individuelle Sonderwünsche nach Absprache, zum Beispiel:",
     ],
-    addon: "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
+    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
     cta: "Expert wählen",
     expertRotating: true,
   },
