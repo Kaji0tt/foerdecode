@@ -139,12 +139,8 @@ export default function PricingSection() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
-            Für jedes Budget
-            <br />
-            <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-              das richtige Paket.
-            </span>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            Für jedes Budget das richtige Paket.
           </h2>
           <p className="mt-4 text-lg max-w-xl" style={{ color: "#8c5e3c" }}>
             Transparent, fair und ohne versteckte Kosten.
