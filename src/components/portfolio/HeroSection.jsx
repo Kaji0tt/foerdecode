@@ -42,7 +42,7 @@ export default function HeroSection() {
           style={{ color: "#0f1f3d" }}
         >
           Starke Websites.{" "}
-          <span style={{ color: "#1e3a6e" }}>Einfache Wartung.</span>
+          <span style={{ color: "#1e3a6e" }}>Einfach Erstellt.</span>
         </motion.h1>
 
         <motion.p
