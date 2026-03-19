@@ -22,7 +22,7 @@ const steps = [
     icon: Rocket,
     title: "Ich kümmere mich um den Rest",
     description:
-      "Wir gehen in den Austausch, ich passe alles nach Ihren Wünschen an und bringe Ihre Website online. Sie müssen nichts von Technik verstehen — das ist meine Aufgabe.",
+      "Wir gehen gemeinsam deine Wünsche durch, ich setze alles für dich um und bring deine Website online. Mit der Technik hast du nichts zu tun.",
   },
 ];
 
