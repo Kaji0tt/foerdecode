@@ -60,8 +60,8 @@ export default function HeroSection() {
           className="mt-8 max-w-2xl"
         >
           <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
-            Viele kleine Unternehmen in Flensburg haben noch keine oder eine veraltete Website.
-            Dank moderner KI ist das heute in wenigen Tagen möglich — zu einem Bruchteil des früheren Preises.
+            Professionelle Webauftritte für lokale Geschäfte in Flensburg — 
+            modern, bezahlbar und in Tagen statt Wochen fertig.
           </p>
           <div className="mt-5 p-5 rounded-xl" style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}>
             <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
