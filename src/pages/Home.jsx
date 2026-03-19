@@ -15,6 +15,7 @@ export default function Home() {
   const [shopOpen, setShopOpen] = useState(false);
   const [shopPackage, setShopPackage] = useState(null);
   const [shopFormData, setShopFormData] = useState(null);
+  const [selectedDomain, setSelectedDomain] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -71,11 +72,11 @@ export default function Home() {
       />
 
       <NavigationDots activeSection={activeSection} />
-      <HeroSection />
+      <HeroSection onDomainSelected={setSelectedDomain} />
       <AboutSection />
       <PortfolioSection />
       <PricingSection onOrderClick={openShop} />
-      <ContactSection onOpenShop={openShop} />
+      <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
 
       <ShopDrawer
         open={shopOpen}
