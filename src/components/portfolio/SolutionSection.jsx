@@ -33,13 +33,8 @@ export default function SolutionSection() {
   return (
     <section
       id="solution"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
+      className="min-h-screen w-full flex items-center relative snap-start"
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(2px)" }} />
-      
-      {/* Accent glow */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl" />
-      <div className="absolute top-1/3 left-0 w-[400px] h-[400px] bg-sky-500/5 rounded-full blur-3xl" />
 
       <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-24">
         <motion.div

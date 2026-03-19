@@ -129,9 +129,7 @@ export default function PricingSection() {
       id="pricing"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.6)", backdropFilter: "blur(2px)" }} />
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
+
 
       <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-16">
         <motion.div

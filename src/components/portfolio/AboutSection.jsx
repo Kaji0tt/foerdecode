@@ -33,14 +33,8 @@ export default function AboutSection() {
   return (
     <section
       id="problem"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
+      className="min-h-screen w-full flex items-center relative snap-start"
     >
-      {/* Subtle border top */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
-
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 py-16">
         {/* Intro text */}
