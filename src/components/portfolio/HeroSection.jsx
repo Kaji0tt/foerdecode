@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import DomainChecker from "./DomainChecker";
 
-export default function HeroSection({ onDomainSelected }) {
-  const [selectedDomain, setSelectedDomain] = useState(null);
-
-  const handleDomainSelected = (domain) => {
-    setSelectedDomain(domain);
-    if (onDomainSelected) {
-      onDomainSelected(domain);
-    }
-  };
+export default function HeroSection() {
   return (
     <section
       id="hero"
@@ -81,8 +72,6 @@ export default function HeroSection({ onDomainSelected }) {
             Pakete ansehen
           </button>
         </motion.div>
-
-        <DomainChecker onDomainSelected={handleDomainSelected} />
       </div>
 
       <motion.div

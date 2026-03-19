@@ -14,17 +14,9 @@ export default function ContactSection({ onOpenShop, prefilledDomain }) {
     email: "",
     businessName: "",
     business: "",
-    colors: "",
-    domain: prefilledDomain || ""
+    colors: ""
   });
   const [showDemo, setShowDemo] = useState(false);
-
-  // Update domain when prop changes
-  React.useEffect(() => {
-    if (prefilledDomain) {
-      setForm(prev => ({ ...prev, domain: prefilledDomain }));
-    }
-  }, [prefilledDomain]);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -112,31 +104,18 @@ export default function ContactSection({ onOpenShop, prefilledDomain }) {
                 </div>
               </div>
 
-              {/* Business Name + Domain */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Geschäftsname *</label>
-                  <Input
-                    name="businessName"
-                    value={form.businessName}
-                    onChange={handleChange}
-                    required
-                    placeholder="z.B. Meine Bäckerei"
-                    className="h-11 bg-white text-sm"
-                    style={{ borderColor: "rgba(30,58,110,0.15)" }}
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Domain</label>
-                  <Input
-                    name="domain"
-                    value={form.domain}
-                    onChange={handleChange}
-                    placeholder="z.B. meine-bäckerei.de"
-                    className="h-11 bg-white text-sm"
-                    style={{ borderColor: "rgba(30,58,110,0.15)" }}
-                  />
-                </div>
+              {/* Business Name */}
+              <div>
+                <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Geschäftsname *</label>
+                <Input
+                  name="businessName"
+                  value={form.businessName}
+                  onChange={handleChange}
+                  required
+                  placeholder="z.B. Meine Bäckerei"
+                  className="h-11 bg-white text-sm"
+                  style={{ borderColor: "rgba(30,58,110,0.15)" }}
+                />
               </div>
 
               {/* Business Description */}
