@@ -6,50 +6,80 @@ import { base44 } from "@/api/base44Client";
 export default function DemoPreview({ formData, onBack, onOrder }) {
   const [html, setHtml] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [loadingStep, setLoadingStep] = useState("");
   const [generated, setGenerated] = useState(false);
   const iframeRef = useRef(null);
 
   const generate = async () => {
     setLoading(true);
-    const result = await base44.integrations.Core.InvokeLLM({
-      model: "gpt_5",
-      prompt: `Du bist ein preisgekrönter Webdesigner und Frontend-Entwickler. Erstelle eine VOLLSTÄNDIGE, professionelle, produktionsreife einseitige HTML-Website für ein lokales Geschäft in Flensburg, Schleswig-Holstein.
 
-=== KUNDENDATEN ===
+    // Schritt 1: Formulardaten in einen strukturierten Design-Brief umwandeln (schnell, kleines Modell)
+    setLoadingStep("Analysiere dein Geschäft...");
+    const brief = await base44.integrations.Core.InvokeLLM({
+      prompt: `Analysiere diese Angaben zu einem lokalen Geschäft in Flensburg und erstelle einen kompakten Design-Brief für eine Website.
+
 Geschäftsbeschreibung: ${formData.business}
-Prioritäten / wichtige Inhalte: ${formData.important || "Öffnungszeiten, Leistungen, Kontakt"}
-Farbwünsche: ${formData.colors || "Wähle passende, professionelle Farben die zum Geschäft passen"}
+Wichtige Inhalte: ${formData.important || "keine Angabe"}
+Farbwünsche: ${formData.colors || "keine Angabe"}
 Ansprechpartner: ${formData.name}
 
-=== PFLICHT-SECTIONS (alle müssen enthalten sein) ===
-1. NAVIGATION — Sticky-Navbar mit Logo/Name, Links zu allen Sections, Hamburger-Menü für Mobile
-2. HERO — Großer visueller Einstieg mit Headline, Subheadline, CTA-Button, passenden CSS-Formen/Dekorationen im Hintergrund
-3. ÜBER UNS — Geschichte, Werte, Persönlichkeit des Geschäfts, optional mit Zitat oder Highlight-Box
-4. LEISTUNGEN / ANGEBOT — Cards oder Grid mit mindestens 4 konkreten Leistungen/Produkten mit Icons (nutze Unicode oder CSS-Symbole), kurzer Beschreibung und wenn sinnvoll einem Preis-/Zeitrahmen
-5. HIGHLIGHTS / WARUM WIR — 3–4 USPs mit Icons in einem ansprechenden Layout (z.B. Icon + Text horizontal)
-6. ${formData.important?.toLowerCase().includes("speisekarte") ? "SPEISEKARTE — Kategorien als Tabs oder Accordion mit echten Gerichten und Preisen" : formData.important?.toLowerCase().includes("öffnungszeit") ? "ÖFFNUNGSZEITEN — Übersichtliche Tabelle mit Wochentagen, visuell hervorgehobener Heute-Zeile" : "KUNDENSTIMMEN — 3 glaubwürdige Bewertungen mit Name, Sternchen und kurzem Text"}
-7. KONTAKT — Formular (Name, E-Mail, Nachricht), Adresse in Flensburg, Öffnungszeiten, eingebettete Google Maps Placeholder (nur visuell)
-8. FOOTER — Logo, Links, Adresse, Social-Media-Icons (CSS), Copyright
-
-=== DESIGN-ANFORDERUNGEN ===
-- Farbpalette: Leite aus den Farbwünschen ab. Definiere min. 3 CSS-Variablen: --primary, --secondary, --accent
-- Typografie: Passende Google Font einbinden (z.B. Playfair Display für Gastronomie, Inter für Tech, Lato für allgemein)
-- Abstände: Großzügige Padding/Margins, min. 80px zwischen Sections
-- Hover-Effekte: Alle Buttons und Links haben sanfte Transitions
-- Cards: Schatten, border-radius, hover: leicht anheben (translateY)
-- Ein Hero soll vorhanden sein!
-- Responsive: Flexbox/Grid, bricht bei 768px zu Mobile um, Hamburger-Menü mit JS toggle
-- Du darfst externe, passende Place-Holder Bilder verwenden, wenn es die Wirkung der Seite verbessert.
-
-=== TECHNISCHE ANFORDERUNGEN ===
-- Vollständiges HTML5-Dokument (<!DOCTYPE html> bis </html>)
-- CSS komplett im <style>-Tag eingebettet — KEIN externes CSS außer Google Fonts
-- JavaScript komplett im <script>-Tag — für Navbar-Toggle, Scroll-Animationen
-- Sinnvolle, realistische Placeholder-Texte die zum Geschäft passen (KEIN Lorem Ipsum!)
-- Semantisches HTML (header, main, section, article, footer)
-
-WICHTIG: Gib NUR den reinen HTML-Code zurück — kein Markdown, keine Erklärungen, keine Codeblöcke. Direkt mit <!DOCTYPE html> beginnen.`,
+Gib ein JSON-Objekt zurück mit:
+- businessName: vermuteter oder passender Geschäftsname
+- businessType: Art des Geschäfts (z.B. Restaurant, Friseursalon, Bäckerei...)
+- primaryColor: Hex-Farbe passend zum Geschäft und Farbwünschen
+- secondaryColor: zweite Hex-Farbe
+- accentColor: Akzentfarbe
+- googleFont: passende Google Font (nur der Name)
+- headline: kurze, prägnante Hero-Überschrift (max 8 Wörter)
+- subheadline: Subheadline (max 15 Wörter)
+- sections: Array der Sections die sinnvoll sind (z.B. ["nav","hero","about","services","hours","contact","footer"])
+- services: Array mit 4 konkreten Leistungen/Produkten [{name, description, icon (unicode emoji)}]
+- usps: Array mit 3 USPs [{icon (unicode emoji), title, text}]
+- placeholderImageQuery: Suchbegriff für ein passendes Unsplash-Bild (auf Englisch)`,
+      response_json_schema: {
+        type: "object",
+        properties: {
+          businessName: { type: "string" },
+          businessType: { type: "string" },
+          primaryColor: { type: "string" },
+          secondaryColor: { type: "string" },
+          accentColor: { type: "string" },
+          googleFont: { type: "string" },
+          headline: { type: "string" },
+          subheadline: { type: "string" },
+          sections: { type: "array", items: { type: "string" } },
+          services: { type: "array", items: { type: "object", properties: { name: { type: "string" }, description: { type: "string" }, icon: { type: "string" } } } },
+          usps: { type: "array", items: { type: "object", properties: { icon: { type: "string" }, title: { type: "string" }, text: { type: "string" } } } },
+          placeholderImageQuery: { type: "string" }
+        }
+      }
     });
+
+    // Schritt 2: HTML generieren mit dem strukturierten Brief (fokussierter, schnellerer Prompt)
+    setLoadingStep("Erstelle deine Website...");
+    const heroImage = `https://source.unsplash.com/1200x600/?${encodeURIComponent(brief.placeholderImageQuery)}`;
+    const result = await base44.integrations.Core.InvokeLLM({
+      model: "gpt_5",
+      prompt: `Erstelle eine vollständige, professionelle einseitige HTML-Website basierend auf diesem Design-Brief. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
+
+DESIGN-BRIEF:
+- Geschäft: ${brief.businessName} (${brief.businessType})
+- Headline: "${brief.headline}"
+- Subheadline: "${brief.subheadline}"
+- Primärfarbe: ${brief.primaryColor}, Sekundärfarbe: ${brief.secondaryColor}, Akzentfarbe: ${brief.accentColor}
+- Google Font: ${brief.googleFont}
+- Hero-Bild URL: ${heroImage}
+
+LEISTUNGEN:
+${brief.services?.map(s => `- ${s.icon} ${s.name}: ${s.description}`).join("\n")}
+
+USPs:
+${brief.usps?.map(u => `- ${u.icon} ${u.title}: ${u.text}`).join("\n")}
+
+PFLICHT-SECTIONS: Navigation (sticky), Hero mit Bild-Hintergrund, Leistungen (Cards), USPs, Kontakt mit Formular, Footer.
+TECHNISCH: Alles inline (style-Tag, script-Tag), kein externes CSS außer Google Fonts, responsiv mit Hamburger-Menü, KEIN Lorem Ipsum.`,
+    });
+
     setHtml(result);
     setLoading(false);
     setGenerated(true);
