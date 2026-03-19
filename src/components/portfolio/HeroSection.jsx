@@ -31,15 +31,7 @@ export default function HeroSection() {
           → Erste Zahl: bis wohin die blaue Farbe reicht
           → Zweite Zahl: ab wann es fast weiß ist
       */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(135deg, #bfdbfe 0%, #e0f2fe 40%, #f0f9ff 70%, #ffffff 100%)",
-        }}
-      />
-
-      {/* Wasser-Textur: sanfte Wellen durch radiale Gradienten */}
-      <div className="absolute inset-0 opacity-[0.25]" style={{ background: "radial-gradient(ellipse 80% 50% at 20% 30%, #93c5fd, transparent), radial-gradient(ellipse 60% 40% at 80% 70%, #bae6fd, transparent)" }} />
+      {/* Background handled by fixed layer in Home.jsx */}
 
       <div className="relative z-10 px-6 max-w-4xl mx-auto w-full" style={{ marginTop: "-6vh" }}>
         <motion.h1
