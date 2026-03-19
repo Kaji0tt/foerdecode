@@ -112,7 +112,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="fixed right-0 top-0 bottom-0 z-50 flex flex-col"
+            className="fixed right-0 top-0 bottom-0 z-50 flex flex-col overflow-hidden"
             style={{ width: "min(520px, 100vw)", background: "white", boxShadow: "-8px 0 48px rgba(15,31,61,0.2)" }}
           >
             {/* Header */}
