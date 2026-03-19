@@ -74,6 +74,8 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
   const [selectedMaintenance, setSelectedMaintenance] = useState(null);
   const [step, setStep] = useState("select");
   const [orderData, setOrderData] = useState({ name: formData?.name || "", email: formData?.email || "" });
+  const [contactMethod, setContactMethod] = useState("email");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [expandedMaint, setExpandedMaint] = useState(null);
 
@@ -86,6 +88,8 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
       important: formData?.important || "",
       colors: formData?.colors || "",
       selected_package: selected,
+      contact_method: contactMethod,
+      phone_number: phoneNumber || "",
       status: "neu",
     });
     setLoading(false);
@@ -307,6 +311,44 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                     />
                   </div>
 
+                  <div>
+                    <label className="text-sm mb-3 block font-medium" style={{ color: "#374151" }}>Wie soll ich dich erreichen? *</label>
+                    <div className="space-y-2">
+                      {[
+                        { value: "email", label: "📧 E-Mail" },
+                        { value: "whatsapp", label: "💬 WhatsApp" },
+                        { value: "phone", label: "☎️ Telefon" }
+                      ].map(option => (
+                        <label key={option.value} className="flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all" style={{ border: contactMethod === option.value ? `1.5px solid #b91c1c` : "1.5px solid rgba(30,58,110,0.2)", background: contactMethod === option.value ? "rgba(185,28,28,0.05)" : "white" }}>
+                          <input
+                            type="radio"
+                            name="contactMethod"
+                            value={option.value}
+                            checked={contactMethod === option.value}
+                            onChange={e => setContactMethod(e.target.value)}
+                            className="w-4 h-4"
+                            style={{ accentColor: "#b91c1c" }}
+                          />
+                          <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>{option.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {(contactMethod === "whatsapp" || contactMethod === "phone") && (
+                    <div>
+                      <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>Telefon-/Handynummer *</label>
+                      <input
+                        type="tel"
+                        value={phoneNumber}
+                        onChange={e => setPhoneNumber(e.target.value)}
+                        placeholder="z.B. +49 123 4567890"
+                        className="w-full h-12 px-4 rounded-xl text-sm outline-none"
+                        style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white" }}
+                      />
+                    </div>
+                  )}
+
                 </div>
               )}
 
@@ -366,7 +408,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                   <div className="px-6 py-4">
                     <button
                       onClick={handleOrder}
-                      disabled={loading || !orderData.name || !orderData.email}
+                      disabled={loading || !orderData.name || !orderData.email || ((contactMethod === "whatsapp" || contactMethod === "phone") && !phoneNumber)}
                       className="w-full py-4 rounded-xl font-bold text-white text-base transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
                       style={{ background: selectedPlan?.color }}
                     >
