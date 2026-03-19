@@ -60,15 +60,15 @@ const projects = [
 ];
 
 const accentTag = {
-  sky: "border text-blue-300",
-  cyan: "border text-sky-300",
-  violet: "border text-blue-200",
+  sky: "border",
+  cyan: "border",
+  violet: "border",
 };
 
 const accentTagStyle = {
-  sky: { background: "rgba(59,130,246,0.12)", borderColor: "rgba(59,130,246,0.3)" },
-  cyan: { background: "rgba(14,165,233,0.10)", borderColor: "rgba(14,165,233,0.3)" },
-  violet: { background: "rgba(30,77,140,0.2)", borderColor: "rgba(59,130,246,0.35)" },
+  sky: { background: "rgba(30,58,110,0.08)", borderColor: "rgba(30,58,110,0.2)", color: "#1e3a6e" },
+  cyan: { background: "rgba(30,58,110,0.06)", borderColor: "rgba(30,58,110,0.15)", color: "#1e3a6e" },
+  violet: { background: "rgba(185,28,28,0.07)", borderColor: "rgba(185,28,28,0.2)", color: "#b91c1c" },
 };
 
 function BeforeAfterSlider({ before, after }) {
@@ -167,9 +167,10 @@ export default function PortfolioSection() {
       id="portfolio"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0a1628 0%, #0e1f3d 50%, #0a1628 100%)" }} />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,77,140,0.1)" }} />
-      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(59,130,246,0.06)" }} />
+      <div className="absolute inset-0 bg-white" />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
+      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(185,28,28,0.03)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16">
         {/* Header */}
@@ -179,9 +180,9 @@ export default function PortfolioSection() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Websites, die{" "}
-            <span style={{ background: "linear-gradient(90deg, #3b82f6, #60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ color: "#1e3a6e" }}>
               für sich sprechen.
             </span>
           </h2>
@@ -200,7 +201,10 @@ export default function PortfolioSection() {
           {/* Left arrow */}
           <button
             onClick={prev}
-            className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300"
+            className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+            style={{ border: "1px solid rgba(30,58,110,0.2)", color: "#1e3a6e", background: "white" }}
+            onMouseEnter={e => e.currentTarget.style.background = "rgba(30,58,110,0.06)"}
+            onMouseLeave={e => e.currentTarget.style.background = "white"}
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
@@ -214,7 +218,7 @@ export default function PortfolioSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.35 }}
-                className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.05)", background: "rgba(255,255,255,0.02)" }}
+                className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(30,58,110,0.1)", background: "#fff", boxShadow: "0 4px 24px rgba(30,58,110,0.07)" }}
               >
                 {/* Before/After image */}
                 <div className="relative h-64 sm:h-80">
@@ -229,10 +233,10 @@ export default function PortfolioSection() {
                 {/* Content */}
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#475569" }}>
+                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>
                       {project.category}
                     </span>
-                    <h3 className="mt-1 text-xl font-semibold text-white">{project.title}</h3>
+                    <h3 className="mt-1 text-xl font-semibold" style={{ color: "#0f1f3d" }}>{project.title}</h3>
                     <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
                   </div>
                   {/* Dots */}
@@ -241,9 +245,8 @@ export default function PortfolioSection() {
                       <button
                         key={i}
                         onClick={() => setCurrent(i)}
-                        className={`rounded-full transition-all duration-300 ${
-                          i === current ? "w-4 h-2 bg-white/70" : "w-2 h-2 bg-white/20"
-                        }`}
+                        className="rounded-full transition-all duration-300"
+                        style={{ width: i === current ? 16 : 8, height: 8, background: i === current ? "#1e3a6e" : "rgba(30,58,110,0.2)" }}
                       />
                     ))}
                   </div>
@@ -255,7 +258,10 @@ export default function PortfolioSection() {
           {/* Right arrow */}
           <button
             onClick={next}
-            className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-white/25 transition-all duration-300"
+            className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
+            style={{ border: "1px solid rgba(30,58,110,0.2)", color: "#1e3a6e", background: "white" }}
+            onMouseEnter={e => e.currentTarget.style.background = "rgba(30,58,110,0.06)"}
+            onMouseLeave={e => e.currentTarget.style.background = "white"}
           >
             <ChevronRight className="w-6 h-6" />
           </button>

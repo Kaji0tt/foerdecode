@@ -33,11 +33,14 @@ export default function AboutSection() {
   return (
     <section
       id="problem"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
+      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start bg-white"
     >
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0e1f3d 0%, #0a1628 100%)" }} />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full blur-3xl" style={{ background: "rgba(59,130,246,0.06)" }} />
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(30,77,140,0.1)" }} />
+      {/* Subtle border top */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
+
+      {/* Background accent */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 py-16">
         {/* Intro text */}
@@ -47,27 +50,27 @@ export default function AboutSection() {
           transition={{ duration: 0.7 }}
           className="mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
             Ihr Geschäft.{" "}
-            <span style={{ background: "linear-gradient(90deg, #3b82f6, #60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ color: "#1e3a6e" }}>
               Ihre Website.
             </span>
           </h2>
-          <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#94a3b8" }}>
+          <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
             Viele kleine Unternehmen und Läden in Flensburg haben noch immer eine veraltete Website – 
             oder gar keine. Dabei profitieren gerade Geschäfte des Tagesbedarfs. Neben Informationen für Interessierte, wie Speisekarten, Öffnungszeiten oder Impressionen in die Lokalitäten, 
-            sorgt eine Website für bessere Sichtbarkeit und Außenwarhnehmung.
+            sorgt eine Website für bessere Sichtbarkeit und Außenwahrnehmung.
             <br />Gleichzeitig war es noch nie so einfach und erschwinglich, eine 
             professionelle Online-Präsenz aufzubauen.
           </p>
-          <p className="mt-4 text-lg leading-relaxed max-w-2xl" style={{ color: "#60a5fa" }}>
-            Lass Sie uns das ändern!
+          <p className="mt-4 text-lg font-medium leading-relaxed max-w-2xl" style={{ color: "#b91c1c" }}>
+            Lass uns das ändern!
           </p>
         </motion.div>
 
         {/* Steps */}
         <div className="relative max-w-2xl">
-          <div className="absolute left-6 top-0 bottom-0 w-px max-sm:hidden" style={{ background: "linear-gradient(to bottom, rgba(59,130,246,0.4), rgba(30,77,140,0.2), transparent)" }} />
+          <div className="absolute left-6 top-0 bottom-0 w-px max-sm:hidden" style={{ background: "linear-gradient(to bottom, rgba(30,58,110,0.25), rgba(185,28,28,0.15), transparent)" }} />
 
           <div className="space-y-14">
             {steps.map((step, index) => (
@@ -79,15 +82,15 @@ export default function AboutSection() {
                 className="flex gap-8 items-start"
               >
                 <div className="relative flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(59,130,246,0.1)", border: "1px solid rgba(59,130,246,0.25)" }}>
-                    <step.icon className="w-5 h-5" style={{ color: "#60a5fa" }} />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(30,58,110,0.07)", border: "1px solid rgba(30,58,110,0.15)" }}>
+                    <step.icon className="w-5 h-5" style={{ color: "#1e3a6e" }} />
                   </div>
                 </div>
                 <div>
-                  <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(59,130,246,0.6)" }}>
+                  <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(30,58,110,0.45)" }}>
                     SCHRITT {step.number}
                   </span>
-                  <h3 className="text-xl font-semibold text-white mt-1 mb-2">{step.title}</h3>
+                  <h3 className="text-xl font-semibold mt-1 mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
                   <p className="leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>
                 </div>
               </motion.div>
