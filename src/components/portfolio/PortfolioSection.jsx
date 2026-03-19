@@ -177,19 +177,16 @@ export default function PortfolioSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          className="mb-10"
         >
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "rgba(251,146,60,0.7)" }}>
-            Referenzen
-          </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             Websites, die
             <br />
             <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               für sich sprechen.
             </span>
           </h2>
-          <p className="mt-6 text-lg max-w-xl mx-auto" style={{ color: "#8c5e3c" }}>
+          <p className="mt-4 text-lg" style={{ color: "#8c5e3c" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
           </p>
         </motion.div>

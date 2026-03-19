@@ -137,20 +137,17 @@ export default function PricingSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="mb-10"
         >
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "rgba(251,146,60,0.7)" }}>
-            Pakete & Preise
-          </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             Für jedes Budget
             <br />
             <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               das richtige Paket.
             </span>
           </h2>
-          <p className="mt-6 text-lg max-w-xl mx-auto" style={{ color: "#8c5e3c" }}>
-            Transparent, fair und ohne versteckte Kosten. Wähle das Paket, das zu dir passt.
+          <p className="mt-4 text-lg max-w-xl" style={{ color: "#8c5e3c" }}>
+            Transparent, fair und ohne versteckte Kosten.
           </p>
         </motion.div>
 

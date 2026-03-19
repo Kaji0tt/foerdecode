@@ -45,12 +45,9 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-20"
+          className="mb-14"
         >
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "rgba(251,146,60,0.7)" }}>
-            Mehr für Flensburg.
-          </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
             Ihr Geschäft.
             <br />
             <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
