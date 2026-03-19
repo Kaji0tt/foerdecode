@@ -54,34 +54,34 @@ const plans = [
   },
 ];
 
-// base=blue, standard=navy/red-accent, expert=light blue
+// base=navy blue, standard=red (SH Löwe), expert=deep blue
 const tierStyles = {
   base: {
-    badge: { border: "1px solid rgba(59,130,246,0.3)", background: "rgba(59,130,246,0.08)", color: "#93c5fd" },
-    price: { color: "#60a5fa" },
-    button: { background: "#1e4d8c", boxShadow: "0 8px 24px rgba(30,77,140,0.3)" },
-    buttonHover: { background: "#2563eb" },
-    check: { color: "#60a5fa" },
-    glow: "rgba(59,130,246,0.08)",
-    plus: { color: "#60a5fa" },
+    badge: { border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" },
+    price: { color: "#1e3a6e" },
+    button: { background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.2)" },
+    buttonHover: { background: "#162d5a" },
+    check: { color: "#1e3a6e" },
+    glow: "rgba(30,58,110,0.05)",
+    plus: { color: "#1e3a6e" },
   },
   standard: {
-    badge: { border: "1px solid rgba(239,68,68,0.3)", background: "rgba(239,68,68,0.08)", color: "#fca5a5" },
-    price: { color: "#f87171" },
-    button: { background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" },
-    buttonHover: { background: "#dc2626" },
-    check: { color: "#f87171" },
-    glow: "rgba(239,68,68,0.08)",
-    plus: { color: "#f87171" },
+    badge: { border: "1px solid rgba(185,28,28,0.2)", background: "rgba(185,28,28,0.06)", color: "#b91c1c" },
+    price: { color: "#b91c1c" },
+    button: { background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.2)" },
+    buttonHover: { background: "#991b1b" },
+    check: { color: "#b91c1c" },
+    glow: "rgba(185,28,28,0.05)",
+    plus: { color: "#b91c1c" },
   },
   expert: {
-    badge: { border: "1px solid rgba(96,165,250,0.3)", background: "rgba(96,165,250,0.08)", color: "#bfdbfe" },
-    price: { color: "#93c5fd" },
-    button: { background: "#1d4ed8", boxShadow: "0 8px 24px rgba(29,78,216,0.35)" },
-    buttonHover: { background: "#3b82f6" },
-    check: { color: "#93c5fd" },
-    glow: "rgba(96,165,250,0.07)",
-    plus: { color: "#93c5fd" },
+    badge: { border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" },
+    price: { color: "#1e3a6e" },
+    button: { background: "#0f1f3d", boxShadow: "0 8px 24px rgba(15,31,61,0.25)" },
+    buttonHover: { background: "#1e3a6e" },
+    check: { color: "#1e3a6e" },
+    glow: "rgba(30,58,110,0.05)",
+    plus: { color: "#1e3a6e" },
   },
 };
 
@@ -129,8 +129,9 @@ export default function PricingSection() {
       id="pricing"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0e1f3d 0%, #0a1628 100%)" }} />
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,77,140,0.1)" }} />
+      <div className="absolute inset-0 bg-white" />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.08)" }} />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,58,110,0.04)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-16">
         <motion.div
@@ -139,9 +140,9 @@ export default function PricingSection() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Für jedes Budget{" "}
-            <span style={{ background: "linear-gradient(90deg, #3b82f6, #60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ color: "#1e3a6e" }}>
               das richtige Paket.
             </span>
           </h2>
@@ -161,13 +162,14 @@ export default function PricingSection() {
                 transition={{ duration: 0.6, delay: 0.15 * index }}
                 className="relative rounded-2xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-1"
                 style={{
-                  border: plan.popular ? "1px solid rgba(59,130,246,0.3)" : "1px solid rgba(255,255,255,0.06)",
-                  background: plan.popular ? "rgba(59,130,246,0.05)" : "rgba(255,255,255,0.02)",
+                  border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
+                  background: plan.popular ? "rgba(185,28,28,0.02)" : "#fff",
+                  boxShadow: plan.popular ? "0 4px 24px rgba(185,28,28,0.06)" : "0 2px 12px rgba(30,58,110,0.05)",
                 }}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="px-4 py-1 rounded-full text-xs font-semibold text-white" style={{ background: "#1e4d8c", boxShadow: "0 4px 16px rgba(30,77,140,0.5)" }}>
+                    <span className="px-4 py-1 rounded-full text-xs font-semibold text-white" style={{ background: "#b91c1c", boxShadow: "0 4px 16px rgba(185,28,28,0.3)" }}>
                       Beliebteste Wahl
                     </span>
                   </div>
@@ -181,19 +183,19 @@ export default function PricingSection() {
                     {plan.tagline}
                   </span>
 
-                  <h3 className="mt-4 text-2xl font-bold text-white">{plan.name}</h3>
+                  <h3 className="mt-4 text-2xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
 
                   <div className="mt-4 flex items-baseline gap-1">
-                    <span className="text-sm mr-0.5" style={{ color: "#475569" }}>{plan.name === "Expert" ? "ab" : ""}</span>
+                    <span className="text-sm mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
                     <span className="text-4xl font-bold" style={style.price}>{plan.price}</span>
-                    <span className="text-sm" style={{ color: "#475569" }}>€</span>
+                    <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
                   </div>
 
                   <ul className="mt-8 space-y-3 flex-1">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={style.check} />
-                        <span className="text-sm" style={{ color: "#94a3b8" }}>{feature}</span>
+                        <span className="text-sm" style={{ color: "#475569" }}>{feature}</span>
                       </li>
                     ))}
                     {plan.expertRotating && (
@@ -207,7 +209,7 @@ export default function PricingSection() {
                     {plan.addon && (
                       <div className="flex items-start gap-2 mb-4">
                         <Plus className="w-4 h-4 mt-0.5 flex-shrink-0" style={style.plus} />
-                        <span className="text-sm" style={{ color: "#64748b" }}>{plan.addon}</span>
+                        <span className="text-sm" style={{ color: "#94a3b8" }}>{plan.addon}</span>
                       </div>
                     )}
                     <button
