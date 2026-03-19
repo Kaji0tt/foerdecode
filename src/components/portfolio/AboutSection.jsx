@@ -51,7 +51,7 @@ export default function AboutSection() {
             </span>
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
-            Viele kleine Unternehmen und Läden haben noch keine oder eine alte Website. Zum einen steigt die Bedeutung eines Internetauftritts für Sichtbarkeit stetig - zum anderen wird Erstellung, Bearbeitung und Wartung dank künstlicher Intelligenz einfacher denn je! 
+            Viele kleine Geschäfte haben noch keine oder eine alte Website. Zum einen steigt die Bedeutung eines Internetauftritts für Sichtbarkeit stetig - zum anderen wird Erstellung, Bearbeitung und Wartung dank künstlicher Intelligenz einfacher denn je! 
             Mir bleibt damit mehr Zeit für das Wesentliche: Lösungen im Umgang mit der Technik finden, die für Sie funktionieren!
           </p>
 
