@@ -12,23 +12,44 @@ export default function DemoPreview({ formData, onBack, onOrder }) {
   const generate = async () => {
     setLoading(true);
     const result = await base44.integrations.Core.InvokeLLM({
-      prompt: `Du bist ein Webdesigner. Erstelle eine vollständige, moderne und professionelle einseitige HTML-Website (mit eingebettetem CSS, keine externen Links außer Google Fonts) für ein lokales Geschäft aus Flensburg, Schleswig-Holstein.
+      model: "claude_sonnet_4_6",
+      prompt: `Du bist ein preisgekrönter Webdesigner und Frontend-Entwickler. Erstelle eine VOLLSTÄNDIGE, professionelle, produktionsreife einseitige HTML-Website für ein lokales Geschäft in Flensburg, Schleswig-Holstein.
 
+=== KUNDENDATEN ===
 Geschäftsbeschreibung: ${formData.business}
-Wichtige Inhalte: ${formData.important}
-Farbwünsche: ${formData.colors || "Keine spezifischen Angaben - wähle passende professionelle Farben"}
-Kontaktname: ${formData.name}
+Prioritäten / wichtige Inhalte: ${formData.important || "Öffnungszeiten, Leistungen, Kontakt"}
+Farbwünsche: ${formData.colors || "Wähle passende, professionelle Farben die zum Geschäft passen"}
+Ansprechpartner: ${formData.name}
 
-Anforderungen:
-- Vollständiges HTML-Dokument (<!DOCTYPE html>...)
-- Modernes, professionelles Design mit dem Farbschema aus den Farbwünschen
-- Sections: Hero, Über uns, Leistungen/Angebot, Kontakt
-- Responsive (mobile-first)
-- Placeholder-Inhalte die zum Geschäft passen
-- Keine externen Bilder (nutze CSS-Hintergründe oder Platzhalter)
-- Schöne Google Font einbinden
-- Kein JavaScript nötig
-- NUR das HTML zurückgeben, kein Kommentar davor oder danach`,
+=== PFLICHT-SECTIONS (alle müssen enthalten sein) ===
+1. NAVIGATION — Sticky-Navbar mit Logo/Name, Links zu allen Sections, Hamburger-Menü für Mobile
+2. HERO — Großer visueller Einstieg mit Headline, Subheadline, CTA-Button, passenden CSS-Formen/Dekorationen im Hintergrund
+3. ÜBER UNS — Geschichte, Werte, Persönlichkeit des Geschäfts, optional mit Zitat oder Highlight-Box
+4. LEISTUNGEN / ANGEBOT — Cards oder Grid mit mindestens 4 konkreten Leistungen/Produkten mit Icons (nutze Unicode oder CSS-Symbole), kurzer Beschreibung und wenn sinnvoll einem Preis-/Zeitrahmen
+5. HIGHLIGHTS / WARUM WIR — 3–4 USPs mit Icons in einem ansprechenden Layout (z.B. Icon + Text horizontal)
+6. ${formData.important?.toLowerCase().includes("speisekarte") ? "SPEISEKARTE — Kategorien als Tabs oder Accordion mit echten Gerichten und Preisen" : formData.important?.toLowerCase().includes("öffnungszeit") ? "ÖFFNUNGSZEITEN — Übersichtliche Tabelle mit Wochentagen, visuell hervorgehobener Heute-Zeile" : "KUNDENSTIMMEN — 3 glaubwürdige Bewertungen mit Name, Sternchen und kurzem Text"}
+7. KONTAKT — Formular (Name, E-Mail, Nachricht), Adresse in Flensburg, Öffnungszeiten, eingebettete Google Maps Placeholder (nur visuell)
+8. FOOTER — Logo, Links, Adresse, Social-Media-Icons (CSS), Copyright
+
+=== DESIGN-ANFORDERUNGEN ===
+- Farbpalette: Leite aus den Farbwünschen ab. Definiere min. 3 CSS-Variablen: --primary, --secondary, --accent
+- Typografie: Passende Google Font einbinden (z.B. Playfair Display für Gastronomie, Inter für Tech, Lato für allgemein)
+- Abstände: Großzügige Padding/Margins, min. 80px zwischen Sections
+- Hover-Effekte: Alle Buttons und Links haben sanfte Transitions
+- Cards: Schatten, border-radius, hover: leicht anheben (translateY)
+- Hero: Mindestens 100vh, zentrierter Content, Hintergrund mit Gradient oder geometrischen CSS-Formen
+- Responsive: Flexbox/Grid, bricht bei 768px zu Mobile um, Hamburger-Menü mit JS toggle
+- Keine externen Bilder — nutze CSS-Gradienten, Muster oder gut gestaltete Placeholder-Divs
+- Animationen: Mindestens fadeIn bei Scroll (IntersectionObserver) für alle Cards
+
+=== TECHNISCHE ANFORDERUNGEN ===
+- Vollständiges HTML5-Dokument (<!DOCTYPE html> bis </html>)
+- CSS komplett im <style>-Tag eingebettet — KEIN externes CSS außer Google Fonts
+- JavaScript komplett im <script>-Tag — für Navbar-Toggle, Scroll-Animationen
+- Sinnvolle, realistische Placeholder-Texte die zum Geschäft passen (KEIN Lorem Ipsum!)
+- Semantisches HTML (header, main, section, article, footer)
+
+WICHTIG: Gib NUR den reinen HTML-Code zurück — kein Markdown, keine Erklärungen, keine Codeblöcke. Direkt mit <!DOCTYPE html> beginnen.`,
     });
     setHtml(result);
     setLoading(false);
