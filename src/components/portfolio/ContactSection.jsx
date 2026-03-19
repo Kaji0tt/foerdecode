@@ -33,7 +33,8 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start bg-slate-950"
+      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
+      style={{ background: "#070f1f" }}
     >
       {/* Pulsing sun glow — bottom center, half cut off */}
       <motion.div
@@ -41,7 +42,7 @@ export default function ContactSection() {
         style={{
           width: 700,
           height: 700,
-          background: "radial-gradient(circle, rgba(251,146,60,0.35) 0%, rgba(234,88,12,0.18) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(30,77,140,0.45) 0%, rgba(14,50,100,0.2) 40%, transparent 70%)",
           translateY: "50%",
         }}
         animate={{ scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }}
@@ -53,7 +54,7 @@ export default function ContactSection() {
         style={{
           width: 400,
           height: 400,
-          background: "radial-gradient(circle, rgba(253,186,116,0.25) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 65%)",
           translateY: "50%",
         }}
         animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.9, 0.5] }}
@@ -68,13 +69,13 @@ export default function ContactSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-orange-400/80 text-sm font-semibold uppercase tracking-widest">
+          <span className="text-blue-400/80 text-sm font-semibold uppercase tracking-widest">
             Kontakt
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             Lass uns
             <br />
-            <span className="bg-gradient-to-r from-orange-400 to-yellow-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">
               loslegen.
             </span>
           </h2>
@@ -97,8 +98,8 @@ export default function ContactSection() {
               { Icon: Phone, title: "Telefon", text: "Auf Anfrage verfügbar" },
             ].map(({ Icon, title, text }) => (
               <div key={title} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                  <Icon className="w-5 h-5 text-orange-400" />
+                <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
                   <h4 className="text-white font-medium">{title}</h4>
@@ -116,13 +117,13 @@ export default function ContactSection() {
             className="lg:col-span-3"
           >
             {sent ? (
-              <div className="text-center py-16 rounded-2xl border border-orange-500/20 bg-orange-500/5">
-                <CheckCircle className="w-12 h-12 text-orange-400 mx-auto mb-4" />
+              <div className="text-center py-16 rounded-2xl border border-blue-500/20 bg-blue-500/5">
+                <CheckCircle className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-2xl font-semibold text-white mb-2">Nachricht gesendet!</h3>
                 <p className="text-slate-400">Ich melde mich schnellstmöglich bei dir.</p>
                 <button
                   onClick={() => setSent(false)}
-                  className="mt-6 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors"
+                  className="mt-6 text-blue-400 hover:text-blue-300 text-sm font-medium transition-colors"
                 >
                   Weitere Nachricht senden
                 </button>
@@ -179,7 +180,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="w-full py-4 rounded-xl bg-orange-500 hover:bg-orange-400 text-white font-semibold text-lg transition-all duration-300 shadow-lg shadow-orange-500/20 hover:shadow-orange-400/30 flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full py-4 rounded-xl bg-blue-700 hover:bg-blue-600 text-white font-semibold text-lg transition-all duration-300 shadow-lg shadow-blue-700/30 hover:shadow-blue-600/40 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   {sending ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
