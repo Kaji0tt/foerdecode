@@ -34,10 +34,29 @@ export default function ContactSection() {
     <section
       id="contact"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
-      style={{ background: "#f8fafc" }}
     >
       {/* Top border */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
+
+      {/* Rising sun glow — scrolls with this section, centered at bottom */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          bottom: 0,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "120%",
+          height: "80%",
+          background: "radial-gradient(ellipse 60% 80% at 50% 100%, rgba(251,191,36,0.75) 0%, rgba(249,115,22,0.55) 20%, rgba(251,191,36,0.25) 50%, transparent 72%)",
+          animation: "sunPulse 4s ease-in-out infinite",
+        }}
+      />
+      <style>{`
+        @keyframes sunPulse {
+          0%, 100% { opacity: 0.85; transform: translateX(-50%) scale(1); }
+          50% { opacity: 1; transform: translateX(-50%) scale(1.06); }
+        }
+      `}</style>
 
       {/* Subtle accent stripe at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, #1e3a6e, #b91c1c)" }} />
