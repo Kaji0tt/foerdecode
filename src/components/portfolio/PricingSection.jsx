@@ -21,7 +21,7 @@ const plans = [
       "Hosting inklusive",
       "Einrichtung in wenigen Tagen",
     ],
-    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
+    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
     cta: "Basis wählen",
   },
   {
@@ -36,7 +36,7 @@ const plans = [
       "Eigene E-Mail-Adresse",
       "Suchmaschinen Optimierung",
     ],
-    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
+    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
     cta: "Standard wählen",
   },
   {
@@ -48,7 +48,7 @@ const plans = [
       "Alles aus Standard, plus:",
       "Individuelle Sonderwünsche nach Absprache, zum Beispiel:",
     ],
-    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
+    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
     cta: "Expert wählen",
     expertRotating: true,
   },
