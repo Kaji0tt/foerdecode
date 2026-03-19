@@ -42,7 +42,7 @@ const plans = [
   {
     name: "Expert",
     tagline: "Das Komplettpaket",
-    price: "399",
+    price: "499",
     tier: "expert",
     features: [
       "Alles aus Standard, plus:",
