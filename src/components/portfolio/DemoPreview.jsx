@@ -60,7 +60,9 @@ Gib ein JSON-Objekt zurück mit:
     const heroImage = `https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80`;
     const result = await base44.integrations.Core.InvokeLLM({
       model: "claude_sonnet_4_6",
-      prompt: `Erstelle eine vollständige einseitige HTML-Website. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
+      prompt: `Erstelle eine vollständige einseitige HTML-Landing-Page. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
+
+Ziel: Eine überzeugende Landing Page, die potenzielle Kunden anspricht und zur Kontaktaufnahme motiviert. KEINE komplexen Apps oder Buchungssysteme — nur eine starke, ansprechende Präsentation.
 
 Geschäft: ${brief.businessName} (${brief.businessType})
 Farben: primary=${brief.primaryColor}, secondary=${brief.secondaryColor}, accent=${brief.accentColor}
@@ -69,8 +71,15 @@ Hero: Headline="${brief.headline}", Subheadline="${brief.subheadline}", Hintergr
 Leistungen: ${brief.services?.map(s => `${s.icon} ${s.name}`).join(", ")}
 USPs: ${brief.usps?.map(u => `${u.icon} ${u.title}`).join(", ")}
 
-Sections: Sticky-Nav, Hero (Bild-Hintergrund mit Overlay), Leistungen (4 Cards), USPs (3 Items), Kontakt (Formular + Adresse Flensburg), Footer.
-CSS+JS inline, Google Font einbinden, responsiv, kein Lorem Ipsum.`,
+Sections (in dieser Reihenfolge):
+1. Sticky-Nav mit Logo/Name und Telefon/Kontakt-Link
+2. Hero mit Bild-Hintergrund, dunklem Overlay, Headline, Subheadline und einem CTA-Button ("Kontakt aufnehmen")
+3. Leistungen / Angebote (4 Cards mit Icon, Name, kurzer Beschreibung)
+4. Über uns / Warum wir (3 USP-Punkte mit Icon und kurzem Text)
+5. Kontaktbereich: einfaches Formular (Name, Telefon, Nachricht) + Adresse Flensburg + Google Maps Placeholder
+6. Footer mit Copyright
+
+CSS+JS inline, Google Font einbinden, vollständig responsiv, kein Lorem Ipsum. Alle Texte auf Deutsch.`,
     });
 
     setHtml(result);

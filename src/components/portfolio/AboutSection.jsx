@@ -1,34 +1,32 @@
 import React, { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
-import { MessageSquare, Wand2, Rocket } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { MousePointerClick, MessageSquare, Rocket } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    icon: Wand2,
-    title: "Demo erstellen",
+    icon: MousePointerClick,
+    title: "Vorschau erstellen",
     description:
-      "Füllen Sie das untenstehende Formular aus, um einen kostenlosen Ersteindruck einer möglichen Website zu erhalten. Bei Interesse, wählen Sie ein passendes Paket aus und stellen eine Anfrage.",
+      "Beschreiben Sie kurz Ihr Geschäft — unsere KI erstellt Ihnen in Sekunden eine kostenlose Vorschau Ihrer zukünftigen Website. Kein Kauf, keine Verpflichtung.",
   },
   {
     number: "02",
     icon: MessageSquare,
-    title: "Kurzes Gespräch",
+    title: "Paket wählen & Anfrage senden",
     description:
-      "Wir tauschen uns aus. Nacheinander Pflege ich ihre Wünsche und Vorstellungen ein. Je nach dem, wie sicher sie im Umgang mit der Technik sind, finden wir entweder Lösungen, mit denen Sie im Nachhinein arbeiten können - oder ich übernehme alle Verantwortung und Pflege ihre Website!",
+      "Gefällt Ihnen die Vorschau? Wählen Sie ein passendes Angebot aus — egal ob Sie nur die Basics brauchen oder eine maßgeschneiderte Lösung mit besonderen Funktionen.",
   },
   {
     number: "03",
     icon: Rocket,
-    title: "Ich setze Ihre Vision um",
+    title: "Ich kümmere mich um den Rest",
     description:
-      "Ich buche ihre Wunschadresse, erstelle Ihre Website, implementiere ihre Services - und bei Bedarf, pflege und verwalte ich sie.",
+      "Wir sprechen kurz miteinander, ich passe alles nach Ihren Wünschen an und bringe Ihre Website online. Sie müssen nichts von Technik verstehen — das ist meine Aufgabe.",
   },
 ];
 
-const icons = { Wand2, MessageSquare, Rocket };
-
-function StepsCarousel({ isInView }) {
+function StepsCarousel() {
   const [active, setActive] = useState(0);
   const touchStartX = useRef(null);
 
@@ -45,29 +43,25 @@ function StepsCarousel({ isInView }) {
 
   return (
     <div className="w-full" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
-      {/* Card track */}
-      <div className="relative flex items-center justify-center" style={{ height: 280 }}>
+      <div className="relative flex items-center justify-center" style={{ height: 260 }}>
         {steps.map((step, i) => {
           const offset = i - active;
           const isActive = offset === 0;
-          const scale = isActive ? 1 : 0.85;
-          const opacity = isActive ? 1 : 0.3;
-          const x = offset * 88;
           return (
             <motion.div
               key={step.number}
-              animate={{ x: `${x}%`, scale, opacity, zIndex: isActive ? 10 : 1 }}
+              animate={{ x: `${offset * 88}%`, scale: isActive ? 1 : 0.85, opacity: isActive ? 1 : 0.3, zIndex: isActive ? 10 : 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={() => !isActive && setActive(i)}
               className="absolute w-[78vw] max-w-xs rounded-2xl p-6 flex flex-col"
               style={{
                 cursor: isActive ? "default" : "pointer",
                 border: "1px solid rgba(30,58,110,0.12)",
-                background: "rgba(255,255,255,0.95)",
+                background: "rgba(255,255,255,0.97)",
                 boxShadow: isActive ? "0 8px 32px rgba(30,58,110,0.10)" : "0 2px 8px rgba(30,58,110,0.04)",
               }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: "rgba(185,28,28,0.08)", border: "1px solid rgba(185,28,28,0.15)" }}>
                   <step.icon className="w-5 h-5" style={{ color: "#b91c1c" }} />
@@ -76,14 +70,12 @@ function StepsCarousel({ isInView }) {
                   SCHRITT {step.number}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
+              <h3 className="text-base font-semibold mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>
             </motion.div>
           );
         })}
       </div>
-
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-4">
         {steps.map((_, i) => (
           <button
@@ -108,12 +100,12 @@ export default function AboutSection() {
       className="h-screen w-full flex items-center relative snap-start overflow-hidden"
     >
       <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 py-12 flex flex-col justify-center h-full">
-        {/* Heading */}
+
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-6"
+          className="mb-5"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
             Große Wirkung.{" "}
@@ -123,47 +115,46 @@ export default function AboutSection() {
           </h2>
         </motion.div>
 
-        {/* Info box moved from Hero */}
+        {/* Info box */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mb-8 p-4 rounded-xl"
+          className="mb-7 p-4 rounded-xl"
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
           <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
             Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
             Teure Agenturen und eventuelle Wartung schrecken Sie ab?
           </p>
-          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
+          <p className="mt-2 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
             Wir finden eine Lösung, die zu Ihnen passt.
           </p>
         </motion.div>
 
         {/*
-          AUSKOMMENTIERT — alter Fließtext (kann bei Bedarf wieder eingeblendet werden)
+          AUSKOMMENTIERT — alter Fließtext
 
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
             Viele kleine Geschäfte haben noch keine oder eine alte Website. Zum einen steigt die Bedeutung eines Internetauftritts für Sichtbarkeit stetig - zum anderen wird Erstellung, Bearbeitung und Wartung dank künstlicher Intelligenz einfacher denn je!
             Mir bleibt damit mehr Zeit für das Wesentliche: Lösungen im Umgang mit der Technik finden, die für Sie funktionieren!
           </p>
-
           <p className="mt-4 text-lg font-medium leading-relaxed max-w-2xl" style={{ color: "#b91c1c" }}>
             Dank der KI, bleibt der Preis damit klein und die Wirkung wird groß.
           </p>
         */}
 
-        {/* Steps carousel — mobile */}
+        {/* Mobile carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
           className="sm:hidden"
         >
-          <StepsCarousel isInView={isInView} />
+          <StepsCarousel />
         </motion.div>
 
-        {/* Steps — desktop: 3 cards side by side */}
+        {/* Desktop 3-column */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -177,9 +168,9 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + 0.1 * index }}
               className="rounded-2xl p-6 flex flex-col"
-              style={{ border: "1px solid rgba(30,58,110,0.12)", background: "rgba(255,255,255,0.95)", boxShadow: "0 4px 16px rgba(30,58,110,0.07)" }}
+              style={{ border: "1px solid rgba(30,58,110,0.12)", background: "rgba(255,255,255,0.97)", boxShadow: "0 4px 16px rgba(30,58,110,0.07)" }}
             >
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: "rgba(185,28,28,0.08)", border: "1px solid rgba(185,28,28,0.15)" }}>
                   <step.icon className="w-5 h-5" style={{ color: "#b91c1c" }} />
@@ -188,7 +179,7 @@ export default function AboutSection() {
                   SCHRITT {step.number}
                 </span>
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
+              <h3 className="text-base font-semibold mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>
             </motion.div>
           ))}

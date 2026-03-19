@@ -3,58 +3,62 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 
 const expertExamples = [
-  "Online-Buchungssystem",
-  "Online-Bestellung & Shop",
-  "Chat & direkter Kundenkontakt",
+  "Online-Bestellsystem",
+  "Kurs-Buchungen",
+  "Liefer-Tracking",
+  "Mitglieder-Bereich",
 ];
 
 const plans = [
   {
     name: "Basis",
-    tagline: "Dein digitaler Einstieg",
+    tagline: "Ihre Seite steht — jetzt muss sie nur noch passen.",
     price: "99",
     tier: "base",
+    rounds: "Bis zu 3 Abstimmungsrunden",
     features: [
-      "Professionelle Website mit modernem Design",
+      "Fertige Landing Page auf Basis Ihrer Demo",
+      "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
       "Mobilfreundlich & schnell",
-      "Inhalte leicht selbst anpassbar",
       "Hosting inklusive",
-      "Einrichtung in wenigen Tagen",
+      "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
     ],
-    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
+    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
     cta: "Basis wählen",
   },
   {
     name: "Standard",
-    tagline: "Für den professionellen Auftritt",
+    tagline: "Für alle, die mehr als eine Visitenkarte im Netz wollen.",
     price: "249",
     tier: "standard",
     popular: true,
+    rounds: "Bis zu 8 Abstimmungsrunden",
     features: [
-      "Alles aus Basis, plus:",
-      "Eigene Wunschadresse (z.B. dein-laden.de)",
-      "Eigene E-Mail-Adresse",
-      "Suchmaschinen Optimierung",
+      "Alles aus Basis",
+      "Individuelle Navigation & Layout-Wünsche",
+      "Eigene Web-Adresse (Domain) inklusive",
+      "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
+      "Bessere Auffindbarkeit bei Google",
     ],
-    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
+    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
     cta: "Standard wählen",
   },
   {
     name: "Expert",
-    tagline: "Das Komplettpaket",
+    tagline: "Wenn Ihre Website wirklich arbeiten soll.",
     price: "499",
     tier: "expert",
+    rounds: "12+ Abstimmungsrunden",
     features: [
-      "Alles aus Standard, plus:",
-      "Individuelle Sonderwünsche nach Absprache, zum Beispiel:",
+      "Alles aus Standard",
+      "Eigene Sonderfunktionen nach Absprache, z. B.:",
     ],
-    addon: "Optional: Wartung & Aktualisierung auf Nachfrage für 18€ / Monat",
+    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
     cta: "Expert wählen",
     expertRotating: true,
   },
 ];
 
-// base=navy blue, standard=red (SH Löwe), expert=deep blue
 const tierStyles = {
   base: {
     badge: { border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" },
@@ -62,8 +66,8 @@ const tierStyles = {
     button: { background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.2)" },
     buttonHover: { background: "#162d5a" },
     check: { color: "#1e3a6e" },
-    glow: "rgba(30,58,110,0.05)",
     plus: { color: "#1e3a6e" },
+    rounds: { background: "rgba(30,58,110,0.08)", color: "#1e3a6e" },
   },
   standard: {
     badge: { border: "1px solid rgba(185,28,28,0.2)", background: "rgba(185,28,28,0.06)", color: "#b91c1c" },
@@ -71,33 +75,29 @@ const tierStyles = {
     button: { background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.2)" },
     buttonHover: { background: "#991b1b" },
     check: { color: "#b91c1c" },
-    glow: "rgba(185,28,28,0.05)",
     plus: { color: "#b91c1c" },
+    rounds: { background: "rgba(185,28,28,0.08)", color: "#b91c1c" },
   },
   expert: {
     badge: { border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" },
-    price: { color: "#1e3a6e" },
+    price: { color: "#0f1f3d" },
     button: { background: "#0f1f3d", boxShadow: "0 8px 24px rgba(15,31,61,0.25)" },
     buttonHover: { background: "#1e3a6e" },
     check: { color: "#1e3a6e" },
-    glow: "rgba(30,58,110,0.05)",
     plus: { color: "#1e3a6e" },
+    rounds: { background: "rgba(30,58,110,0.08)", color: "#1e3a6e" },
   },
 };
 
 function RotatingExample({ tier }) {
   const [index, setIndex] = useState(0);
   const style = tierStyles[tier];
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % expertExamples.length);
-    }, 2500);
+    const interval = setInterval(() => setIndex((prev) => (prev + 1) % expertExamples.length), 2500);
     return () => clearInterval(interval);
   }, []);
-
   return (
-    <div className="h-7 flex items-center">
+    <div className="h-6 flex items-center">
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -105,7 +105,7 @@ function RotatingExample({ tier }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-sm font-medium"
+          className="text-xs font-medium"
           style={style.check}
         >
           {expertExamples[index]}
@@ -122,9 +122,9 @@ function PlanCard({ plan, onOrderClick, active }) {
       className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
       style={{
         border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
-        background: "rgba(255,255,255,0.95)",
+        background: "rgba(255,255,255,0.97)",
         boxShadow: active
-          ? (plan.popular ? "0 8px 32px rgba(185,28,28,0.12)" : "0 8px 32px rgba(30,58,110,0.12)")
+          ? (plan.popular ? "0 8px 32px rgba(185,28,28,0.12)" : "0 8px 32px rgba(30,58,110,0.10)")
           : "0 2px 8px rgba(30,58,110,0.04)",
       }}
     >
@@ -144,6 +144,12 @@ function PlanCard({ plan, onOrderClick, active }) {
           <span className="text-xs mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
           <span className="text-3xl font-bold" style={style.price}>{plan.price}</span>
           <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
+        </div>
+        {/* Rounds badge */}
+        <div className="mt-2 inline-flex">
+          <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={style.rounds}>
+            {plan.rounds}
+          </span>
         </div>
         <ul className="mt-4 space-y-2 flex-1">
           {plan.features.map((feature, i) => (
@@ -181,7 +187,6 @@ function PlanCard({ plan, onOrderClick, active }) {
 }
 
 function MobilePricingCarousel({ onOrderClick }) {
-  // Start on middle card (index 1 = Standard)
   const [active, setActive] = useState(1);
   const touchStartX = useRef(null);
 
@@ -202,15 +207,10 @@ function MobilePricingCarousel({ onOrderClick }) {
         {plans.map((plan, i) => {
           const offset = i - active;
           const isActive = offset === 0;
-          const scale = isActive ? 1 : 0.85;
-          const opacity = isActive ? 1 : 0.35;
-          const x = offset * 88; // percent of card width shift
-          const zIndex = isActive ? 10 : 1;
-
           return (
             <motion.div
               key={plan.name}
-              animate={{ x: `${x}%`, scale, opacity, zIndex }}
+              animate={{ x: `${offset * 88}%`, scale: isActive ? 1 : 0.85, opacity: isActive ? 1 : 0.35, zIndex: isActive ? 10 : 1 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onClick={() => !isActive && setActive(i)}
               className="absolute w-[78vw] max-w-xs"
@@ -221,8 +221,6 @@ function MobilePricingCarousel({ onOrderClick }) {
           );
         })}
       </div>
-
-      {/* Dots */}
       <div className="flex justify-center gap-2 mt-4">
         {plans.map((_, i) => (
           <button
@@ -242,10 +240,7 @@ export default function PricingSection({ onOrderClick }) {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section
-      id="pricing"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
-    >
+    <section id="pricing" className="min-h-screen w-full flex items-center relative overflow-hidden snap-start">
       <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-16">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -255,14 +250,16 @@ export default function PricingSection({ onOrderClick }) {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Für jedes Budget{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>das richtige Paket.</span>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              das richtige Paket.
+            </span>
           </h2>
           <p className="mt-3 text-lg max-w-xl" style={{ color: "#64748b" }}>
-            Transparent, fair und ohne versteckte Kosten.
+            Transparent, fair und ohne versteckte Kosten. Die Anzahl der Abstimmungsrunden bestimmt, wie intensiv wir zusammenarbeiten.
           </p>
         </motion.div>
 
-        {/* Mobile: carousel */}
+        {/* Mobile carousel */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -272,7 +269,7 @@ export default function PricingSection({ onOrderClick }) {
           <MobilePricingCarousel onOrderClick={onOrderClick} />
         </motion.div>
 
-        {/* Desktop: grid */}
+        {/* Desktop grid */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
