@@ -48,7 +48,7 @@ export default function Home() {
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(135deg, #bfdbfe 0%, #e0f2fe 40%, #f0f9ff 70%, #ffffff 100%)",
+          background: "linear-gradient(90deg, #dbeafe 0%, #93c5fd 35%, #3b82f6 70%, #1d4ed8 100%)",
           zIndex: 0,
         }}
       />
