@@ -66,21 +66,7 @@ export default function HeroSection() {
           <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
             Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
             Teure Agenturen und eventuelle Wartung schrecken Sie ab?
-            Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
           </p>
-          <ul className="mt-3 space-y-1.5">
-            {[
-              "Per WhatsApp der KI sagen, welche Details sie anpassen soll",
-              "Eine Liste selbst aktualisieren, um z.B. Preise anzupassen",
-              "Einen eigenen Login auf der Seite nutzen",
-              "Die komplette Wartung abgeben",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-sm sm:text-base" style={{ color: "#475569" }}>
-                <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#1e3a6e" }} />
-                {item}
-              </li>
-            ))}
-          </ul>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#1e3a6e" }}>
             Wir finden eine Lösung, die zu Ihnen passt.
           </p>
