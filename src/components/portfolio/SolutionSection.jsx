@@ -35,7 +35,7 @@ export default function SolutionSection() {
       id="solution"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0 bg-slate-950" />
+      <div className="absolute inset-0" style={{ background: "rgba(255,255,255,0.55)", backdropFilter: "blur(2px)" }} />
       
       {/* Accent glow */}
       <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl" />

@@ -33,7 +33,7 @@ export default function AboutSection() {
   return (
     <section
       id="problem"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start bg-white"
+      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
       {/* Subtle border top */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
