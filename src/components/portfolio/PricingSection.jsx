@@ -206,13 +206,13 @@ export default function PricingSection({ onOrderClick }) {
                       </div>
                     )}
                     <button
-                      onClick={scrollToContact}
-                      onMouseEnter={e => Object.assign(e.currentTarget.style, style.buttonHover)}
-                      onMouseLeave={e => Object.assign(e.currentTarget.style, style.button)}
-                      className="w-full py-3.5 rounded-xl font-semibold text-white transition-all duration-300"
-                      style={style.button}
+                     onClick={() => onOrderClick ? onOrderClick(plan.name) : document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                     onMouseEnter={e => Object.assign(e.currentTarget.style, style.buttonHover)}
+                     onMouseLeave={e => Object.assign(e.currentTarget.style, style.button)}
+                     className="w-full py-3.5 rounded-xl font-semibold text-white transition-all duration-300"
+                     style={style.button}
                     >
-                      {plan.cta}
+                     {plan.cta}
                     </button>
                   </div>
                 </div>
