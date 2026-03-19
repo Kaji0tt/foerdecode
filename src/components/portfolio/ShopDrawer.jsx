@@ -13,11 +13,11 @@ const plans = [
     rounds: "Bis zu 3 Feedback-Runden",
     roundsNote: "Ideal für überschaubare Änderungen",
     features: [
-      "Anpassungen wie Texte, Öffnungszeiten, Farben & Bilder",
+      "Fertige Website auf Basis Ihrer Demo",
+      "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
       "Mobilfreundlich & schnell",
       "Hosting inklusive",
-      "Domain nach Verfügbarkeit (Kosten abhängig von der Adresse)",
-    ],
+      "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
     maintenance: [
       { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
       { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
