@@ -151,36 +151,38 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                           Beliebteste Wahl
                         </span>
                       )}
+                      {/* Top row: name + price */}
                       <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2">
-                            <div className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</div>
-                            <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: `${plan.color}12`, color: plan.color }}>
-                              {plan.rounds}
-                            </span>
-                          </div>
-                          <div className="text-xs mt-1" style={{ color: "#94a3b8" }}>{plan.tagline}</div>
-                          <ul className="mt-3 space-y-1.5">
-                            {plan.features.map((f, i) => (
-                              <li key={i} className="flex items-start gap-2 text-xs" style={{ color: "#475569" }}>
-                                <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
-                                {f}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                        <div className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</div>
                         <div className="text-right flex-shrink-0">
                           <div>
                             <span className="text-2xl font-bold" style={{ color: plan.color }}>{plan.price}</span>
                             <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
                           </div>
-                          <div className="text-xs mt-1" style={{ color: "#94a3b8" }}>{plan.priceNote}</div>
+                          <div className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{plan.priceNote}</div>
                           {selected === plan.name && (
-                            <div className="mt-2 w-6 h-6 rounded-full flex items-center justify-center ml-auto" style={{ background: plan.color }}>
+                            <div className="mt-1 w-6 h-6 rounded-full flex items-center justify-center ml-auto" style={{ background: plan.color }}>
                               <Check className="w-3.5 h-3.5 text-white" />
                             </div>
                           )}
                         </div>
+                      </div>
+                      {/* Tagline */}
+                      <div className="text-xs mt-1.5" style={{ color: "#94a3b8" }}>{plan.tagline}</div>
+                      {/* Features */}
+                      <ul className="mt-3 space-y-1.5">
+                        {plan.features.map((f, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs" style={{ color: "#475569" }}>
+                            <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                      {/* Rounds badge — always at the bottom */}
+                      <div className="mt-3 pt-3" style={{ borderTop: "1px solid rgba(30,58,110,0.08)" }}>
+                        <span className="text-xs px-2.5 py-1 rounded-full font-medium" style={{ background: `${plan.color}12`, color: plan.color }}>
+                          {plan.rounds}
+                        </span>
                       </div>
                     </button>
                   ))}
