@@ -53,7 +53,7 @@ export default function HeroSection() {
           <span style={{ color: "#1e3a6e" }}>Einfache Wartung.</span>
         </motion.h1>
 
-        <div className="mt-8 max-w-2xl">
+        <div className="mt-8">
           <motion.p
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
