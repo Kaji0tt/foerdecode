@@ -12,7 +12,7 @@ const plans = [
   {
     name: "Basis",
     tagline: "Dein digitaler Einstieg",
-    price: "79",
+    price: "99",
     tier: "base",
     features: [
       "Professionelle Website mit modernem Design",
