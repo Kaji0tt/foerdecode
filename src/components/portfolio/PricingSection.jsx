@@ -239,7 +239,7 @@ export default function PricingSection({ onOrderClick }) {
 
   return (
     <section id="pricing" className="min-h-screen w-full flex items-center relative overflow-hidden snap-start">
-      <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-16">
+      <div ref={ref} className="relative z-10 w-full max-w-6xl mx-auto px-6 py-12 pt-20 flex flex-col justify-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
