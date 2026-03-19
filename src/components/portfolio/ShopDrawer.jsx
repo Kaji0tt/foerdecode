@@ -27,7 +27,7 @@ const plans = [
   },
   {
     name: "Standard",
-    price: "249",
+    price: "259",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Für alle, die mehr als eine Visitenkarte im Netz wollen.",
     color: "#b91c1c",
