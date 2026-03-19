@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, Sparkles } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -41,48 +41,47 @@ export default function HeroSection() {
       {/* Wasser-Textur: sanfte Wellen durch radiale Gradienten */}
       <div className="absolute inset-0 opacity-[0.25]" style={{ background: "radial-gradient(ellipse 80% 50% at 20% 30%, #93c5fd, transparent), radial-gradient(ellipse 60% 40% at 80% 70%, #bae6fd, transparent)" }} />
 
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-6"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8" style={{ border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" }}>
-            <Sparkles className="w-4 h-4" />
-            KI-gestütztes Webdesign aus Flensburg
-          </div>
-        </motion.div>
-
+      <div className="relative z-10 px-6 max-w-4xl mx-auto w-full" style={{ marginTop: "-6vh" }}>
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05]"
           style={{ color: "#0f1f3d" }}
         >
-          Dein Business.{" "}
-          <span style={{ color: "#1e3a6e" }}>
-            Deine Website.
-          </span>
+          Starke Websites.{" "}
+          <span style={{ color: "#1e3a6e" }}>Einfache Wartung.</span>
         </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="mt-8 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed"
-          style={{ color: "#64748b" }}
-        >
-          Professionelle Webauftritte für lokale Geschäfte in Flensburg — 
-          modern, bezahlbar und in Tagen statt Wochen fertig.
-        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45, ease: "easeOut" }}
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="mt-8 max-w-2xl"
+        >
+          <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
+            Viele kleine Unternehmen in Flensburg haben noch keine oder eine veraltete Website.
+            Dank moderner KI ist das heute in wenigen Tagen möglich — zu einem Bruchteil des früheren Preises.
+          </p>
+          <div className="mt-5 p-5 rounded-xl" style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}>
+            <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
+              Ich nehme dir dabei jede Unsicherheit — egal ob du noch nie mit einer Website zu tun hattest.
+              Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
+            </p>
+            <p className="mt-4 text-lg leading-relaxed" style={{ color: "#475569" }}>
+              Ob du per <span className="font-semibold" style={{ color: "#1e3a6e" }}>WhatsApp der KI</span> sagst,
+              welche Details sie anpassen soll, ob du einfach eine Liste aktualisierst,
+              oder ob du gar nichts selbst machen möchtest — <span className="font-medium" style={{ color: "#0f1f3d" }}>wir finden gemeinsam
+              die Lösung, die zu dir passt.</span> Und das zu kleinsten Preisen.
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="mt-8 flex flex-col sm:flex-row gap-4"
         >
           <button
             onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
