@@ -161,7 +161,7 @@ export default function PricingSection() {
                 className="relative rounded-2xl p-8 flex flex-col transition-all duration-500 hover:-translate-y-1"
                 style={{
                   border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
-                  background: plan.popular ? "rgba(185,28,28,0.02)" : "#fff",
+                  background: "rgba(255,255,255,0.9)",
                   boxShadow: plan.popular ? "0 4px 24px rgba(185,28,28,0.06)" : "0 2px 12px rgba(30,58,110,0.05)",
                 }}
               >
