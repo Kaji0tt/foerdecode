@@ -307,24 +307,6 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                     />
                   </div>
 
-                  <button
-                    onClick={handleOrder}
-                    disabled={loading || !orderData.name || !orderData.email}
-                    className="w-full py-4 rounded-xl font-bold text-white text-base transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
-                    style={{ background: selectedPlan?.color }}
-                  >
-                    {loading ? (
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <ShoppingCart className="w-5 h-5" />
-                        Jetzt anfragen
-                      </>
-                    )}
-                  </button>
-                  <p className="text-xs text-center" style={{ color: "#94a3b8" }}>
-                    Keine Zahlung jetzt — ich melde mich innerhalb von 24h bei Ihnen.
-                  </p>
                 </div>
               )}
 
