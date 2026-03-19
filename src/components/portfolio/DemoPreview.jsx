@@ -130,7 +130,7 @@ TECHNISCH: Alles inline (style-Tag, script-Tag), kein externes CSS außer Google
         {loading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
             <Loader2 className="w-10 h-10 text-white animate-spin" />
-            <p className="text-white/70 text-sm">KI generiert deine Website...</p>
+            <p className="text-white/70 text-sm">{loadingStep}</p>
           </div>
         )}
 
