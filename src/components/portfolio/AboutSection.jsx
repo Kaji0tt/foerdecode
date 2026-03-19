@@ -8,7 +8,7 @@ const steps = [
     icon: MousePointerClick,
     title: "Vorschau erstellen",
     description:
-      "Beschreiben Sie kurz Ihr Geschäft — unsere KI erstellt Ihnen in Sekunden eine kostenlose Vorschau Ihrer zukünftigen Website. Kein Kauf, keine Verpflichtung.",
+      "Beschreiben Sie kurz Ihr Geschäft — die KI erstellt Ihnen in Sekunden eine kostenlose Vorschau Ihrer zukünftigen Website. Kein Kauf, keine Verpflichtung.",
   },
   {
     number: "02",
@@ -22,7 +22,7 @@ const steps = [
     icon: Rocket,
     title: "Ich kümmere mich um den Rest",
     description:
-      "Wir sprechen kurz miteinander, ich passe alles nach Ihren Wünschen an und bringe Ihre Website online. Sie müssen nichts von Technik verstehen — das ist meine Aufgabe.",
+      "Ich melde mich bei Ihnen, passe alles nach Ihren Wünschen an und bringe Ihre Website online. Sie müssen nichts von Technik verstehen — das ist meine Aufgabe.",
   },
 ];
 
