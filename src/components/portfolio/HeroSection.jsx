@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import DomainChecker from "./DomainChecker";
 
-export default function HeroSection() {
+export default function HeroSection({ onDomainSelected }) {
+  const [selectedDomain, setSelectedDomain] = useState(null);
+
+  const handleDomainSelected = (domain) => {
+    setSelectedDomain(domain);
+    if (onDomainSelected) {
+      onDomainSelected(domain);
+    }
+  };
   return (
     <section
       id="hero"
@@ -71,16 +80,9 @@ export default function HeroSection() {
           >
             Pakete ansehen
           </button>
-          <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-6 py-3.5 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300"
-            style={{ border: "1px solid rgba(30,58,110,0.25)", color: "#1e3a6e" }}
-            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.06)"; }}
-            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}
-          >
-            Kontakt aufnehmen
-          </button>
         </motion.div>
+
+        <DomainChecker onDomainSelected={handleDomainSelected} />
       </div>
 
       <motion.div
