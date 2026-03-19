@@ -6,14 +6,13 @@ import { base44 } from "@/api/base44Client";
 const plans = [
   {
     name: "Basis",
-    price: "99",
+    price: "129",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Ihre Seite steht — jetzt muss sie nur noch passen.",
     color: "#1e3a6e",
-    rounds: "Bis zu 3 Abstimmungsrunden",
+    rounds: "Bis zu 3 Feedback-Runden",
     roundsNote: "Ideal für überschaubare Änderungen",
     features: [
-      "Fertige Landing Page auf Basis Ihrer Demo",
       "Anpassungen wie Texte, Öffnungszeiten, Farben & Bilder",
       "Mobilfreundlich & schnell",
       "Hosting inklusive",
