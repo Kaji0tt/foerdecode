@@ -9,8 +9,22 @@ import DemoPreview from "./DemoPreview";
 export default function ContactSection({ onOpenShop, prefilledDomain }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [form, setForm] = useState({ name: "", email: "", businessName: "", business: "", colors: "", domain: prefilledDomain || "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    businessName: "",
+    business: "",
+    colors: "",
+    domain: prefilledDomain || ""
+  });
   const [showDemo, setShowDemo] = useState(false);
+
+  // Update domain when prop changes
+  React.useEffect(() => {
+    if (prefilledDomain) {
+      setForm(prev => ({ ...prev, domain: prefilledDomain }));
+    }
+  }, [prefilledDomain]);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
