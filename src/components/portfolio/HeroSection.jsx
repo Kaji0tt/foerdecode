@@ -8,68 +8,54 @@ export default function HeroSection() {
       id="hero"
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
     >
-      {/*
-        ═══════════════════════════════════════════════════
-        HINTERGRUND-VERLAUF — hier kannst du alles anpassen
-        ═══════════════════════════════════════════════════
-
-        FARBE 1 (oben-links) → "from"-Farbe des Verlaufs
-          → Ändere "#bfdbfe" zu z.B. "#93c5fd" für kräftigeres Blau
-             oder "#e0f2fe" für helleres Hellblau
-
-        FARBE 2 (mitte) → mittlere Übergangsfarbe
-          → Ändere "#e0f2fe" für weicheren oder abrupteren Übergang
-
-        FARBE 3 (unten-rechts) → "to"-Farbe = reines Weiß
-          → "#ffffff" lässt es ins Weiß auslaufen
-
-        RICHTUNG → "135deg" = diagonal oben-links → unten-rechts
-          → 180deg = von oben nach unten
-          → 90deg  = von links nach rechts
-
-        STOP-POSITIONEN (z.B. "40%, 75%"):
-          → Erste Zahl: bis wohin die blaue Farbe reicht
-          → Zweite Zahl: ab wann es fast weiß ist
-      */}
-      {/* Background handled by fixed layer in Home.jsx */}
-
-      <div className="relative z-10 px-6 max-w-4xl mx-auto w-full flex flex-col" style={{ marginTop: "-4vh", maxHeight: "calc(100vh - 80px)" }}>
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
+        {/* Main Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] flex-shrink-0"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl"
           style={{ color: "#0f1f3d" }}
         >
-          Ihr Geschäft.{" "}
-          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
+          Ihre Website.{" "}
+          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Jetzt.</span>
         </motion.h1>
 
+        {/* Subline */}
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mt-3 text-base sm:text-lg leading-relaxed flex-shrink-0"
+          className="mt-6 text-base sm:text-lg md:text-xl text-center max-w-3xl leading-relaxed"
           style={{ color: "#475569" }}
         >
-          Professionelle Webauftritte für kleine Geschäfte in Flensburg — 
-          modern, bezahlbar und in Tagen statt Wochen fertig.
+          Ich erstelle moderne Websites für Restaurants, Friseure und kleine Betriebe – einfach, persönlich und bezahlbar.
         </motion.p>
 
+        {/* Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="mt-4 flex flex-col sm:flex-row gap-3 flex-shrink-0"
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="mt-8 flex flex-col sm:flex-row gap-4 flex-shrink-0"
         >
           <button
-            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-6 py-3.5 rounded-xl text-white font-semibold text-base sm:text-lg transition-all duration-300"
-            style={{ background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.2)" }}
-            onMouseEnter={e => e.currentTarget.style.background = "#162d5a"}
-            onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-4 rounded-xl text-white font-semibold text-base sm:text-lg transition-all duration-300"
+            style={{ background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" }}
+            onMouseEnter={e => e.currentTarget.style.background = "#991b1b"}
+            onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
           >
-            Pakete ansehen
+            Kostenlose Demo
+          </button>
+          <button
+            onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 border-2"
+            style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
+            onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+          >
+            Beispiele
           </button>
         </motion.div>
       </div>

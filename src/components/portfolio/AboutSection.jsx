@@ -99,19 +99,16 @@ export default function AboutSection() {
       id="problem"
       className="h-screen w-full flex items-center relative snap-start overflow-hidden"
     >
-      <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 py-12 flex flex-col justify-center h-full">
+      <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-8 pb-12 flex flex-col justify-center h-full">
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-5"
+          className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Große Wirkung.{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Kleines Geld.
-            </span>
+            Warum eine Website?
           </h2>
         </motion.div>
 
@@ -120,14 +117,16 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mb-7 p-4 rounded-xl"
+          className="mb-7 p-5 rounded-xl"
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
-          <p className="text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
-            Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
-            Teure Agenturen und eventuelle Wartung schrecken Sie ab?
+          <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#0f1f3d" }}>
+            Viele kleine Geschäfte haben noch immer keinen Webauftritt und verlieren dadurch Sichtbarkeit und Kunden. Dabei ist Webgestaltung einfacher denn je.
           </p>
-          <p className="mt-2 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
+          <p className="mt-3 text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
+            Lassen Sie mich das ändern.
+          </p>
+          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
             Wir finden eine Lösung, die zu Ihnen passt.
           </p>
         </motion.div>
