@@ -31,7 +31,7 @@ const plans = [
     tagline: "Für alle, die mehr als eine Visitenkarte im Netz wollen.",
     color: "#b91c1c",
     popular: true,
-    rounds: "Bis zu 8 Abstimmungsrunden",
+    rounds: "Bis zu 8 Feedback-Runden",
     roundsNote: "Für individuelle Gestaltungswünsche",
     features: [
       "Alles aus Basis",
@@ -52,7 +52,7 @@ const plans = [
     priceNote: "zzgl. Domain-Kosten · Preis nach Absprache",
     tagline: "Wenn Ihre Website wirklich arbeiten soll — nicht nur aussehen.",
     color: "#0f1f3d",
-    rounds: "12+ Abstimmungsrunden",
+    rounds: "Bis zu 12 Feedback-Runden",
     roundsNote: "Für komplexe Funktionen & enge Zusammenarbeit",
     features: [
       "Alles aus Standard",
