@@ -60,15 +60,15 @@ const projects = [
 ];
 
 const accentTag = {
-  sky: "border text-orange-300",
-  cyan: "border text-amber-300",
-  violet: "border text-red-300",
+  sky: "border text-blue-300",
+  cyan: "border text-sky-300",
+  violet: "border text-blue-200",
 };
 
 const accentTagStyle = {
-  sky: { background: "rgba(249,115,22,0.12)", borderColor: "rgba(249,115,22,0.25)" },
-  cyan: { background: "rgba(251,191,36,0.10)", borderColor: "rgba(251,191,36,0.25)" },
-  violet: { background: "rgba(127,29,29,0.15)", borderColor: "rgba(127,29,29,0.4)" },
+  sky: { background: "rgba(59,130,246,0.12)", borderColor: "rgba(59,130,246,0.3)" },
+  cyan: { background: "rgba(14,165,233,0.10)", borderColor: "rgba(14,165,233,0.3)" },
+  violet: { background: "rgba(30,77,140,0.2)", borderColor: "rgba(59,130,246,0.35)" },
 };
 
 function BeforeAfterSlider({ before, after }) {
@@ -167,9 +167,9 @@ export default function PortfolioSection() {
       id="portfolio"
       className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
-      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #1a0f0a 0%, #221209 50%, #1a0f0a 100%)" }} />
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(127,29,29,0.07)" }} />
-      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(249,115,22,0.05)" }} />
+      <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, #0a1628 0%, #0e1f3d 50%, #0a1628 100%)" }} />
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "rgba(30,77,140,0.1)" }} />
+      <div className="absolute bottom-1/3 left-0 w-[400px] h-[400px] rounded-full blur-3xl" style={{ background: "rgba(59,130,246,0.06)" }} />
 
       <div ref={ref} className="relative z-10 w-full max-w-5xl mx-auto px-6 py-16">
         {/* Header */}
@@ -181,11 +181,11 @@ export default function PortfolioSection() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
             Websites, die{" "}
-            <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            <span style={{ background: "linear-gradient(90deg, #3b82f6, #60a5fa)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               für sich sprechen.
             </span>
           </h2>
-          <p className="mt-4 text-lg" style={{ color: "#8c5e3c" }}>
+          <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
           </p>
         </motion.div>
@@ -229,11 +229,11 @@ export default function PortfolioSection() {
                 {/* Content */}
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
-                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#5a3a2a" }}>
+                    <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#475569" }}>
                       {project.category}
                     </span>
                     <h3 className="mt-1 text-xl font-semibold text-white">{project.title}</h3>
-                    <p className="mt-1 text-sm" style={{ color: "#8c5e3c" }}>{project.description}</p>
+                    <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
                   </div>
                   {/* Dots */}
                   <div className="flex gap-1.5 flex-shrink-0">
