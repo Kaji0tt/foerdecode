@@ -21,7 +21,7 @@ const plans = [
       "Hosting inklusive",
       "Einrichtung in wenigen Tagen",
     ],
-    addon: null,
+    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
     cta: "Basis wählen",
   },
   {
