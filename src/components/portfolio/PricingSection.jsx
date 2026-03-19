@@ -36,7 +36,7 @@ const plans = [
       "Eigene E-Mail-Adresse",
       "Suchmaschinen Optimierung",
     ],
-    addon: "Zzgl. optionaler monatlicher Wartung für 15 €/Monat",
+    addon: "Zzgl. optionaler Wartung & Aktualisierung auf Nachfrage für 18 €/Monat",
     cta: "Standard wählen",
   },
   {
