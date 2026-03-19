@@ -17,7 +17,7 @@ const plans = [
     tier: "base",
     rounds: "Bis zu 3 Feedback-Runden",
     features: [
-      "Fertige Landing Page auf Basis Ihrer Demo",
+      "Fertige Website auf Basis Ihrer Demo",
       "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
       "Mobilfreundlich & schnell",
       "Hosting inklusive",
