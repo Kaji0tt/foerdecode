@@ -45,19 +45,18 @@ export default function AboutSection() {
           className="mb-14"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Ihr Geschäft.{" "}
+            Große Wirkung.{" "}
             <span style={{ color: "#1e3a6e" }}>
-              Ihre Website.
+              Kleines Geld.
             </span>
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#475569" }}>
-            Viele kleine Unternehmen und Läden in Flensburg haben noch immer eine veraltete Website – 
-            oder gar keine. Dabei profitieren gerade Geschäfte des Tagesbedarfs: Speisekarten, Öffnungszeiten, 
-            Impressionen — all das sorgt für mehr Sichtbarkeit und einen professionellen ersten Eindruck.
+            Viele kleine Unternehmen und Läden haben noch keine oder eine alte Website. Zum einen steigt die Bedeutung eines Internetauftritts für Sichtbarkeit stetig - zum anderen wird Erstellung, Bearbeitung und Wartung dank künstlicher Intelligenz einfacher denn je! 
+            Mir bleibt damit mehr Zeit für das Wesentliche: Lösungen im Umgang mit der Technik finden, die für Sie funktionieren!
           </p>
 
           <p className="mt-4 text-lg font-medium leading-relaxed max-w-2xl" style={{ color: "#b91c1c" }}>
-            Lass uns das angehen!
+            Dank der KI, bleibt der Preis damit klein und die Wirkung wird groß.
           </p>
         </motion.div>
 
