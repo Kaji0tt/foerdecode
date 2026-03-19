@@ -5,24 +5,24 @@ import { MessageSquare, Wand2, Rocket } from "lucide-react";
 const steps = [
   {
     number: "01",
-    icon: MessageSquare,
-    title: "Kurzes Gespräch",
+    icon: Wand2,
+    title: "Demo erstellen",
     description:
-      "Wir reden kurz darüber, was dein Geschäft macht und welchen Eindruck du hinterlassen möchtest. Dabei erfahre ich mehr über dich und dein Unternehmen.",
+      "Füllen Sie das untenstehende Formular aus, um einen kostenlosen Ersteindruck einer möglichen Website zu erhalten. Bei Interesse, wählen Sie ein passendes Paket aus und stellen eine Anfrage.",
   },
   {
     number: "02",
-    icon: Wand2,
-    title: "Ich gestalte deine Website",
+    icon: MessageSquare,
+    title: "Kurzes Gespräch",
     description:
-      "Mit modernen KI-Werkzeugen und meinem technischen Know-how erstelle ich eine Website, die zu dir passt.",
+      "Wir tauschen uns aus. Nacheinander Pflege ich ihre Wünsche und Vorstellungen ein. Je nach dem, wie sicher sie im Umgang mit der Technik sind, finden wir entweder Lösungen, mit denen Sie im Nachhineein arbeiten können - oder ich übernehme alle Verantwortung und Pflege ihre Website!",
   },
   {
     number: "03",
     icon: Rocket,
-    title: "Online gehen",
+    title: "Ich setze Ihre Vision um",
     description:
-      "Deine neue Seite wird auf deiner Wunschadresse veröffentlicht — fertig und für alle erreichbar.",
+      "Ich buche ihre Wunschadresse, erstelle Ihre Website, implementiere ihre Services - und bei Bedarf, pflege und verwalte ich sie.",
   },
 ];
 
