@@ -18,6 +18,7 @@ const plans = [
       "Mobilfreundlich & schnell",
       "Hosting inklusive",
       "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
+    ],
     maintenance: [
       { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
       { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
