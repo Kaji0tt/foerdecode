@@ -47,8 +47,11 @@ export default function AboutSection() {
           transition={{ duration: 0.7 }}
           className="mb-14"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            Ihr Geschäft. Ihre Website.
+          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight leading-tight">
+            Ihr Geschäft.{" "}
+            <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              Ihre Website.
+            </span>
           </h2>
           <p className="mt-8 text-lg leading-relaxed max-w-2xl" style={{ color: "#c4956a" }}>
             Viele kleine Unternehmen und Läden in Flensburg haben noch immer eine veraltete Website – 

@@ -179,8 +179,11 @@ export default function PortfolioSection() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            Websites, die für sich sprechen.
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">
+            Websites, die{" "}
+            <span style={{ background: "linear-gradient(90deg, #f97316, #fbbf24)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              für sich sprechen.
+            </span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#8c5e3c" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
