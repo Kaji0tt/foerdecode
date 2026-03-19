@@ -332,6 +332,56 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
               )}
 
             </div>
+
+            {/* Fixed footer button */}
+            {step === "select" && selected && (
+              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  onClick={() => setStep("maintenance")}
+                  className="w-full py-4 rounded-xl font-bold text-white text-base transition-all duration-300"
+                  style={{ background: selectedPlan?.color, boxShadow: `0 8px 24px ${selectedPlan?.color}30` }}
+                >
+                  Weiter →
+                </motion.button>
+              </div>
+            )}
+            {step === "maintenance" && (
+              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+                <motion.button
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  onClick={() => setStep("confirm")}
+                  className="w-full py-4 rounded-xl font-bold text-white text-base transition-all duration-300"
+                  style={{ background: selectedPlan?.color }}
+                >
+                  Weiter →
+                </motion.button>
+              </div>
+            )}
+            {step === "confirm" && (
+              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+                <button
+                  onClick={handleOrder}
+                  disabled={loading || !orderData.name || !orderData.email}
+                  className="w-full py-4 rounded-xl font-bold text-white text-base transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2"
+                  style={{ background: selectedPlan?.color }}
+                >
+                  {loading ? (
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  ) : (
+                    <>
+                      <ShoppingCart className="w-5 h-5" />
+                      Jetzt anfragen
+                    </>
+                  )}
+                </button>
+                <p className="text-xs text-center mt-2" style={{ color: "#94a3b8" }}>
+                  Keine Zahlung jetzt — ich melde mich innerhalb von 24h bei Ihnen.
+                </p>
+              </div>
+            )}
           </motion.div>
         </>
       )}
