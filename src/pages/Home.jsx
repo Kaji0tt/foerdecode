@@ -5,12 +5,16 @@ import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import ContactSection from "@/components/portfolio/ContactSection";
+import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
 const sectionIds = ["hero", "problem", "solution", "portfolio", "pricing", "contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const containerRef = useRef(null);
+  const [shopOpen, setShopOpen] = useState(false);
+  const [shopPackage, setShopPackage] = useState(null);
+  const [shopFormData, setShopFormData] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -38,13 +42,19 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const openShop = (pkg = null, formData = null) => {
+    setShopPackage(pkg);
+    setShopFormData(formData);
+    setShopOpen(true);
+  };
+
   return (
     <div
       ref={containerRef}
       className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
       style={{ scrollBehavior: "smooth", scrollbarWidth: "none", msOverflowStyle: "none", position: "relative", zIndex: 1 }}
     >
-      {/* Fixed background — visible through all sections until contact */}
+      {/* Fixed background */}
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
@@ -60,13 +70,19 @@ export default function Home() {
         }}
       />
 
-
       <NavigationDots activeSection={activeSection} />
       <HeroSection />
       <AboutSection />
       <PortfolioSection />
-      <PricingSection />
-      <ContactSection />
+      <PricingSection onOrderClick={openShop} />
+      <ContactSection onOpenShop={openShop} />
+
+      <ShopDrawer
+        open={shopOpen}
+        onClose={() => setShopOpen(false)}
+        preselectedPackage={shopPackage}
+        formData={shopFormData}
+      />
     </div>
   );
 }
