@@ -12,7 +12,7 @@ export default function DemoPreview({ formData, onBack, onOrder }) {
   const generate = async () => {
     setLoading(true);
     const result = await base44.integrations.Core.InvokeLLM({
-      model: "claude_sonnet_4_6",
+      model: "gpt_5",
       prompt: `Du bist ein preisgekrönter Webdesigner und Frontend-Entwickler. Erstelle eine VOLLSTÄNDIGE, professionelle, produktionsreife einseitige HTML-Website für ein lokales Geschäft in Flensburg, Schleswig-Holstein.
 
 === KUNDENDATEN ===
