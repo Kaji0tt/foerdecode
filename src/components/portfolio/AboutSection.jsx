@@ -108,7 +108,10 @@ export default function AboutSection() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Warum eine Website?
+            Große Wirkung.{" "}
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+              Kleines Geld.
+            </span>
           </h2>
         </motion.div>
 
