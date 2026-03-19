@@ -253,9 +253,6 @@ export default function PricingSection({ onOrderClick }) {
               das richtige Paket.
             </span>
           </h2>
-          <p className="mt-3 text-lg max-w-xl" style={{ color: "#64748b" }}>
-            Transparent, fair und ohne versteckte Kosten. Die Anzahl der Abstimmungsrunden bestimmt, wie intensiv wir zusammenarbeiten.
-          </p>
         </motion.div>
 
         {/* Mobile carousel */}
