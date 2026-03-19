@@ -16,8 +16,7 @@ const plans = [
       "Fertige Website auf Basis Ihrer Demo",
       "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
       "Mobilfreundlich & schnell",
-      "Hosting inklusive",
-      "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
+      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
     ],
     maintenance: [
       { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
@@ -36,10 +35,9 @@ const plans = [
     roundsNote: "Für individuelle Gestaltungswünsche",
     features: [
       "Alles aus Basis",
-      "Individuelle Navigation & Layout-Wünsche",
-      "Eigene Web-Adresse (Domain) inklusive",
+      "Individuelle Anpassungen, bspw. Navigation oder Layout",
+      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
       "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
-      "Bessere Auffindbarkeit bei Google",
     ],
     maintenance: [
       { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
@@ -57,8 +55,7 @@ const plans = [
     roundsNote: "Für komplexe Funktionen & enge Zusammenarbeit",
     features: [
       "Alles aus Standard",
-      "Online-Bestellungen oder Buchungen",
-      "Lieferanten-Tracking oder Kurs-Verwaltung",
+      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
       "Eigene E-Mail-Adresse inklusive",
       "Individuelle Sonderfunktionen nach Absprache",
     ],
