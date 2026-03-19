@@ -20,7 +20,7 @@ const steps = [
   {
     number: "03",
     icon: Rocket,
-    title: "Ich kümmere mich um den Rest",
+    title: "Feedback-Runden",
     description:
       "Wir gehen gemeinsam Ihre Wünsche durch, ich setze alles für Sie um und bringe die Website online. Mit der Technik haben Sie nichts zu tun.",
   },
