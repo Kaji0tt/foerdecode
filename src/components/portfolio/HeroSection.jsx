@@ -41,8 +41,8 @@ export default function HeroSection() {
           className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.1] flex-shrink-0"
           style={{ color: "#0f1f3d" }}
         >
-          Starke Website.{" "}
-          <span style={{ color: "#1e3a6e" }}>Einfach erstellt.</span>
+          Ihr Geschäft.{" "}
+          <span style={{ color: "#1e3a6e" }}>Ihre Website.</span>
         </motion.h1>
 
         <motion.p
@@ -52,7 +52,7 @@ export default function HeroSection() {
           className="mt-3 text-base sm:text-lg leading-relaxed flex-shrink-0"
           style={{ color: "#475569" }}
         >
-          Professionelle Webauftritte für lokale Geschäfte in Flensburg — 
+          Professionelle Webauftritte für kleine Geschäfte in Flensburg — 
           modern, bezahlbar und in Tagen statt Wochen fertig.
         </motion.p>
 
