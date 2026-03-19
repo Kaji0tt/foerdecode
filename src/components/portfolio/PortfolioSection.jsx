@@ -252,7 +252,7 @@ export default function PortfolioSection() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Websites, die{" "}
-            <span style={{ color: "#1e3a6e" }}>für sich sprechen.</span>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>für sich sprechen.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.

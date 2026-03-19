@@ -49,7 +49,7 @@ export default function SolutionSection() {
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             In 3 Schritten zur
             <br />
-            <span style={{ color: "#1e3a6e" }}>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               neuen Website.
             </span>
           </h2>

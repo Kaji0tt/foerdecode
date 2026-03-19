@@ -255,7 +255,7 @@ export default function PricingSection({ onOrderClick }) {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
             Für jedes Budget{" "}
-            <span style={{ color: "#1e3a6e" }}>das richtige Paket.</span>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>das richtige Paket.</span>
           </h2>
           <p className="mt-3 text-lg max-w-xl" style={{ color: "#64748b" }}>
             Transparent, fair und ohne versteckte Kosten.

@@ -46,7 +46,7 @@ export default function AboutSection() {
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
             Große Wirkung.{" "}
-            <span style={{ color: "#1e3a6e" }}>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Kleines Geld.
             </span>
           </h2>
