@@ -335,7 +335,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
 
             {/* Fixed footer button */}
             {step === "select" && selected && (
-              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+              <div className="flex-shrink-0 px-6 py-4 min-h-fit" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
                 <motion.button
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -348,7 +348,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
               </div>
             )}
             {step === "maintenance" && (
-              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+              <div className="flex-shrink-0 px-6 py-4 min-h-fit" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
                 <motion.button
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -361,7 +361,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
               </div>
             )}
             {step === "confirm" && (
-              <div className="flex-shrink-0 px-6 py-4" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
+              <div className="flex-shrink-0 px-6 py-4 min-h-fit" style={{ borderTop: "1px solid rgba(30,58,110,0.1)" }}>
                 <button
                   onClick={handleOrder}
                   disabled={loading || !orderData.name || !orderData.email}
