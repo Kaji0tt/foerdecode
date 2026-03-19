@@ -112,7 +112,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 280 }}
-            className="fixed right-0 top-0 bottom-0 z-50 flex flex-col overflow-y-auto"
+            className="fixed right-0 top-0 bottom-0 z-50 flex flex-col"
             style={{ width: "min(520px, 100vw)", background: "white", boxShadow: "-8px 0 48px rgba(15,31,61,0.2)" }}
           >
             {/* Header */}
@@ -126,7 +126,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
               </button>
             </div>
 
-            <div className="flex-1 px-6 py-6">
+            <div className="flex-1 px-6 py-6 overflow-y-auto">
 
               {/* STEP: SELECT */}
               {step === "select" && (
@@ -152,14 +152,14 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                         </span>
                       )}
                       {/* Top row: name + price */}
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-2">
                         <div className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</div>
-                        <div className="text-right flex-shrink-0">
-                          <div>
-                            <span className="text-2xl font-bold" style={{ color: plan.color }}>{plan.price}</span>
+                        <div className="text-right" style={{ minWidth: 0 }}>
+                          <div className="flex items-baseline justify-end gap-0.5">
+                            <span className="text-xl font-bold" style={{ color: plan.color }}>{plan.price}</span>
                             <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
                           </div>
-                          <div className="text-xs mt-0.5" style={{ color: "#94a3b8" }}>{plan.priceNote}</div>
+                          <div className="text-xs mt-0.5 leading-tight" style={{ color: "#94a3b8", maxWidth: 140, wordBreak: "break-word" }}>{plan.priceNote}</div>
                           {selected === plan.name && (
                             <div className="mt-1 w-6 h-6 rounded-full flex items-center justify-center ml-auto" style={{ background: plan.color }}>
                               <Check className="w-3.5 h-3.5 text-white" />
