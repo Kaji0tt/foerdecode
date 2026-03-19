@@ -65,14 +65,15 @@ export default function HeroSection() {
           </p>
           <div className="mt-5 p-5 rounded-xl" style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}>
             <p className="text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Ich nehme dir dabei jede Unsicherheit — egal ob du noch nie mit einer Website zu tun hattest.
+              Sie hätten gerne einen Webauftritt, aber haben keine Ahnung von Technik?
+              Teure Agenturen und eventuelle Wartung schrecken Sie ab?
               Mir liegt es am Herzen, individuelle Lösungen zu finden, die sich auch langfristig leicht pflegen lassen.
             </p>
             <p className="mt-4 text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Ob du per <span className="font-semibold" style={{ color: "#1e3a6e" }}>WhatsApp der KI</span> sagst,
-              welche Details sie anpassen soll, ob du einfach eine Liste aktualisierst,
-              oder ob du gar nichts selbst machen möchtest — <span className="font-medium" style={{ color: "#0f1f3d" }}>wir finden gemeinsam
-              die Lösung, die zu dir passt.</span> Und das zu kleinsten Preisen.
+              Ob Sie per <span className="font-semibold" style={{ color: "#1e3a6e" }}>WhatsApp der KI</span> sagen,
+              welche Details diese anpassen soll, ob Sie einfach eine <span className="font-semibold" style={{ color: "#1e3a6e" }}>Liste aktualisiersen um Preise anzupassen</span>,
+              ein <span className="font-semibold" style={{ color: "#1e3a6e" }}> Login auf der Seite </span> oder lieber die komplette Wartung abgeben? — <span className="font-semibold" style={{ color: "#1e3a6e" }}>wir finden
+              die Lösung, die zu Ihnen passt.</span> Und das zu kleinsten Preisen.
             </p>
           </div>
         </motion.div>
