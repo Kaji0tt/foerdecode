@@ -22,7 +22,7 @@ const plans = [
       "Mobilfreundlich & schnell",
       "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
     ],
-    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
+    addon: "Optional: Wartung & Pflege, je nach Bedarf",
     cta: "Basis wählen",
   },
   {
@@ -38,7 +38,7 @@ const plans = [
       "Eigene Web-Adresse (Domain) inklusive",
       "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
     ],
-    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
+    addon: "Optional: Wartung & Pflege, je nach Bedarf",
     cta: "Standard wählen",
   },
   {
@@ -51,7 +51,7 @@ const plans = [
       "Alles aus Standard",
       "Eigene Sonderfunktionen nach Absprache, z. B.:",
     ],
-    addon: "Optional: Wartung & Pflege ab 18€ / Monat",
+    addon:"Optional: Wartung & Pflege, je nach Bedarf",
     cta: "Expert wählen",
     expertRotating: true,
   },
