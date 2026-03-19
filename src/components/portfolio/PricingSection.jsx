@@ -12,7 +12,7 @@ const plans = [
   {
     name: "Basis",
     tagline: "Dein digitaler Einstieg",
-    price: "199",
+    price: "79",
     tier: "base",
     features: [
       "Professionelle Website mit modernem Design",
@@ -27,7 +27,7 @@ const plans = [
   {
     name: "Standard",
     tagline: "Für den professionellen Auftritt",
-    price: "299",
+    price: "149",
     tier: "standard",
     popular: true,
     features: [
@@ -42,7 +42,7 @@ const plans = [
   {
     name: "Expert",
     tagline: "Das Komplettpaket",
-    price: "499",
+    price: "399",
     tier: "expert",
     features: [
       "Alles aus Standard, plus:",
