@@ -187,17 +187,6 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                     </button>
                   ))}
 
-                  {selected && (
-                    <motion.button
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      onClick={() => setStep("maintenance")}
-                      className="w-full py-4 rounded-xl font-bold text-white text-base mt-2 transition-all duration-300"
-                      style={{ background: selectedPlan?.color, boxShadow: `0 8px 24px ${selectedPlan?.color}30` }}
-                    >
-                      Weiter →
-                    </motion.button>
-                  )}
                 </div>
               )}
 
