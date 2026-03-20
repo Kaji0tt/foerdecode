@@ -10,6 +10,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     name: "",
     email: "",
     businessName: "",
+    businessType: "",
     business: "",
     colors: ""
   });
