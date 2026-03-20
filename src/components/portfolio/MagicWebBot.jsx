@@ -48,8 +48,8 @@ export default function MagicWebBot({ onSubmit, isInView }) {
       style={{ border: "2px solid #b91c1c", background: "rgba(255,255,255,0.97)", boxShadow: "0 8px 32px rgba(185,28,28,0.12)" }}
     >
       {/* Title */}
-      <h3 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-2" style={{ color: "#b91c1c" }}>
-        <span>🧙</span>Net-Zauberer <span>✨</span>
+      <h3 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center justify-center gap-2" style={{ color: "#b91c1c" }}>
+        <span>✨</span>Net-Zauberer <span>✨</span>
       </h3>
 
       {/* Step indicator */}
