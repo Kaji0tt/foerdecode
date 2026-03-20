@@ -17,8 +17,8 @@ export default function HeroSection() {
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl"
           style={{ color: "#0f1f3d" }}
         >
-          Ihr Geschäft.{" "}
-          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
+          Kein Stress.{" "}
+          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Einfach online.</span>
         </motion.h1>
 
         {/* Subline */}
@@ -29,7 +29,7 @@ export default function HeroSection() {
           className="mt-6 text-base sm:text-lg md:text-xl text-center max-w-3xl leading-relaxed"
           style={{ color: "#475569" }}
         >
-          Ich erstelle moderne Websites für Restaurants, Friseure und kleine Betriebe – einfach, persönlich und bezahlbar.
+          Du kümmerst dich um dein Geschäft – ich kümmere mich um den Rest. Kein Technik-Wissen nötig, kein Stress, kein Durchblicken-müssen.
         </motion.p>
 
         {/* Buttons */}
@@ -46,7 +46,7 @@ export default function HeroSection() {
             onMouseEnter={e => e.currentTarget.style.background = "#991b1b"}
             onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
           >
-            Kostenlose Demo
+            Meine Website sehen
           </button>
           <button
             onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
@@ -55,7 +55,7 @@ export default function HeroSection() {
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
           >
-            Beispiele
+            Beispiele anschauen
           </button>
         </motion.div>
       </div>
