@@ -22,7 +22,7 @@ const steps = [
     icon: Rocket,
     title: "Fertig – und du hast nichts gemacht",
     description:
-      "Du gibst mir Feedback wie bei WhatsApp: „Das gefällt mir, das nicht." Ich setze alles um und bring deine Seite online. Kein einziges technisches Wort.",
+      "Du gibst mir Feedback wie bei WhatsApp: 'Das gefällt mir, das nicht.' Ich setze alles um und bring deine Seite online. Kein einziges technisches Wort.",
   },
 ];
 
