@@ -49,10 +49,10 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     >
       {/* Title */}
       <h3 className="text-2xl sm:text-3xl font-bold mb-1 flex items-center justify-center gap-2" style={{ color: "#b91c1c" }}>
-        <span>✨</span>Net-Zauberer <span>🧙</span>
+        <span>🧙</span> Net-Zauber <span>✨</span>
       </h3>
       <p className="text-sm mb-6 text-center" style={{ color: "#64748b" }}>
-        Ein paar kurze Angaben – und der Zauberer zeigt dir, wie deine Website aussehen könnte.
+        Ein paar kurze Angaben – und wir zaubern ein Beispiel.
       </p>
 
       {/* Step indicator */}
