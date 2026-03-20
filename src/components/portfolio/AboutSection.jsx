@@ -108,9 +108,9 @@ export default function AboutSection() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Du musst das nicht{" "}
+            Dein Geschäft.{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              verstehen.
+              Deine Website.
             </span>
           </h2>
         </motion.div>
