@@ -18,6 +18,8 @@ export default function DemoPreview({ formData, onBack, onOrder }) {
     const brief = await base44.integrations.Core.InvokeLLM({
       prompt: `Analysiere diese Angaben zu einem lokalen Geschäft in Flensburg und erstelle einen kompakten Design-Brief für eine Website.
 
+Geschäftsname: ${formData.businessName}
+Geschäftsart: ${formData.businessType || "unbekannt"}
 Geschäftsbeschreibung: ${formData.business}
 Wichtige Inhalte: ${formData.important || "keine Angabe"}
 Farbwünsche: ${formData.colors || "keine Angabe"}
