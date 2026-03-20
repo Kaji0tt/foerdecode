@@ -19,9 +19,16 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const businessTypes = [
+    "Restaurant", "Imbiss / Foodtruck", "Bäckerei / Café",
+    "Friseur / Beauty", "Kreativ & Hobby", "Kurse & Workshops",
+    "Handwerk & Reparatur", "Einzelhandel / Laden", "Fitness & Yoga",
+    "Kinderbetreuung", "Reinigung & Service", "Tierbetreuung"
+  ];
+
   const canGoNext = () => {
     if (step === 1) return form.name && form.email;
-    if (step === 2) return form.businessName;
+    if (step === 2) return form.businessName && form.businessType;
     if (step === 3) return form.business;
     return false;
   };
@@ -119,7 +126,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="space-y-4"
+            className="space-y-5"
           >
             <div>
               <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>
@@ -134,6 +141,31 @@ export default function MagicWebBot({ onSubmit, isInView }) {
                 className="h-11 bg-white text-sm"
                 style={{ borderColor: "rgba(30,58,110,0.15)" }}
               />
+            </div>
+            <div>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>
+                Was macht das Geschäft? *
+              </label>
+              <div className="flex flex-wrap gap-2">
+                {businessTypes.map(type => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => setForm(p => ({ ...p, businessType: type }))}
+                    className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
+                    style={{
+                      border: form.businessType === type ? "1.5px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
+                      background: form.businessType === type ? "rgba(185,28,28,0.08)" : "white",
+                      color: form.businessType === type ? "#b91c1c" : "#475569"
+                    }}
+                  >
+                    {type}
+                  </button>
+                ))}
+              </div>
+              {form.businessType && (
+                <p className="text-xs mt-2" style={{ color: "#94a3b8" }}>Ausgewählt: <strong>{form.businessType}</strong></p>
+              )}
             </div>
           </motion.div>
         )}
