@@ -52,9 +52,7 @@ export default function ContactSection({ onOpenShop }) {
               Deine Website,{" "}
               <span style={{ color: "#b91c1c" }}>live in Sekunden.</span>
             </h2>
-            <p className="mt-4 text-base" style={{ color: "#64748b" }}>
-              Keine Technik, keine Angst – nur ein paar einfache Fragen.
-            </p>
+
           </motion.div>
 
           {/* Magic Web Bot */}

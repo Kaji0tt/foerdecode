@@ -48,12 +48,9 @@ export default function MagicWebBot({ onSubmit, isInView }) {
       style={{ border: "2px solid #b91c1c", background: "rgba(255,255,255,0.97)", boxShadow: "0 8px 32px rgba(185,28,28,0.12)" }}
     >
       {/* Title */}
-      <h3 className="text-2xl sm:text-3xl font-bold mb-1" style={{ color: "#b91c1c" }}>
-        ✨ Magic Web Bot
+      <h3 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center gap-2" style={{ color: "#b91c1c" }}>
+        Net(t) Zauberer <span>🧙</span>
       </h3>
-      <p className="text-sm mb-6" style={{ color: "#64748b" }}>
-        Ich stelle dir ein paar einfache Fragen – dann geht der Zauber los.
-      </p>
 
       {/* Step indicator */}
       <div className="flex gap-2 mb-8">
