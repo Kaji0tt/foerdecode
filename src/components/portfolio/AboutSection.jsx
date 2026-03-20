@@ -127,10 +127,10 @@ export default function AboutSection() {
             Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding – und das ist völlig okay.
           </p>
           <p className="mt-3 text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
-            Ich nehme dir das komplett ab. Du sagst mir, wie dein Laden ist – ich mache daraus eine Website, die sich gut anfühlt und wirklich zu dir passt.
+            Ich nehme dir das komplett ab. Du sagst mir, was du möchtest und ich setze das um.
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
-            Du musst nichts erklären können. Ich frag' einfach nach.
+            Über WhatsApp oder Telefon, gemeinsam zu deiner Website.
           </p>
         </motion.div>
 
