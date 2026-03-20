@@ -6,23 +6,23 @@ const steps = [
   {
     number: "01",
     icon: MousePointerClick,
-    title: "Vorschau erstellen",
+    title: "Einfach ausprobieren",
     description:
-      "Beschreiben Sie kurz Ihr Geschäft — die KI erstellt Ihnen in Sekunden eine kostenlose Vorschau Ihrer zukünftigen Website. Kein Kauf, keine Verpflichtung.",
+      "Beschreib kurz, was du machst – in ein paar Sätzen, so wie du es einem Freund erklären würdest. Die KI zeigt dir in Sekunden, wie deine Website aussehen könnte. Kostenlos, unverbindlich.",
   },
   {
     number: "02",
     icon: MessageSquare,
-    title: "Paket wählen & Anfrage senden",
+    title: "Ich melde mich bei dir",
     description:
-      "Gefällt Ihnen die Vorschau? Wählen Sie ein passendes Angebot aus — egal ob Sie nur die Basics brauchen oder eine maßgeschneiderte Lösung mit besonderen Funktionen.",
+      "Gefällt dir die Vorschau? Dann schreib mir kurz. Kein Formular-Stress, kein Technik-Kram. Wir reden kurz durch, was du dir vorstellst – ich kümmere mich um den Rest.",
   },
   {
     number: "03",
     icon: Rocket,
-    title: "Feedback-Runden",
+    title: "Fertig – und du hast nichts gemacht",
     description:
-      "Wir gehen gemeinsam Ihre Wünsche durch, ich setze alles für Sie um und bringe die Website online. Mit der Technik haben Sie nichts zu tun.",
+      "Du gibst mir Feedback wie bei WhatsApp: „Das gefällt mir, das nicht." Ich setze alles um und bring deine Seite online. Kein einziges technisches Wort.",
   },
 ];
 
@@ -124,13 +124,13 @@ export default function AboutSection() {
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
           <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#0f1f3d" }}>
-            Viele kleine Geschäfte haben noch immer keinen Webauftritt und verlieren dadurch Sichtbarkeit und Kunden. Dabei ist Webgestaltung einfacher denn je.
+            Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding – und das ist völlig okay.
           </p>
           <p className="mt-3 text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
-            Lassen Sie mich das ändern.
+            Ich nehme dir das komplett ab. Du sagst mir, wie dein Laden ist – ich mache daraus eine Website, die sich gut anfühlt und wirklich zu dir passt.
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
-            Wir finden eine Lösung, die zu Ihnen passt.
+            Du musst nichts erklären können. Ich frag' einfach nach.
           </p>
         </motion.div>
 
