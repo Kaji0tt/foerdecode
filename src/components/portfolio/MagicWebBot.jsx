@@ -169,7 +169,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
                     exit={{ opacity: 0, y: -4 }}
                     transition={{ duration: 0.15 }}
                     className="absolute z-20 w-full mt-1 rounded-xl overflow-y-auto"
-                    style={{ background: "white", border: "1.5px solid rgba(185,28,28,0.2)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)", maxHeight: "180px" }}
+                    style={{ background: "white", border: "1.5px solid rgba(185,28,28,0.2)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)", maxHeight: "120px", scrollbarWidth: "thin", scrollbarColor: "rgba(185,28,28,0.3) transparent" }}
                   >
                     {businessTypes
                       .filter(t => t.toLowerCase().includes(form.businessType.toLowerCase()))
