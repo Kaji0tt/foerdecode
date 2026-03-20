@@ -49,7 +49,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     >
       {/* Title */}
       <h3 className="text-2xl sm:text-3xl font-bold mb-6 flex items-center justify-center gap-2" style={{ color: "#b91c1c" }}>
-        <span>✨</span>Net-Zauberer <span>✨</span>
+        <span>✨</span>Net-Zauberer <span>🧙</span>
       </h3>
 
       {/* Step indicator */}
