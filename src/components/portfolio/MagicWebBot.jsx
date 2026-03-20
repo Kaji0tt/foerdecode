@@ -144,30 +144,54 @@ export default function MagicWebBot({ onSubmit, isInView }) {
                 style={{ borderColor: "rgba(30,58,110,0.15)" }}
               />
             </div>
-            <div>
+            <div className="relative">
               <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>
                 Was macht das Geschäft? *
               </label>
-              <div className="flex flex-wrap gap-2">
-                {businessTypes.map(type => (
-                  <button
-                    key={type}
-                    type="button"
-                    onClick={() => setForm(p => ({ ...p, businessType: type }))}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"
-                    style={{
-                      border: form.businessType === type ? "1.5px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
-                      background: form.businessType === type ? "rgba(185,28,28,0.08)" : "white",
-                      color: form.businessType === type ? "#b91c1c" : "#475569"
-                    }}
+              <input
+                ref={typeInputRef}
+                value={form.businessType}
+                onChange={e => {
+                  setForm(p => ({ ...p, businessType: e.target.value }));
+                  setTypeDropdownOpen(true);
+                }}
+                onFocus={() => setTypeDropdownOpen(true)}
+                onBlur={() => setTimeout(() => setTypeDropdownOpen(false), 150)}
+                placeholder="z.B. Bäckerei, Friseursalon..."
+                className="w-full h-11 px-3 rounded-md text-sm outline-none"
+                style={{ border: "1px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
+              />
+              <AnimatePresence>
+                {typeDropdownOpen && (
+                  <motion.ul
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute z-20 w-full mt-1 rounded-xl overflow-hidden"
+                    style={{ background: "white", border: "1.5px solid rgba(185,28,28,0.2)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)" }}
                   >
-                    {type}
-                  </button>
-                ))}
-              </div>
-              {form.businessType && (
-                <p className="text-xs mt-2" style={{ color: "#94a3b8" }}>Ausgewählt: <strong>{form.businessType}</strong></p>
-              )}
+                    {businessTypes
+                      .filter(t => t.toLowerCase().includes(form.businessType.toLowerCase()))
+                      .map(type => (
+                        <li key={type}>
+                          <button
+                            type="button"
+                            onMouseDown={() => {
+                              setForm(p => ({ ...p, businessType: type }));
+                              setTypeDropdownOpen(false);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-red-50"
+                            style={{ color: "#0f1f3d" }}
+                          >
+                            {type}
+                          </button>
+                        </li>
+                      ))
+                    }
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}
