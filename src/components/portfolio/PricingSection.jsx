@@ -12,47 +12,47 @@ const expertExamples = [
 const plans = [
   {
     name: "Basis",
-    tagline: "Ihre Seite steht — jetzt muss sie nur noch passen.",
+    tagline: "Du willst einfach online sein – fertig.",
     price: "129",
     tier: "base",
     rounds: "Bis zu 3 Feedback-Runden",
     features: [
-      "Fertige Website auf Basis Ihrer Demo",
-      "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
-      "Mobilfreundlich & schnell",
-      "Domain nach Verfügbarkeit (Kosten je nach Adresse)",
+      "Deine fertige Website – auf Basis deiner Demo",
+      "Wir passen gemeinsam Texte, Bilder & Farben an",
+      "Sieht auf dem Handy genauso gut aus",
+      "Web-Adresse nach Verfügbarkeit (Kosten je nach Adresse)",
     ],
-    addon: "Optional: Wartung & Pflege, je nach Bedarf",
-    cta: "Basis wählen",
+    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    cta: "Loslegen",
   },
   {
     name: "Standard",
-    tagline: "Für alle, die mehr als eine Visitenkarte brauchen.",
+    tagline: "Du willst, dass es wirklich zu dir passt.",
     price: "259",
     tier: "standard",
     popular: true,
     rounds: "Bis zu 8 Feedback-Runden",
     features: [
       "Alles aus Basis",
-      "Individuelle Anpassungen, bspw. Navigation oder Layout",
-      "Eigene Web-Adresse (Domain) inklusive",
-      "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
+      "Mehr Freiheit beim Aussehen – wir bauen, was du dir vorstellst",
+      "Deine eigene Web-Adresse ist dabei (z. B. mein-laden.de)",
+      "Eigene E-Mail-Adresse (z. B. info@mein-laden.de)",
     ],
-    addon: "Optional: Wartung & Pflege, je nach Bedarf",
-    cta: "Standard wählen",
+    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    cta: "Das klingt gut",
   },
   {
     name: "Expert",
-    tagline: "Wenn Ihre Website wirklich arbeiten soll.",
+    tagline: "Du willst, dass die Website wirklich was tut.",
     price: "499",
     tier: "expert",
     rounds: "Bis zu 12 Feedback-Runden",
     features: [
       "Alles aus Standard",
-      "Eigene Sonderfunktionen nach Absprache, z. B.:",
+      "Besondere Funktionen – wir besprechen zusammen, was du brauchst, z. B.:",
     ],
-    addon:"Optional: Wartung & Pflege, je nach Bedarf",
-    cta: "Expert wählen",
+    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    cta: "Lass uns reden",
     expertRotating: true,
   },
 ];
@@ -247,9 +247,9 @@ export default function PricingSection({ onOrderClick }) {
           className="mb-8"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Für jedes Budget{" "}
+            Was du brauchst –{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              das richtige Paket.
+              nicht mehr, nicht weniger.
             </span>
           </h2>
         </motion.div>

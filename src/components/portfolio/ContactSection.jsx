@@ -49,9 +49,12 @@ export default function ContactSection({ onOpenShop }) {
             className="mb-8"
           >
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-              Deine Website,{" "}
-              <span style={{ color: "#b91c1c" }}>live in Sekunden.</span>
+              So könnte deine Website{" "}
+              <span style={{ color: "#b91c1c" }}>aussehen.</span>
             </h2>
+            <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
+              Sag mir kurz, was du machst – ich zeig dir in Sekunden eine Vorschau. Kein Kauf, keine Verpflichtung, kein Technik-Kram.
+            </p>
 
           </motion.div>
 
