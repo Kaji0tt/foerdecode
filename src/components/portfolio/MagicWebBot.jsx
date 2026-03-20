@@ -6,6 +6,8 @@ import { Sparkles, ChevronRight, ChevronLeft } from "lucide-react";
 
 export default function MagicWebBot({ onSubmit, isInView }) {
   const [step, setStep] = useState(1);
+  const [typeDropdownOpen, setTypeDropdownOpen] = useState(false);
+  const typeInputRef = useRef(null);
   const [form, setForm] = useState({
     name: "",
     email: "",
