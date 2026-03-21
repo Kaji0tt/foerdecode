@@ -23,7 +23,7 @@ export const plans = [
       "Mobilfreundlich & schnell",
       "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
     ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    addon: "zzgl. Wartungs-Kosten",
     cta: "Loslegen",
     maintenance: [
       { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },
@@ -55,7 +55,7 @@ export const plans = [
       "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
       "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
     ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    addon: "zzgl. Wartungs-Kosten",
     cta: "Das klingt gut",
     maintenance: [
       { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },
@@ -85,7 +85,7 @@ export const plans = [
       "Eigene E-Mail-Adresse inklusive",
       "Individuelle Sonderfunktionen nach Absprache",
     ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
+    addon: "zzgl. Wartungs-Kosten",
     cta: "Lass uns reden",
     expertRotating: true,
     maintenance: [
