@@ -71,11 +71,20 @@ function RotatingExample({ tier }) {
 function PlanCard({ plan, onOrderClick, active }) {
   const style = tierStyles[plan.tier];
   const [flipped, setFlipped] = useState(false);
+  const badgeRef = useRef(null);
+  const [badgeHeight, setBadgeHeight] = useState(32);
 
   // Flip zurücksetzen wenn Karte inaktiv wird (z.B. wegswipen)
   useEffect(() => {
     if (!active) setFlipped(false);
   }, [active]);
+
+  // Tatsächliche Badge-Höhe messen (inkl. Zeilenumbruch)
+  useEffect(() => {
+    if (badgeRef.current) {
+      setBadgeHeight(badgeRef.current.offsetHeight + 8); // +8px Abstand
+    }
+  }, []);
 
   return (
     <div
@@ -98,12 +107,12 @@ function PlanCard({ plan, onOrderClick, active }) {
         </div>
       )}
       <div className="relative flex flex-col flex-1">
-        {/* Tooltip-Overlay — deckt alles außer Tagline-Badge und CTA-Button ab */}
+        {/* Tooltip-Overlay — startet dynamisch unterhalb des Tagline-Badges */}
         <div
           className="absolute left-0 right-0 transition-opacity duration-300 overflow-y-auto"
           style={{
-            top: 32, // unterhalb des Tagline-Badges
-            bottom: 52, // oberhalb des Buttons
+            top: badgeHeight,
+            bottom: 52,
             opacity: flipped ? 1 : 0,
             pointerEvents: flipped ? "auto" : "none",
           }}
@@ -115,7 +124,7 @@ function PlanCard({ plan, onOrderClick, active }) {
           />
         </div>
 
-        <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
+        <span ref={badgeRef} className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
           {plan.tagline}
         </span>
         <div className="mt-3 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
