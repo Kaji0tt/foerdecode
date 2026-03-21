@@ -37,8 +37,7 @@ export default function ContactSection({ onOpenShop }) {
         {/* Top border */}
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
 
-        {/* Subtle accent stripe at bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, #1e3a6e, #b91c1c)" }} />
+
 
         <div ref={ref} className="relative z-10 w-full max-w-2xl mx-auto px-6 pt-8 pb-16 flex flex-col justify-center">
           {/* Heading */}
