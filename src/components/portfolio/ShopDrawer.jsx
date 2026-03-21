@@ -275,22 +275,33 @@ ${name}`
                     <p className="text-xs mb-4" style={{ color: "#94a3b8" }}>Wählen Sie eine Option:</p>
 
                     <div className="space-y-2">
-                      {maintenanceOptions.map((m, i) => {
-                        const [isHovered, setIsHovered] = React.useState(false);
-                        return (
+                      {maintenanceOptions.map((m, i) => (
                         <div
                           key={i}
-                          className="rounded-xl overflow-hidden transition-all duration-200"
-                          onMouseEnter={() => setIsHovered(true)}
-                          onMouseLeave={() => setIsHovered(false)}
+                          className="rounded-xl overflow-hidden transition-all duration-200 group"
                           style={{
                             border: selectedMaintenance === i 
                               ? `1.5px solid ${selectedPlan?.color}` 
-                              : (isHovered && m.highlight ? "2px solid #16a34a" : "1.5px solid rgba(30,58,110,0.12)"),
+                              : "1.5px solid rgba(30,58,110,0.12)",
                             background: selectedMaintenance === i 
                               ? `${selectedPlan?.color}06` 
-                              : (isHovered && m.highlight ? "rgba(22,163,74,0.08)" : "white"),
-                            boxShadow: selectedMaintenance === i ? "none" : (isHovered && m.highlight ? "0 4px 12px rgba(22,163,74,0.15)" : "none")
+                              : "white",
+                          }}
+                          onMouseEnter={(e) => {
+                            if (m.highlight && selectedMaintenance !== i) {
+                              e.currentTarget.style.borderColor = "#16a34a";
+                              e.currentTarget.style.borderWidth = "2px";
+                              e.currentTarget.style.background = "rgba(22,163,74,0.08)";
+                              e.currentTarget.style.boxShadow = "0 4px 12px rgba(22,163,74,0.15)";
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (selectedMaintenance !== i) {
+                              e.currentTarget.style.borderColor = "rgba(30,58,110,0.12)";
+                              e.currentTarget.style.borderWidth = "1.5px";
+                              e.currentTarget.style.background = "white";
+                              e.currentTarget.style.boxShadow = "none";
+                            }
                           }}
                         >
                           <button
@@ -331,8 +342,7 @@ ${name}`
                             )}
                           </AnimatePresence>
                         </div>
-                      );
-                      })}
+                      ))}
                     </div>
                   </div>
 
