@@ -251,8 +251,8 @@ export default function PortfolioSection() {
           className="mb-10 px-6 max-w-5xl mx-auto"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Websites, die{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>für sich sprechen.</span>
+            Von der Idee, {" "}
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>zur fertigen Seite.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
             Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
