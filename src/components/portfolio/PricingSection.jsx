@@ -70,8 +70,6 @@ function RotatingExample({ tier }) {
 
 function PlanCard({ plan, onOrderClick, active }) {
   const style = tierStyles[plan.tier];
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-  const iconRef = useRef(null);
   return (
     <div
       className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
@@ -90,38 +88,22 @@ function PlanCard({ plan, onOrderClick, active }) {
           </span>
         </div>
       )}
-      <AnimatePresence>
-        {tooltipOpen && (
-          <PlanTooltip
-            text={plan.tooltip}
-            iconRef={iconRef}
-            onClose={() => setTooltipOpen(false)}
-          />
-        )}
-      </AnimatePresence>
       <div className="relative flex flex-col flex-1">
         <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
           {plan.tagline}
         </span>
-        <div className="mt-3 flex items-center gap-1.5">
+        <div className="mt-3">
           <h3 className="text-xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
-          <button
-            ref={iconRef}
-            type="button"
-            onClick={() => setTooltipOpen(o => !o)}
-            className="flex items-center justify-center"
-            style={{ color: "#94a3b8" }}
-          >
-            <HelpCircle className="w-4 h-4" />
-          </button>
         </div>
         <div className="mt-2 flex items-baseline gap-1">
           <span className="text-xs mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
           <span className="text-3xl font-bold" style={style.price}>{plan.price}</span>
           <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
         </div>
+        {/* Tooltip als Beschreibung */}
+        <p className="mt-3 text-xs leading-relaxed" style={{ color: "#64748b" }}>{plan.tooltip}</p>
         {/* Rounds badge */}
-        <div className="mt-2 inline-flex">
+        <div className="mt-3 inline-flex">
           <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={style.rounds}>
             {plan.rounds}
           </span>
