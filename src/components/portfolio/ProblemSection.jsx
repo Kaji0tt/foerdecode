@@ -7,22 +7,22 @@ const problems = [
   {
     icon: Clock,
     title: "Veraltetes Design",
-    description: "Websites von 2010 schrecken Kunden ab, bevor sie den Laden betreten.",
+    description: "Websites von 2010 schrecken Kunden ab, bevor sie Ihr Geschäft überhaupt betreten.",
   },
   {
     icon: Smartphone,
     title: "Nicht mobilfreundlich",
-    description: "80% der lokalen Suchen passieren am Handy — und deine Seite passt nicht auf den Bildschirm.",
+    description: "80 % der lokalen Suchen passieren am Handy — und Ihre Seite passt nicht auf den Bildschirm.",
   },
   {
     icon: Search,
     title: "Unsichtbar bei Google",
-    description: "Ohne modernen Webauftritt finden neue Kunden dein Geschäft einfach nicht.",
+    description: "Ohne modernen Webauftritt finden neue Kunden Ihr Geschäft einfach nicht.",
   },
   {
     icon: TrendingDown,
     title: "Umsatzverlust",
-    description: "Jeder Tag mit einer schlechten Website kostet Kunden und Umsatz.",
+    description: "Jeder Tag mit einer schlechten Website kostet Sie Kunden und Umsatz.",
   },
 ];
 
@@ -47,7 +47,7 @@ export default function ProblemSection() {
             Das Problem
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Deine Website kostet dich
+            Ihre Website kostet Sie
             <br />
             <span style={{ color: "#b91c1c" }}>Kunden.</span>
           </h2>

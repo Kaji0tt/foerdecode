@@ -8,21 +8,21 @@ const steps = [
     icon: MousePointerClick,
     title: "Einfach ausprobieren",
     description:
-      "Beschreib kurz, was du machst – in ein paar Sätzen, so wie du es einem Freund erklären würdest. Die KI zeigt dir in Sekunden, wie deine Website aussehen könnte. Kostenlos, unverbindlich.",
+      "Beschreiben Sie kurz, was Sie machen – in ein paar Sätzen, ganz ohne Technik-Kenntnisse. Die KI zeigt Ihnen in Sekunden, wie Ihre Website aussehen könnte. Kostenlos, unverbindlich.",
   },
   {
     number: "02",
     icon: MessageSquare,
-    title: "Ich melde mich bei dir",
+    title: "Ich melde mich bei Ihnen",
     description:
-      "Gefällt dir die Vorschau? Dann schreib mir kurz. Kein Formular-Stress, kein Technik-Kram. Wir reden kurz durch, was du dir vorstellst – ich kümmere mich um den Rest.",
+      "Gefällt Ihnen die Vorschau? Dann nehmen wir kurz Kontakt auf. Kein Formular-Stress, kein Technik-Kram. Wir besprechen, was Sie sich vorstellen – ich kümmere mich um den Rest.",
   },
   {
     number: "03",
     icon: Rocket,
     title: "Feedback-Runden",
     description:
-      "Du gibst mir Feedback über bspw. WhatsApp: 'Das gefällt mir, das nicht. Ich wünsche mir...' Ich setze alles um und bring deine Seite online. Du musst dich um nichts weiter kümmern.",
+      "Sie geben mir Feedback über z.B. WhatsApp: 'Das gefällt mir, das nicht. Ich wünsche mir...' Ich setze alles um und bringe Ihre Seite online. Sie müssen sich um nichts weiter kümmern.",
   },
 ];
 
@@ -108,9 +108,9 @@ export default function AboutSection() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Dein Geschäft.{" "}
+            Ihr Geschäft.{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Deine Website.
+              Ihre Website.
             </span>
           </h2>
         </motion.div>
@@ -127,7 +127,7 @@ export default function AboutSection() {
             Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding. Dafür gehen Sichtbarkeit und Kunden verloren.<br /> Ich will das ändern.
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
-            Über WhatsApp oder Telefon, gemeinsam zur Website.
+            Über WhatsApp oder Telefon – gemeinsam zur Website.
           </p>
         </motion.div>
 

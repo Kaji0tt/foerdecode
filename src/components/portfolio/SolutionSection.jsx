@@ -6,23 +6,23 @@ const steps = [
   {
     number: "01",
     icon: MessageSquare,
-    title: "Du sagst mir, was du brauchst",
+    title: "Sie sagen mir, was Sie brauchen",
     description:
-      "In einem kurzen Gespräch klären wir, was dein Business braucht — keine Technik-Kenntnisse nötig.",
+      "In einem kurzen Gespräch klären wir, was Ihr Geschäft braucht — keine Technik-Kenntnisse nötig.",
   },
   {
     number: "02",
     icon: Wand2,
-    title: "KI baut deine Website",
+    title: "KI baut Ihre Website",
     description:
-      "Mit modernster KI-Technologie erstelle ich in kürzester Zeit eine professionelle Website, maßgeschneidert für dein Geschäft.",
+      "Mit modernster KI-Technologie erstelle ich in kürzester Zeit eine professionelle Website, maßgeschneidert für Ihr Geschäft.",
   },
   {
     number: "03",
     icon: Rocket,
-    title: "Deine Website geht online",
+    title: "Ihre Website geht online",
     description:
-      "Deine neue Website wird auf deiner Wunschadresse veröffentlicht — fertig, sichtbar und bereit für Kunden.",
+      "Ihre neue Website wird auf Ihrer Wunschadresse veröffentlicht — fertig, sichtbar und bereit für neue Kunden.",
   },
 ];
 
