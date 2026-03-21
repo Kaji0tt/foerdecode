@@ -31,22 +31,21 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     "Kinderbetreuung", "Reinigung & Service", "Tierbetreuung"
   ];
 
-  // Total steps: 1=Website-Frage, 2=Kontakt, 3=Geschäft, 4=Details
+  // Total steps: 1=Website-Frage, 2=Geschäft, 3=Details, 4=Kontakt
   const totalSteps = 4;
 
   const canGoNext = () => {
     if (step === 1) {
       if (form.hasWebsite === null) return false;
       if (form.hasWebsite === false) return true;
-      // hasWebsite === true: brauchen renewWebsite
       if (form.renewWebsite === null) return false;
       if (form.renewWebsite === false) return true;
       if (form.renewWebsite === true) return !!form.existingUrl;
       return false;
     }
-    if (step === 2) return form.name && form.email;
-    if (step === 3) return form.businessName && form.businessType;
-    if (step === 4) return !!form.business;
+    if (step === 2) return form.businessName && form.businessType;
+    if (step === 3) return !!form.business;
+    if (step === 4) return form.name && form.email;
     return false;
   };
 
@@ -153,29 +152,8 @@ export default function MagicWebBot({ onSubmit, isInView }) {
           </motion.div>
         )}
 
-        {/* STEP 2: Kontakt */}
+        {/* STEP 2: Geschäft */}
         {step === 2 && (
-          <motion.div
-            key="step2"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-4"
-          >
-            <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Dein Name *</label>
-              <Input name="name" value={form.name} onChange={handleChange} required placeholder="z.B. Lisa" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
-            </div>
-            <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Deine E-Mail *</label>
-              <Input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="z.B. lisa@example.com" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
-            </div>
-          </motion.div>
-        )}
-
-        {/* STEP 3: Geschäft */}
-        {step === 3 && (
           <motion.div
             key="step3"
             initial={{ opacity: 0, x: 20 }}
