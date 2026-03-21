@@ -132,7 +132,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
             <div className="flex items-center justify-between px-6 py-5 flex-shrink-0" style={{ borderBottom: "1px solid rgba(30,58,110,0.1)" }}>
               <div className="flex items-center gap-3">
                 <ShoppingCart className="w-5 h-5" style={{ color: "#1e3a6e" }} />
-                <span className="font-bold text-lg" style={{ color: "#0f1f3d" }}>Angebot wählen</span>
+                <span className="font-bold text-lg" style={{ color: "#0f1f3d" }}>Angebot anfragen</span>
               </div>
               <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
                 <X className="w-4 h-4 text-slate-500" />
