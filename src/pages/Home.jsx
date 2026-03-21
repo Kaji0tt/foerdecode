@@ -5,6 +5,7 @@ import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import ContactSection from "@/components/portfolio/ContactSection";
+import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
 const sectionIds = ["hero", "problem", "solution", "portfolio", "contact", "pricing"];

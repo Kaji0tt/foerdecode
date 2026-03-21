@@ -99,7 +99,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
               <AnimatePresence mode="wait">
                 {form.hasWebsite !== true ? (
                   <motion.div key="q1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
-                    <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Hast du bereits eine Website?</label>
+                    <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Haben Sie bereits eine Website?</label>
                     <div className="flex gap-3">
                       {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
                         <button key={opt.label} type="button"
@@ -122,7 +122,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
                       </button>
                     </div>
                     <div>
-                      <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Soll die bestehende Website erneuert werden?</label>
+                      <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Soll Ihre bestehende Website erneuert werden?</label>
                       <div className="flex gap-3">
                         {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
                           <button key={opt.label} type="button"
@@ -163,11 +163,11 @@ export default function MagicWebBot({ onSubmit, isInView }) {
             className="space-y-5"
           >
             <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Wie heißt dein Geschäft? *</label>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Wie heißt Ihr Geschäft? *</label>
               <Input name="businessName" value={form.businessName} onChange={handleChange} required placeholder="z.B. Meine Bäckerei" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
             </div>
             <div className="relative">
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Was macht das Geschäft? *</label>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Was macht Ihr Geschäft? *</label>
               <input
                 ref={typeInputRef}
                 value={form.businessType}
@@ -210,14 +210,14 @@ export default function MagicWebBot({ onSubmit, isInView }) {
             className="space-y-4"
           >
             <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Erzähle von deinem Geschäft: *</label>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Erzählen Sie von Ihrem Geschäft: *</label>
               <Textarea
                 name="business"
                 value={form.business}
                 onChange={handleChange}
                 required
                 rows={4}
-                placeholder="z.B. Ich backe Brote und Kuchen für die ganze Nachbarschaft..."
+                placeholder="z.B. Wir backen Brote und Kuchen für die ganze Nachbarschaft..."
                 className="bg-white resize-none text-sm"
                 style={{ borderColor: "rgba(30,58,110,0.15)" }}
               />
@@ -247,12 +247,12 @@ export default function MagicWebBot({ onSubmit, isInView }) {
             className="space-y-4"
           >
             <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Dein Name *</label>
-              <Input name="name" value={form.name} onChange={handleChange} required placeholder="z.B. Lisa" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Ihr Name *</label>
+              <Input name="name" value={form.name} onChange={handleChange} required placeholder="z.B. Max Mustermann" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Deine E-Mail *</label>
-              <Input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="z.B. lisa@example.com" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Ihre E-Mail *</label>
+              <Input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="z.B. max@beispiel.de" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
             </div>
           </motion.div>
         )}
