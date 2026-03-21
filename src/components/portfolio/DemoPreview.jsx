@@ -112,7 +112,7 @@ CSS inline, Google Font einbinden, vollständig responsiv. Keine weiteren Sectio
               </div>
               <h2 className="text-2xl font-bold text-white mb-3">Demo erstellen</h2>
               <p className="text-white/60 mb-8">
-                Unsere KI erstellt eine individuelle Website-Vorschau basierend auf deinen Angaben. Das dauert ca. 20–30 Sekunden.
+                Unsere KI erstellt eine individuelle Website-Vorschau basierend auf deinen Angaben. Dies kann 1–2 Minuten dauern.
               </p>
               <button
                 onClick={generate}
