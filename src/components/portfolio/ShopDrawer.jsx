@@ -209,9 +209,9 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
 
                   <div className="rounded-xl p-4 space-y-2" style={{ background: `${selectedPlan?.color}08`, border: `1.5px solid ${selectedPlan?.color}20` }}>
                     <div className="font-bold text-sm" style={{ color: "#0f1f3d" }}>{selected} · ab {selectedPlan?.price}€</div>
-                    {selectedMaintenance !== null && (
+                    {selectedMaintenance !== null && maintenanceOptions[selectedMaintenance]?.priceValue > 0 && (
                       <div className="text-xs" style={{ color: "#64748b" }}>
-                        + Wartung: {selectedPlan?.maintenance[selectedMaintenance]?.label} ({maintenanceMonthly})
+                        + Wartung: {maintenanceOptions[selectedMaintenance]?.label} ({maintenanceOptions[selectedMaintenance]?.price})
                       </div>
                     )}
                     <div className="text-xs" style={{ color: "#94a3b8" }}>{selectedPlan?.priceNote}</div>
