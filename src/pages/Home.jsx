@@ -7,7 +7,7 @@ import PricingSection from "@/components/portfolio/PricingSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
-const sectionIds = ["hero", "problem", "solution", "portfolio", "pricing", "contact"];
+const sectionIds = ["hero", "problem", "solution", "portfolio", "contact", "pricing"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
