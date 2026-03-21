@@ -98,6 +98,23 @@ function PlanCard({ plan, onOrderClick, active }) {
         </div>
       )}
       <div className="relative flex flex-col flex-1">
+        {/* Tooltip-Overlay — deckt alles außer Tagline-Badge und CTA-Button ab */}
+        <div
+          className="absolute left-0 right-0 transition-opacity duration-300 overflow-y-auto"
+          style={{
+            top: 32, // unterhalb des Tagline-Badges
+            bottom: 52, // oberhalb des Buttons
+            opacity: flipped ? 1 : 0,
+            pointerEvents: flipped ? "auto" : "none",
+          }}
+        >
+          <p className="text-sm leading-relaxed pr-1 pb-6" style={{ color: "#475569" }}>{plan.tooltip}</p>
+          <div
+            className="sticky bottom-0 left-0 right-0 h-10 pointer-events-none"
+            style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.97))" }}
+          />
+        </div>
+
         <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
           {plan.tagline}
         </span>
