@@ -31,20 +31,21 @@ export default function MagicWebBot({ onSubmit, isInView }) {
     "Kinderbetreuung", "Reinigung & Service", "Tierbetreuung"
   ];
 
-  // Total steps: 1=Kontakt, 2=Geschäft, 3=Website-Frage(+sub), 4=Details
+  // Total steps: 1=Website-Frage, 2=Kontakt, 3=Geschäft, 4=Details
   const totalSteps = 4;
 
   const canGoNext = () => {
-    if (step === 1) return form.name && form.email;
-    if (step === 2) return form.businessName && form.businessType;
-    if (step === 3) {
+    if (step === 1) {
       if (form.hasWebsite === null) return false;
       if (form.hasWebsite === false) return true;
+      // hasWebsite === true: brauchen renewWebsite
       if (form.renewWebsite === null) return false;
       if (form.renewWebsite === false) return true;
       if (form.renewWebsite === true) return !!form.existingUrl;
       return false;
     }
+    if (step === 2) return form.name && form.email;
+    if (step === 3) return form.businessName && form.businessType;
     if (step === 4) return !!form.business;
     return false;
   };
