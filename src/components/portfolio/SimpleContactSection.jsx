@@ -41,7 +41,7 @@ export default function SimpleContactSection() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight font-sora" style={{ color: "#0f1f3d" }}>
             Noch Fragen offen?{" "}
             <span style={{ color: "#b91c1c" }}>Kein Problem.</span>
           </h2>
@@ -60,7 +60,7 @@ export default function SimpleContactSection() {
               <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5" style={{ background: "rgba(30,58,110,0.08)" }}>
                 <CheckCircle className="w-7 h-7" style={{ color: "#1e3a6e" }} />
               </div>
-              <h3 className="text-xl font-bold mb-2" style={{ color: "#0f1f3d" }}>Nachricht gesendet!</h3>
+              <h3 className="text-xl font-bold mb-2 font-sora" style={{ color: "#0f1f3d" }}>Nachricht gesendet!</h3>
               <p className="text-sm" style={{ color: "#64748b" }}>Ich melde mich so schnell wie möglich bei Ihnen.</p>
             </div>
           ) : (

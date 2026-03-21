@@ -128,7 +128,7 @@ function PlanCard({ plan, onOrderClick, active }) {
           {plan.tagline}
         </span>
         <div className="mt-3 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
-          <h3 className="text-xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
+          <h3 className="text-xl font-bold font-sora" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
         </div>
         <div className="mt-2 flex items-baseline gap-1 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
           <span className="text-xs mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
@@ -249,7 +249,7 @@ export default function PricingSection({ onOrderClick }) {
           transition={{ duration: 0.7 }}
           className="mb-8"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Alles bezahlbar –{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               dank der KI.

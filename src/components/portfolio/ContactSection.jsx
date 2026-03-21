@@ -47,7 +47,7 @@ export default function ContactSection({ onOpenShop }) {
             transition={{ duration: 0.7 }}
             className="mb-8"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight font-sora" style={{ color: "#0f1f3d" }}>
               In Tagen{" "}
               <span style={{ color: "#b91c1c" }}>statt Wochen.</span>
             </h2>
