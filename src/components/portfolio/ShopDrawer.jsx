@@ -145,20 +145,14 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
 
                   {plans.map((plan) => (
                     <div key={plan.name} className="relative">
-                      {/* Tooltip */}
+                      {/* Portal Tooltip */}
                       <AnimatePresence>
                         {openTooltip === plan.name && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 4 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 4 }}
-                            transition={{ duration: 0.15 }}
-                            className="absolute z-30 left-0 right-0 rounded-xl p-4 text-xs leading-relaxed shadow-xl"
-                            style={{ bottom: "calc(100% + 8px)", background: "#0f1f3d", color: "#e2e8f0" }}
-                          >
-                            {plan.tooltip}
-                            <div className="absolute bottom-0 left-6 translate-y-full w-0 h-0" style={{ borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid #0f1f3d" }} />
-                          </motion.div>
+                          <PlanTooltip
+                            text={plan.tooltip}
+                            iconRef={{ current: iconRefs.current[plan.name] }}
+                            onClose={() => setOpenTooltip(null)}
+                          />
                         )}
                       </AnimatePresence>
                       {/* Plan card as div, not button, to avoid nested buttons */}
@@ -181,6 +175,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                           <div className="flex items-center gap-1.5">
                             <span className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</span>
                             <span
+                              ref={el => iconRefs.current[plan.name] = el}
                               onClick={e => { e.stopPropagation(); setOpenTooltip(openTooltip === plan.name ? null : plan.name); }}
                               className="flex items-center justify-center rounded-full transition-colors cursor-pointer"
                               style={{ color: "#94a3b8" }}
