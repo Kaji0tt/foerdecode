@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import NavigationDots from "@/components/portfolio/NavigationDots";
+import FloatingHeader from "@/components/portfolio/FloatingHeader";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
@@ -73,6 +74,7 @@ export default function Home() {
       />
 
       <NavigationDots activeSection={activeSection} />
+      <FloatingHeader activeSection={activeSection} />
       <HeroSection onDomainSelected={setSelectedDomain} />
       <AboutSection />
       <PortfolioSection />
