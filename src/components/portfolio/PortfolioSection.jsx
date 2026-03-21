@@ -74,7 +74,7 @@ const accentTag = {
 const accentTagStyle = {
   sky: { background: "rgba(30,58,110,0.08)", borderColor: "rgba(30,58,110,0.2)", color: "#1e3a6e" },
   cyan: { background: "rgba(30,58,110,0.06)", borderColor: "rgba(30,58,110,0.15)", color: "#1e3a6e" },
-  violet: { background: "rgba(185,28,28,0.07)", borderColor: "rgba(185,28,28,0.2)", color: "#b91c1c" },
+  violet: { background: "rgba(185,28,28,0.07)", borderColor: "rgba(185,28,28,0.2)", color: "#9E0000" },
 };
 
 function BeforeAfterSlider({ before, after }) {
@@ -294,7 +294,7 @@ export default function PortfolioSection() {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Von der Vision {" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}> zum Ergebnis.</span>
+            <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}> zum Ergebnis.</span>
           </h2>
         </motion.div>
 

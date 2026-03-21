@@ -43,13 +43,13 @@ export default function ProblemSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16"
         >
-          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#b91c1c" }}>
+          <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#9E0000" }}>
             Das Problem
           </span>
           <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Ihre Website kostet Sie
             <br />
-            <span style={{ color: "#b91c1c" }}>Kunden.</span>
+            <span style={{ color: "#9E0000" }}>Kunden.</span>
           </h2>
           <p className="mt-6 text-lg max-w-xl mx-auto" style={{ color: "#475569" }}>
             Viele lokale Geschäfte in Flensburg verlieren täglich potenzielle Kunden durch veraltete Webauftritte.
@@ -66,8 +66,8 @@ export default function ProblemSection() {
               className="group p-6 rounded-2xl transition-all duration-500"
               style={{ border: "1px solid rgba(30,58,110,0.12)", background: "rgba(255,255,255,0.7)" }}
             >
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-500" style={{ background: "rgba(185,28,28,0.08)" }}>
-                <problem.icon className="w-6 h-6" style={{ color: "#b91c1c" }} />
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-500" style={{ background: "rgba(158,0,0,0.08)" }}>
+                <problem.icon className="w-6 h-6" style={{ color: "#9E0000" }} />
               </div>
               <h3 className="text-lg font-semibold mb-2 font-sora" style={{ color: "#0f1f3d" }}>{problem.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{problem.description}</p>

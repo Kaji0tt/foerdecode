@@ -18,7 +18,7 @@ export default function HeroSection() {
           style={{ color: "#0f1f3d" }}
         >
           Ihr Geschäft.{" "}
-          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
+          <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
         </motion.h1>
 
         {/* Subline */}

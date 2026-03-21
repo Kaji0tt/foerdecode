@@ -23,13 +23,13 @@ const tierStyles = {
     rounds: { background: "rgba(30,58,110,0.08)", color: "#1e3a6e" },
   },
   standard: {
-    badge: { border: "1px solid rgba(185,28,28,0.2)", background: "rgba(185,28,28,0.06)", color: "#b91c1c" },
-    price: { color: "#b91c1c" },
-    button: { background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.2)" },
+    badge: { border: "1px solid rgba(158,0,0,0.2)", background: "rgba(158,0,0,0.06)", color: "#9E0000" },
+    price: { color: "#9E0000" },
+    button: { background: "#9E0000", boxShadow: "0 8px 24px rgba(158,0,0,0.2)" },
     buttonHover: { background: "#991b1b" },
-    check: { color: "#b91c1c" },
-    plus: { color: "#b91c1c" },
-    rounds: { background: "rgba(185,28,28,0.08)", color: "#b91c1c" },
+    check: { color: "#9E0000" },
+    plus: { color: "#9E0000" },
+    rounds: { background: "rgba(158,0,0,0.08)", color: "#9E0000" },
   },
   expert: {
     badge: { border: "1px solid rgba(30,58,110,0.2)", background: "rgba(30,58,110,0.06)", color: "#1e3a6e" },
@@ -90,10 +90,10 @@ function PlanCard({ plan, onOrderClick, active }) {
     <div
       className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
       style={{
-        border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
+        border: plan.popular ? "1px solid rgba(158,0,0,0.2)" : "1px solid rgba(30,58,110,0.1)",
         background: "rgba(255,255,255,0.97)",
         boxShadow: active
-          ? (plan.popular ? "0 8px 32px rgba(185,28,28,0.12)" : "0 8px 32px rgba(30,58,110,0.10)")
+          ? (plan.popular ? "0 8px 32px rgba(158,0,0,0.12)" : "0 8px 32px rgba(30,58,110,0.10)")
           : "0 2px 8px rgba(30,58,110,0.04)",
         cursor: active ? "pointer" : "default",
       }}
@@ -101,7 +101,7 @@ function PlanCard({ plan, onOrderClick, active }) {
     >
       {plan.popular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <span className="px-4 py-1 rounded-full text-xs font-semibold text-white" style={{ background: "#b91c1c", boxShadow: "0 4px 16px rgba(185,28,28,0.3)" }}>
+          <span className="px-4 py-1 rounded-full text-xs font-semibold text-white" style={{ background: "#9E0000", boxShadow: "0 4px 16px rgba(158,0,0,0.3)" }}>
             Beliebteste Wahl
           </span>
         </div>
@@ -251,7 +251,7 @@ export default function PricingSection({ onOrderClick }) {
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Alles bezahlbar –{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               dank der KI.
             </span>
           </h2>

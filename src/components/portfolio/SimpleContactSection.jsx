@@ -43,7 +43,7 @@ export default function SimpleContactSection() {
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight font-sora" style={{ color: "#0f1f3d" }}>
             Noch Fragen offen?{" "}
-            <span style={{ color: "#b91c1c" }}>Kein Problem.</span>
+            <span style={{ color: "#9E0000" }}>Kein Problem.</span>
           </h2>
         </motion.div>
 
