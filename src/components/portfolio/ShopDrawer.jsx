@@ -118,7 +118,7 @@ Grüße,
 ${name}`
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selected, selectedMaintenance, contactMethod, orderData.name, formData?.demo_html]);
+  }, [selected, selectedMaintenance, contactMethod, orderData.name, orderData.email, phoneNumber, formData?.demo_html]);
 
   const handleOrder = async () => {
     setLoading(true);
