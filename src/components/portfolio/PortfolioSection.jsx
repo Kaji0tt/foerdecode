@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -7,6 +7,7 @@ const projects = [
     title: "Café Nordwind",
     category: "Gastronomie",
     description: "Moderner Webauftritt mit Speisekarte und Öffnungszeiten.",
+    isRework: true,
     before: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
     after: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80",
     tag: "Basis",
@@ -16,8 +17,9 @@ const projects = [
     title: "Friseursalon Belle",
     category: "Beauty & Wellness",
     description: "Elegante Website mit Online-Buchungssystem und Galerie.",
-    before: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=80",
+    isRework: false,
+    before: "https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=80",
+    after: null,
     tag: "Expert",
     accent: "violet",
   },
@@ -25,6 +27,7 @@ const projects = [
     title: "Tischlerei Brandt",
     category: "Handwerk",
     description: "Professioneller Auftritt mit Portfolio und eigener Domain.",
+    isRework: true,
     before: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80",
     after: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
     tag: "Standard",
@@ -33,9 +36,10 @@ const projects = [
   {
     title: "Blumenladen Petersen",
     category: "Einzelhandel",
-    description: "Farbenfroher Auftritt mit Online-Shop und Standortkarte.",
-    before: "https://images.unsplash.com/photo-1455793781152-0f5ca4a6e40e?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1487530811015-780a62b5f3fc?w=800&q=80",
+    description: "Farbenfroher Auftritt – komplett neu erstellt.",
+    isRework: false,
+    before: "https://images.unsplash.com/photo-1487530811015-780a62b5f3fc?w=800&q=80",
+    after: null,
     tag: "Expert",
     accent: "violet",
   },
@@ -43,6 +47,7 @@ const projects = [
     title: "Physiotherapie Küste",
     category: "Gesundheit",
     description: "Vertrauenswürdige Website mit Terminbuchung.",
+    isRework: true,
     before: "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=800&q=80",
     after: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
     tag: "Standard",
@@ -51,9 +56,10 @@ const projects = [
   {
     title: "Fahrradladen Pedal",
     category: "Sport & Freizeit",
-    description: "Dynamischer Auftritt mit Produktübersicht und Service-Buchung.",
-    before: "https://images.unsplash.com/photo-1511994298241-608e28f14fde?w=800&q=80",
-    after: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80",
+    description: "Dynamischer Auftritt – von Null zur fertigen Website.",
+    isRework: false,
+    before: "https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80",
+    after: null,
     tag: "Expert",
     accent: "violet",
   },
@@ -150,6 +156,24 @@ function BeforeAfterSlider({ before, after }) {
   );
 }
 
+function SingleImage({ src, label }) {
+  return (
+    <div className="relative w-full h-full overflow-hidden">
+      <img src={src} alt={label} className="absolute inset-0 w-full h-full object-cover" />
+      <div className="absolute bottom-3 left-3 px-2 py-0.5 rounded-full bg-black/60 text-white text-xs font-semibold backdrop-blur-sm pointer-events-none">
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function ProjectVisual({ project }) {
+  if (project.isRework && project.after) {
+    return <BeforeAfterSlider before={project.before} after={project.after} />;
+  }
+  return <SingleImage src={project.before} label="Beispiel" />;
+}
+
 function MobilePortfolio({ current, setCurrent, projects }) {
   const touchStartX = useRef(null);
 
@@ -181,9 +205,8 @@ function MobilePortfolio({ current, setCurrent, projects }) {
           exit={{ opacity: 0, x: -60 }}
           transition={{ duration: 0.3 }}
         >
-          {/* Full-width image — NO swipe/tap handlers here */}
           <div className="relative w-full" style={{ height: "56vw", minHeight: 220 }}>
-            <BeforeAfterSlider before={project.before} after={project.after} />
+            <ProjectVisual project={project} />
             <div className="absolute top-3 right-3 z-10">
               <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${style}`} style={accentTagStyle[project.accent]}>
                 {project.tag}
@@ -191,7 +214,6 @@ function MobilePortfolio({ current, setCurrent, projects }) {
             </div>
           </div>
 
-          {/* White text area — swipe & tap only here */}
           <div
             className="px-6 pt-5 pb-2 bg-white"
             onTouchStart={onTouchStart}
@@ -207,7 +229,6 @@ function MobilePortfolio({ current, setCurrent, projects }) {
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots — also on white background */}
       <div
         className="flex justify-center gap-2 pt-3 pb-4 bg-white"
         onTouchStart={onTouchStart}
@@ -243,19 +264,21 @@ export default function PortfolioSection() {
       className="min-h-screen w-full flex items-center relative snap-start"
     >
       <div ref={ref} className="relative z-10 w-full py-16">
-        {/* Header */}
+        {/* Header — centered */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="mb-10 px-6 max-w-5xl mx-auto"
+          className="mb-10 px-6 max-w-5xl mx-auto text-center"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Von der Idee, {" "}
+            Von der Idee{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>zur fertigen Seite.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
-            Schiebe den Regler, um Vorher &amp; Nachher zu vergleichen.
+            {project.isRework
+              ? "Schiebe den Regler, um Vorher & Nachher zu vergleichen."
+              : "Neue Website – komplett von Grund auf erstellt."}
           </p>
         </motion.div>
 
@@ -298,12 +321,19 @@ export default function PortfolioSection() {
                 style={{ border: "1px solid rgba(30,58,110,0.1)", background: "#fff", boxShadow: "0 4px 24px rgba(30,58,110,0.07)" }}
               >
                 <div className="relative h-80">
-                  <BeforeAfterSlider before={project.before} after={project.after} />
+                  <ProjectVisual project={project} />
                   <div className="absolute top-3 right-3 z-10">
                     <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${style}`} style={accentTagStyle[project.accent]}>
                       {project.tag}
                     </span>
                   </div>
+                  {!project.isRework && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-black/60 text-white backdrop-blur-sm">
+                        Neu erstellt
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
