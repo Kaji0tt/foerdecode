@@ -112,18 +112,6 @@ function PlanCard({ plan, onOrderClick, active }) {
 
         {/* Overlay-Bereich: Rounds + Features ODER Tooltip — gleiche Höhe */}
         <div className="relative mt-3 flex-1 overflow-hidden">
-          {/* Tooltip-Text (nur sichtbar wenn flipped) */}
-          <div
-            className="absolute inset-0 transition-opacity duration-300"
-            style={{ opacity: flipped ? 1 : 0, pointerEvents: flipped ? "auto" : "none", overflowY: "auto" }}
-          >
-            <p className="text-sm leading-relaxed pr-1" style={{ color: "#475569" }}>{plan.tooltip}</p>
-            {/* Fade-out Gradient unten */}
-            <div
-              className="sticky bottom-0 left-0 right-0 h-8 pointer-events-none"
-              style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.97))" }}
-            />
-          </div>
 
           {/* Rounds + Features (unsichtbar wenn flipped, aber Höhe bleibt) */}
           <div
