@@ -127,7 +127,7 @@ export default function AboutSection() {
             Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding – und das ist völlig okay.
           </p>
           <p className="mt-3 text-sm sm:text-base leading-relaxed" style={{ color: "#475569" }}>
-            Hier kann ich helfen. Mit ein bisschen Know-How ist Webgestaltung dank der KI einfacher denn je. Damit können wir uns auf das Wesentliche konzentrieren: Ihre Vorstellung.
+            Ich übernehme. Damit können wir uns auf das Wesentliche konzentrieren: Ihre Vorstellung.
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
             Über WhatsApp oder Telefon, gemeinsam zur Website.
