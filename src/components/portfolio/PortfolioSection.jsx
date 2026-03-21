@@ -272,8 +272,8 @@ export default function PortfolioSection() {
           className="mb-10 px-6 max-w-5xl mx-auto text-center"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Von der Idee{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>zur fertigen Seite.</span>
+            Grobe Ideen,{" "}
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>klare Resultate.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
             {project.isRework
