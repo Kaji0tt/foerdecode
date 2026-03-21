@@ -46,7 +46,7 @@ export default function SolutionSection() {
           <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#1e3a6e" }}>
             So einfach geht's
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             In 3 Schritten zur
             <br />
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
@@ -77,7 +77,7 @@ export default function SolutionSection() {
                   <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(30,58,110,0.5)" }}>
                     SCHRITT {step.number}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-semibold mt-1 mb-3" style={{ color: "#0f1f3d" }}>
+                  <h3 className="text-xl sm:text-2xl font-semibold mt-1 mb-3 font-sora" style={{ color: "#0f1f3d" }}>
                     {step.title}
                   </h3>
                   <p className="leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>

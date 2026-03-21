@@ -245,7 +245,7 @@ function MobilePortfolio({ current, setCurrent, projects }) {
             <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>
               {project.category}
             </span>
-            <h3 className="mt-1 text-xl font-semibold" style={{ color: "#0f1f3d" }}>{project.title}</h3>
+            <h3 className="mt-1 text-xl font-semibold font-sora" style={{ color: "#0f1f3d" }}>{project.title}</h3>
             <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
           </div>
         </motion.div>
@@ -292,7 +292,7 @@ export default function PortfolioSection() {
           transition={{ duration: 0.7 }}
           className="mb-10 px-6 max-w-5xl mx-auto text-center"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Von der Vision {" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}> zum Ergebnis.</span>
           </h2>
@@ -354,7 +354,7 @@ export default function PortfolioSection() {
                 <div className="p-6 flex items-center justify-between gap-4">
                   <div>
                     <span className="text-xs uppercase tracking-wider font-medium" style={{ color: "#94a3b8" }}>{project.category}</span>
-                    <h3 className="mt-1 text-xl font-semibold" style={{ color: "#0f1f3d" }}>{project.title}</h3>
+                    <h3 className="mt-1 text-xl font-semibold font-sora" style={{ color: "#0f1f3d" }}>{project.title}</h3>
                     <p className="mt-1 text-sm" style={{ color: "#64748b" }}>{project.description}</p>
                   </div>
                   <div className="flex gap-1.5 flex-shrink-0">

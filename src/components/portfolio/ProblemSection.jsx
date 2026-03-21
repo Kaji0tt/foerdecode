@@ -46,7 +46,7 @@ export default function ProblemSection() {
           <span className="text-sm font-semibold uppercase tracking-widest" style={{ color: "#b91c1c" }}>
             Das Problem
           </span>
-          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
+          <h2 className="mt-4 text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight font-sora" style={{ color: "#0f1f3d" }}>
             Ihre Website kostet Sie
             <br />
             <span style={{ color: "#b91c1c" }}>Kunden.</span>
@@ -69,7 +69,7 @@ export default function ProblemSection() {
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-colors duration-500" style={{ background: "rgba(185,28,28,0.08)" }}>
                 <problem.icon className="w-6 h-6" style={{ color: "#b91c1c" }} />
               </div>
-              <h3 className="text-lg font-semibold mb-2" style={{ color: "#0f1f3d" }}>{problem.title}</h3>
+              <h3 className="text-lg font-semibold mb-2 font-sora" style={{ color: "#0f1f3d" }}>{problem.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{problem.description}</p>
             </motion.div>
           ))}
