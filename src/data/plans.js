@@ -34,7 +34,7 @@ export const plans = [
   {
     name: "Standard",
     tooltip: "Dieses Paket eignet sich dann, wenn Sie unter einer eigenen E-Mail-Adresse erreichbar sein möchten oder besondere Anforderungen an bestimmte Details bestehen – etwa eine individuell gestaltete Navigationsleiste oder ein auf mobilen Geräten anders funktionierendes Layout. Mit 8 Feedback-Runden lässt sich der Seite ein echter persönlicher Touch verleihen.",
-    price: "259",
+    price: "269",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst, dass es wirklich zu dir passt.",
     shopTagline: "Mehr Individualität – eigene E-Mail, persönlicher Look, 8 Feedback-Runden.",
@@ -64,9 +64,9 @@ export const plans = [
     ],
   },
   {
-    name: "Expert",
+    name: "Premium",
     tooltip: "Dieses Paket eignet sich vor allem dann, wenn Sie besondere Funktionen in Ihre Website integrieren möchten – etwa Mitgliederbereiche, Online-Buchungssysteme oder andere Anwendungen, die eine sorgfältige Ausarbeitung erfordern. Bei größeren Projekten empfiehlt sich eine enge Zusammenarbeit, um individuellen Anforderungen und Vorstellungen gerecht zu werden.",
-    price: "499",
+    price: "599",
     priceNote: "zzgl. Domain-Kosten · Preis nach Absprache",
     tagline: "Du willst, dass die Website wirklich was tut.",
     shopTagline: "Für besondere Funktionen wie Buchungssysteme oder Mitgliederbereiche.",
@@ -104,23 +104,26 @@ export const maintenanceOptions = [
     priceValue: 0,
   },
   {
-    label: "Google-Listen-Sync",
-    desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig, die Seite übernimmt die Änderungen automatisch.",
-    price: "15€ / Monat",
-    priceValue: 15,
+    label: "Full Service: Ich übernehme alles, 3 Anfragen im Monat inklusive",
+    desc: "Ich kümmere mich um alle Änderungen und Aktualisierungen. Sie erhalten monatlich 3 Anfragen für Korrektionen, Änderungen und Pflege der Website ohne zusätzliche Kosten.",
+    price: "59€ / Monat",
+    priceValue: 59,
+    highlight: true,
   },
   {
-    label: "Eigener Bearbeitungszugang",
-    desc: "Sie erhalten direkten Zugang zu Ihrer Website und können Texte, Überschriften und Bilder bequem per Klick anpassen – ganz ohne technisches Wissen. Ideal, wenn Sie Ihre Inhalte flexibel und eigenständig pflegen möchten.",
-    price: "25€ / Monat",
-    priceValue: 25,
+    label: "Self-Service: Eigener Webzugang für einfache Verwaltung online",
+    desc: "Sie erhalten direkten Zugang zu Ihrer Website und können Texte, Überschriften und Bilder bequem per Klick anpassen – ganz ohne technisches Wissen.",
+    price: "29€ / Monat",
+    priceValue: 29,
   },
   {
-    label: "Rundum-Betreuung",
-    desc: "Ich kümmere mich um alles. Sie haben monatlich bis zu 4 Feedback-Runden, um Änderungswünsche direkt mit mir abzustimmen und Ihre Website gemeinsam auf dem neuesten Stand zu halten.",
-    price: "49€ / Monat",
-    priceValue: 49,
+    label: "Self-Service: Listenpflege",
+    desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig.",
+    price: "19€ / Monat",
+    priceValue: 19,
   },
 ];
 
-export const maintenanceMonthly = "ab 15€ / Monat";
+export const maintenanceMonthly = "ab 19€ / Monat";
+
+export const changeServiceNote = "Änderungsservice: Sie können für 20€ stets zusätzlich Anfragen zur Korrektur, Änderung und / oder Pflege der Website stellen.";
