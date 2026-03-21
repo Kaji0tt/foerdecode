@@ -261,40 +261,28 @@ export default function MagicWebBot({ onSubmit, isInView }) {
       {/* Navigation buttons */}
       <div className="mt-8">
         {step === totalSteps ? (
-          <div className="flex flex-col gap-3">
-            <div className="flex gap-3">
+          <div className="flex gap-3">
+            {step > 1 && (
               <button
-                onClick={handleSubmit}
-                disabled={!canGoNext()}
-                className="flex-1 py-3 rounded-xl text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
-                style={{ background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" }}
-                onMouseEnter={e => { if (canGoNext()) e.currentTarget.style.background = "#991b1b"; }}
-                onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
-              >
-                <Sparkles className="w-5 h-5" />
-                Anfrage senden
-              </button>
-              <button
-                onClick={handleSubmit}
-                disabled={!canGoNext()}
-                className="flex-1 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50 border-2"
+                onClick={handleBack}
+                className="px-4 py-3 rounded-xl border-2 font-semibold transition-all"
                 style={{ borderColor: "#b91c1c", color: "#b91c1c", background: "transparent" }}
-                onMouseEnter={e => { if (canGoNext()) e.currentTarget.style.background = "rgba(185,28,28,0.04)"; }}
+                onMouseEnter={e => e.currentTarget.style.background = "rgba(185,28,28,0.04)"}
                 onMouseLeave={e => e.currentTarget.style.background = "transparent"}
               >
-                <Sparkles className="w-4 h-4" />
-                Beispiel
+                <ChevronLeft className="w-5 h-5" />
               </button>
-            </div>
+            )}
             <button
-              onClick={handleBack}
-              className="text-xs font-medium flex items-center justify-center gap-1 transition-all"
-              style={{ color: "#94a3b8" }}
-              onMouseEnter={e => e.currentTarget.style.color = "#64748b"}
-              onMouseLeave={e => e.currentTarget.style.color = "#94a3b8"}
+              onClick={handleSubmit}
+              disabled={!canGoNext()}
+              className="flex-1 py-3 rounded-xl text-white font-bold flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+              style={{ background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" }}
+              onMouseEnter={e => { if (canGoNext()) e.currentTarget.style.background = "#991b1b"; }}
+              onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
-              Zurück
+              <Sparkles className="w-5 h-5" />
+              Vorschau erstellen
             </button>
           </div>
         ) : (

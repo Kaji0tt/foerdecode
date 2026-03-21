@@ -64,7 +64,7 @@ export default function HeroSection() {
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
           >
-            Kontakt
+            Vorschau erstellen
           </button>
           <button
             onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
