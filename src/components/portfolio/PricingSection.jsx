@@ -70,9 +70,11 @@ function RotatingExample({ tier }) {
 
 function PlanCard({ plan, onOrderClick, active }) {
   const style = tierStyles[plan.tier];
+  const [flipped, setFlipped] = useState(false);
+
   return (
     <div
-      className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
+      className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300 cursor-pointer"
       style={{
         border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
         background: "rgba(255,255,255,0.97)",
@@ -80,6 +82,7 @@ function PlanCard({ plan, onOrderClick, active }) {
           ? (plan.popular ? "0 8px 32px rgba(185,28,28,0.12)" : "0 8px 32px rgba(30,58,110,0.10)")
           : "0 2px 8px rgba(30,58,110,0.04)",
       }}
+      onClick={() => setFlipped(f => !f)}
     >
       {plan.popular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -100,27 +103,43 @@ function PlanCard({ plan, onOrderClick, active }) {
           <span className="text-3xl font-bold" style={style.price}>{plan.price}</span>
           <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
         </div>
-        {/* Tooltip als Beschreibung */}
-        <p className="mt-3 text-xs leading-relaxed" style={{ color: "#64748b" }}>{plan.tooltip}</p>
-        {/* Rounds badge */}
-        <div className="mt-3 inline-flex">
-          <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={style.rounds}>
-            {plan.rounds}
-          </span>
+
+        {/* Overlay-Bereich: Rounds + Features ODER Tooltip — gleiche Höhe */}
+        <div className="relative mt-3 flex-1">
+          {/* Tooltip-Text (nur sichtbar wenn flipped) */}
+          <div
+            className="absolute inset-0 transition-opacity duration-300"
+            style={{ opacity: flipped ? 1 : 0, pointerEvents: flipped ? "auto" : "none" }}
+          >
+            <p className="text-sm leading-relaxed" style={{ color: "#475569" }}>{plan.tooltip}</p>
+          </div>
+
+          {/* Rounds + Features (unsichtbar wenn flipped, aber Höhe bleibt) */}
+          <div
+            className="transition-opacity duration-300"
+            style={{ opacity: flipped ? 0 : 1, pointerEvents: flipped ? "none" : "auto" }}
+          >
+            <div className="inline-flex">
+              <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={style.rounds}>
+                {plan.rounds}
+              </span>
+            </div>
+            <ul className="mt-3 space-y-2">
+              {plan.features.map((feature, i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={style.check} />
+                  <span className="text-xs" style={{ color: "#475569" }}>{feature}</span>
+                </li>
+              ))}
+              {plan.expertRotating && (
+                <li className="flex items-start gap-2 pl-5">
+                  <RotatingExample tier={plan.tier} />
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
-        <ul className="mt-4 space-y-2 flex-1">
-          {plan.features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={style.check} />
-              <span className="text-xs" style={{ color: "#475569" }}>{feature}</span>
-            </li>
-          ))}
-          {plan.expertRotating && (
-            <li className="flex items-start gap-2 pl-5">
-              <RotatingExample tier={plan.tier} />
-            </li>
-          )}
-        </ul>
+
         <div className="mt-4">
           {plan.addon && (
             <div className="flex items-start gap-2 mb-3">
@@ -129,7 +148,7 @@ function PlanCard({ plan, onOrderClick, active }) {
             </div>
           )}
           <button
-            onClick={() => onOrderClick ? onOrderClick(plan.name) : document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            onClick={(e) => { e.stopPropagation(); onOrderClick ? onOrderClick(plan.name) : document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
             onMouseEnter={e => Object.assign(e.currentTarget.style, style.buttonHover)}
             onMouseLeave={e => Object.assign(e.currentTarget.style, style.button)}
             className="w-full py-3 rounded-xl font-semibold text-white text-sm transition-all duration-300"
