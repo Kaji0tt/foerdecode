@@ -18,7 +18,7 @@ const projects = [
     category: "Beauty & Wellness",
     description: "Elegante Website mit Online-Buchungssystem und Galerie.",
     isRework: false,
-    before: "https://images.unsplash.com/photo-1560066984-138daaa4e4e1?w=800&q=80",
+    before: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80",
     after: null,
     tag: "Expert",
     accent: "violet",
