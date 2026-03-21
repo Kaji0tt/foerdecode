@@ -247,9 +247,9 @@ export default function PricingSection({ onOrderClick }) {
           className="mb-8"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight" style={{ color: "#0f1f3d" }}>
-            Was du brauchst –{" "}
+            Alles bezahlbar –{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              nicht mehr, nicht weniger.
+              dank der KI.
             </span>
           </h2>
         </motion.div>
