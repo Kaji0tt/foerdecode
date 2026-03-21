@@ -253,7 +253,6 @@ function MobilePortfolio({ current, setCurrent, projects }) {
 
       <div
         className="flex justify-center gap-2 pt-3 pb-4 bg-white"
-        onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
         {projects.map((_, i) => (
