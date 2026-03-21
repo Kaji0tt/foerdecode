@@ -41,10 +41,18 @@ export default function HeroSection() {
         >
           <button
             onClick={() => document.getElementById("problem")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-4 py-2 rounded-lg text-white font-medium text-sm transition-all duration-300"
-            style={{ background: "#b91c1c", boxShadow: "0 4px 12px rgba(185,28,28,0.3)" }}
-            onMouseEnter={e => e.currentTarget.style.background = "#991b1b"}
-            onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
+            className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
+            style={{ background: "#b91c1c", color: "white", borderColor: "#b91c1c", boxShadow: "0 4px 12px rgba(185,28,28,0.3)" }}
+            onMouseEnter={e => {
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#b91c1c";
+              e.currentTarget.style.boxShadow = "none";
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.background = "#b91c1c";
+              e.currentTarget.style.color = "white";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(185,28,28,0.3)";
+            }}
           >
             Wie funktioniert das?
           </button>
