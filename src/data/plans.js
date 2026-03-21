@@ -93,4 +93,25 @@ export const plans = [
   },
 ];
 
+export const maintenanceOptions = [
+  {
+    label: "Keine Wartung",
+    desc: "Website fertig – und los. Kein Abo, keine weiteren Kosten.",
+    price: "0€ / Monat",
+    priceValue: 0,
+  },
+  {
+    label: "Eigener Bearbeitungszugang",
+    desc: "Ein Bearbeitungszugang, der zu Ihnen passt – direkt in die Seite integriert oder auf Ihre Fähigkeiten zugeschnitten. Sie ändern selbst, ich helfe bei Fragen.",
+    price: "18€ / Monat",
+    priceValue: 18,
+  },
+  {
+    label: "Rundum-Betreuung",
+    desc: "Ich bin immer für Sie da. Wenn Sie etwas ändern, aktualisieren oder anpassen wollen – schreiben Sie mir einfach.",
+    price: "18€ / Monat",
+    priceValue: 18,
+  },
+];
+
 export const maintenanceMonthly = "18€ / Monat";
