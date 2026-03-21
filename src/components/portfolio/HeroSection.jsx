@@ -37,7 +37,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-8 flex flex-col sm:flex-row gap-3 flex-shrink-0 flex-wrap justify-center"
+          className="mt-8 flex flex-row gap-2 flex-shrink-0 flex-wrap justify-center"
         >
           <button
             onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
