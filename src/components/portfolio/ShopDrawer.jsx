@@ -151,6 +151,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                         </span>
                       </div>
                     </button>
+                    </div>
                   ))}
 
                 </div>
