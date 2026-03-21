@@ -98,12 +98,6 @@ export const plans = [
 
 export const maintenanceOptions = [
   {
-    label: "Erstmal keins",
-    desc: "Kein Problem – Sie können die Wartungsoptionen jederzeit später hinzubuchen. Die Website funktioniert wie gewohnt ohne zusätzliche Kosten.",
-    price: "kostenlos",
-    priceValue: 0,
-  },
-  {
     label: "Full Service: Ich übernehme alles, 3 Anfragen im Monat inklusive",
     desc: "Ich kümmere mich um alle Änderungen und Aktualisierungen. Sie erhalten monatlich 3 Anfragen für Korrektionen, Änderungen und Pflege der Website ohne zusätzliche Kosten.",
     price: "59€ / Monat",
@@ -121,6 +115,12 @@ export const maintenanceOptions = [
     desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig.",
     price: "19€ / Monat",
     priceValue: 19,
+  },
+  {
+    label: "Erstmal keins",
+    desc: "Kein Problem – Sie können die Wartungsoptionen jederzeit später hinzubuchen. Die Website funktioniert wie gewohnt ohne zusätzliche Kosten.",
+    price: "kostenlos",
+    priceValue: 0,
   },
 ];
 

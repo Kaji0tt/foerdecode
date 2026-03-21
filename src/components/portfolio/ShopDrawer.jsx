@@ -297,8 +297,8 @@ ${name}`
                                 {selectedMaintenance === i && <div className="w-2.5 h-2.5 rounded-full" style={{ background: m.highlight ? "#16a34a" : selectedPlan?.color }} />}
                               </div>
                               <div>
-                                <span className="text-sm font-medium" style={{ color: m.highlight ? "#16a34a" : "#0f1f3d" }}>{m.label}</span>
-                                <span className="ml-2 text-xs font-medium" style={{ color: m.highlight ? "#16a34a" : (m.priceValue === 0 ? "#16a34a" : selectedPlan?.color) }}>
+                                <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>{m.label}</span>
+                                <span className="ml-2 text-xs font-medium" style={{ color: "#0f1f3d" }}>
                                   {m.price}
                                 </span>
                               </div>
