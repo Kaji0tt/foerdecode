@@ -107,10 +107,10 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                         </div>
                       </div>
                       {/* Tagline */}
-                      <div className="text-xs mt-1.5" style={{ color: "#94a3b8" }}>{plan.tagline}</div>
+                      <div className="text-xs mt-1.5" style={{ color: "#94a3b8" }}>{plan.shopTagline}</div>
                       {/* Features */}
                       <ul className="mt-3 space-y-1.5">
-                        {plan.features.map((f, i) => (
+                        {plan.shopFeatures.map((f, i) => (
                           <li key={i} className="flex items-start gap-2 text-xs" style={{ color: "#475569" }}>
                             <Check className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
                             {f}
@@ -138,7 +138,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
 
                   <div className="rounded-xl p-4" style={{ background: `${selectedPlan?.color}08`, border: `1.5px solid ${selectedPlan?.color}20` }}>
                     <div className="font-bold text-sm" style={{ color: "#0f1f3d" }}>{selected} · ab {selectedPlan?.price}€</div>
-                    <div className="text-xs mt-0.5" style={{ color: "#64748b" }}>{selectedPlan?.tagline}</div>
+                    <div className="text-xs mt-0.5" style={{ color: "#64748b" }}>{selectedPlan?.shopTagline}</div>
                   </div>
 
                   <div>
