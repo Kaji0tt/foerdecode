@@ -86,7 +86,31 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
   const [loading, setLoading] = useState(false);
   const [expandedMaint, setExpandedMaint] = useState(null);
   const [openTooltip, setOpenTooltip] = useState(null);
+  const [message, setMessage] = useState("");
   const iconRefs = useRef({});
+
+  const contactMethodLabel = { email: "E-Mail", whatsapp: "WhatsApp", phone: "Telefon" };
+
+  // Vorformulierte Nachricht neu aufbauen wenn sich relevante Felder ändern
+  useEffect(() => {
+    const maintLabel = selectedMaintenance !== null ? maintenanceOptions[selectedMaintenance]?.label : "keine Wartung";
+    const demoLine = formData?.demo_html
+      ? `\nIch habe bei der Demo folgendes Template erhalten:\n${window.location.origin + "?demo=preview"}\n`
+      : "";
+    const contactLabel = contactMethodLabel[contactMethod] || contactMethod;
+    const name = orderData.name || "[Ihr Name]";
+    setMessage(
+`Hallo!
+
+Ich interessiere mich für Ihr ${selected || "[Paket]"} Angebot, zusammen mit ${maintLabel}.${demoLine}
+
+Ich würde mich freuen, wenn Sie sich über ${contactLabel} bei mir melden könnten!
+
+Grüße,
+${name}`
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected, selectedMaintenance, contactMethod, orderData.name, formData?.demo_html]);
 
   const handleOrder = async () => {
     setLoading(true);
