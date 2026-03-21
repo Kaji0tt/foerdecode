@@ -68,6 +68,7 @@ function RotatingExample({ tier }) {
 
 function PlanCard({ plan, onOrderClick, active }) {
   const style = tierStyles[plan.tier];
+  const [tooltipOpen, setTooltipOpen] = useState(false);
   return (
     <div
       className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
@@ -90,7 +91,34 @@ function PlanCard({ plan, onOrderClick, active }) {
         <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
           {plan.tagline}
         </span>
-        <h3 className="mt-3 text-xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
+        <div className="mt-3 flex items-center gap-1.5">
+          <h3 className="text-xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
+          <div className="relative">
+            <button
+              type="button"
+              onClick={() => setTooltipOpen(o => !o)}
+              className="flex items-center justify-center"
+              style={{ color: "#94a3b8" }}
+            >
+              <HelpCircle className="w-4 h-4" />
+            </button>
+            <AnimatePresence>
+              {tooltipOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute z-30 rounded-xl p-4 text-xs leading-relaxed shadow-xl"
+                  style={{ top: "calc(100% + 8px)", left: 0, width: 260, background: "#0f1f3d", color: "#e2e8f0" }}
+                >
+                  {plan.tooltip}
+                  <div className="absolute top-0 left-3 -translate-y-full w-0 h-0" style={{ borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderBottom: "8px solid #0f1f3d" }} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
         <div className="mt-2 flex items-baseline gap-1">
           <span className="text-xs mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
           <span className="text-3xl font-bold" style={style.price}>{plan.price}</span>
