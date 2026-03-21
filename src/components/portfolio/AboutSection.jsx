@@ -106,7 +106,7 @@ function StepsCarousel() {
             key={i}
             onClick={() => setActive(i)}
             className="rounded-full transition-all duration-300"
-            style={{ width: i === active ? 20 : 8, height: 8, background: i === active ? "#F59E0B" : "rgba(245,158,11,0.2)" }}
+            style={{ width: i === active ? 20 : 8, height: 8, background: i === active ? "#b91c1c" : "rgba(185,28,28,0.2)" }}
           />
         ))}
       </div>
@@ -131,9 +131,9 @@ export default function AboutSection() {
           transition={{ duration: 0.7 }}
           className="mb-6"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#1e3a6e" }}>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
             Offline geschnackt,{" "}
-            <span style={{ background: "linear-gradient(135deg, #F59E0B, #FCD34D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
               Online gemacht.
             </span>
           </h2>
@@ -150,7 +150,7 @@ export default function AboutSection() {
           <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#475569" }}>
             Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding. Dafür gehen Sichtbarkeit und Kunden verloren.<br /> Ich will das ändern.
           </p>
-          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#F59E0B" }}>
+          <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
             Über WhatsApp oder Telefon – gemeinsam zur Website.
           </p>
         </motion.div>
@@ -195,14 +195,14 @@ export default function AboutSection() {
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: "rgba(245,158,11,0.08)", border: "1px solid rgba(245,158,11,0.15)" }}>
-                  <step.icon className="w-5 h-5" style={{ color: "#F59E0B" }} />
+                  style={{ background: "rgba(185,28,28,0.08)", border: "1px solid rgba(185,28,28,0.15)" }}>
+                  <step.icon className="w-5 h-5" style={{ color: "#b91c1c" }} />
                 </div>
-                <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(245,158,11,0.6)" }}>
+                <span className="text-xs font-mono tracking-wider" style={{ color: "rgba(30,58,110,0.4)" }}>
                   SCHRITT {step.number}
                 </span>
               </div>
-              <h3 className="text-base font-semibold mb-2" style={{ color: "#1e3a6e" }}>{step.title}</h3>
+              <h3 className="text-base font-semibold mb-2" style={{ color: "#0f1f3d" }}>{step.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "#64748b" }}>{step.description}</p>
             </motion.div>
           ))}

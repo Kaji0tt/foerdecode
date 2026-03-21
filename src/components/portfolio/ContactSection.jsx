@@ -47,9 +47,9 @@ export default function ContactSection({ onOpenShop }) {
             transition={{ duration: 0.7 }}
             className="mb-8"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#1e3a6e" }}>
+            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
               In Tagen{" "}
-              <span style={{ color: "#F59E0B" }}>statt Wochen.</span>
+              <span style={{ color: "#b91c1c" }}>statt Wochen.</span>
             </h2>
             <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
               Erzählen Sie von Ihrem Geschäft – ich zeige Ihnen eine unverbindliche, kostenlose Vorschau.

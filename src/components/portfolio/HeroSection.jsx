@@ -15,10 +15,10 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl"
-          style={{ color: "#1e3a6e" }}
+          style={{ color: "#0f1f3d" }}
         >
           Ihr Geschäft.{" "}
-          <span style={{ background: "linear-gradient(135deg, #F59E0B, #FCD34D)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
+          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ihre Website.</span>
         </motion.h1>
 
         {/* Subline */}
@@ -50,14 +50,14 @@ export default function HeroSection() {
               key={btn.id}
               onClick={() => document.getElementById(btn.id)?.scrollIntoView({ behavior: "smooth" })}
               className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border backdrop-blur-md"
-              style={{ borderColor: "rgba(245,158,11,0.3)", color: "#1e3a6e", background: "rgba(252,211,77,0.15)", boxShadow: "0 8px 32px rgba(245,158,11,0.1)" }}
+              style={{ borderColor: "rgba(30,58,110,0.3)", color: "#1e3a6e", background: "rgba(255,255,255,0.7)", boxShadow: "0 8px 32px rgba(30,58,110,0.15)" }}
               onMouseEnter={e => { 
-                e.currentTarget.style.background = "rgba(252,211,77,0.25)";
-                e.currentTarget.style.boxShadow = "0 12px 48px rgba(245,158,11,0.2)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.85)";
+                e.currentTarget.style.boxShadow = "0 12px 48px rgba(30,58,110,0.25)";
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.background = "rgba(252,211,77,0.15)";
-                e.currentTarget.style.boxShadow = "0 8px 32px rgba(245,158,11,0.1)";
+                e.currentTarget.style.background = "rgba(255,255,255,0.7)";
+                e.currentTarget.style.boxShadow = "0 8px 32px rgba(30,58,110,0.15)";
               }}
             >
               {btn.label}
