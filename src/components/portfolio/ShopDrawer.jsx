@@ -478,7 +478,7 @@ ${name}`
                       ) : (
                         <>
                           <ShoppingCart className="w-5 h-5" />
-                          Jetzt anfragen
+                          Anfrage senden
                         </>
                       )}
                     </button>
