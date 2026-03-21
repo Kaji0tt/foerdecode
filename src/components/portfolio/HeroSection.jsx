@@ -37,25 +37,43 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="mt-8 flex flex-col sm:flex-row gap-4 flex-shrink-0"
+          className="mt-8 flex flex-col sm:flex-row gap-3 flex-shrink-0 flex-wrap justify-center"
         >
           <button
-            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-4 rounded-xl text-white font-semibold text-base sm:text-lg transition-all duration-300"
+            onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300"
             style={{ background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" }}
             onMouseEnter={e => e.currentTarget.style.background = "#991b1b"}
             onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
           >
-            Meine Website sehen
+            Wie funktioniert das?
           </button>
           <button
             onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-300 border-2"
+            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
             style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
           >
             Beispiele anschauen
+          </button>
+          <button
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
+            onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+          >
+            Kontakt
+          </button>
+          <button
+            onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
+            onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+          >
+            Preise
           </button>
         </motion.div>
       </div>
