@@ -1,17 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProfileHeader() {
   const [showTooltip, setShowTooltip] = useState(false);
+  const [widthPercent, setWidthPercent] = useState(100);
+
+  useEffect(() => {
+    const calculateWidth = () => {
+      const width = window.innerWidth;
+      // Mobile: 100%, Tablet: 88%, Desktop: 78%
+      let percent = 100;
+      if (width >= 1024) {
+        percent = 78;
+      } else if (width >= 768) {
+        percent = 88;
+      }
+      setWidthPercent(percent);
+    };
+
+    calculateWidth();
+    window.addEventListener("resize", calculateWidth);
+    return () => window.removeEventListener("resize", calculateWidth);
+  }, []);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute top-0 left-0 right-0 pt-6 px-6 flex justify-center z-20"
+      className="pt-6 px-6 flex justify-center w-full"
+      style={{ width: "100%" }}
     >
-      <div className="flex items-center gap-4 backdrop-blur-sm bg-white/40 rounded-full px-6 py-3 border border-white/50 shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <div
+        className="flex items-center gap-4 backdrop-blur-sm bg-white/40 rounded-full px-6 py-3 border border-white/50 shadow-lg hover:shadow-xl transition-shadow duration-300"
+        style={{ width: `${widthPercent}%`, maxWidth: "100%" }}
+      >
         {/* Profile Image */}
         <div
           className="relative"
@@ -68,15 +91,7 @@ export default function ProfileHeader() {
         </div>
       </div>
 
-      {/* Edit Instructions - Only visible in dev mode */}
-      {process.env.NODE_ENV === "development" && (
-        <div
-          className="absolute top-20 right-6 text-xs text-gray-500 bg-gray-50 px-3 py-2 rounded border border-gray-200"
-          style={{ maxWidth: "200px" }}
-        >
-          💡 Bild setzen: Inspiziere das Element mit id="profile-image" und setze backgroundImage
-        </div>
-      )}
+
     </motion.div>
   );
 }
