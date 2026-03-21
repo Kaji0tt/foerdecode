@@ -89,9 +89,9 @@ export const plans = [
     cta: "Lass uns reden",
     expertRotating: true,
     maintenance: [
-      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
-      { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
-      { label: "Rundum-Betreuung", desc: "Ich kümmere mich um alle Änderungswünsche zum nächsten verfügbaren Termin" },
+      { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },
+      { label: "Eigener Bearbeitungszugang", desc: "Texte, Bilder & Überschriften per Klick selbst anpassen – 30€ / Monat" },
+      { label: "Rundum-Betreuung", desc: "Bis zu 4 Feedback-Runden monatlich, ich kümmere mich um alles – 50€ / Monat" },
     ],
   },
 ];
