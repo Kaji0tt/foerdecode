@@ -57,31 +57,27 @@ Gib ein JSON-Objekt zurück mit:
       }
     });
 
-    // Schritt 2: HTML generieren mit dem strukturierten Brief
+    // Schritt 2: Hero-Vorschau generieren
     setLoadingStep("Erstelle deine Website...");
     const heroImage = `https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80`;
     const result = await base44.integrations.Core.InvokeLLM({
       model: "claude_sonnet_4_6",
-      prompt: `Erstelle eine vollständige einseitige HTML-Landing-Page. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
+      prompt: `Erstelle einen reinen HTML-Hero-Bereich als grobe erste Vorschau für eine Website. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
 
-Ziel: Eine überzeugende Landing Page, die potenzielle Kunden anspricht und zur Kontaktaufnahme motiviert. KEINE komplexen Apps oder Buchungssysteme — nur eine starke, ansprechende Präsentation.
+WICHTIG: Dies ist keine fertige Website – nur ein erster visueller Eindruck des Hero-Bereichs. Alle Links und Buttons führen ins Nichts (href="#"). Kein Scrollen nötig.
 
 Geschäft: ${brief.businessName} (${brief.businessType})
 Farben: primary=${brief.primaryColor}, secondary=${brief.secondaryColor}, accent=${brief.accentColor}
 Font: ${brief.googleFont}
-Hero: Headline="${brief.headline}", Subheadline="${brief.subheadline}", Hintergrundbild: ${heroImage}
-Leistungen: ${brief.services?.map(s => `${s.icon} ${s.name}`).join(", ")}
-USPs: ${brief.usps?.map(u => `${u.icon} ${u.title}`).join(", ")}
+Headline: "${brief.headline}"
+Subheadline: "${brief.subheadline}"
+Hintergrundbild: ${heroImage}
 
-Sections (in dieser Reihenfolge):
-1. Sticky-Nav mit Logo/Name und Telefon/Kontakt-Link
-2. Hero mit Bild-Hintergrund, dunklem Overlay, Headline, Subheadline und einem CTA-Button ("Kontakt aufnehmen")
-3. Leistungen / Angebote (4 Cards mit Icon, Name, kurzer Beschreibung)
-4. Über uns / Warum wir (3 USP-Punkte mit Icon und kurzem Text)
-5. Kontaktbereich: einfaches Formular (Name, Telefon, Nachricht) + Adresse Flensburg + Google Maps Placeholder
-6. Footer mit Copyright
+Aufbau:
+1. Einfache Nav-Leiste mit Geschäftsname als Logo (links) und 2–3 Platzhalter-Links (rechts, alle href="#")
+2. Hero-Bereich: Bild-Hintergrund mit dunklem Overlay, zentrierte Headline, Subheadline, ein CTA-Button (href="#")
 
-CSS+JS inline, Google Font einbinden, vollständig responsiv, kein Lorem Ipsum. Alle Texte auf Deutsch.`,
+CSS inline, Google Font einbinden, vollständig responsiv. Keine weiteren Sections. Keine Formulare. Kein Footer. Alle Texte auf Deutsch.`,
     });
 
     setHtml(result);
