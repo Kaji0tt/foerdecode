@@ -280,8 +280,8 @@ ${name}`
                           key={i}
                           className="rounded-xl overflow-hidden"
                           style={{
-                            border: selectedMaintenance === i ? `1.5px solid ${selectedPlan?.color}` : "1.5px solid rgba(30,58,110,0.12)",
-                            background: selectedMaintenance === i ? `${selectedPlan?.color}06` : "white"
+                            border: selectedMaintenance === i ? (m.highlight ? "1.5px solid #16a34a" : `1.5px solid ${selectedPlan?.color}`) : "1.5px solid rgba(30,58,110,0.12)",
+                            background: selectedMaintenance === i ? (m.highlight ? "rgba(22,163,74,0.06)" : `${selectedPlan?.color}06`) : "white"
                           }}
                         >
                           <button
@@ -293,12 +293,12 @@ ${name}`
                           >
                             <div className="flex items-center gap-3">
                               <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                                style={{ borderColor: selectedMaintenance === i ? selectedPlan?.color : "rgba(30,58,110,0.2)" }}>
-                                {selectedMaintenance === i && <div className="w-2.5 h-2.5 rounded-full" style={{ background: selectedPlan?.color }} />}
+                                style={{ borderColor: selectedMaintenance === i ? (m.highlight ? "#16a34a" : selectedPlan?.color) : "rgba(30,58,110,0.2)" }}>
+                                {selectedMaintenance === i && <div className="w-2.5 h-2.5 rounded-full" style={{ background: m.highlight ? "#16a34a" : selectedPlan?.color }} />}
                               </div>
                               <div>
-                                <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>{m.label}</span>
-                                <span className="ml-2 text-xs font-medium" style={{ color: m.priceValue === 0 ? "#16a34a" : selectedPlan?.color }}>
+                                <span className="text-sm font-medium" style={{ color: m.highlight ? "#16a34a" : "#0f1f3d" }}>{m.label}</span>
+                                <span className="ml-2 text-xs font-medium" style={{ color: m.highlight ? "#16a34a" : (m.priceValue === 0 ? "#16a34a" : selectedPlan?.color) }}>
                                   {m.price}
                                 </span>
                               </div>
