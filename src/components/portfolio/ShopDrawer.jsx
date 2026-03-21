@@ -123,6 +123,7 @@ ${name}`
       selected_package: selected,
       contact_method: contactMethod,
       phone_number: phoneNumber || "",
+      message: message,
       status: "neu",
     });
     setLoading(false);
