@@ -101,10 +101,10 @@ function PlanCard({ plan, onOrderClick, active }) {
         <span className="inline-block px-3 py-1 rounded-full text-xs font-medium" style={style.badge}>
           {plan.tagline}
         </span>
-        <div className="mt-3">
+        <div className="mt-3 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
           <h3 className="text-xl font-bold" style={{ color: "#0f1f3d" }}>{plan.name}</h3>
         </div>
-        <div className="mt-2 flex items-baseline gap-1">
+        <div className="mt-2 flex items-baseline gap-1 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
           <span className="text-xs mr-0.5" style={{ color: "#94a3b8" }}>{plan.name === "Expert" ? "ab" : ""}</span>
           <span className="text-3xl font-bold" style={style.price}>{plan.price}</span>
           <span className="text-sm" style={{ color: "#94a3b8" }}>€</span>
