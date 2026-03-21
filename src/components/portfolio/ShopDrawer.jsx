@@ -76,8 +76,24 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                   </p>
 
                   {plans.map((plan) => (
+                    <div key={plan.name} className="relative">
+                      {/* Tooltip */}
+                      <AnimatePresence>
+                        {openTooltip === plan.name && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 4 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 4 }}
+                            transition={{ duration: 0.15 }}
+                            className="absolute z-30 left-0 right-0 rounded-xl p-4 text-xs leading-relaxed shadow-xl"
+                            style={{ bottom: "calc(100% + 8px)", background: "#0f1f3d", color: "#e2e8f0" }}
+                          >
+                            {plan.tooltip}
+                            <div className="absolute bottom-0 left-6 translate-y-full w-0 h-0" style={{ borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid #0f1f3d" }} />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     <button
-                      key={plan.name}
                       onClick={() => setSelected(plan.name)}
                       className="w-full text-left rounded-2xl p-5 transition-all duration-200 relative"
                       style={{
@@ -93,7 +109,17 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                       )}
                       {/* Top row: name + price */}
                       <div className="flex items-start justify-between gap-2">
-                        <div className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-bold text-base" style={{ color: "#0f1f3d" }}>{plan.name}</span>
+                          <button
+                            type="button"
+                            onClick={e => { e.stopPropagation(); setOpenTooltip(openTooltip === plan.name ? null : plan.name); }}
+                            className="flex items-center justify-center rounded-full transition-colors"
+                            style={{ color: "#94a3b8" }}
+                          >
+                            <HelpCircle className="w-4 h-4" />
+                          </button>
+                        </div>
                         <div className="text-right" style={{ minWidth: 0 }}>
                           <div className="flex items-baseline justify-end gap-0.5">
                             <span className="text-xl font-bold" style={{ color: plan.color }}>{plan.price}</span>
