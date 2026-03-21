@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 import { plans } from "@/data/plans";
