@@ -99,12 +99,20 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
       : "";
     const contactLabel = contactMethodLabel[contactMethod] || contactMethod;
     const name = orderData.name || "[Ihr Name]";
+
+    let reachLine = "";
+    if (contactMethod === "email") {
+      reachLine = `über ${contactLabel} unter ${orderData.email || "[Ihre E-Mail]"}`;
+    } else if (contactMethod === "whatsapp" || contactMethod === "phone") {
+      reachLine = `über ${contactLabel} unter ${phoneNumber || "[Ihre Nummer]"}`;
+    }
+
     setMessage(
 `Hallo!
 
 Ich interessiere mich für Ihr ${selected || "[Paket]"} Angebot, zusammen mit ${maintLabel}.${demoLine}
 
-Ich würde mich freuen, wenn Sie sich über ${contactLabel} bei mir melden könnten!
+Ich würde mich freuen, wenn Sie sich ${reachLine} bei mir melden könnten!
 
 Grüße,
 ${name}`
