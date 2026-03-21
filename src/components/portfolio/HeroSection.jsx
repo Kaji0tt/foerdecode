@@ -41,8 +41,8 @@ export default function HeroSection() {
         >
           <button
             onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 rounded-xl text-white font-semibold text-base transition-all duration-300"
-            style={{ background: "#b91c1c", boxShadow: "0 8px 24px rgba(185,28,28,0.3)" }}
+            className="px-4 py-2 rounded-lg text-white font-medium text-sm transition-all duration-300"
+            style={{ background: "#b91c1c", boxShadow: "0 4px 12px rgba(185,28,28,0.3)" }}
             onMouseEnter={e => e.currentTarget.style.background = "#991b1b"}
             onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
           >
@@ -50,16 +50,16 @@ export default function HeroSection() {
           </button>
           <button
             onClick={() => document.getElementById("portfolio")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
             style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
           >
-            Beispiele anschauen
+            Beispiele
           </button>
           <button
             onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
             style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
@@ -68,7 +68,7 @@ export default function HeroSection() {
           </button>
           <button
             onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
             style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
@@ -77,7 +77,7 @@ export default function HeroSection() {
           </button>
           <button
             onClick={() => document.getElementById("simple-contact")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
             style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
             onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
             onMouseLeave={e => e.currentTarget.style.background = "transparent"}
