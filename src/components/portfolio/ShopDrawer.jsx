@@ -142,15 +142,18 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                   </div>
 
                   <div>
-                    <p className="text-sm font-medium mb-1" style={{ color: "#0f1f3d" }}>Möchten Sie Wartung & Pflege dazu? <span className="font-normal" style={{ color: "#94a3b8" }}>({maintenanceMonthly})</span></p>
-                    <p className="text-xs mb-4" style={{ color: "#94a3b8" }}>Optional — Sie können auch ohne weiter fortfahren.</p>
+                    <p className="text-sm font-medium mb-1" style={{ color: "#0f1f3d" }}>Wartung & Pflege – was passt zu Ihnen?</p>
+                    <p className="text-xs mb-4" style={{ color: "#94a3b8" }}>Wählen Sie eine Option:</p>
 
                     <div className="space-y-2">
-                      {selectedPlan?.maintenance.map((m, i) => (
+                      {maintenanceOptions.map((m, i) => (
                         <div
                           key={i}
                           className="rounded-xl overflow-hidden"
-                          style={{ border: selectedMaintenance === i ? `1.5px solid ${selectedPlan.color}` : "1.5px solid rgba(30,58,110,0.12)", background: selectedMaintenance === i ? `${selectedPlan.color}06` : "white" }}
+                          style={{
+                            border: selectedMaintenance === i ? `1.5px solid ${selectedPlan?.color}` : "1.5px solid rgba(30,58,110,0.12)",
+                            background: selectedMaintenance === i ? `${selectedPlan?.color}06` : "white"
+                          }}
                         >
                           <button
                             className="w-full flex items-center justify-between px-4 py-3 text-left"
@@ -161,10 +164,15 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                           >
                             <div className="flex items-center gap-3">
                               <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                                style={{ borderColor: selectedMaintenance === i ? selectedPlan.color : "rgba(30,58,110,0.2)" }}>
-                                {selectedMaintenance === i && <div className="w-2.5 h-2.5 rounded-full" style={{ background: selectedPlan.color }} />}
+                                style={{ borderColor: selectedMaintenance === i ? selectedPlan?.color : "rgba(30,58,110,0.2)" }}>
+                                {selectedMaintenance === i && <div className="w-2.5 h-2.5 rounded-full" style={{ background: selectedPlan?.color }} />}
                               </div>
-                              <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>{m.label}</span>
+                              <div>
+                                <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>{m.label}</span>
+                                <span className="ml-2 text-xs font-medium" style={{ color: m.priceValue === 0 ? "#16a34a" : selectedPlan?.color }}>
+                                  {m.price}
+                                </span>
+                              </div>
                             </div>
                             {expandedMaint === i
                               ? <ChevronUp className="w-4 h-4 flex-shrink-0" style={{ color: "#94a3b8" }} />
@@ -186,21 +194,6 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
                           </AnimatePresence>
                         </div>
                       ))}
-
-                      <button
-                        className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left"
-                        onClick={() => { setSelectedMaintenance(null); setExpandedMaint(null); }}
-                        style={{
-                          border: selectedMaintenance === null ? "1.5px solid rgba(30,58,110,0.4)" : "1.5px solid rgba(30,58,110,0.12)",
-                          background: selectedMaintenance === null ? "rgba(30,58,110,0.04)" : "white"
-                        }}
-                      >
-                        <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                          style={{ borderColor: selectedMaintenance === null ? "#1e3a6e" : "rgba(30,58,110,0.2)" }}>
-                          {selectedMaintenance === null && <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#1e3a6e" }} />}
-                        </div>
-                        <span className="text-sm font-medium" style={{ color: "#0f1f3d" }}>Nein, danke — erstmal ohne</span>
-                      </button>
                     </div>
                   </div>
 
