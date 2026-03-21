@@ -49,10 +49,16 @@ export default function HeroSection() {
             <button
               key={btn.id}
               onClick={() => document.getElementById(btn.id)?.scrollIntoView({ behavior: "smooth" })}
-              className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border"
-              style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
-              onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.08)"; }}
-              onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+              className="px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 border backdrop-blur-md"
+              style={{ borderColor: "rgba(30,58,110,0.3)", color: "#1e3a6e", background: "rgba(255,255,255,0.7)", boxShadow: "0 8px 32px rgba(30,58,110,0.15)" }}
+              onMouseEnter={e => { 
+                e.currentTarget.style.background = "rgba(255,255,255,0.85)";
+                e.currentTarget.style.boxShadow = "0 12px 48px rgba(30,58,110,0.25)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.7)";
+                e.currentTarget.style.boxShadow = "0 8px 32px rgba(30,58,110,0.15)";
+              }}
             >
               {btn.label}
             </button>
