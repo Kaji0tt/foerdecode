@@ -5,6 +5,72 @@ import { X, Check, ShoppingCart, ChevronDown, ChevronUp, HelpCircle } from "luci
 import { base44 } from "@/api/base44Client";
 import { plans, maintenanceOptions, maintenanceMonthly } from "@/data/plans";
 
+// Tooltip that renders via portal, centered on screen, arrow pointing at icon
+function PlanTooltip({ text, iconRef, onClose }) {
+  const [pos, setPos] = useState(null);
+
+  useEffect(() => {
+    if (!iconRef.current) return;
+    const rect = iconRef.current.getBoundingClientRect();
+    setPos({ iconCenterX: rect.left + rect.width / 2, iconBottom: rect.bottom });
+  }, [iconRef]);
+
+  useEffect(() => {
+    const handler = () => onClose();
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, [onClose]);
+
+  if (!pos) return null;
+
+  const padding = 16;
+  const tooltipWidth = Math.min(300, window.innerWidth - padding * 2);
+  // Center tooltip on screen, clamp to viewport
+  const screenCenterX = window.innerWidth / 2;
+  const left = Math.max(padding, Math.min(screenCenterX - tooltipWidth / 2, window.innerWidth - tooltipWidth - padding));
+  // Arrow position relative to tooltip left
+  const arrowLeft = Math.max(12, Math.min(pos.iconCenterX - left - 8, tooltipWidth - 28));
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0, y: 4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 4 }}
+      transition={{ duration: 0.15 }}
+      onClick={e => e.stopPropagation()}
+      style={{
+        position: "fixed",
+        top: pos.iconBottom + 8,
+        left,
+        width: tooltipWidth,
+        background: "#0f1f3d",
+        color: "#e2e8f0",
+        borderRadius: 12,
+        padding: 16,
+        fontSize: 12,
+        lineHeight: 1.6,
+        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        zIndex: 9999,
+      }}
+    >
+      {text}
+      {/* Arrow pointing up toward the icon */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: arrowLeft,
+        transform: "translateY(-100%)",
+        width: 0,
+        height: 0,
+        borderLeft: "8px solid transparent",
+        borderRight: "8px solid transparent",
+        borderBottom: "8px solid #0f1f3d",
+      }} />
+    </motion.div>,
+    document.body
+  );
+}
+
 export default function ShopDrawer({ open, onClose, preselectedPackage, formData }) {
   const [selected, setSelected] = useState(preselectedPackage || null);
   const [selectedMaintenance, setSelectedMaintenance] = useState(null);
@@ -15,6 +81,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
   const [loading, setLoading] = useState(false);
   const [expandedMaint, setExpandedMaint] = useState(null);
   const [openTooltip, setOpenTooltip] = useState(null);
+  const iconRefs = useRef({});
 
   const handleOrder = async () => {
     setLoading(true);
