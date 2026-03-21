@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
 import { base44 } from "@/api/base44Client";
