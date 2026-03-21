@@ -30,7 +30,7 @@ export default function SimpleContactSection() {
   return (
     <section
       id="simple-contact"
-      className="min-h-screen w-full flex items-center relative overflow-hidden snap-start"
+      className="h-screen w-full flex items-center relative overflow-hidden snap-start"
     >
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
 
@@ -45,9 +45,6 @@ export default function SimpleContactSection() {
             Noch Fragen offen?{" "}
             <span style={{ color: "#b91c1c" }}>Kein Problem.</span>
           </h2>
-          <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
-            Unsicher oder möchten Sie etwas wissen? Stellen Sie Ihre Frage – ich melde mich schnellstmöglich bei Ihnen.
-          </p>
         </motion.div>
 
         <motion.div

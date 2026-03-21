@@ -8,6 +8,7 @@ const sections = [
   { id: "portfolio", label: "Portfolio" },
   { id: "contact", label: "Kontakt" },
   { id: "pricing", label: "Pakete" },
+  { id: "simple-contact", label: "Fragen" },
 ];
 
 export default function NavigationDots({ activeSection }) {

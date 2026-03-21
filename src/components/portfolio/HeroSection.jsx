@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+
 
 export default function HeroSection() {
   return (
@@ -75,17 +75,19 @@ export default function HeroSection() {
           >
             Preise
           </button>
+          <button
+            onClick={() => document.getElementById("simple-contact")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-7 py-3.5 rounded-xl font-semibold text-base transition-all duration-300 border-2"
+            style={{ borderColor: "#1e3a6e", color: "#1e3a6e", background: "transparent" }}
+            onMouseEnter={e => { e.currentTarget.style.background = "rgba(30,58,110,0.04)"; }}
+            onMouseLeave={e => e.currentTarget.style.background = "transparent"}
+          >
+            Kontakt
+          </button>
         </motion.div>
       </div>
 
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        style={{ color: "rgba(30,58,110,0.3)" }}
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <ChevronDown className="w-6 h-6" />
-      </motion.div>
+
     </section>
   );
 }
