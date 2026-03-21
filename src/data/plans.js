@@ -98,6 +98,12 @@ export const plans = [
 
 export const maintenanceOptions = [
   {
+    label: "Erstmal keins",
+    desc: "Kein Problem – Sie können die Wartungsoptionen jederzeit später hinzubuchen. Die Website funktioniert wie gewohnt ohne zusätzliche Kosten.",
+    price: "kostenlos",
+    priceValue: 0,
+  },
+  {
     label: "Google-Listen-Sync",
     desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig, die Seite übernimmt die Änderungen automatisch.",
     price: "15€ / Monat",
