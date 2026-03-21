@@ -397,6 +397,18 @@ ${name}`
                     </div>
                   )}
 
+                  <div>
+                    <label className="text-sm mb-1.5 block font-medium" style={{ color: "#374151" }}>Ihre Nachricht</label>
+                    <p className="text-xs mb-2" style={{ color: "#94a3b8" }}>Diese Nachricht wird automatisch für Sie vorbereitet – Sie können sie noch anpassen:</p>
+                    <textarea
+                      value={message}
+                      onChange={e => setMessage(e.target.value)}
+                      rows={10}
+                      className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none"
+                      style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "#f8fafc", lineHeight: 1.6 }}
+                    />
+                  </div>
+
                 </div>
               )}
 
