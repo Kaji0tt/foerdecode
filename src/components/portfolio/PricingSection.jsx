@@ -15,8 +15,13 @@ function PlanTooltip({ text, iconRef, onClose }) {
 
   useEffect(() => {
     const handler = () => onClose();
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
+    const timer = setTimeout(() => {
+      document.addEventListener("click", handler);
+    }, 100);
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("click", handler);
+    };
   }, [onClose]);
 
   if (!pos) return null;
