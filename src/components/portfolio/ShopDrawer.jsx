@@ -280,8 +280,9 @@ ${name}`
                           key={i}
                           className="rounded-xl overflow-hidden"
                           style={{
-                            border: selectedMaintenance === i ? (m.highlight ? "1.5px solid #16a34a" : `1.5px solid ${selectedPlan?.color}`) : "1.5px solid rgba(30,58,110,0.12)",
-                            background: selectedMaintenance === i ? (m.highlight ? "rgba(22,163,74,0.06)" : `${selectedPlan?.color}06`) : "white"
+                            border: m.highlight ? "2px solid #16a34a" : (selectedMaintenance === i ? `1.5px solid ${selectedPlan?.color}` : "1.5px solid rgba(30,58,110,0.12)"),
+                            background: m.highlight ? "rgba(22,163,74,0.08)" : (selectedMaintenance === i ? `${selectedPlan?.color}06` : "white"),
+                            boxShadow: m.highlight ? "0 4px 12px rgba(22,163,74,0.15)" : "none"
                           }}
                         >
                           <button
