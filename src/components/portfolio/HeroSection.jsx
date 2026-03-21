@@ -14,7 +14,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl"
+          className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl font-sora"
           style={{ color: "#0f1f3d" }}
         >
           Ihr Geschäft.{" "}
