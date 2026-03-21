@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ProfileHeader from "./ProfileHeader";
 
 
 export default function HeroSection() {
@@ -9,7 +8,6 @@ export default function HeroSection() {
       id="hero"
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
     >
-      <ProfileHeader />
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
         {/* Main Headline */}
         <motion.h1
