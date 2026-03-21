@@ -52,7 +52,7 @@ export default function ContactSection({ onOpenShop }) {
               <span style={{ color: "#b91c1c" }}>statt Wochen.</span>
             </h2>
             <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Erzähle von deinem Geschäft, und ich zeige dir eine unverbindliche, kostenlose Vorschau.
+              Erzählen Sie von Ihrem Geschäft – ich zeige Ihnen eine unverbindliche, kostenlose Vorschau.
             </p>
           </motion.div>
 
