@@ -13,6 +13,7 @@ export default function ShopDrawer({ open, onClose, preselectedPackage, formData
   const [phoneNumber, setPhoneNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [expandedMaint, setExpandedMaint] = useState(null);
+  const [openTooltip, setOpenTooltip] = useState(null);
 
   const handleOrder = async () => {
     setLoading(true);
