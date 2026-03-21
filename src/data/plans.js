@@ -98,23 +98,23 @@ export const plans = [
 
 export const maintenanceOptions = [
   {
-    label: "Keine Wartung",
-    desc: "Website fertig – und los. Kein Abo, keine weiteren Kosten.",
-    price: "0€ / Monat",
-    priceValue: 0,
+    label: "Google-Listen-Sync",
+    desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig, die Seite übernimmt die Änderungen automatisch.",
+    price: "12€ / Monat",
+    priceValue: 12,
   },
   {
     label: "Eigener Bearbeitungszugang",
-    desc: "Ein Bearbeitungszugang, der zu Ihnen passt – direkt in die Seite integriert oder auf Ihre Fähigkeiten zugeschnitten. Sie ändern selbst, ich helfe bei Fragen.",
-    price: "18€ / Monat",
-    priceValue: 18,
+    desc: "Sie erhalten direkten Zugang zu Ihrer Website und können Texte, Überschriften und Bilder bequem per Klick anpassen – ganz ohne technisches Wissen. Ideal, wenn Sie Ihre Inhalte flexibel und eigenständig pflegen möchten.",
+    price: "30€ / Monat",
+    priceValue: 30,
   },
   {
     label: "Rundum-Betreuung",
-    desc: "Ich bin immer für Sie da. Wenn Sie etwas ändern, aktualisieren oder anpassen wollen – schreiben Sie mir einfach.",
-    price: "18€ / Monat",
-    priceValue: 18,
+    desc: "Ich kümmere mich um alles. Sie haben monatlich bis zu 4 Feedback-Runden, um Änderungswünsche direkt mit mir abzustimmen und Ihre Website gemeinsam auf dem neuesten Stand zu halten.",
+    price: "50€ / Monat",
+    priceValue: 50,
   },
 ];
 
-export const maintenanceMonthly = "18€ / Monat";
+export const maintenanceMonthly = "ab 12€ / Monat";
