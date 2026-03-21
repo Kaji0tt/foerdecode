@@ -275,10 +275,8 @@ export default function PortfolioSection() {
             Grobe Ideen,{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>klare Resultate.</span>
           </h2>
-          <p className="mt-4 text-lg" style={{ color: "#64748b" }}>
-            {project.isRework
-              ? "Schiebe den Regler, um Vorher & Nachher zu vergleichen."
-              : "Neue Website – komplett von Grund auf erstellt."}
+          <p className="mt-4 text-lg" style={{ color: "#64748b" }}>     
+              "Egal ob eine Seite überarbeitet werden soll, Sie bereits eine ungefähre Idee haben, oder einfach nur eine digitale Präsenz wollen."
           </p>
         </motion.div>
 
