@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, ChevronDown, ChevronUp } from "lucide-react";
 import { base44 } from "@/api/base44Client";
-import { plans, maintenanceMonthly } from "@/data/plans";
+import { plans, maintenanceOptions, maintenanceMonthly } from "@/data/plans";
 
 export default function ShopDrawer({ open, onClose, preselectedPackage, formData }) {
   const [selected, setSelected] = useState(preselectedPackage || null);
