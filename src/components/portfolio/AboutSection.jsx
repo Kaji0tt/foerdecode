@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { MousePointerClick, MessageSquare, Rocket } from "lucide-react";
 
@@ -51,6 +51,7 @@ function StepsCarousel() {
       el.removeEventListener("touchstart", handleTouchStart);
       el.removeEventListener("touchmove", handleTouchMove);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onTouchEnd = (e) => {
