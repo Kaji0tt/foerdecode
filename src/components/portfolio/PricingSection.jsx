@@ -1,7 +1,70 @@
 import React, { useRef, useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Check, Plus, HelpCircle } from "lucide-react";
 import { plans } from "@/data/plans";
+
+function PlanTooltip({ text, iconRef, onClose }) {
+  const [pos, setPos] = useState(null);
+
+  useEffect(() => {
+    if (!iconRef.current) return;
+    const rect = iconRef.current.getBoundingClientRect();
+    setPos({ iconCenterX: rect.left + rect.width / 2, iconBottom: rect.bottom });
+  }, []);
+
+  useEffect(() => {
+    const handler = () => onClose();
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, [onClose]);
+
+  if (!pos) return null;
+
+  const padding = 16;
+  const tooltipWidth = Math.min(300, window.innerWidth - padding * 2);
+  const screenCenterX = window.innerWidth / 2;
+  const left = Math.max(padding, Math.min(screenCenterX - tooltipWidth / 2, window.innerWidth - tooltipWidth - padding));
+  const arrowLeft = Math.max(12, Math.min(pos.iconCenterX - left - 8, tooltipWidth - 28));
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0, y: 4 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 4 }}
+      transition={{ duration: 0.15 }}
+      onClick={e => e.stopPropagation()}
+      style={{
+        position: "fixed",
+        top: pos.iconBottom + 8,
+        left,
+        width: tooltipWidth,
+        background: "#0f1f3d",
+        color: "#e2e8f0",
+        borderRadius: 12,
+        padding: 16,
+        fontSize: 12,
+        lineHeight: 1.6,
+        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        zIndex: 9999,
+      }}
+    >
+      {text}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: arrowLeft,
+        transform: "translateY(-100%)",
+        width: 0,
+        height: 0,
+        borderLeft: "8px solid transparent",
+        borderRight: "8px solid transparent",
+        borderBottom: "8px solid #0f1f3d",
+      }} />
+    </motion.div>,
+    document.body
+  );
+}
 
 const expertExamples = [
   "Online-Bestellsystem",
