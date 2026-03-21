@@ -75,8 +75,8 @@ export default function Home() {
       <HeroSection onDomainSelected={setSelectedDomain} />
       <AboutSection />
       <PortfolioSection />
-      <PricingSection onOrderClick={openShop} />
       <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
+      <PricingSection onOrderClick={openShop} />
 
       <ShopDrawer
         open={shopOpen}
