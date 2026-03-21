@@ -176,8 +176,30 @@ function ProjectVisual({ project }) {
 
 function MobilePortfolio({ current, setCurrent, projects }) {
   const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+  const containerRef = useRef(null);
 
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  React.useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const handleTouchStart = (e) => {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    };
+    const handleTouchMove = (e) => {
+      if (touchStartX.current === null || touchStartY.current === null) return;
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > dy) e.preventDefault();
+    };
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
+
   const onTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
@@ -186,6 +208,7 @@ function MobilePortfolio({ current, setCurrent, projects }) {
       else setCurrent((c) => (c - 1 + projects.length) % projects.length);
     }
     touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   const handleTap = () => {
@@ -196,7 +219,7 @@ function MobilePortfolio({ current, setCurrent, projects }) {
   const style = accentTag[project.accent];
 
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
@@ -216,7 +239,6 @@ function MobilePortfolio({ current, setCurrent, projects }) {
 
           <div
             className="px-6 pt-5 pb-2 bg-white"
-            onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
             onClick={handleTap}
           >

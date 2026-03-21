@@ -29,8 +29,30 @@ const steps = [
 function StepsCarousel() {
   const [active, setActive] = useState(0);
   const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+  const containerRef = useRef(null);
 
-  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  React.useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const handleTouchStart = (e) => {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    };
+    const handleTouchMove = (e) => {
+      if (touchStartX.current === null || touchStartY.current === null) return;
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      if (dx > dy) e.preventDefault();
+    };
+    el.addEventListener("touchstart", handleTouchStart, { passive: true });
+    el.addEventListener("touchmove", handleTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener("touchstart", handleTouchStart);
+      el.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, []);
+
   const onTouchEnd = (e) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
@@ -39,10 +61,11 @@ function StepsCarousel() {
       else setActive((c) => Math.max(c - 1, 0));
     }
     touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   return (
-    <div className="w-full" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div ref={containerRef} className="w-full" onTouchEnd={onTouchEnd}>
       <div className="relative flex items-center justify-center" style={{ height: 260 }}>
         {steps.map((step, i) => {
           const offset = i - active;
