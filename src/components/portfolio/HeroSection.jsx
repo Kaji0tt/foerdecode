@@ -29,7 +29,7 @@ export default function HeroSection() {
           className="mt-6 text-base sm:text-lg md:text-xl text-center max-w-3xl leading-relaxed"
           style={{ color: "#475569" }}
         >
-          Du kümmerst dich um dein Geschäft – ich kümmere mich um den Rest. Kein Technik-Wissen nötig, kein Stress, kein Durchblicken-müssen.
+          Du kümmerst dich um dein Geschäft – ich kümmere mich um den Rest. Kein Technik-Wissen nötig, einfach per WhatsApp oder Telefon.
         </motion.p>
 
         {/* Buttons */}
