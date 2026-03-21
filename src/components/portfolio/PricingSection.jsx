@@ -158,7 +158,7 @@ function PlanCard({ plan, onOrderClick, active }) {
 
         <div className="mt-4">
           {plan.addon && (
-            <div className="flex items-start gap-2 mb-3">
+            <div className="flex items-start gap-2 mb-3 transition-opacity duration-300" style={{ opacity: flipped ? 0 : 1 }}>
               <Plus className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={style.plus} />
               <span className="text-xs" style={{ color: "#94a3b8" }}>{plan.addon}</span>
             </div>
