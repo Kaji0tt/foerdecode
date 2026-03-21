@@ -275,9 +275,6 @@ export default function PortfolioSection() {
             Von deiner Vision {" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}> zu deiner Website.</span>
           </h2>
-          <p className="mt-4 text-lg" style={{ color: "#64748b" }}>     
-              "Von der Auffrischung Ihrer Seite, über die Umsetzung Ihrer Traum-Website, bis zum ersten Online-Schritt – ich passe mich an."
-          </p>
         </motion.div>
 
         {/* Mobile layout */}
