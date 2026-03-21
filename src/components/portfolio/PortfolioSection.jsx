@@ -179,7 +179,7 @@ function MobilePortfolio({ current, setCurrent, projects }) {
   const touchStartY = useRef(null);
   const containerRef = useRef(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
     const handleTouchStart = (e) => {
