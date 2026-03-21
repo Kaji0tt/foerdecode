@@ -1,6 +1,7 @@
 export const plans = [
   {
     name: "Basis",
+    tooltip: "Dieses Paket eignet sich vor allem dann, wenn Sie lediglich eine einfache Online-Präsenz benötigen – damit Sie im Internet schneller gefunden werden oder potenzielle Kunden Ihre Kontaktdaten und Öffnungszeiten abrufen können. Die 3 Feedback-Runden sind in der Regel ausreichend, um alle notwendigen Informationen und Bilder zu aktualisieren und die Seite an Ihre Vorstellungen anzupassen.",
     price: "129",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst einfach online sein – fertig.",
@@ -32,6 +33,7 @@ export const plans = [
   },
   {
     name: "Standard",
+    tooltip: "Dieses Paket eignet sich dann, wenn Sie unter einer eigenen E-Mail-Adresse erreichbar sein möchten oder besondere Anforderungen an bestimmte Details bestehen – etwa eine individuell gestaltete Navigationsleiste oder ein auf mobilen Geräten anders funktionierendes Layout. Mit 8 Feedback-Runden lässt sich der Seite ein echter persönlicher Touch verleihen.",
     price: "259",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst, dass es wirklich zu dir passt.",
@@ -63,6 +65,7 @@ export const plans = [
   },
   {
     name: "Expert",
+    tooltip: "Dieses Paket eignet sich vor allem dann, wenn Sie besondere Funktionen in Ihre Website integrieren möchten – etwa Mitgliederbereiche, Online-Buchungssysteme oder andere Anwendungen, die eine sorgfältige Ausarbeitung erfordern. Bei größeren Projekten empfiehlt sich eine enge Zusammenarbeit, um individuellen Anforderungen und Vorstellungen gerecht zu werden.",
     price: "499",
     priceNote: "zzgl. Domain-Kosten · Preis nach Absprache",
     tagline: "Du willst, dass die Website wirklich was tut.",
