@@ -276,7 +276,7 @@ export default function PortfolioSection() {
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>klare Resultate.</span>
           </h2>
           <p className="mt-4 text-lg" style={{ color: "#64748b" }}>     
-              "Egal ob eine Seite überarbeitet werden soll, Sie bereits eine ungefähre Idee haben, oder einfach nur eine digitale Präsenz wollen."
+              "Von der Auffrischung Ihrer Seite, über die Umsetzung Ihrer Traum-Website, bis zum ersten Online-Schritt – ich passe mich an."
           </p>
         </motion.div>
 
