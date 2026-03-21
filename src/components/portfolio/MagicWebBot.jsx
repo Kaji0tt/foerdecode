@@ -199,10 +199,10 @@ export default function MagicWebBot({ onSubmit, isInView }) {
           </motion.div>
         )}
 
-        {/* STEP 4: Details */}
-        {step === 4 && (
+        {/* STEP 3: Details */}
+        {step === 3 && (
           <motion.div
-            key="step4"
+            key="step3b"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -232,6 +232,27 @@ export default function MagicWebBot({ onSubmit, isInView }) {
                 className="h-11 bg-white text-sm"
                 style={{ borderColor: "rgba(30,58,110,0.15)" }}
               />
+            </div>
+          </motion.div>
+        )}
+
+        {/* STEP 4: Kontakt */}
+        {step === 4 && (
+          <motion.div
+            key="step4"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-4"
+          >
+            <div>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Dein Name *</label>
+              <Input name="name" value={form.name} onChange={handleChange} required placeholder="z.B. Lisa" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
+            </div>
+            <div>
+              <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>Deine E-Mail *</label>
+              <Input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="z.B. lisa@example.com" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
             </div>
           </motion.div>
         )}
