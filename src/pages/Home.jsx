@@ -8,7 +8,7 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
-const sectionIds = ["hero", "problem", "solution", "portfolio", "contact", "pricing"];
+const sectionIds = ["hero", "problem", "solution", "portfolio", "contact", "pricing", "simple-contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -78,6 +78,7 @@ export default function Home() {
       <PortfolioSection />
       <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
       <PricingSection onOrderClick={openShop} />
+      <SimpleContactSection />
 
       <ShopDrawer
         open={shopOpen}
