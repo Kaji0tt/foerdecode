@@ -1,60 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Check, Plus } from "lucide-react";
+import { plans } from "@/data/plans";
 
 const expertExamples = [
   "Online-Bestellsystem",
   "Kurs-Buchungen",
   "Liefer-Tracking",
   "Mitglieder-Bereich",
-];
-
-const plans = [
-  {
-    name: "Basis",
-    tagline: "Du willst einfach online sein – fertig.",
-    price: "129",
-    tier: "base",
-    rounds: "Bis zu 3 Feedback-Runden",
-    features: [
-      "Deine fertige Website – auf Basis deiner Demo",
-      "Wir passen gemeinsam Texte, Bilder & Farben an",
-      "Sieht auf dem Handy genauso gut aus",
-      "Web-Adresse nach Verfügbarkeit (Kosten je nach Adresse)",
-    ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
-    cta: "Loslegen",
-  },
-  {
-    name: "Standard",
-    tagline: "Du willst, dass es wirklich zu dir passt.",
-    price: "259",
-    tier: "standard",
-    popular: true,
-    rounds: "Bis zu 8 Feedback-Runden",
-    features: [
-      "Alles aus Basis",
-      "Mehr Freiheit beim Aussehen – wir bauen, was du dir vorstellst",
-      "Deine eigene Web-Adresse ist dabei (z. B. mein-laden.de)",
-      "Eigene E-Mail-Adresse (z. B. info@mein-laden.de)",
-    ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
-    cta: "Das klingt gut",
-  },
-  {
-    name: "Expert",
-    tagline: "Du willst, dass die Website wirklich was tut.",
-    price: "499",
-    tier: "expert",
-    rounds: "Bis zu 12 Feedback-Runden",
-    features: [
-      "Alles aus Standard",
-      "Besondere Funktionen – wir besprechen zusammen, was du brauchst, z. B.:",
-    ],
-    addon: "Optional: Ich kümmere mich weiterhin – Wartung & Pflege auf Wunsch",
-    cta: "Lass uns reden",
-    expertRotating: true,
-  },
 ];
 
 const tierStyles = {

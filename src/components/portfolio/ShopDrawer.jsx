@@ -2,72 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, ChevronDown, ChevronUp } from "lucide-react";
 import { base44 } from "@/api/base44Client";
-
-const plans = [
-  {
-    name: "Basis",
-    price: "129",
-    priceNote: "zzgl. Domain-Kosten",
-    tagline: "Ihre Seite steht — jetzt muss sie nur noch passen.",
-    color: "#1e3a6e",
-    rounds: "Bis zu 3 Feedback-Runden",
-    roundsNote: "Ideal für überschaubare Änderungen",
-    features: [
-      "Fertige Website auf Basis Ihrer Demo",
-      "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
-      "Mobilfreundlich & schnell",
-      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
-    ],
-    maintenance: [
-      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
-      { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
-      { label: "Rundum-Betreuung", desc: "Ich kümmere mich um alle Änderungswünsche zum nächsten verfügbaren Termin" },
-    ],
-  },
-  {
-    name: "Standard",
-    price: "259",
-    priceNote: "zzgl. Domain-Kosten",
-    tagline: "Für alle, die mehr als eine Visitenkarte im Netz wollen.",
-    color: "#b91c1c",
-    popular: true,
-    rounds: "Bis zu 8 Feedback-Runden",
-    roundsNote: "Für individuelle Gestaltungswünsche",
-    features: [
-      "Alles aus Basis",
-      "Individuelle Anpassungen, bspw. Navigation oder Layout",
-      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
-      "Eigene E-Mail-Adresse (z. B. info@ihr-laden.de)",
-    ],
-    maintenance: [
-      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen, die Sie leicht bearbeiten können." },
-      { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
-      { label: "Rundum-Betreuung", desc: "Ich kümmere mich um alle Änderungswünsche zum nächsten verfügbaren Termin" },
-    ],
-  },
-  {
-    name: "Expert",
-    price: "499",
-    priceNote: "zzgl. Domain-Kosten · Preis nach Absprache",
-    tagline: "Wenn Ihre Website wirklich arbeiten soll — nicht nur aussehen.",
-    color: "#0f1f3d",
-    rounds: "Bis zu 12 Feedback-Runden",
-    roundsNote: "Für komplexe Funktionen & enge Zusammenarbeit",
-    features: [
-      "Alles aus Standard",
-      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
-      "Eigene E-Mail-Adresse inklusive",
-      "Individuelle Sonderfunktionen nach Absprache",
-    ],
-    maintenance: [
-      { label: "Preislisten-Sync", desc: "Preise & Inhalte werden automatisch aus Google Tabellen übernommen" },
-      { label: "Eigener Bearbeitungszugang", desc: "Sie können Texte selbst ändern — bei Design-Fragen helfe ich" },
-      { label: "Rundum-Betreuung", desc: "Ich kümmere mich um alle Änderungswünsche zum nächsten verfügbaren Termin" },
-    ],
-  },
-];
-
-const maintenanceMonthly = "18€ / Monat";
+import { plans, maintenanceMonthly } from "@/data/plans";
 
 export default function ShopDrawer({ open, onClose, preselectedPackage, formData }) {
   const [selected, setSelected] = useState(preselectedPackage || null);
