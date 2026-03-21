@@ -99,6 +99,7 @@ export const plans = [
 export const maintenanceOptions = [
   {
     label: "Full Service: Ich übernehme alles, 3 Anfragen im Monat inklusive",
+    shortLabel: "Full Service",
     desc: "Ich kümmere mich um alle Änderungen und Aktualisierungen. Sie erhalten monatlich 3 Anfragen für Korrektionen, Änderungen und Pflege der Website ohne zusätzliche Kosten.",
     price: "59€ / Monat",
     priceValue: 59,
@@ -106,12 +107,14 @@ export const maintenanceOptions = [
   },
   {
     label: "Self-Service: Eigener Webzugang für einfache Verwaltung online",
+    shortLabel: "Self Service",
     desc: "Sie erhalten direkten Zugang zu Ihrer Website und können Texte, Überschriften und Bilder bequem per Klick anpassen – ganz ohne technisches Wissen.",
     price: "29€ / Monat",
     priceValue: 29,
   },
   {
     label: "Self-Service: Listenpflege",
+    shortLabel: "Self Service, Listenpflege",
     desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig.",
     price: "19€ / Monat",
     priceValue: 19,

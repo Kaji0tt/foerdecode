@@ -360,7 +360,7 @@ ${name}`
                     <div className="font-bold text-sm" style={{ color: "#0f1f3d" }}>{selected} · ab {selectedPlan?.price}€</div>
                     {selectedMaintenance !== null && maintenanceOptions[selectedMaintenance]?.priceValue > 0 && (
                       <div className="text-xs" style={{ color: "#64748b" }}>
-                        + Wartung: {maintenanceOptions[selectedMaintenance]?.label} ({maintenanceOptions[selectedMaintenance]?.price})
+                        + Wartung: {maintenanceOptions[selectedMaintenance]?.shortLabel} ({maintenanceOptions[selectedMaintenance]?.price})
                       </div>
                     )}
                     <div className="text-xs" style={{ color: "#94a3b8" }}>{selectedPlan?.priceNote}</div>
