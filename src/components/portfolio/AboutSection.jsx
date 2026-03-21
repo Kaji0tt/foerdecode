@@ -124,7 +124,7 @@ export default function AboutSection() {
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
           <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#475569" }}>
-            Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding – und das ist völlig okay. <br /> Ich übernehme. Damit können wir uns auf das Wesentliche konzentrieren: Deine Vorstellung.
+            Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding. Dafür gehen Sichtbarkeit und Kunden verloren.<br /> Ich will das ändern.
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
             Über WhatsApp oder Telefon, gemeinsam zur Website.
