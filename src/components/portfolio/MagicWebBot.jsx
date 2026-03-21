@@ -85,9 +85,78 @@ export default function MagicWebBot({ onSubmit, isInView }) {
 
       {/* Form steps */}
       <AnimatePresence mode="wait">
+        {/* STEP 1: Website-Frage */}
         {step === 1 && (
           <motion.div
             key="step1"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="space-y-5"
+          >
+            {/* Frage: zeige "Erneuern?" wenn hasWebsite===true, sonst "Hast du eine Website?" */}
+            <div>
+              <AnimatePresence mode="wait">
+                {form.hasWebsite !== true ? (
+                  <motion.div key="q1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Hast du bereits eine Website?</label>
+                    <div className="flex gap-3">
+                      {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
+                        <button key={opt.label} type="button"
+                          onClick={() => setForm(p => ({ ...p, hasWebsite: opt.value, renewWebsite: null, existingUrl: "" }))}
+                          className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all"
+                          style={{
+                            border: form.hasWebsite === opt.value ? "2px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
+                            background: form.hasWebsite === opt.value ? "rgba(185,28,28,0.06)" : "white",
+                            color: form.hasWebsite === opt.value ? "#b91c1c" : "#475569",
+                          }}
+                        >{opt.label}</button>
+                      ))}
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div key="q2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="space-y-4">
+                    <div className="flex items-center gap-2 mb-1">
+                      <button type="button" onClick={() => setForm(p => ({ ...p, hasWebsite: null, renewWebsite: null, existingUrl: "" }))} className="text-xs font-medium underline" style={{ color: "#94a3b8" }}>
+                        ← Zurück
+                      </button>
+                    </div>
+                    <div>
+                      <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Soll die bestehende Website erneuert werden?</label>
+                      <div className="flex gap-3">
+                        {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
+                          <button key={opt.label} type="button"
+                            onClick={() => setForm(p => ({ ...p, renewWebsite: opt.value, existingUrl: "" }))}
+                            className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all"
+                            style={{
+                              border: form.renewWebsite === opt.value ? "2px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
+                              background: form.renewWebsite === opt.value ? "rgba(185,28,28,0.06)" : "white",
+                              color: form.renewWebsite === opt.value ? "#b91c1c" : "#475569",
+                            }}
+                          >{opt.label}</button>
+                        ))}
+                      </div>
+                    </div>
+                    <AnimatePresence>
+                      {form.renewWebsite === true && (
+                        <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }}>
+                          <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>URL der bestehenden Website *</label>
+                          <Input name="existingUrl" value={form.existingUrl} onChange={handleChange} placeholder="z.B. www.meingeschaeft.de" className="h-11 bg-white text-sm" style={{ borderColor: "rgba(30,58,110,0.15)" }} />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        )}
+
+        {/* STEP 2: Kontakt */}
+        {step === 2 && (
+          <motion.div
+            key="step2"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -105,9 +174,10 @@ export default function MagicWebBot({ onSubmit, isInView }) {
           </motion.div>
         )}
 
-        {step === 2 && (
+        {/* STEP 3: Geschäft */}
+        {step === 3 && (
           <motion.div
-            key="step2"
+            key="step3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
@@ -133,10 +203,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
               <AnimatePresence>
                 {typeDropdownOpen && (
                   <motion.ul
-                    initial={{ opacity: 0, y: -4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -4 }}
-                    transition={{ duration: 0.15 }}
+                    initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.15 }}
                     className="absolute z-20 w-full mt-1 rounded-xl overflow-y-auto"
                     style={{ background: "white", border: "1.5px solid rgba(185,28,28,0.2)", boxShadow: "0 8px 24px rgba(0,0,0,0.1)", maxHeight: "120px", scrollbarWidth: "thin", scrollbarColor: "rgba(185,28,28,0.3) transparent" }}
                   >
@@ -154,95 +221,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
           </motion.div>
         )}
 
-        {step === 3 && (
-          <motion.div
-            key="step3"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-5"
-          >
-            {/* Hast du bereits eine Website? */}
-            <div>
-              <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Hast du bereits eine Website?</label>
-              <div className="flex gap-3">
-                {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
-                  <button
-                    key={opt.label}
-                    type="button"
-                    onClick={() => setForm(p => ({ ...p, hasWebsite: opt.value, renewWebsite: null, existingUrl: "" }))}
-                    className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all"
-                    style={{
-                      border: form.hasWebsite === opt.value ? "2px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
-                      background: form.hasWebsite === opt.value ? "rgba(185,28,28,0.06)" : "white",
-                      color: form.hasWebsite === opt.value ? "#b91c1c" : "#475569",
-                    }}
-                  >
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Wenn Ja: Soll sie erneuert werden? */}
-            <AnimatePresence>
-              {form.hasWebsite === true && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="space-y-4"
-                >
-                  <div>
-                    <label className="text-sm font-semibold mb-3 block" style={{ color: "#0f1f3d" }}>Soll die bestehende Website erneuert werden?</label>
-                    <div className="flex gap-3">
-                      {[{ label: "Ja", value: true }, { label: "Nein", value: false }].map(opt => (
-                        <button
-                          key={opt.label}
-                          type="button"
-                          onClick={() => setForm(p => ({ ...p, renewWebsite: opt.value, existingUrl: "" }))}
-                          className="flex-1 py-3 rounded-xl font-semibold text-sm transition-all"
-                          style={{
-                            border: form.renewWebsite === opt.value ? "2px solid #b91c1c" : "1.5px solid rgba(30,58,110,0.2)",
-                            background: form.renewWebsite === opt.value ? "rgba(185,28,28,0.06)" : "white",
-                            color: form.renewWebsite === opt.value ? "#b91c1c" : "#475569",
-                          }}
-                        >
-                          {opt.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Wenn Ja: URL eingeben */}
-                  <AnimatePresence>
-                    {form.renewWebsite === true && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <label className="text-sm font-semibold mb-2 block" style={{ color: "#0f1f3d" }}>URL der bestehenden Website *</label>
-                        <Input
-                          name="existingUrl"
-                          value={form.existingUrl}
-                          onChange={handleChange}
-                          placeholder="z.B. www.meingeschaeft.de"
-                          className="h-11 bg-white text-sm"
-                          style={{ borderColor: "rgba(30,58,110,0.15)" }}
-                        />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        )}
-
+        {/* STEP 4: Details */}
         {step === 4 && (
           <motion.div
             key="step4"
