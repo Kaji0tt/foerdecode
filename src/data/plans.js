@@ -100,21 +100,21 @@ export const maintenanceOptions = [
   {
     label: "Google-Listen-Sync",
     desc: "Preise, Produkte und Angebote können Sie jederzeit selbst aktualisieren – ganz einfach über private Listen in Google Workspace. Keine weiteren Eingriffe nötig, die Seite übernimmt die Änderungen automatisch.",
-    price: "12€ / Monat",
-    priceValue: 12,
+    price: "15€ / Monat",
+    priceValue: 15,
   },
   {
     label: "Eigener Bearbeitungszugang",
     desc: "Sie erhalten direkten Zugang zu Ihrer Website und können Texte, Überschriften und Bilder bequem per Klick anpassen – ganz ohne technisches Wissen. Ideal, wenn Sie Ihre Inhalte flexibel und eigenständig pflegen möchten.",
-    price: "30€ / Monat",
-    priceValue: 30,
+    price: "25€ / Monat",
+    priceValue: 25,
   },
   {
     label: "Rundum-Betreuung",
     desc: "Ich kümmere mich um alles. Sie haben monatlich bis zu 4 Feedback-Runden, um Änderungswünsche direkt mit mir abzustimmen und Ihre Website gemeinsam auf dem neuesten Stand zu halten.",
-    price: "50€ / Monat",
-    priceValue: 50,
+    price: "49€ / Monat",
+    priceValue: 49,
   },
 ];
 
-export const maintenanceMonthly = "ab 12€ / Monat";
+export const maintenanceMonthly = "ab 15€ / Monat";
