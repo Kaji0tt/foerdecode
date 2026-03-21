@@ -41,23 +41,6 @@ export default function ContactSection({ onOpenShop }) {
         <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "linear-gradient(90deg, #1e3a6e, #b91c1c)" }} />
 
         <div ref={ref} className="relative z-10 w-full max-w-2xl mx-auto px-6 pt-8 pb-16 flex flex-col justify-center">
-          {/* Heading */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
-            className="mb-8"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-              In Tagen{" "}
-              <span style={{ color: "#b91c1c" }}>statt Wochen.</span>
-            </h2>
-            <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
-              Erzähle von deinem Geschäft, und ich zeige dir eine unverbindliche, kostenlose Vorschau.
-            </p>
-
-          </motion.div>
-
           {/* Magic Web Bot */}
           <MagicWebBot onSubmit={handleFormSubmit} isInView={isInView} />
         </div>
