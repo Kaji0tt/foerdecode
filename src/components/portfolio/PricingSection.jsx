@@ -72,17 +72,23 @@ function PlanCard({ plan, onOrderClick, active }) {
   const style = tierStyles[plan.tier];
   const [flipped, setFlipped] = useState(false);
 
+  // Flip zurücksetzen wenn Karte inaktiv wird (z.B. wegswipen)
+  useEffect(() => {
+    if (!active) setFlipped(false);
+  }, [active]);
+
   return (
     <div
-      className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300 cursor-pointer"
+      className="relative rounded-2xl p-6 flex flex-col h-full transition-all duration-300"
       style={{
         border: plan.popular ? "1px solid rgba(185,28,28,0.2)" : "1px solid rgba(30,58,110,0.1)",
         background: "rgba(255,255,255,0.97)",
         boxShadow: active
           ? (plan.popular ? "0 8px 32px rgba(185,28,28,0.12)" : "0 8px 32px rgba(30,58,110,0.10)")
           : "0 2px 8px rgba(30,58,110,0.04)",
+        cursor: active ? "pointer" : "default",
       }}
-      onClick={() => setFlipped(f => !f)}
+      onClick={() => active && setFlipped(f => !f)}
     >
       {plan.popular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
