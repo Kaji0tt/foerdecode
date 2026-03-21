@@ -116,12 +116,6 @@ export const maintenanceOptions = [
     price: "19€ / Monat",
     priceValue: 19,
   },
-  {
-    label: "Erstmal keins",
-    desc: "Kein Problem – Sie können die Wartungsoptionen jederzeit später hinzubuchen. Die Website funktioniert wie gewohnt ohne zusätzliche Kosten.",
-    price: "kostenlos",
-    priceValue: 0,
-  },
 ];
 
 export const maintenanceMonthly = "ab 19€ / Monat";
