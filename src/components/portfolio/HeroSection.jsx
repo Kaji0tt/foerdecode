@@ -17,8 +17,8 @@ export default function HeroSection() {
           className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-[0.95] text-center max-w-7xl"
           style={{ color: "#0f1f3d" }}
         >
-          Online präsent.{" "}
-          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Ganz ohne Technik.</span>
+          Offline geklärt,{" "}
+          <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Online gestärkt.</span>
         </motion.h1>
 
         {/* Subline */}
