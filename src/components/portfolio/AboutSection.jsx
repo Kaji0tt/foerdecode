@@ -20,9 +20,9 @@ const steps = [
   {
     number: "03",
     icon: Rocket,
-    title: "Fertig – und du hast nichts gemacht",
+    title: "Feedback-Runden",
     description:
-      "Du gibst mir Feedback wie bei WhatsApp: 'Das gefällt mir, das nicht.' Ich setze alles um und bring deine Seite online. Kein einziges technisches Wort.",
+      "Du gibst mir Feedback über bspw. WhatsApp: 'Das gefällt mir, das nicht. Ich wünsche mir...' Ich setze alles um und bring deine Seite online. Du musst dich um nichts weiter kümmern.",
   },
 ];
 
