@@ -1,4 +1,1 @@
-/* 200
-
-# Cloudflare Pages SPA routing rule:
-# All routes that don't match static assets go to index.html
+/* /index.html 200
