@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { base44 } from "@/api/base44Client";
 import { Send, CheckCircle } from "lucide-react";
 
 export default function SimpleContactSection() {
@@ -16,11 +15,11 @@ export default function SimpleContactSection() {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
     setLoading(true);
-    await base44.integrations.Core.SendEmail({
-      to: "mail@nordweb.de",
-      subject: `Neue Anfrage von ${form.name}`,
-      body: `Name: ${form.name}\nE-Mail: ${form.email}\n\n${form.message}`,
-    });
+    const subject = encodeURIComponent(`Neue Anfrage von ${form.name}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nE-Mail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:mail@nordweb.de?subject=${subject}&body=${body}`;
     setLoading(false);
     setDone(true);
   };

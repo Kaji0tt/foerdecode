@@ -1,7 +1,179 @@
 import React, { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MessageSquare, Loader2, X, ArrowLeft } from "lucide-react";
-import { base44 } from "@/api/base44Client";
+
+const escapeHtml = (value = "") =>
+  String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+
+const guessPalette = (colors = "") => {
+  const input = colors.toLowerCase();
+  if (input.includes("gruen") || input.includes("green")) {
+    return { primary: "#14532d", secondary: "#dcfce7", accent: "#16a34a" };
+  }
+  if (input.includes("rot") || input.includes("red")) {
+    return { primary: "#7f1d1d", secondary: "#fee2e2", accent: "#dc2626" };
+  }
+  if (input.includes("blau") || input.includes("blue")) {
+    return { primary: "#1e3a8a", secondary: "#dbeafe", accent: "#2563eb" };
+  }
+  return { primary: "#0f172a", secondary: "#e2e8f0", accent: "#b91c1c" };
+};
+
+const buildDemoHtml = (formData) => {
+  const businessName = escapeHtml(formData?.businessName || "Ihr Geschaeft");
+  const businessType = escapeHtml(formData?.businessType || "Lokales Unternehmen");
+  const businessText = escapeHtml(formData?.business || "Moderne Leistungen mit persoenlichem Service.");
+  const palette = guessPalette(formData?.colors || "");
+  const colorHint = formData?.colors ? `Farbwunsch: ${escapeHtml(formData.colors)}` : "";
+
+  return `<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${businessName} - Demo</title>
+  <style>
+    :root {
+      --primary: ${palette.primary};
+      --secondary: ${palette.secondary};
+      --accent: ${palette.accent};
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      background: linear-gradient(140deg, var(--secondary), #ffffff 50%, #f8fafc);
+      color: #0f172a;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .links {
+      display: flex;
+      gap: 14px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #334155;
+      text-decoration: none;
+    }
+
+    .hero {
+      margin-top: 20px;
+      border-radius: 24px;
+      padding: 56px 28px;
+      background: radial-gradient(circle at 10% 0%, rgba(255,255,255,0.95), rgba(255,255,255,0.8)), linear-gradient(135deg, var(--secondary), rgba(15,23,42,0.05));
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 6vw, 56px);
+      line-height: 1.05;
+      max-width: 12ch;
+      color: var(--primary);
+    }
+
+    .sub {
+      margin-top: 16px;
+      max-width: 62ch;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #334155;
+    }
+
+    .cta {
+      margin-top: 28px;
+      display: inline-flex;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .hint {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #64748b;
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 36px 18px;
+        border-radius: 18px;
+      }
+
+      .links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <div class="logo">${businessName}</div>
+      <div class="links">
+        <a href="#">Leistungen</a>
+        <a href="#">Ueber uns</a>
+        <a href="#">Kontakt</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <span class="badge">Demo fuer ${businessType}</span>
+      <h1>${businessName} digital praesentieren</h1>
+      <p class="sub">${businessText}</p>
+      <a class="cta" href="#">Unverbindlich anfragen</a>
+      <p class="hint">${colorHint} Diese Vorschau wird lokal im Browser erzeugt und ist als Layout-Beispiel gedacht.</p>
+    </section>
+  </div>
+</body>
+</html>`;
+};
 
 export default function DemoPreview({ formData, onBack, onOrder }) {
   const [html, setHtml] = useState(null);
@@ -12,74 +184,8 @@ export default function DemoPreview({ formData, onBack, onOrder }) {
 
   const generate = async () => {
     setLoading(true);
-
-    // Schritt 1: Formulardaten in einen strukturierten Design-Brief umwandeln (schnell, kleines Modell)
-    setLoadingStep("Analysiere dein Geschäft...");
-    const brief = await base44.integrations.Core.InvokeLLM({
-      prompt: `Analysiere diese Angaben zu einem lokalen Geschäft in Flensburg und erstelle einen kompakten Design-Brief für eine Website.
-
-Geschäftsname: ${formData.businessName}
-Geschäftsart: ${formData.businessType || "unbekannt"}
-Geschäftsbeschreibung: ${formData.business}
-Wichtige Inhalte: ${formData.important || "keine Angabe"}
-Farbwünsche: ${formData.colors || "keine Angabe"}
-Ansprechpartner: ${formData.name}
-
-Gib ein JSON-Objekt zurück mit:
-- businessName: vermuteter oder passender Geschäftsname
-- businessType: Art des Geschäfts (z.B. Restaurant, Friseursalon, Bäckerei...)
-- primaryColor: Hex-Farbe passend zum Geschäft und Farbwünschen
-- secondaryColor: zweite Hex-Farbe
-- accentColor: Akzentfarbe
-- googleFont: passende Google Font (nur der Name)
-- headline: kurze, prägnante Hero-Überschrift (max 8 Wörter)
-- subheadline: Subheadline (max 15 Wörter)
-- sections: Array der Sections die sinnvoll sind (z.B. ["nav","hero","about","services","hours","contact","footer"])
-- services: Array mit 4 konkreten Leistungen/Produkten [{name, description, icon (unicode emoji)}]
-- usps: Array mit 3 USPs [{icon (unicode emoji), title, text}]
-- placeholderImageQuery: Suchbegriff für ein passendes Unsplash-Bild (auf Englisch)`,
-      response_json_schema: {
-        type: "object",
-        properties: {
-          businessName: { type: "string" },
-          businessType: { type: "string" },
-          primaryColor: { type: "string" },
-          secondaryColor: { type: "string" },
-          accentColor: { type: "string" },
-          googleFont: { type: "string" },
-          headline: { type: "string" },
-          subheadline: { type: "string" },
-          sections: { type: "array", items: { type: "string" } },
-          services: { type: "array", items: { type: "object", properties: { name: { type: "string" }, description: { type: "string" }, icon: { type: "string" } } } },
-          usps: { type: "array", items: { type: "object", properties: { icon: { type: "string" }, title: { type: "string" }, text: { type: "string" } } } },
-          placeholderImageQuery: { type: "string" }
-        }
-      }
-    });
-
-    // Schritt 2: Hero-Vorschau generieren
-    setLoadingStep("Erstelle deine Website...");
-    const heroImage = `https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80`;
-    const result = await base44.integrations.Core.InvokeLLM({
-      model: "claude_sonnet_4_6",
-      prompt: `Erstelle einen reinen HTML-Hero-Bereich als grobe erste Vorschau für eine Website. Gib NUR reinen HTML-Code zurück, beginnend mit <!DOCTYPE html>.
-
-WICHTIG: Dies ist keine fertige Website – nur ein erster visueller Eindruck des Hero-Bereichs. Alle Links und Buttons führen ins Nichts (href="#"). Kein Scrollen nötig.
-
-Geschäft: ${brief.businessName} (${brief.businessType})
-Farben: primary=${brief.primaryColor}, secondary=${brief.secondaryColor}, accent=${brief.accentColor}
-Font: ${brief.googleFont}
-Headline: "${brief.headline}"
-Subheadline: "${brief.subheadline}"
-Hintergrundbild: ${heroImage}
-
-Aufbau:
-1. Einfache Nav-Leiste mit Geschäftsname als Logo (links) und 2–3 Platzhalter-Links (rechts, alle href="#")
-2. Hero-Bereich: Bild-Hintergrund mit dunklem Overlay, zentrierte Headline, Subheadline, ein CTA-Button (href="#")
-
-CSS inline, Google Font einbinden, vollständig responsiv. Keine weiteren Sections. Keine Formulare. Kein Footer. Alle Texte auf Deutsch.`,
-    });
-
+    setLoadingStep("Erstelle lokale Vorschau...");
+    const result = buildDemoHtml(formData);
     setHtml(result);
     setLoading(false);
     setGenerated(true);
@@ -112,7 +218,7 @@ CSS inline, Google Font einbinden, vollständig responsiv. Keine weiteren Sectio
               </div>
               <h2 className="text-2xl font-bold text-white mb-3">Demo erstellen</h2>
               <p className="text-white/60 mb-8">
-                Unsere KI erstellt eine individuelle Website-Vorschau basierend auf deinen Angaben. Dies kann 1–2 Minuten dauern.
+                Diese Vorschau wird direkt in Ihrem Browser erzeugt und funktioniert ohne externe KI- oder Backend-Dienste.
               </p>
               <button
                 onClick={generate}

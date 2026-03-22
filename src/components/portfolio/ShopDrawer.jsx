@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Check, ShoppingCart, ChevronDown, ChevronUp, HelpCircle } from "lucide-react";
-import { base44 } from "@/api/base44Client";
-import { plans, maintenanceOptions, maintenanceMonthly } from "@/data/plans";
+import { plans, maintenanceOptions } from "@/data/plans";
 
 // Tooltip that renders via portal, centered on screen, arrow pointing at icon
 function PlanTooltip({ text, iconRef, onClose }) {
@@ -122,18 +121,9 @@ ${name}`
 
   const handleOrder = async () => {
     setLoading(true);
-    await base44.entities.ContactRequest.create({
-      name: orderData.name,
-      email: orderData.email,
-      business: formData?.business || "",
-      important: formData?.important || "",
-      colors: formData?.colors || "",
-      selected_package: selected,
-      contact_method: contactMethod,
-      phone_number: phoneNumber || "",
-      message: message,
-      status: "neu",
-    });
+    const subject = encodeURIComponent(`Anfrage: ${selected} Paket`);
+    const body = encodeURIComponent(message);
+    window.location.href = `mailto:mail@nordweb.de?subject=${subject}&body=${body}`;
     setLoading(false);
     setStep("done");
   };

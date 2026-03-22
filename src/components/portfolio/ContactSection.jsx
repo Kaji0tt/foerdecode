@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { base44 } from "@/api/base44Client";
 import DemoPreview from "./DemoPreview";
 import MagicWebBot from "./MagicWebBot";
 
