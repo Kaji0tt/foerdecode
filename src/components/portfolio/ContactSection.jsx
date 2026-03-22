@@ -49,7 +49,7 @@ export default function ContactSection({ onOpenShop }) {
           >
             <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight font-sora" style={{ color: "#0f1f3d" }}>
               In Tagen{" "}
-              <span style={{ color: "#9E0000" }}>statt Wochen.</span>
+              <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>statt Wochen.</span>
             </h2>
             <p className="mt-3 text-base sm:text-lg leading-relaxed" style={{ color: "#475569" }}>
               Erzählen Sie von Ihrem Geschäft – ich zeige Ihnen eine unverbindliche, kostenlose Vorschau.
