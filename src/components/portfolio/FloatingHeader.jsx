@@ -27,7 +27,13 @@ export default function FloatingHeader({ activeSection }) {
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 py-4"
         >
-          <div className="flex items-center gap-8 backdrop-blur-md bg-white/10 rounded-full px-8 py-3 border border-white/20 shadow-lg">
+          <div className="flex items-center gap-8 backdrop-blur-md bg-white/10 rounded-full px-5 py-2.5 border border-white/20 shadow-lg">
+            <img
+              src="/ProfSmallSmile.png"
+              alt="Jascha Kruse"
+              className="w-7 h-7 rounded-full object-cover flex-shrink-0"
+              style={{ border: "1.5px solid rgba(30,58,110,0.2)" }}
+            />
             {navItems.map((item) => (
               <button
                 key={item.id}

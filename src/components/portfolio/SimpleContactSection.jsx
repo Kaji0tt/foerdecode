@@ -44,6 +44,19 @@ export default function SimpleContactSection() {
             Noch Fragen offen?{" "}
             <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Kein Problem.</span>
           </h2>
+          {/* Personal intro */}
+          <div className="mt-6 flex items-center gap-4">
+            <img
+              src="/ProfSmallSmile.png"
+              alt="Jascha Kruse"
+              className="w-14 h-14 rounded-full object-cover flex-shrink-0"
+              style={{ border: "2px solid rgba(30,58,110,0.15)", boxShadow: "0 4px 16px rgba(30,58,110,0.12)" }}
+            />
+            <div>
+              <p className="text-sm font-semibold" style={{ color: "#0f1f3d" }}>Jascha Kruse</p>
+              <p className="text-xs leading-relaxed mt-0.5" style={{ color: "#64748b" }}>Sie schreiben direkt an mich – keine Hotline, kein Ticket-System. Ich antworte persönlich.</p>
+            </div>
+          </div>
         </motion.div>
 
         <motion.div

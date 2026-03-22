@@ -66,6 +66,25 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
+      {/* Founder badge bottom-left */}
+      <motion.div
+        initial={{ opacity: 0, x: -30, y: 20 }}
+        animate={{ opacity: 1, x: 0, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
+        className="absolute bottom-8 left-6 sm:left-10 z-20 flex items-center gap-3 backdrop-blur-md rounded-2xl px-4 py-3"
+        style={{ background: "rgba(255,255,255,0.75)", border: "1px solid rgba(30,58,110,0.12)", boxShadow: "0 8px 32px rgba(30,58,110,0.12)" }}
+      >
+        <img
+          src="/ProfSmallSmile.png"
+          alt="Jascha Kruse"
+          className="w-11 h-11 rounded-full object-cover flex-shrink-0"
+          style={{ border: "2px solid rgba(30,58,110,0.15)" }}
+        />
+        <div className="leading-tight">
+          <p className="text-sm font-semibold" style={{ color: "#0f1f3d" }}>Jascha Kruse</p>
+          <p className="text-xs" style={{ color: "#64748b" }}>Pädagoge · IT'ler · Idealist</p>
+        </div>
+      </motion.div>
 
     </section>
   );
