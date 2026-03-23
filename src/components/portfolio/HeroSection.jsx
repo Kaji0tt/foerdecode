@@ -1,12 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
-const heroChatMessages = [
-  { side: "left", text: "Wie schnell kann das online gehen?" },
-  { side: "right", text: "In wenigen Tagen steht die erste Version. Danach feilen wir gemeinsam am Feinschliff." },
+const heroChatMessageSets = [
+  [
+    { side: "left", text: "Hey, kannst du mir mit dem Portfolio helfen?" },
+    { side: "right", text: "Na klar, ich helfe dir gerne! Hast du Beispielseiten, die dir gefallen?" },
+  ],
+  [
+    { side: "left", text: "Ich brauche eine Website für meinen Laden. Geht das unkompliziert?" },
+    { side: "right", text: "Ja, absolut. Wir starten mit einem klaren Konzept und bauen daraus eine moderne Seite." },
+  ],
+  [
+    { side: "left", text: "Hey, wir müssen die Allergene aktualisieren." },
+    { side: "right", text: "Kein Problem, schick mir die aktuellen Informationen, und ich aktualisiere sie sofort." },
+  ],
+  [
+    { side: "left", text: "Wie schnell könnte meine erste Version online sein?" },
+    { side: "right", text: "Sehr schnell. In wenigen Tagen steht ein erster Entwurf, den wir gemeinsam anpassen. Wenn alles passt, bist du nächste Woche online." },
+  ],
 ];
 
 const messageRevealDelayMs = 3900;
+const secondTypingDelayMs = 700;
+const interactionStartDelayMs = 2000;
 const sharedBodyFontSize = "clamp(0.84rem, 0.78vw, 1.03rem)";
 
 const heroNavItems = [
@@ -24,31 +40,76 @@ export default function HeroSection() {
   const chatRef = useRef(null);
   const chatInView = useInView(chatRef, { once: true, margin: "-80px" });
   const prefersReducedMotion = useReducedMotion();
+  const [heroChatMessages] = useState(() => {
+    const randomIndex = Math.floor(Math.random() * heroChatMessageSets.length);
+    return heroChatMessageSets[randomIndex] || heroChatMessageSets[0];
+  });
   const [visibleMessages, setVisibleMessages] = useState(0);
+  const [interactionStarted, setInteractionStarted] = useState(false);
+  const [secondTypingReady, setSecondTypingReady] = useState(false);
 
   useEffect(() => {
-    if (!chatInView) return;
-
-    if (prefersReducedMotion) {
-      setVisibleMessages(heroChatMessages.length);
+    if (!chatInView) {
+      setInteractionStarted(false);
+      setVisibleMessages(0);
       return;
     }
 
-    setVisibleMessages(1);
-    const interval = setInterval(() => {
-      setVisibleMessages((current) => {
-        if (current >= heroChatMessages.length) {
-          clearInterval(interval);
-          return current;
-        }
-        return current + 1;
-      });
-    }, messageRevealDelayMs);
+    setInteractionStarted(false);
+    setVisibleMessages(0);
 
-    return () => clearInterval(interval);
+    if (prefersReducedMotion) {
+      const reducedTimeout = setTimeout(() => {
+        setInteractionStarted(true);
+        setVisibleMessages(heroChatMessages.length);
+      }, interactionStartDelayMs);
+      return () => clearTimeout(reducedTimeout);
+    }
+
+    let interval;
+    const startTimeout = setTimeout(() => {
+      setInteractionStarted(true);
+      interval = setInterval(() => {
+        setVisibleMessages((current) => {
+          if (current >= heroChatMessages.length) {
+            clearInterval(interval);
+            return current;
+          }
+          return current + 1;
+        });
+      }, messageRevealDelayMs);
+    }, interactionStartDelayMs);
+
+    return () => {
+      clearTimeout(startTimeout);
+      if (interval) clearInterval(interval);
+    };
   }, [chatInView, prefersReducedMotion]);
 
-  const showTyping = chatInView && !prefersReducedMotion && visibleMessages > 0 && visibleMessages < heroChatMessages.length;
+  useEffect(() => {
+    if (!chatInView || prefersReducedMotion) {
+      setSecondTypingReady(true);
+      return;
+    }
+
+    if (visibleMessages !== 1) {
+      setSecondTypingReady(false);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSecondTypingReady(true);
+    }, secondTypingDelayMs);
+
+    return () => clearTimeout(timeout);
+  }, [chatInView, visibleMessages, prefersReducedMotion]);
+
+  const showTyping =
+    interactionStarted &&
+    chatInView &&
+    !prefersReducedMotion &&
+    visibleMessages < heroChatMessages.length &&
+    (visibleMessages === 0 || secondTypingReady);
   const typingOnRight = heroChatMessages[visibleMessages]?.side === "right";
   const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -65,7 +126,7 @@ export default function HeroSection() {
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(180deg, rgba(15,31,61,0.5) 0%, rgba(12,24,48,0.58) 55%, rgba(0,0,0,0.52) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(166, 208, 247, 0.4) 0%, rgba(107, 107, 107, 0.28) 52%, rgba(32,128,124,0.24) 100%)" }}
         aria-hidden="true"
       />
 
@@ -100,48 +161,86 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
-            className="h-full pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 relative overflow-hidden"
+            className="h-full pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 relative overflow-hidden rounded-[1.75rem]"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
+              border: "1px solid rgba(255,255,255,0.16)",
+              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
+              backdropFilter: "blur(24px) saturate(150%)",
+              WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskSize: "100% 100%",
+              maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
+              maskRepeat: "no-repeat",
+              maskSize: "100% 100%",
+            }}
           >
-            {/* Liquid glass morphing overlay – fades into transparency */}
+            {/* Matching liquid-glass layer from navbar */}
             <div
               className="absolute inset-0 pointer-events-none z-0"
               style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 25%, transparent 65%)",
+                background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
               }}
             />
             <div
-              className="absolute top-[-25%] left-1/2 w-96 h-80 rounded-full pointer-events-none z-0"
+              className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none z-0"
               style={{
-                transform: "translateX(-20%)",
-                background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(150,180,255,0.72) 32%, rgba(120,150,255,0.32) 58%, transparent 78%)",
-                filter: "blur(22px)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
+                filter: "blur(10px)",
               }}
             />
             <div
-              className="absolute top-1/4 left-1/2 w-80 h-72 rounded-full pointer-events-none z-0"
+              className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none z-0"
               style={{
-                transform: "translateX(-50%)",
-                background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(140,160,255,0.22) 38%, transparent 72%)",
-                filter: "blur(24px)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
+                filter: "blur(14px)",
+                transform: "rotate(-12deg)",
               }}
             />
             <div
-              className="absolute top-2/3 left-1/2 w-96 h-96 rounded-full pointer-events-none z-0"
+              className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none z-0"
               style={{
-                transform: "translateX(-50%)",
-                background: "radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(120,140,255,0.12) 42%, transparent 75%)",
-                filter: "blur(28px)",
+                background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
+                filter: "blur(18px)",
+                transform: "rotate(8deg)",
               }}
             />
 
-            {/* Subtext – body font, same as chat bubbles */}
+            <button
+              onClick={() => scrollToSection("simple-contact")}
+              className="relative z-10 w-full flex items-center justify-between gap-4 cursor-pointer transition-opacity duration-200"
+              style={{ background: "none", border: "none", padding: "0.35rem 0" }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.9"; }}
+              aria-label="Zum Kontakt"
+            >
+              <div className="min-w-0 flex-1 text-right">
+                <span className="block font-sora font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(0.98rem, 1.18vw, 1.34rem)" }}>
+                  Jascha Kruse
+                </span>
+                <span className="block font-sora" style={{ color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.82rem, 0.82vw, 1rem)", marginTop: "0.2rem" }}>
+                  IT-Service Agent, Web-Entwickler, Designer
+                </span>
+              </div>
+              <img
+                src="/ProfSmallSmile.png"
+                alt="Jascha Kruse"
+                className="h-16 w-16 sm:h-20 sm:w-20 lg:h-[5.25rem] lg:w-[5.25rem] rounded-2xl object-cover object-top flex-shrink-0"
+                style={{ border: "1px solid rgba(255,255,255,0.28)" }}
+              />
+            </button>
+
+            <div
+              className="relative z-10 w-full h-px"
+              style={{ background: "rgba(255,255,255,0.22)" }}
+              aria-hidden="true"
+            />
+
             <p
-              className="leading-relaxed"
+              className="relative z-10 leading-relaxed"
               style={{
-                color: "#ffffff",
-                fontSize: "clamp(0.96rem, 1.0vw, 1.18rem)",
-                position: "relative",
-                zIndex: 1,
+                color: "rgba(255,255,255,0.72)",
+                fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
               }}
             >
               Sie kümmern sich um Ihr Geschäft – ich kümmere mich um den Rest. Kein Technik-Wissen nötig. Mit Fokus auf das Wesentliche.
@@ -231,6 +330,7 @@ export default function HeroSection() {
                     </div>
                   </motion.div>
                 )}
+
               </div>
             </div>
           </motion.div>
@@ -314,41 +414,6 @@ export default function HeroSection() {
                   </React.Fragment>
                 ))}
               </nav>
-
-              {/* Separator line on mobile, vertical line on desktop */}
-              <div
-                className="hidden lg:block self-stretch w-px mx-4 flex-shrink-0"
-                style={{ background: "rgba(255,255,255,0.18)" }}
-              />
-              <div
-                className="block lg:hidden h-px w-full"
-                style={{ background: "rgba(255,255,255,0.18)" }}
-              />
-
-              {/* Profile – flat, right-aligned, no box */}
-              <button
-                onClick={() => scrollToSection("simple-contact")}
-                className="flex items-center gap-3 cursor-pointer transition-opacity duration-200 self-end lg:self-auto flex-shrink-0"
-                style={{ background: "none", border: "none", padding: "0.15rem 0" }}
-                onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.88"; }}
-                aria-label="Zum Kontakt"
-              >
-                <div className="text-right min-w-0">
-                  <span className="block font-sora font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.92)", fontSize: "clamp(0.82rem, 0.78vw, 0.96rem)" }}>
-                    Pädagoge & IT-Service
-                  </span>
-                  <span className="block font-sora" style={{ color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.72rem, 0.66vw, 0.84rem)", marginTop: "0.1rem" }}>
-                    Your digital Guide
-                  </span>
-                </div>
-                <img
-                  src="/ProfSmallSmile.png"
-                  alt="Jascha Kruse"
-                  className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl object-cover object-top flex-shrink-0"
-                  style={{ border: "1px solid rgba(255,255,255,0.28)" }}
-                />
-              </button>
             </div>
           </motion.div>
         </div>
