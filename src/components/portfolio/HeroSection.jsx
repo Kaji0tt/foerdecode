@@ -17,6 +17,8 @@ const heroNavItems = [
   { label: "Kontakt", id: "simple-contact" },
 ];
 
+const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.url).href;
+
 
 export default function HeroSection() {
   const chatRef = useRef(null);
@@ -55,6 +57,18 @@ export default function HeroSection() {
       id="hero"
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
     >
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackgroundImage})` }}
+        aria-hidden="true"
+      />
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: "linear-gradient(180deg, rgba(15,31,61,0.5) 0%, rgba(12,24,48,0.58) 55%, rgba(0,0,0,0.52) 100%)" }}
+        aria-hidden="true"
+      />
+
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
         <div className="w-full max-w-7xl flex flex-col gap-6 lg:gap-7">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] items-stretch gap-8 lg:gap-6 lg:min-h-[min(58vh,540px)]">
@@ -86,13 +100,37 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
-            className="h-full pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 relative"
+            className="h-full pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 relative overflow-hidden"
           >
-            {/* Gradient overlay – top black → transparent, behind all content */}
+            {/* Liquid glass morphing overlay – fades into transparency */}
             <div
               className="absolute inset-0 pointer-events-none z-0"
               style={{
-                background: "linear-gradient(to bottom left, rgba(0,0,0,0.52) 0%, transparent 65%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 25%, transparent 65%)",
+              }}
+            />
+            <div
+              className="absolute top-[-25%] left-1/2 w-96 h-80 rounded-full pointer-events-none z-0"
+              style={{
+                transform: "translateX(-20%)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(150,180,255,0.72) 32%, rgba(120,150,255,0.32) 58%, transparent 78%)",
+                filter: "blur(22px)",
+              }}
+            />
+            <div
+              className="absolute top-1/4 left-1/2 w-80 h-72 rounded-full pointer-events-none z-0"
+              style={{
+                transform: "translateX(-50%)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.06) 0%, rgba(140,160,255,0.22) 38%, transparent 72%)",
+                filter: "blur(24px)",
+              }}
+            />
+            <div
+              className="absolute top-2/3 left-1/2 w-96 h-96 rounded-full pointer-events-none z-0"
+              style={{
+                transform: "translateX(-50%)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.04) 0%, rgba(120,140,255,0.12) 42%, transparent 75%)",
+                filter: "blur(28px)",
               }}
             />
 
@@ -203,15 +241,46 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.32, ease: "easeOut" }}
-            className="w-full rounded-[1.75rem]"
+            className="relative w-full overflow-hidden rounded-[1.75rem]"
             style={{
-              background: "linear-gradient(112deg, rgba(130,30,30,0.72) 0%, rgba(180,60,60,0.58) 28%, rgba(30,52,95,0.68) 62%, rgba(15,28,55,0.78) 100%)",
-              boxShadow: "0 16px 48px rgba(15,31,61,0.16)",
+              background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
+              border: "1px solid rgba(255,255,255,0.16)",
+              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
+              backdropFilter: "blur(24px) saturate(150%)",
             }}
           >
             <div
-              className="w-full rounded-[1.75rem] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5 flex flex-col gap-4 lg:gap-0 lg:flex-row lg:items-center lg:justify-between"
-              style={{ backdropFilter: "blur(12px)" }}
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
+              }}
+            />
+            <div
+              className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
+                filter: "blur(10px)",
+              }}
+            />
+            <div
+              className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
+                filter: "blur(14px)",
+                transform: "rotate(-12deg)",
+              }}
+            />
+            <div
+              className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
+                filter: "blur(18px)",
+                transform: "rotate(8deg)",
+              }}
+            />
+            <div
+              className="relative z-10 w-full rounded-[1.75rem] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5 flex flex-col gap-4 lg:gap-0 lg:flex-row lg:items-center lg:justify-between"
+              style={{ backdropFilter: "blur(14px)" }}
             >
               {/* Nav items – red sweep left-to-right on hover via background-clip */}
               <nav className="flex flex-1 flex-wrap items-center gap-x-0 gap-y-2">
