@@ -8,11 +8,11 @@ const heroChatMessageSets = [
   ],
   [
     { side: "left", text: "Ich brauche eine Website für meinen Laden. Geht das unkompliziert?" },
-    { side: "right", text: "Ja, absolut. Wir starten mit einem klaren Konzept und bauen daraus eine moderne Seite." },
+    { side: "right", text: "Ja, absolut. Wir starten mit einem Konzept, gehen das durch und wenn Sie zufrieden sind, bringe ich sie online." },
   ],
   [
     { side: "left", text: "Hey, wir müssen die Allergene aktualisieren." },
-    { side: "right", text: "Kein Problem, schick mir die aktuellen Informationen, und ich aktualisiere sie sofort." },
+    { side: "right", text: "Kein Problem, schick mir die aktuellen Informationen und ich kümmere mich darum." },
   ],
   [
     { side: "left", text: "Wie schnell könnte meine erste Version online sein?" },
@@ -119,8 +119,8 @@ export default function HeroSection() {
       className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
     >
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackgroundImage})` }}
+        className="absolute inset-0 bg-cover bg-no-repeat"
+        style={{ backgroundImage: `url(${heroBackgroundImage})`, backgroundPosition: "left top" }}
         aria-hidden="true"
       />
 
@@ -269,7 +269,7 @@ export default function HeroSection() {
                         style={
                           isRight
                             ? {
-                                background: "#0f1f3d",
+                                background: "rgba(15,31,61,0.5)",
                                 color: "#ffffff",
                                 border: "1px solid rgba(15,31,61,0.85)",
                                 fontSize: sharedBodyFontSize,
@@ -277,7 +277,7 @@ export default function HeroSection() {
                                 paddingBlock: "clamp(7px, 0.8vh, 12px)",
                               }
                             : {
-                                background: "rgba(255,255,255,0.9)",
+                                background: "rgba(255,255,255,0.5)",
                                 color: "#0f1f3d",
                                 border: "1px solid rgba(15,31,61,0.18)",
                                 fontSize: sharedBodyFontSize,
@@ -304,13 +304,13 @@ export default function HeroSection() {
                       style={
                         typingOnRight
                           ? {
-                              background: "#0f1f3d",
+                              background: "rgba(15,31,61,0.1)",
                               border: "1px solid rgba(15,31,61,0.85)",
                               paddingInline: "clamp(10px, 0.9vw, 14px)",
                               paddingBlock: "clamp(7px, 0.8vh, 12px)",
                             }
                           : {
-                              background: "rgba(255,255,255,0.9)",
+                              background: "rgba(255,255,255,0.1)",
                               border: "1px solid rgba(15,31,61,0.18)",
                               paddingInline: "clamp(10px, 0.9vw, 14px)",
                               paddingBlock: "clamp(7px, 0.8vh, 12px)",
