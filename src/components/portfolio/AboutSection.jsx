@@ -144,7 +144,7 @@ export default function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mb-7 p-5 rounded-xl"
+          className="hidden sm:block mb-7 p-5 rounded-xl"
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
           <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#475569" }}>
