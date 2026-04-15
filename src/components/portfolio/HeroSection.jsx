@@ -168,17 +168,11 @@ export default function HeroSection() {
           >
             {/* Background layer WITH mask — glass card fades at the bottom visually */}
             <div
-              className="absolute inset-0 pointer-events-none rounded-[1.75rem]"
+              className="absolute inset-0 pointer-events-none rounded-[1.75rem] hero-card-bg-fade"
               style={{
                 background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
                 border: "1px solid rgba(255,255,255,0.16)",
                 backdropFilter: "blur(24px) saturate(150%)",
-                WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskSize: "100% 100%",
-                maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
-                maskRepeat: "no-repeat",
-                maskSize: "100% 100%",
               }}
             >
               {/* Matching liquid-glass layer from navbar */}
