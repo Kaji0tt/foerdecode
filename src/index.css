@@ -88,3 +88,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 1023px) {
+  .hero-card-mobile-fade {
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 80%);
+    mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 80%);
+  }
+}

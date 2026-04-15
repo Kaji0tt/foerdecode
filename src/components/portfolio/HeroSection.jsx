@@ -161,7 +161,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
-            className="h-full relative overflow-hidden rounded-[1.75rem]"
+            className="h-full relative overflow-hidden rounded-[1.75rem] hero-card-mobile-fade"
             style={{
               boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
             }}
