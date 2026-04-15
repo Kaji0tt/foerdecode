@@ -341,7 +341,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.32, ease: "easeOut" }}
-            className="relative w-full overflow-hidden rounded-[1.75rem]"
+            className="hidden sm:block relative w-full overflow-hidden rounded-[1.75rem]"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
               border: "1px solid rgba(255,255,255,0.16)",

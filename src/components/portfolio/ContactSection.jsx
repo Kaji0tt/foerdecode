@@ -31,7 +31,7 @@ export default function ContactSection({ onOpenShop }) {
 
       <section
         id="contact"
-        className="min-h-screen w-full flex items-center relative overflow-visible snap-start"
+        className="hidden sm:flex min-h-screen w-full items-center relative overflow-visible snap-start"
       >
         {/* Top border */}
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
