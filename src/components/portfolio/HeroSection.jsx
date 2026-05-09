@@ -38,7 +38,10 @@ const heroNavItems = [
 const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.url).href;
 
 
-export default function HeroSection() {
+/**
+ * @param {{ activeSection?: string }} props
+ */
+export default function HeroSection({ activeSection }) {
   const chatRef = useRef(null);
   const chatInView = useInView(chatRef, { once: true, margin: "-80px" });
   const prefersReducedMotion = useReducedMotion();
@@ -68,6 +71,7 @@ export default function HeroSection() {
       return () => clearTimeout(reducedTimeout);
     }
 
+    /** @type {ReturnType<typeof setInterval> | undefined} */
     let interval;
     const startTimeout = setTimeout(() => {
       setInteractionStarted(true);
@@ -113,6 +117,7 @@ export default function HeroSection() {
     visibleMessages < heroChatMessages.length &&
     (visibleMessages === 0 || secondTypingReady);
   const typingOnRight = heroChatMessages[visibleMessages]?.side === "right";
+  /** @param {string} id */
   const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
@@ -356,10 +361,10 @@ export default function HeroSection() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 34 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.32, ease: "easeOut" }}
-            className="hidden sm:block relative w-full overflow-hidden rounded-[1.75rem]"
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="fixed top-4 left-1/2 -translate-x-1/2 w-[min(95vw,1120px)] z-50 overflow-hidden rounded-[1.75rem]"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
               border: "1px solid rgba(255,255,255,0.16)",
@@ -411,7 +416,7 @@ export default function HeroSection() {
                         fontSize: "clamp(0.78rem, 1.1vw, 1.05rem)",
                         background: "linear-gradient(to right, #9E0000 50%, #ffffff 50%)",
                         backgroundSize: "200% 100%",
-                        backgroundPosition: "100% 0%",
+                        backgroundPosition: activeSection === item.id ? "0% 0%" : "100% 0%",
                         WebkitBackgroundClip: "text",
                         WebkitTextFillColor: "transparent",
                         backgroundClip: "text",
@@ -422,7 +427,7 @@ export default function HeroSection() {
                         minWidth: 0,
                       }}
                       onMouseEnter={(e) => { e.currentTarget.style.backgroundPosition = "0% 0%"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = "100% 0%"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = activeSection === item.id ? "0% 0%" : "100% 0%"; }}
                     >
                       {item.label}
                     </button>

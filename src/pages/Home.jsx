@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import NavigationDots from "@/components/portfolio/NavigationDots";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
@@ -8,7 +7,7 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
-const sectionIds = ["hero", "problem", "solution", "portfolio", "contact", "pricing", "simple-contact"];
+const sectionIds = ["hero", "problem", "portfolio", "contact", "pricing", "simple-contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -32,7 +31,7 @@ export default function Home() {
       },
       {
         root: container,
-        threshold: 0.4,
+        threshold: 0.55,
       }
     );
 
@@ -44,6 +43,20 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      event.preventDefault();
+      container.scrollLeft += event.deltaY;
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    return () => container.removeEventListener("wheel", handleWheel);
+  }, []);
+
   const openShop = (pkg = null, formData = null) => {
     setShopPackage(pkg);
     setShopFormData(formData);
@@ -53,7 +66,7 @@ export default function Home() {
   return (
     <div
       ref={containerRef}
-      className="h-screen overflow-y-auto snap-y snap-mandatory scroll-smooth"
+      className="h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-smooth flex"
       style={{ scrollBehavior: "smooth", scrollbarWidth: "none", msOverflowStyle: "none", position: "relative", zIndex: 1 }}
     >
       {/* Fixed background */}
@@ -72,13 +85,24 @@ export default function Home() {
         }}
       />
 
-      <NavigationDots activeSection={activeSection} />
-      <HeroSection onDomainSelected={setSelectedDomain} />
-      <AboutSection />
-      <PortfolioSection />
-      <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
-      <PricingSection onOrderClick={openShop} />
-      <SimpleContactSection />
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <HeroSection onDomainSelected={setSelectedDomain} activeSection={activeSection} />
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <AboutSection />
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <PortfolioSection />
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <PricingSection onOrderClick={openShop} />
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start">
+        <SimpleContactSection />
+      </div>
 
       <ShopDrawer
         open={shopOpen}
