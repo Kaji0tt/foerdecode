@@ -134,48 +134,72 @@ export default function Home() {
         }}
       />
 
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "hero" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <HeroSection onDomainSelected={setSelectedDomain} activeSection={activeSection} />
-      </motion.div>
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "problem" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <AboutSection />
-      </motion.div>
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "portfolio" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <PortfolioSection />
-      </motion.div>
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "contact" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
-      </motion.div>
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "pricing" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <PricingSection onOrderClick={openShop} />
-      </motion.div>
-      <motion.div
-        className="w-screen h-screen shrink-0 snap-start"
-        animate={activeSection === "simple-contact" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-      >
-        <SimpleContactSection />
-      </motion.div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "hero" ? "hero-active" : "hero-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <HeroSection onDomainSelected={setSelectedDomain} activeSection={activeSection} />
+        </motion.div>
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "problem" ? "problem-active" : "problem-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <AboutSection />
+        </motion.div>
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "portfolio" ? "portfolio-active" : "portfolio-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <PortfolioSection />
+        </motion.div>
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "contact" ? "contact-active" : "contact-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
+        </motion.div>
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "pricing" ? "pricing-active" : "pricing-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <PricingSection onOrderClick={openShop} />
+        </motion.div>
+      </div>
+      <div className="w-screen h-screen shrink-0 snap-start overflow-hidden">
+        <motion.div
+          key={activeSection === "simple-contact" ? "simple-contact-active" : "simple-contact-idle"}
+          className="w-full h-full"
+          initial={{ x: -80, opacity: 0.6 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          <SimpleContactSection />
+        </motion.div>
+      </div>
 
       <ShopDrawer
         open={shopOpen}
