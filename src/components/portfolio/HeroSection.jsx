@@ -13,7 +13,8 @@ const heroChatMessageSets = [
   ],
   [
     { side: "left", text: "Was passiert, wenn die Website aktualisiert werden muss?" },
-    { side: "right", text: "Das hängt von dem Service, für den Sie sich entschieden haben ab. Entweder stelle ich einfache Selbstverwaltung zur Verfügung - oder ich übernehme die Aktualisierungen für Sie." },
+    { side: "right", text: "Das hängt von dem Service, für den Sie sich entschieden haben ab. Im Full-Service übernehme ich die Aktualisierungen für Sie. " },
+        { side: "right", text: "Wenn Sie lediglich die Inhalte selbst pflegen möchten, kann ich Ihnen eine einfache Möglichkeit zur Selbstverwaltung bereitstellen." },
   ],
   [
     { side: "left", text: "Wie lange dauert es, bis meine erste Version online ist?" },
