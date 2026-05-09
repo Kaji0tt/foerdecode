@@ -360,18 +360,19 @@ export default function HeroSection({ activeSection }) {
 
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[min(95vw,1120px)] z-50 overflow-hidden rounded-[1.75rem]"
-            style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
-              border: "1px solid rgba(255,255,255,0.16)",
-              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-              backdropFilter: "blur(24px) saturate(150%)",
-            }}
-          >
+          <div className="fixed bottom-6 left-1/2 z-50 w-[min(95vw,1120px)] -translate-x-1/2">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="relative w-full overflow-hidden rounded-[1.75rem]"
+              style={{
+                background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
+                border: "1px solid rgba(255,255,255,0.16)",
+                boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
+                backdropFilter: "blur(24px) saturate(150%)",
+              }}
+            >
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -450,6 +451,7 @@ export default function HeroSection({ activeSection }) {
         </div>
 
       </div>
+    </div>
 
     </section>
   );
