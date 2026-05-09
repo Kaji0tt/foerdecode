@@ -131,7 +131,7 @@ export default function HeroSection() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-14 sm:pt-16 lg:justify-center lg:pt-0 px-6">
         <div className="w-full max-w-7xl flex flex-col gap-6 lg:gap-7">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] items-stretch gap-8 lg:gap-6 lg:min-h-[min(58vh,540px)]">
           {/* Main Headline */}
@@ -162,50 +162,54 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
-            className="h-full pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 relative overflow-hidden rounded-[1.75rem]"
+            className="h-full relative overflow-hidden rounded-[1.75rem]"
             style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
-              border: "1px solid rgba(255,255,255,0.16)",
               boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-              backdropFilter: "blur(24px) saturate(150%)",
-              WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
-              WebkitMaskRepeat: "no-repeat",
-              WebkitMaskSize: "100% 100%",
-              maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 100%)",
-              maskRepeat: "no-repeat",
-              maskSize: "100% 100%",
             }}
           >
-            {/* Matching liquid-glass layer from navbar */}
+            {/* Background layer WITH mask — glass card fades at the bottom visually */}
             <div
-              className="absolute inset-0 pointer-events-none z-0"
+              className="absolute inset-0 pointer-events-none rounded-[1.75rem] hero-card-bg-fade"
               style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
+                background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
+                border: "1px solid rgba(255,255,255,0.16)",
+                backdropFilter: "blur(24px) saturate(150%)",
               }}
-            />
-            <div
-              className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none z-0"
-              style={{
-                background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
-                filter: "blur(10px)",
-              }}
-            />
-            <div
-              className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none z-0"
-              style={{
-                background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
-                filter: "blur(14px)",
-                transform: "rotate(-12deg)",
-              }}
-            />
-            <div
-              className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none z-0"
-              style={{
-                background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
-                filter: "blur(18px)",
-                transform: "rotate(8deg)",
-              }}
-            />
+            >
+              {/* Matching liquid-glass layer from navbar */}
+              <div
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
+                }}
+              />
+              <div
+                className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none z-0"
+                style={{
+                  background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
+                  filter: "blur(10px)",
+                }}
+              />
+              <div
+                className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none z-0"
+                style={{
+                  background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
+                  filter: "blur(14px)",
+                  transform: "rotate(-12deg)",
+                }}
+              />
+              <div
+                className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none z-0"
+                style={{
+                  background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
+                  filter: "blur(18px)",
+                  transform: "rotate(8deg)",
+                }}
+              />
+            </div>
+
+            {/* Content layer — NOT affected by the mask above; messages remain fully visible */}
+            <div className="relative z-10 pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 h-full">
 
             <button
               onClick={() => scrollToSection("simple-contact")}
@@ -254,16 +258,26 @@ export default function HeroSection() {
             >
               <div className="h-full flex flex-col justify-start gap-[clamp(8px,1.2vh,14px)]">
                 {heroChatMessages.map((message, index) => {
-                  if (index >= visibleMessages) return null;
-
+                  const isVisible = index < visibleMessages;
                   const isRight = message.side === "right";
                   return (
                     <motion.div
                       key={`${message.side}-${index}`}
-                      initial={prefersReducedMotion ? false : { opacity: 0, x: isRight ? 20 : -20, y: 6 }}
-                      animate={{ opacity: 1, x: 0, y: 0 }}
+                      initial={{ opacity: 0, x: isRight ? 20 : -20, y: 6 }}
+                      animate={
+                        prefersReducedMotion
+                          ? { opacity: isVisible ? 1 : 0, x: 0, y: 0 }
+                          : {
+                              opacity: isVisible ? 1 : 0,
+                              x: isVisible ? 0 : (isRight ? 20 : -20),
+                              y: isVisible ? 0 : 6,
+                            }
+                      }
                       transition={{ duration: 0.45, ease: "easeOut" }}
                       className={`flex ${isRight ? "justify-end" : "justify-start"}`}
+                      aria-hidden={!isVisible}
+                      tabIndex={!isVisible ? -1 : undefined}
+                      style={!isVisible ? { pointerEvents: "none", userSelect: "none" } : undefined}
                     >
                       <div
                         className="max-w-[94%] rounded-2xl leading-relaxed break-words"
@@ -334,6 +348,8 @@ export default function HeroSection() {
 
               </div>
             </div>
+
+            </div>
           </motion.div>
 
           </div>
@@ -342,7 +358,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.32, ease: "easeOut" }}
-            className="relative w-full overflow-hidden rounded-[1.75rem]"
+            className="hidden sm:block relative w-full overflow-hidden rounded-[1.75rem]"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
               border: "1px solid rgba(255,255,255,0.16)",
