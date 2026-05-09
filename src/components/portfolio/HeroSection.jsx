@@ -360,7 +360,7 @@ export default function HeroSection({ activeSection }) {
 
           </div>
 
-          <div className="fixed top-4 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2">
+          <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
