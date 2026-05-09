@@ -364,7 +364,7 @@ export default function HeroSection({ activeSection }) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 w-[min(95vw,1120px)] z-50 overflow-hidden rounded-[1.75rem]"
+            className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[min(95vw,1120px)] z-50 overflow-hidden rounded-[1.75rem]"
             style={{
               background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
               border: "1px solid rgba(255,255,255,0.16)",
@@ -429,7 +429,15 @@ export default function HeroSection({ activeSection }) {
                       onMouseEnter={(e) => { e.currentTarget.style.backgroundPosition = "0% 0%"; }}
                       onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = activeSection === item.id ? "0% 0%" : "100% 0%"; }}
                     >
+                      <motion.span
+                        key={`${item.id}-${activeSection === item.id ? "active" : "idle"}`}
+                        initial={activeSection === item.id ? { opacity: 0.45, x: -14 } : false}
+                        animate={activeSection === item.id ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                        transition={{ duration: 0.35, ease: "easeOut" }}
+                        className="inline-block"
+                      >
                       {item.label}
+                      </motion.span>
                     </button>
                     {idx < heroNavItems.length - 1 && (
                       <span style={{ color: "rgba(15,31,61,0.25)", userSelect: "none", fontSize: "0.8rem", flexShrink: 0 }}>·</span>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
@@ -12,6 +13,8 @@ const sectionIds = ["hero", "problem", "portfolio", "contact", "pricing", "simpl
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const containerRef = useRef(null);
+  const wheelLockRef = useRef(false);
+  const touchStartYRef = useRef(null);
   const [shopOpen, setShopOpen] = useState(false);
   const [shopPackage, setShopPackage] = useState(null);
   const [shopFormData, setShopFormData] = useState(null);
@@ -31,7 +34,7 @@ export default function Home() {
       },
       {
         root: container,
-        threshold: 0.55,
+        threshold: 0.6,
       }
     );
 
@@ -47,15 +50,61 @@ export default function Home() {
     const container = containerRef.current;
     if (!container) return;
 
+    const goToSection = (nextIndex) => {
+      const clampedIndex = Math.max(0, Math.min(nextIndex, sectionIds.length - 1));
+      const targetId = sectionIds[clampedIndex];
+      const targetElement = document.getElementById(targetId);
+      if (!targetElement) return;
+      targetElement.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    };
+
     const handleWheel = (event) => {
-      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      if (Math.abs(event.deltaY) < 8 || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       event.preventDefault();
-      container.scrollLeft += event.deltaY;
+
+      if (wheelLockRef.current) return;
+
+      const currentIndex = sectionIds.indexOf(activeSection);
+      const direction = event.deltaY > 0 ? 1 : -1;
+      const nextIndex = Math.max(0, Math.min(currentIndex + direction, sectionIds.length - 1));
+      if (nextIndex === currentIndex) return;
+
+      wheelLockRef.current = true;
+      goToSection(nextIndex);
+
+      window.setTimeout(() => {
+        wheelLockRef.current = false;
+      }, 520);
+    };
+
+    const handleTouchStart = (event) => {
+      touchStartYRef.current = event.touches[0]?.clientY ?? null;
+    };
+
+    const handleTouchEnd = (event) => {
+      if (touchStartYRef.current === null) return;
+      const endY = event.changedTouches[0]?.clientY;
+      if (typeof endY !== "number") return;
+
+      const deltaY = touchStartYRef.current - endY;
+      touchStartYRef.current = null;
+
+      if (Math.abs(deltaY) < 42) return;
+      const currentIndex = sectionIds.indexOf(activeSection);
+      const direction = deltaY > 0 ? 1 : -1;
+      goToSection(currentIndex + direction);
     };
 
     container.addEventListener("wheel", handleWheel, { passive: false });
-    return () => container.removeEventListener("wheel", handleWheel);
-  }, []);
+    container.addEventListener("touchstart", handleTouchStart, { passive: true });
+    container.addEventListener("touchend", handleTouchEnd, { passive: true });
+
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [activeSection]);
 
   const openShop = (pkg = null, formData = null) => {
     setShopPackage(pkg);
@@ -85,24 +134,48 @@ export default function Home() {
         }}
       />
 
-      <div className="w-screen h-screen shrink-0 snap-start">
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "hero" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <HeroSection onDomainSelected={setSelectedDomain} activeSection={activeSection} />
-      </div>
-      <div className="w-screen h-screen shrink-0 snap-start">
+      </motion.div>
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "problem" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <AboutSection />
-      </div>
-      <div className="w-screen h-screen shrink-0 snap-start">
+      </motion.div>
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "portfolio" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <PortfolioSection />
-      </div>
-      <div className="w-screen h-screen shrink-0 snap-start">
+      </motion.div>
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "contact" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
-      </div>
-      <div className="w-screen h-screen shrink-0 snap-start">
+      </motion.div>
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "pricing" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <PricingSection onOrderClick={openShop} />
-      </div>
-      <div className="w-screen h-screen shrink-0 snap-start">
+      </motion.div>
+      <motion.div
+        className="w-screen h-screen shrink-0 snap-start"
+        animate={activeSection === "simple-contact" ? { opacity: [0.5, 1], x: [-90, 0] } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
         <SimpleContactSection />
-      </div>
+      </motion.div>
 
       <ShopDrawer
         open={shopOpen}
