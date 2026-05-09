@@ -249,7 +249,7 @@ export default function HeroSection() {
                 fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
               }}
             >
-              Sie kümmern sich um Ihr Geschäft – ich kümmere mich um den Rest. Kein Technik-Wissen nötig. Mit Fokus auf das Wesentliche.
+              Sie kümmern sich um Ihr Geschäft – und ich mich um Ihre Online-Präsenz. Kein Technik-Wissen nötig.
             </p>
 
             <div
