@@ -6,23 +6,23 @@ const steps = [
   {
     number: "01",
     icon: MousePointerClick,
-    title: "Einfach ausprobieren",
+    title: "Schreiben Sie mir,",
     description:
-      "Beschreiben Sie kurz, was Sie machen – in ein paar Sätzen, ganz ohne Technik-Kenntnisse. Die KI zeigt Ihnen in Sekunden, wie Ihre Website aussehen könnte. Kostenlos, unverbindlich.",
+      "Schreiben Sie mich an und erzählen Sie kurz, was Sie sich vorstellen. Geben Sie dabei gerne an, was Sie machen und ob es bereits öffentliche Inhalte gibt, damit ich mir ein Bild machen kann.",
   },
   {
     number: "02",
     icon: MessageSquare,
-    title: "Ich melde mich bei Ihnen",
+    title: "Ich melde mich bei Ihnen.",
     description:
-      "Gefällt Ihnen die Vorschau? Dann nehmen wir kurz Kontakt auf. Kein Formular-Stress, kein Technik-Kram. Wir besprechen, was Sie sich vorstellen – ich kümmere mich um den Rest.",
+      "Ich melde mich persönlich bei Ihnen und zeige erste Ideen. Wenn Sie sich für eine Zusammenarbeit entscheiden, klären wir die Details und ich mache mich an die Arbeit.",
   },
   {
     number: "03",
     icon: Rocket,
     title: "Feedback-Runden",
     description:
-      "Sie geben mir Feedback über z.B. WhatsApp: 'Das gefällt mir, das nicht. Ich wünsche mir...' Ich setze alles um und bringe Ihre Seite online. Sie müssen sich um nichts weiter kümmern.",
+      "Sie geben Feedback per WhatsApp oder Telefon — ich kümmere mich um den Rest und bringe alles online.",
   },
 ];
 
@@ -132,9 +132,9 @@ export default function AboutSection() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Offline geschnackt,{" "}
+            Kurz geschnackt,{" "}
             <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              Online gemacht.
+              schnell gemacht.
             </span>
           </h2>
         </motion.div>
@@ -148,10 +148,15 @@ export default function AboutSection() {
           style={{ background: "rgba(30,58,110,0.04)", border: "1px solid rgba(30,58,110,0.1)" }}
         >
           <p className="text-sm sm:text-base leading-relaxed font-medium" style={{ color: "#475569" }}>
-            Viele Menschen wissen: Eine Website wäre gut. Aber Technik ist nicht ihr Ding. Dafür gehen Sichtbarkeit und Kunden verloren.<br /> Ich will das ändern.
+            Eine gute Website muss heute kein riesiges Projekt mehr sein.
+
+Dank moderner KI-Tools lassen sich schnell schöne, individuelle Seiten entwickeln — wenn man weiß, wie man mit den Systemen arbeitet.
+<br />Ich kümmere mich um die Technik und Umsetzung.
+<br />Sie erzählen einfach, was Sie machen und was Ihnen wichtig ist.
+
           </p>
           <p className="mt-3 text-sm sm:text-base font-semibold" style={{ color: "#b91c1c" }}>
-            Über WhatsApp oder Telefon – gemeinsam zur Website.
+            Ganz unkompliziert über WhatsApp oder Telefon.
           </p>
         </motion.div>
 

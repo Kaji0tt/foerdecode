@@ -3,20 +3,21 @@ import { motion, useInView, useReducedMotion } from "framer-motion";
 
 const heroChatMessageSets = [
   [
-    { side: "left", text: "Hey, kannst du mir mit dem Portfolio helfen?" },
-    { side: "right", text: "Na klar, ich helfe dir gerne! Hast du Beispielseiten, die dir gefallen?" },
+    { side: "left", text: "Uns fehlt eine Online-Präsenz für unser Restaurant. Was können Sie tun?" },
+    { side: "right", text: "Beschreiben Sie ihr Restaurant - wie ist das Ambiente, welche Art von Küche bieten Sie an?" },
+    { side: "right", text: "Falls Sie noch keine Internetadresse haben, kann ich Ihnen ebenfalls eine erstellen und einrichten." },
   ],
   [
-    { side: "left", text: "Ich brauche eine Website für meinen Laden. Geht das unkompliziert?" },
-    { side: "right", text: "Ja, absolut. Wir starten mit einem Konzept, gehen das durch und wenn Sie zufrieden sind, bringe ich sie online." },
+    { side: "left", text: "Welche rechtlichen Anforderungen muss ich beachten?" },
+    { side: "right", text: "Keine Sorge, ich kümmere mich um die Erfüllung der rechtlichen Anforderungen, wieDatenschutz und Impressum." },
   ],
   [
-    { side: "left", text: "Hey, wir müssen die Allergene aktualisieren." },
-    { side: "right", text: "Kein Problem, schick mir die aktuellen Informationen und ich kümmere mich darum." },
+    { side: "left", text: "Was passiert, wenn die Website aktualisiert werden muss?" },
+    { side: "right", text: "Das hängt von dem Service, für den Sie sich entschieden haben ab. Entweder stelle ich einfache Selbstverwaltung zur Verfügung - oder ich übernehme die Aktualisierungen für Sie." },
   ],
   [
-    { side: "left", text: "Wie schnell könnte meine erste Version online sein?" },
-    { side: "right", text: "Sehr schnell. In wenigen Tagen steht ein erster Entwurf, den wir gemeinsam anpassen. Wenn alles passt, bist du nächste Woche online." },
+    { side: "left", text: "Wie lange dauert es, bis meine erste Version online ist?" },
+    { side: "right", text: "Das hängt davon ab, wie umfangreich Ihre Anforderungen sind. Bei einer einfachen Website kann ich in wenigen Tagen eine erste Version bereitstellen." },
   ],
 ];
 
@@ -219,7 +220,7 @@ export default function HeroSection() {
                   Jascha Kruse
                 </span>
                 <span className="block font-sora" style={{ color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.82rem, 0.82vw, 1rem)", marginTop: "0.2rem" }}>
-                  IT-Service Agent, Web-Entwickler, Designer
+                  IT, Service & Design
                 </span>
               </div>
               <img
