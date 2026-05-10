@@ -9,6 +9,11 @@ import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
 const sectionIds = ["hero", "problem", "portfolio", "contact", "pricing", "simple-contact"];
+const sectionEntryThreshold = 0.3;
+const observerThreshold = 0.45;
+const wheelIntentThreshold = 4;
+const touchSwipeThreshold = 28;
+const snapLockDurationMs = 300;
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -27,14 +32,14 @@ export default function Home() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+          if (entry.isIntersecting && entry.intersectionRatio > sectionEntryThreshold) {
             setActiveSection(entry.target.id);
           }
         });
       },
       {
         root: container,
-        threshold: 0.6,
+        threshold: observerThreshold,
       }
     );
 
@@ -59,7 +64,7 @@ export default function Home() {
     };
 
     const handleWheel = (event) => {
-      if (Math.abs(event.deltaY) < 8 || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      if (Math.abs(event.deltaY) < wheelIntentThreshold || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       event.preventDefault();
 
       if (wheelLockRef.current) return;
@@ -74,7 +79,7 @@ export default function Home() {
 
       window.setTimeout(() => {
         wheelLockRef.current = false;
-      }, 520);
+      }, snapLockDurationMs);
     };
 
     const handleTouchStart = (event) => {
@@ -89,7 +94,7 @@ export default function Home() {
       const deltaY = touchStartYRef.current - endY;
       touchStartYRef.current = null;
 
-      if (Math.abs(deltaY) < 42) return;
+      if (Math.abs(deltaY) < touchSwipeThreshold) return;
       const currentIndex = sectionIds.indexOf(activeSection);
       const direction = deltaY > 0 ? 1 : -1;
       goToSection(currentIndex + direction);
