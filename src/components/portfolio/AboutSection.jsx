@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { MousePointerClick, MessageSquare, Rocket } from "lucide-react";
+import { MousePointerClick, MessageSquare, Rocket, Send, CheckCircle } from "lucide-react";
+import { createPortal } from "react-dom";
 
 const steps = [
   {
@@ -28,18 +29,21 @@ const steps = [
 
 function StepsCarousel() {
   const [active, setActive] = useState(0);
+  /** @type {React.MutableRefObject<number | null>} */
   const touchStartX = useRef(null);
+  /** @type {React.MutableRefObject<number | null>} */
   const touchStartY = useRef(null);
+  /** @type {React.MutableRefObject<HTMLDivElement | null>} */
   const containerRef = useRef(null);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const handleTouchStart = (e) => {
+    const handleTouchStart = (/** @type {TouchEvent} */ e) => {
       touchStartX.current = e.touches[0].clientX;
       touchStartY.current = e.touches[0].clientY;
     };
-    const handleTouchMove = (e) => {
+    const handleTouchMove = (/** @type {TouchEvent} */ e) => {
       if (touchStartX.current === null || touchStartY.current === null) return;
       const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
       const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
@@ -54,7 +58,7 @@ function StepsCarousel() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onTouchEnd = (e) => {
+  const onTouchEnd = (/** @type {React.TouchEvent<HTMLDivElement>} */ e) => {
     if (touchStartX.current === null) return;
     const diff = touchStartX.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 40) {
@@ -117,12 +121,37 @@ function StepsCarousel() {
 export default function AboutSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [contactOpen, setContactOpen] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const handleChange = (/** @type {React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>} */ e) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const closeContactModal = () => {
+    setContactOpen(false);
+    setLoading(false);
+  };
+
+  const handleSubmit = (/** @type {React.FormEvent<HTMLFormElement>} */ e) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) return;
+    setLoading(true);
+    const subject = encodeURIComponent(`Neue Anfrage von ${form.name}`);
+    const body = encodeURIComponent(`Name: ${form.name}\nE-Mail: ${form.email}\n\n${form.message}`);
+    window.location.href = `mailto:mail@nordweb.de?subject=${subject}&body=${body}`;
+    setLoading(false);
+    setDone(true);
+  };
+
+  const canSubmit = form.name && form.email && form.message;
 
   return (
-    <section
-      id="problem"
-      className="h-screen w-full flex items-center relative snap-start overflow-hidden"
-    >
+    <>
+      <section
+        id="problem"
+        className="h-screen w-full flex items-center relative snap-start overflow-hidden"
+      >
       <div ref={ref} className="relative z-10 w-full max-w-4xl mx-auto px-6 pt-8 pb-12 flex flex-col justify-center h-full">
 
         <motion.div
@@ -132,11 +161,36 @@ export default function AboutSection() {
           className="mb-6"
         >
           <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight" style={{ color: "#0f1f3d" }}>
-            Kurz geschnackt,{" "}
-            <span style={{ background: "linear-gradient(135deg, #b91c1c, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-              schnell gemacht.
+            <span style={{ color: "#0f1f3d" }}>
+              Schnell und{" "}
+            </span>
+            <span style={{ color: "#b91c1c" }}>
+              unkompliziert.
             </span>
           </h2>
+
+          <button
+            type="button"
+            onClick={() => {
+              setDone(false);
+              setContactOpen(true);
+            }}
+            className="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all"
+            style={{
+              border: "1px solid rgba(30,58,110,0.28)",
+              background: "rgba(255,255,255,0.72)",
+              color: "#0f1f3d",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.9)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "rgba(255,255,255,0.72)";
+            }}
+          >
+            <Send className="w-4 h-4" style={{ color: "#9E0000" }} />
+            Kontakt aufnehmen
+          </button>
         </motion.div>
 
         {/* Info box */}
@@ -214,5 +268,130 @@ Dank moderner KI-Tools lassen sich schnell schöne, individuelle Seiten entwicke
         </motion.div>
       </div>
     </section>
+
+    {contactOpen && typeof document !== "undefined" && createPortal(
+      <div className="fixed inset-0 z-[220] flex items-center justify-center px-4">
+        <button
+          type="button"
+          aria-label="Kontaktformular schließen"
+          className="absolute inset-0"
+          style={{ background: "rgba(2, 8, 23, 0.55)", border: "none" }}
+          onClick={closeContactModal}
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 18, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+          className="relative z-10 w-full max-w-2xl rounded-3xl p-6 sm:p-8"
+          style={{
+            background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.97) 100%)",
+            border: "1px solid rgba(30,58,110,0.18)",
+            boxShadow: "0 20px 50px rgba(2, 8, 23, 0.28)",
+          }}
+        >
+          <div className="flex items-start justify-between gap-4 mb-5">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold font-sora" style={{ color: "#0f1f3d" }}>
+                Kontakt
+              </h3>
+              <p className="mt-1 text-sm sm:text-base" style={{ color: "#475569" }}>
+                Schreiben Sie mir kurz Ihr Anliegen, ich melde mich schnell zuruck.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={closeContactModal}
+              className="rounded-full px-3 py-1.5 text-sm font-semibold"
+              style={{ background: "rgba(15,31,61,0.08)", color: "#0f1f3d", border: "1px solid rgba(15,31,61,0.14)" }}
+            >
+              Schliessen
+            </button>
+          </div>
+
+          {done ? (
+            <div
+              className="rounded-2xl p-8 flex flex-col items-center text-center"
+              style={{ border: "2px solid rgba(30,58,110,0.15)", background: "rgba(255,255,255,0.97)" }}
+            >
+              <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5" style={{ background: "rgba(30,58,110,0.08)" }}>
+                <CheckCircle className="w-7 h-7" style={{ color: "#1e3a6e" }} />
+              </div>
+              <h4 className="text-xl font-bold mb-2 font-sora" style={{ color: "#0f1f3d" }}>Nachricht gesendet!</h4>
+              <p className="text-sm" style={{ color: "#64748b" }}>Ich melde mich so schnell wie moeglich bei Ihnen.</p>
+            </div>
+          ) : (
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-2xl p-6 sm:p-8 space-y-5"
+              style={{ border: "2px solid rgba(30,58,110,0.15)", background: "rgba(255,255,255,0.97)", boxShadow: "0 8px 32px rgba(30,58,110,0.08)" }}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihr Name *</label>
+                  <input
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="z.B. Max Mustermann"
+                    className="w-full h-11 px-4 rounded-xl text-sm outline-none transition-all"
+                    style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
+                    onFocus={e => e.target.style.borderColor = "#1e3a6e"}
+                    onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihre E-Mail *</label>
+                  <input
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="max@beispiel.de"
+                    className="w-full h-11 px-4 rounded-xl text-sm outline-none transition-all"
+                    style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
+                    onFocus={e => e.target.style.borderColor = "#1e3a6e"}
+                    onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihre Frage oder Nachricht *</label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={5}
+                  placeholder="Was moechten Sie wissen?"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none transition-all"
+                  style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
+                  onFocus={e => e.target.style.borderColor = "#1e3a6e"}
+                  onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={!canSubmit || loading}
+                className="w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50"
+                style={{ background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.25)" }}
+                onMouseEnter={e => { if (canSubmit && !loading) e.currentTarget.style.background = "#162d5a"; }}
+                onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
+              >
+                {loading ? (
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    Nachricht senden
+                  </>
+                )}
+              </button>
+            </form>
+          )}
+        </motion.div>
+      </div>,
+      document.body
+    )}
+    </>
   );
 }

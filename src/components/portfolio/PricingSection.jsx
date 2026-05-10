@@ -172,8 +172,8 @@ function PlanCard({ plan, onOrderClick, active }) {
               <span className="text-xs" style={{ color: "#94a3b8" }}>{plan.addon}</span>
             </div>
           )}
-          <button
-            onClick={(e) => { e.stopPropagation(); onOrderClick ? onOrderClick(plan.name) : document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
+           <button
+             onClick={(e) => { e.stopPropagation(); onOrderClick ? onOrderClick(plan.name) : document.getElementById("simple-contact")?.scrollIntoView({ behavior: "smooth" }); }}
             onMouseEnter={e => Object.assign(e.currentTarget.style, style.buttonHover)}
             onMouseLeave={e => Object.assign(e.currentTarget.style, style.button)}
             className="w-full py-3 rounded-xl font-semibold text-white text-sm transition-all duration-300"

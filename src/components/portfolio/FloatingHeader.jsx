@@ -6,7 +6,7 @@ export default function FloatingHeader({ activeSection }) {
 
   useEffect(() => {
     // Header wird sichtbar ab Segment 2 (problem)
-    const showInSegments = ["problem", "solution", "portfolio", "contact", "pricing", "simple-contact"];
+    const showInSegments = ["problem", "solution", "portfolio", "pricing", "simple-contact"];
     setIsVisible(showInSegments.includes(activeSection));
   }, [activeSection]);
 

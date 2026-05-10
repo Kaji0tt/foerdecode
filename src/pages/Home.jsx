@@ -4,11 +4,10 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
-import ContactSection from "@/components/portfolio/ContactSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import ShopDrawer from "@/components/portfolio/ShopDrawer";
 
-const sectionIds = ["hero", "problem", "portfolio", "contact", "pricing", "simple-contact"];
+const sectionIds = ["hero", "problem", "portfolio", "pricing", "simple-contact"];
 const sectionEntryThreshold = 0.3;
 const observerThreshold = 0.45;
 
@@ -18,7 +17,6 @@ export default function Home() {
   const [shopOpen, setShopOpen] = useState(false);
   const [shopPackage, setShopPackage] = useState(null);
   const [shopFormData, setShopFormData] = useState(null);
-  const [selectedDomain, setSelectedDomain] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -82,7 +80,7 @@ export default function Home() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
-          <HeroSection onDomainSelected={setSelectedDomain} activeSection={activeSection} />
+          <HeroSection activeSection={activeSection} />
         </motion.div>
       </div>
       <div className="w-screen h-screen shrink-0 overflow-hidden">
@@ -105,17 +103,6 @@ export default function Home() {
           transition={{ duration: 0.45, ease: "easeOut" }}
         >
           <PortfolioSection />
-        </motion.div>
-      </div>
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "contact" ? "contact-active" : "contact-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
-          <ContactSection onOpenShop={openShop} prefilledDomain={selectedDomain} />
         </motion.div>
       </div>
       <div className="w-screen h-screen shrink-0 overflow-hidden">
