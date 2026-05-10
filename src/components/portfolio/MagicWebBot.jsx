@@ -282,7 +282,7 @@ export default function MagicWebBot({ onSubmit, isInView }) {
               onMouseLeave={e => e.currentTarget.style.background = "#b91c1c"}
             >
               <Sparkles className="w-5 h-5" />
-              Vorschau erstellen
+              Anfrage senden
             </button>
           </div>
         ) : (

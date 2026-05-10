@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { createPortal } from "react-dom";
 
 const heroChatMessageSets = [
   [
@@ -30,7 +31,6 @@ const sharedBodyFontSize = "clamp(0.84rem, 0.78vw, 1.03rem)";
 const heroNavItems = [
   { label: "Wie funktioniert das?", id: "problem" },
   { label: "Beispiele", id: "portfolio" },
-  { label: "Vorschau erstellen", id: "contact" },
   { label: "Preise", id: "pricing" },
   { label: "Kontakt", id: "simple-contact" },
 ];
@@ -360,95 +360,98 @@ export default function HeroSection({ activeSection }) {
 
           </div>
 
-          <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
-              className="relative w-full overflow-hidden rounded-[1.75rem]"
-              style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
-                border: "1px solid rgba(255,255,255,0.16)",
-                boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-                backdropFilter: "blur(24px) saturate(150%)",
-              }}
-            >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
-              }}
-            />
-            <div
-              className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
-                filter: "blur(10px)",
-              }}
-            />
-            <div
-              className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
-                filter: "blur(14px)",
-                transform: "rotate(-12deg)",
-              }}
-            />
-            <div
-              className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
-                filter: "blur(18px)",
-                transform: "rotate(8deg)",
-              }}
-            />
-            <div
-              className="relative z-10 w-full rounded-[1.75rem] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5 flex flex-col gap-4 lg:gap-0 lg:flex-row lg:items-center lg:justify-between"
-              style={{ backdropFilter: "blur(14px)" }}
-            >
-              {/* Nav items – red sweep left-to-right on hover via background-clip */}
-              <nav className="flex flex-1 flex-wrap items-center gap-x-0 gap-y-2">
-                {heroNavItems.map((item, idx) => (
-                  <React.Fragment key={item.id}>
-                    <button
-                      onClick={() => scrollToSection(item.id)}
-                      className="font-sora font-bold tracking-tighter cursor-pointer flex-1 text-center"
-                      style={{
-                        fontSize: "clamp(0.78rem, 1.1vw, 1.05rem)",
-                        background: "linear-gradient(to right, #9E0000 50%, #ffffff 50%)",
-                        backgroundSize: "200% 100%",
-                        backgroundPosition: activeSection === item.id ? "0% 0%" : "100% 0%",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                        transition: "background-position 0.45s ease",
-                        border: "none",
-                        paddingInline: "clamp(6px, 0.6vw, 12px)",
-                        paddingBlock: "0.25rem",
-                        minWidth: 0,
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.backgroundPosition = "0% 0%"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = activeSection === item.id ? "0% 0%" : "100% 0%"; }}
-                    >
-                      <motion.span
-                        key={`${item.id}-${activeSection === item.id ? "active" : "idle"}`}
-                        initial={activeSection === item.id ? { opacity: 0.45, x: -14 } : false}
-                        animate={activeSection === item.id ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-                        transition={{ duration: 0.35, ease: "easeOut" }}
-                        className="inline-block"
+          {typeof document !== "undefined" && createPortal(
+            <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2 pointer-events-none">
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: "easeOut" }}
+                className="relative w-full overflow-hidden rounded-[1.75rem] pointer-events-auto"
+                style={{
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
+                  border: "1px solid rgba(255,255,255,0.16)",
+                  boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
+                  backdropFilter: "blur(24px) saturate(150%)",
+                }}
+              >
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
+                }}
+              />
+              <div
+                className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
+                  filter: "blur(10px)",
+                }}
+              />
+              <div
+                className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
+                  filter: "blur(14px)",
+                  transform: "rotate(-12deg)",
+                }}
+              />
+              <div
+                className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
+                  filter: "blur(18px)",
+                  transform: "rotate(8deg)",
+                }}
+              />
+              <div
+                className="relative z-10 w-full rounded-[1.75rem] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5 flex flex-col gap-4 lg:gap-0 lg:flex-row lg:items-center lg:justify-between"
+                style={{ backdropFilter: "blur(14px)" }}
+              >
+                {/* Nav items – red sweep left-to-right on hover via background-clip */}
+                <nav className="flex flex-1 flex-wrap items-center gap-x-0 gap-y-2">
+                  {heroNavItems.map((item, idx) => (
+                    <React.Fragment key={item.id}>
+                      <button
+                        onClick={() => scrollToSection(item.id)}
+                        className="font-sora font-bold tracking-tighter cursor-pointer flex-1 text-center"
+                        style={{
+                          fontSize: "clamp(0.78rem, 1.1vw, 1.05rem)",
+                          background: "linear-gradient(to right, #9E0000 50%, #ffffff 50%)",
+                          backgroundSize: "200% 100%",
+                          backgroundPosition: activeSection === item.id ? "0% 0%" : "100% 0%",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                          transition: "background-position 0.45s ease",
+                          border: "none",
+                          paddingInline: "clamp(6px, 0.6vw, 12px)",
+                          paddingBlock: "0.25rem",
+                          minWidth: 0,
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.backgroundPosition = "0% 0%"; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = activeSection === item.id ? "0% 0%" : "100% 0%"; }}
                       >
-                      {item.label}
-                      </motion.span>
-                    </button>
-                    {idx < heroNavItems.length - 1 && (
-                      <span style={{ color: "rgba(15,31,61,0.25)", userSelect: "none", fontSize: "0.8rem", flexShrink: 0 }}>·</span>
-                    )}
-                  </React.Fragment>
-                ))}
-              </nav>
-            </div>
-          </motion.div>
-        </div>
+                        <motion.span
+                          key={`${item.id}-${activeSection === item.id ? "active" : "idle"}`}
+                          initial={activeSection === item.id ? { opacity: 0.45, x: -14 } : false}
+                          animate={activeSection === item.id ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                          transition={{ duration: 0.35, ease: "easeOut" }}
+                          className="inline-block"
+                        >
+                        {item.label}
+                        </motion.span>
+                      </button>
+                      {idx < heroNavItems.length - 1 && (
+                        <span style={{ color: "rgba(15,31,61,0.25)", userSelect: "none", fontSize: "0.8rem", flexShrink: 0 }}>·</span>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </nav>
+              </div>
+            </motion.div>
+          </div>,
+          document.body
+          )}
 
       </div>
     </div>
