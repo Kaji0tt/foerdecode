@@ -30,9 +30,10 @@ const sharedBodyFontSize = "clamp(0.84rem, 0.78vw, 1.03rem)";
 
 const heroNavItems = [
   { label: "Start", id: "hero" },
+  { label: "Ablauf", id: "problem" },
   { label: "Beispiele", id: "portfolio" },
-  { label: "Preise", id: "pricing" },  
-  { label: "Kontakt", id: "problem" },
+  { label: "Preise", id: "pricing" },
+  { label: "Kontakt", id: "simple-contact" },
 ];
 
 const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.url).href;
