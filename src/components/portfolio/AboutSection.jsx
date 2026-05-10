@@ -98,6 +98,7 @@ export default function AboutSection() {
 
   const showTyping = isInView && !prefersReducedMotion && visibleMessages < activeThread.chat.length;
   const typingOnRight = activeThread.chat[visibleMessages]?.side === "right";
+  const scrollToContact = () => document.getElementById("simple-contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
@@ -181,6 +182,33 @@ export default function AboutSection() {
             />
 
             <div className="relative z-10 h-full p-4 sm:p-5 lg:p-6 flex flex-col gap-3.5">
+              <button
+                type="button"
+                onClick={scrollToContact}
+                className="w-full flex items-center justify-between gap-3 cursor-pointer transition-opacity duration-200"
+                style={{ background: "none", border: "none", padding: "0" }}
+                onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.9"; }}
+                aria-label="Zum Kontakt"
+              >
+                <div className="min-w-0 flex-1 text-right">
+                  <span className="block font-sora font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(0.96rem, 1.02vw, 1.2rem)" }}>
+                    Jascha Kruse
+                  </span>
+                  <span className="block font-sora" style={{ color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.78rem, 0.78vw, 0.92rem)", marginTop: "0.15rem" }}>
+                    IT, Service & Design
+                  </span>
+                </div>
+                <img
+                  src="/ProfSmallSmile.png"
+                  alt="Jascha Kruse"
+                  className="h-14 w-14 sm:h-16 sm:w-16 rounded-2xl object-cover object-top flex-shrink-0"
+                  style={{ border: "1px solid rgba(255,255,255,0.28)" }}
+                />
+              </button>
+
+              <div className="w-full h-px" style={{ background: "rgba(255,255,255,0.18)" }} aria-hidden="true" />
+
               <p className="text-xs sm:text-sm uppercase tracking-[0.15em]" style={{ color: "rgba(255,255,255,0.62)" }}>
                 Simulierter Verlauf
               </p>

@@ -11,6 +11,7 @@ const heroNavItems = [
 ];
 
 const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.url).href;
+const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
 
 
 /**
@@ -41,28 +42,51 @@ export default function HeroSection({ activeSection }) {
         <div className="w-full max-w-7xl flex flex-col gap-6 lg:gap-7">
           <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] items-stretch gap-8 lg:gap-6 lg:min-h-[min(58vh,540px)]">
           {/* Main Headline */}
+          <div className="flex flex-col gap-4 lg:gap-5">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="inline-flex items-center gap-3 rounded-full w-fit pr-4 pl-2 py-2"
+            style={{
+              background: "rgba(255,255,255,0.72)",
+              border: "1px solid rgba(0,34,85,0.16)",
+              boxShadow: "0 10px 28px rgba(0,34,85,0.09)",
+            }}
+          >
+            <img
+              src={foerdeCodeLogo}
+              alt="Foerde Code Logo"
+              className="h-9 w-9 sm:h-10 sm:w-10 object-contain"
+            />
+            <span className="font-sora font-semibold tracking-tight" style={{ color: "#002255", fontSize: "clamp(0.9rem, 0.9vw, 1.05rem)" }}>
+              Foerde Code
+            </span>
+          </motion.div>
+
           <motion.h1
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
             className="text-6xl sm:text-8xl md:text-[6.5rem] lg:text-[8.5rem] font-bold tracking-tighter leading-[0.86] text-left font-sora"
-            style={{ color: "#0f1f3d" }}
+            style={{ color: "#002255" }}
           >
             <span className="block">Ihr</span>
             <span className="block">Geschäft.</span>
             <span
               className="block"
-              style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              style={{ background: "linear-gradient(135deg, #782121, #a73535)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
             >
               Ihre
             </span>
             <span
               className="block"
-              style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
+              style={{ background: "linear-gradient(135deg, #782121, #a73535)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
             >
               Website.
             </span>
           </motion.h1>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.96 }}
@@ -117,44 +141,14 @@ export default function HeroSection({ activeSection }) {
             {/* Content layer — NOT affected by the mask above; messages remain fully visible */}
             <div className="relative z-10 pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 h-full">
 
-            <button
-              onClick={() => scrollToSection("simple-contact")}
-              className="relative z-10 w-full flex items-center justify-between gap-4 cursor-pointer transition-opacity duration-200"
-              style={{ background: "none", border: "none", padding: "0.35rem 0" }}
-              onMouseEnter={(e) => { e.currentTarget.style.opacity = "1"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.opacity = "0.9"; }}
-              aria-label="Zum Kontakt"
-            >
-              <div className="min-w-0 flex-1 text-right">
-                <span className="block font-sora font-semibold leading-tight" style={{ color: "rgba(255,255,255,0.9)", fontSize: "clamp(0.98rem, 1.18vw, 1.34rem)" }}>
-                  Jascha Kruse
-                </span>
-                <span className="block font-sora" style={{ color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.82rem, 0.82vw, 1rem)", marginTop: "0.2rem" }}>
-                  IT, Service & Design
-                </span>
-              </div>
-              <img
-                src="/ProfSmallSmile.png"
-                alt="Jascha Kruse"
-                className="h-16 w-16 sm:h-20 sm:w-20 lg:h-[5.25rem] lg:w-[5.25rem] rounded-2xl object-cover object-top flex-shrink-0"
-                style={{ border: "1px solid rgba(255,255,255,0.28)" }}
-              />
-            </button>
-
-            <div
-              className="relative z-10 w-full h-px"
-              style={{ background: "rgba(255,255,255,0.22)" }}
-              aria-hidden="true"
-            />
-
             <p
               className="relative z-10 leading-relaxed"
               style={{
-                color: "rgba(255,255,255,0.72)",
+                color: "rgba(255,255,255,0.82)",
                 fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
               }}
             >
-              Sie kümmern sich um Ihr Geschäft – und ich mich um Ihre Online-Präsenz. Kein Technik-Wissen nötig.
+              Klare Struktur, starker erster Eindruck und eine moderne Website, die auf Ihr Geschaeft einzahlt.
             </p>
 
             <div className="flex-1 w-full min-h-0 flex flex-col justify-between gap-4" style={{ position: "relative", zIndex: 1 }}>
@@ -177,7 +171,7 @@ export default function HeroSection({ activeSection }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {[
-                  "Schneller Start mit klarer Richtung",
+                  "Branding passend zu Foerde Code",
                   "Persoenliche Abstimmung statt Agentur-Umwege",
                   "Saubere Umsetzung inkl. technischer Details",
                 ].map((point) => (
