@@ -1,32 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { createPortal } from "react-dom";
-
-const heroChatMessageSets = [
-  [
-    { side: "left", text: "Uns fehlt eine Online-Präsenz für unser Restaurant. Was können Sie tun?" },
-    { side: "right", text: "Beschreiben Sie ihr Restaurant - wie ist das Ambiente, welche Art von Küche bieten Sie an?" },
-    { side: "right", text: "Falls Sie noch keine Internetadresse haben, kann ich Ihnen ebenfalls eine erstellen und einrichten." },
-  ],
-  [
-    { side: "left", text: "Welche rechtlichen Anforderungen muss ich beachten?" },
-    { side: "right", text: "Keine Sorge, ich kümmere mich um die Erfüllung der rechtlichen Anforderungen, wieDatenschutz und Impressum." },
-  ],
-  [
-    { side: "left", text: "Was passiert, wenn die Website aktualisiert werden muss?" },
-    { side: "right", text: "Das hängt von dem Service, für den Sie sich entschieden haben ab. Im Full-Service übernehme ich die Aktualisierungen für Sie. " },
-        { side: "right", text: "Wenn Sie lediglich die Inhalte selbst pflegen möchten, kann ich Ihnen eine einfache Möglichkeit zur Selbstverwaltung bereitstellen." },
-  ],
-  [
-    { side: "left", text: "Wie lange dauert es, bis meine erste Version online ist?" },
-    { side: "right", text: "Das hängt davon ab, wie umfangreich Ihre Anforderungen sind. Bei einer einfachen Website kann ich in wenigen Tagen eine erste Version bereitstellen." },
-  ],
-];
-
-const messageRevealDelayMs = 3900;
-const secondTypingDelayMs = 700;
-const interactionStartDelayMs = 2000;
-const sharedBodyFontSize = "clamp(0.84rem, 0.78vw, 1.03rem)";
 
 const heroNavItems = [
   { label: "Start", id: "hero" },
@@ -43,81 +17,6 @@ const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.u
  * @param {{ activeSection?: string }} props
  */
 export default function HeroSection({ activeSection }) {
-  const chatRef = useRef(null);
-  const chatInView = useInView(chatRef, { once: true, margin: "-80px" });
-  const prefersReducedMotion = useReducedMotion();
-  const [heroChatMessages] = useState(() => {
-    const randomIndex = Math.floor(Math.random() * heroChatMessageSets.length);
-    return heroChatMessageSets[randomIndex] || heroChatMessageSets[0];
-  });
-  const [visibleMessages, setVisibleMessages] = useState(0);
-  const [interactionStarted, setInteractionStarted] = useState(false);
-  const [secondTypingReady, setSecondTypingReady] = useState(false);
-
-  useEffect(() => {
-    if (!chatInView) {
-      setInteractionStarted(false);
-      setVisibleMessages(0);
-      return;
-    }
-
-    setInteractionStarted(false);
-    setVisibleMessages(0);
-
-    if (prefersReducedMotion) {
-      const reducedTimeout = setTimeout(() => {
-        setInteractionStarted(true);
-        setVisibleMessages(heroChatMessages.length);
-      }, interactionStartDelayMs);
-      return () => clearTimeout(reducedTimeout);
-    }
-
-    /** @type {ReturnType<typeof setInterval> | undefined} */
-    let interval;
-    const startTimeout = setTimeout(() => {
-      setInteractionStarted(true);
-      interval = setInterval(() => {
-        setVisibleMessages((current) => {
-          if (current >= heroChatMessages.length) {
-            clearInterval(interval);
-            return current;
-          }
-          return current + 1;
-        });
-      }, messageRevealDelayMs);
-    }, interactionStartDelayMs);
-
-    return () => {
-      clearTimeout(startTimeout);
-      if (interval) clearInterval(interval);
-    };
-  }, [chatInView, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (!chatInView || prefersReducedMotion) {
-      setSecondTypingReady(true);
-      return;
-    }
-
-    if (visibleMessages !== 1) {
-      setSecondTypingReady(false);
-      return;
-    }
-
-    const timeout = setTimeout(() => {
-      setSecondTypingReady(true);
-    }, secondTypingDelayMs);
-
-    return () => clearTimeout(timeout);
-  }, [chatInView, visibleMessages, prefersReducedMotion]);
-
-  const showTyping =
-    interactionStarted &&
-    chatInView &&
-    !prefersReducedMotion &&
-    visibleMessages < heroChatMessages.length &&
-    (visibleMessages === 0 || secondTypingReady);
-  const typingOnRight = heroChatMessages[visibleMessages]?.side === "right";
   /** @param {string} id */
   const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -258,101 +157,44 @@ export default function HeroSection({ activeSection }) {
               Sie kümmern sich um Ihr Geschäft – und ich mich um Ihre Online-Präsenz. Kein Technik-Wissen nötig.
             </p>
 
-            <div
-              ref={chatRef}
-              className="flex-1 w-full min-h-0"
-              style={{ position: "relative", zIndex: 1 }}
-            >
-              <div className="h-full flex flex-col justify-start gap-[clamp(8px,1.2vh,14px)]">
-                {heroChatMessages.map((message, index) => {
-                  const isVisible = index < visibleMessages;
-                  const isRight = message.side === "right";
-                  return (
-                    <motion.div
-                      key={`${message.side}-${index}`}
-                      initial={{ opacity: 0, x: isRight ? 20 : -20, y: 6 }}
-                      animate={
-                        prefersReducedMotion
-                          ? { opacity: isVisible ? 1 : 0, x: 0, y: 0 }
-                          : {
-                              opacity: isVisible ? 1 : 0,
-                              x: isVisible ? 0 : (isRight ? 20 : -20),
-                              y: isVisible ? 0 : 6,
-                            }
-                      }
-                      transition={{ duration: 0.45, ease: "easeOut" }}
-                      className={`flex ${isRight ? "justify-end" : "justify-start"}`}
-                      aria-hidden={!isVisible}
-                      tabIndex={!isVisible ? -1 : undefined}
-                      style={!isVisible ? { pointerEvents: "none", userSelect: "none" } : undefined}
-                    >
-                      <div
-                        className="max-w-[94%] rounded-2xl leading-relaxed break-words"
-                        style={
-                          isRight
-                            ? {
-                                background: "rgba(15,31,61,0.5)",
-                                color: "#ffffff",
-                                border: "1px solid rgba(15,31,61,0.85)",
-                                fontSize: sharedBodyFontSize,
-                                paddingInline: "clamp(10px, 0.9vw, 14px)",
-                                paddingBlock: "clamp(7px, 0.8vh, 12px)",
-                              }
-                            : {
-                                background: "rgba(255,255,255,0.5)",
-                                color: "#0f1f3d",
-                                border: "1px solid rgba(15,31,61,0.18)",
-                                fontSize: sharedBodyFontSize,
-                                paddingInline: "clamp(10px, 0.9vw, 14px)",
-                                paddingBlock: "clamp(7px, 0.8vh, 12px)",
-                              }
-                        }
-                      >
-                        {message.text}
-                      </div>
-                    </motion.div>
-                  );
-                })}
+            <div className="flex-1 w-full min-h-0 flex flex-col justify-between gap-4" style={{ position: "relative", zIndex: 1 }}>
+              <div
+                className="rounded-2xl"
+                style={{
+                  background: "rgba(255,255,255,0.14)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  padding: "clamp(12px,1.1vw,18px)",
+                }}
+              >
+                <p
+                  className="leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.88)", fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)" }}
+                >
+                  Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung,
+                  die zu Ihrem Alltag passt.
+                </p>
+              </div>
 
-                {showTyping && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.25 }}
-                    className={`flex ${typingOnRight ? "justify-end" : "justify-start"}`}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                {[
+                  "Schneller Start mit klarer Richtung",
+                  "Persoenliche Abstimmung statt Agentur-Umwege",
+                  "Saubere Umsetzung inkl. technischer Details",
+                ].map((point) => (
+                  <div
+                    key={point}
+                    className="rounded-xl"
+                    style={{
+                      background: "rgba(15,31,61,0.28)",
+                      border: "1px solid rgba(255,255,255,0.18)",
+                      color: "rgba(255,255,255,0.92)",
+                      fontSize: "clamp(0.78rem,0.78vw,0.92rem)",
+                      padding: "0.58rem 0.72rem",
+                    }}
                   >
-                    <div
-                      className="rounded-2xl inline-flex items-center gap-[clamp(4px,0.45vw,7px)]"
-                      style={
-                        typingOnRight
-                          ? {
-                              background: "rgba(15,31,61,0.1)",
-                              border: "1px solid rgba(15,31,61,0.85)",
-                              paddingInline: "clamp(10px, 0.9vw, 14px)",
-                              paddingBlock: "clamp(7px, 0.8vh, 12px)",
-                            }
-                          : {
-                              background: "rgba(255,255,255,0.1)",
-                              border: "1px solid rgba(15,31,61,0.18)",
-                              paddingInline: "clamp(10px, 0.9vw, 14px)",
-                              paddingBlock: "clamp(7px, 0.8vh, 12px)",
-                            }
-                      }
-                      aria-label="tippt"
-                    >
-                      {[0, 1, 2].map((dot) => (
-                        <motion.span
-                          key={dot}
-                          animate={{ opacity: [0.35, 1, 0.35], y: [0, -1.5, 0] }}
-                          transition={{ duration: 0.9, repeat: Infinity, delay: dot * 0.15, ease: "easeInOut" }}
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ background: typingOnRight ? "rgba(255,255,255,0.95)" : "#0f1f3d" }}
-                        />
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-
+                    {point}
+                  </div>
+                ))}
               </div>
             </div>
 
