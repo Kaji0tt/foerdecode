@@ -39,37 +39,40 @@ export default function HeroSection({ activeSection }) {
       />
 
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-14 sm:pt-16 lg:justify-center lg:pt-0 px-6">
-        <div className="w-full max-w-7xl flex flex-col items-center gap-6 lg:gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, ease: "easeOut" }}
-            className="w-full max-w-6xl flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-4 lg:gap-6"
-          >
-            <div
-              className="rounded-3xl flex items-center justify-center w-full max-w-[160px] lg:max-w-none lg:w-auto px-4 py-4 lg:py-0"
+        <div className="w-full max-w-7xl flex flex-col gap-7 lg:gap-8">
+          <div className="flex items-stretch gap-4 sm:gap-6 lg:gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: "easeOut" }}
+              className="rounded-3xl p-3 sm:p-4 flex items-center justify-center flex-shrink-0"
               style={{
-                background: "rgba(255,255,255,0.76)",
+                width: "clamp(92px, 12vw, 156px)",
+                minHeight: "clamp(126px, 18vw, 210px)",
+                background: "rgba(255,255,255,0.75)",
                 border: "1px solid rgba(0,34,85,0.16)",
-                boxShadow: "0 10px 28px rgba(0,34,85,0.1)",
+                boxShadow: "0 14px 34px rgba(0,34,85,0.1)",
               }}
             >
               <img
                 src={foerdeCodeLogo}
                 alt="Foerde Code Logo"
-                className="h-20 w-20 sm:h-24 sm:w-24 lg:h-full lg:w-auto object-contain"
+                className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
 
-            <h1
-              className="font-sora font-bold tracking-tighter leading-[0.9] text-center lg:text-left"
-              style={{ color: "#002255", fontSize: "clamp(2.5rem, 6.6vw, 7.2rem)" }}
+            <motion.h1
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="font-sora font-bold tracking-tighter leading-[0.9] text-left"
+              style={{ fontSize: "clamp(2.4rem, 8.3vw, 7.1rem)" }}
             >
-              <span className="block">Ihr Geschaeft.</span>
+              <span className="block" style={{ color: "#002255" }}>Ihr Geschäft.</span>
               <span
                 className="block"
                 style={{
-                  background: "linear-gradient(135deg, #ef4444, #ff6b6b)",
+                  background: "linear-gradient(135deg, #9E0000, #ef4444)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -77,66 +80,66 @@ export default function HeroSection({ activeSection }) {
               >
                 Ihre Website.
               </span>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
-            className="font-sora font-bold tracking-tight text-center"
-            style={{ color: "#002255", fontSize: "clamp(2rem, 5.2vw, 5.2rem)", textTransform: "lowercase" }}
-          >
-            förde code
-          </motion.p>
+            </motion.h1>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, scaleX: 0.8 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
-            className="h-px w-full max-w-5xl"
-            style={{ background: "linear-gradient(90deg, rgba(0,34,85,0.05) 0%, rgba(0,34,85,0.35) 18%, rgba(239,68,68,0.44) 50%, rgba(0,34,85,0.35) 82%, rgba(0,34,85,0.05) 100%)" }}
-            aria-hidden="true"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.16, ease: "easeOut" }}
-            className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-3"
+            transition={{ duration: 0.72, delay: 0.12, ease: "easeOut" }}
+            className="w-full max-w-5xl mx-auto rounded-[1.75rem] px-5 py-5 sm:px-7 sm:py-6 lg:px-10 lg:py-8"
+            style={{
+              background: "linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.09) 20%, rgba(88,28,28,0.17) 46%, rgba(24,42,78,0.3) 76%, rgba(10,16,28,0.36) 100%)",
+              border: "1px solid rgba(255,255,255,0.18)",
+              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
+              backdropFilter: "blur(24px) saturate(150%)",
+            }}
           >
-            {[
-              "Branding passend zu Foerde Code",
-              "Persoenliche Abstimmung statt Agentur-Umwege",
-              "Saubere Umsetzung inkl. technischer Details",
-            ].map((point) => (
-              <div
-                key={point}
-                className="rounded-2xl"
-                style={{
-                  background: "rgba(255,255,255,0.68)",
-                  border: "1px solid rgba(0,34,85,0.16)",
-                  color: "#0f1f3d",
-                  fontSize: "clamp(0.78rem,0.9vw,0.96rem)",
-                  padding: "0.8rem 0.9rem",
-                  boxShadow: "0 8px 24px rgba(0,34,85,0.08)",
-                }}
-              >
-                {point}
-              </div>
-            ))}
+            <p
+              className="text-center font-sora font-bold tracking-tight"
+              style={{
+                color: "rgba(255,255,255,0.95)",
+                fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)",
+                textTransform: "lowercase",
+              }}
+            >
+              förde code
+            </p>
+
+            <div className="mx-auto mt-4 h-px w-full max-w-[560px]" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent)" }} />
+
+            <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              {[
+                "Branding passend zu Foerde Code",
+                "Persoenliche Abstimmung statt Agentur-Umwege",
+                "Saubere Umsetzung inkl. technischer Details",
+              ].map((point) => (
+                <div
+                  key={point}
+                  className="rounded-xl"
+                  style={{
+                    background: "rgba(15,31,61,0.3)",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    color: "rgba(255,255,255,0.94)",
+                    fontSize: "clamp(0.78rem,0.78vw,0.92rem)",
+                    padding: "0.62rem 0.74rem",
+                  }}
+                >
+                  {point}
+                </div>
+              ))}
+            </div>
+
+            <p
+              className="mt-5 text-center leading-relaxed"
+              style={{
+                color: "rgba(255,255,255,0.9)",
+                fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
+              }}
+            >
+              Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung, die zu Ihrem Alltag passt.
+            </p>
           </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
-            className="w-full max-w-4xl text-center leading-relaxed"
-            style={{ color: "#0f1f3d", fontSize: "clamp(0.95rem, 1vw, 1.12rem)" }}
-          >
-            Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung, die zu Ihrem Alltag passt.
-          </motion.p>
-        </div>
 
           {typeof document !== "undefined" && createPortal(
             <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2 pointer-events-none">
@@ -232,6 +235,8 @@ export default function HeroSection({ activeSection }) {
           )}
 
       </div>
+    </div>
+
     </section>
   );
 }
