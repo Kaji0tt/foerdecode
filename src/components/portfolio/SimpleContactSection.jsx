@@ -27,64 +27,66 @@ export default function SimpleContactSection() {
   const canSubmit = form.name && form.email && form.message;
 
   return (
-    <section
-      id="simple-contact"
-      className="h-screen w-full flex items-center relative overflow-hidden snap-start"
-    >
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "rgba(30,58,110,0.1)" }} />
-
-      <div ref={ref} className="relative z-10 w-full max-w-2xl mx-auto px-6 py-16 flex flex-col justify-center">
+    <section id="contact" className="relative py-16 sm:py-20">
+      <div ref={ref} className="relative z-10 mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
-          className="mb-10"
+          transition={{ duration: 0.5 }}
+          className="mb-8 max-w-3xl"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight leading-tight font-sora" style={{ color: "#0f1f3d" }}>
-            Noch Fragen offen?{" "}
-            <span style={{ background: "linear-gradient(135deg, #9E0000, #ef4444)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>Kein Problem.</span>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
+            Kontakt
+          </p>
+          <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
+            Lassen Sie uns ueber Ihr Projekt sprechen.
           </h2>
+          <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
+            Schreiben Sie kurz, worum es geht. Ich melde mich zeitnah mit einer klaren Rueckmeldung.
+          </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden sm:block"
+          transition={{ duration: 0.52, delay: 0.12 }}
+          className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]"
         >
-          {done ? (
-            <div
-              className="rounded-2xl p-10 flex flex-col items-center text-center"
-              style={{ border: "2px solid rgba(30,58,110,0.15)", background: "rgba(255,255,255,0.97)" }}
-            >
-              <div className="w-14 h-14 rounded-full flex items-center justify-center mb-5" style={{ background: "rgba(30,58,110,0.08)" }}>
-                <CheckCircle className="w-7 h-7" style={{ color: "#1e3a6e" }} />
+          <div className="rounded-2xl border p-6 sm:p-7" style={{ borderColor: "rgba(163,183,212,0.28)", background: "rgba(249,252,255,0.9)" }}>
+            {done ? (
+              <div className="flex flex-col items-center py-8 text-center">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: "rgba(112,142,186,0.16)" }}>
+                  <CheckCircle className="h-7 w-7" style={{ color: "#2f4c79" }} />
+                </div>
+                <h3 className="mb-2 font-sora text-xl font-bold" style={{ color: "#213a66" }}>
+                  Nachricht vorbereitet
+                </h3>
+                <p className="text-sm" style={{ color: "#4a6188" }}>
+                  Ihr E-Mail-Programm wurde geoeffnet. Ich antworte in der Regel innerhalb von 24 Stunden.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-2 font-sora" style={{ color: "#0f1f3d" }}>Nachricht gesendet!</h3>
-              <p className="text-sm" style={{ color: "#64748b" }}>Ich melde mich so schnell wie möglich bei Ihnen.</p>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-2xl p-6 sm:p-8 space-y-5"
-              style={{ border: "2px solid rgba(30,58,110,0.15)", background: "rgba(255,255,255,0.97)", boxShadow: "0 8px 32px rgba(30,58,110,0.08)" }}
-            >
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihr Name *</label>
+                  <label className="mb-1.5 block text-sm font-semibold" style={{ color: "#2f4c79" }}>
+                    Ihr Name *
+                  </label>
                   <input
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     placeholder="z.B. Max Mustermann"
                     className="w-full h-11 px-4 rounded-xl text-sm outline-none transition-all"
-                    style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
-                    onFocus={e => e.target.style.borderColor = "#1e3a6e"}
-                    onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                    style={{ border: "1.5px solid rgba(163,183,212,0.38)", background: "rgba(255,255,255,0.94)", color: "#1f335b" }}
+                    onFocus={(e) => (e.target.style.borderColor = "#6f95c9")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(163,183,212,0.38)")}
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihre E-Mail *</label>
+                  <label className="mb-1.5 block text-sm font-semibold" style={{ color: "#2f4c79" }}>
+                    Ihre E-Mail *
+                  </label>
                   <input
                     name="email"
                     type="email"
@@ -92,14 +94,16 @@ export default function SimpleContactSection() {
                     onChange={handleChange}
                     placeholder="max@beispiel.de"
                     className="w-full h-11 px-4 rounded-xl text-sm outline-none transition-all"
-                    style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
-                    onFocus={e => e.target.style.borderColor = "#1e3a6e"}
-                    onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                    style={{ border: "1.5px solid rgba(163,183,212,0.38)", background: "rgba(255,255,255,0.94)", color: "#1f335b" }}
+                    onFocus={(e) => (e.target.style.borderColor = "#6f95c9")}
+                    onBlur={(e) => (e.target.style.borderColor = "rgba(163,183,212,0.38)")}
                   />
                 </div>
               </div>
               <div>
-                <label className="text-sm font-semibold mb-1.5 block" style={{ color: "#374151" }}>Ihre Frage oder Nachricht *</label>
+                <label className="mb-1.5 block text-sm font-semibold" style={{ color: "#2f4c79" }}>
+                  Ihre Frage oder Nachricht *
+                </label>
                 <textarea
                   name="message"
                   value={form.message}
@@ -107,18 +111,22 @@ export default function SimpleContactSection() {
                   rows={5}
                   placeholder="Was möchten Sie wissen?"
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none transition-all"
-                  style={{ border: "1.5px solid rgba(30,58,110,0.2)", background: "white", color: "#0f1f3d" }}
-                  onFocus={e => e.target.style.borderColor = "#1e3a6e"}
-                  onBlur={e => e.target.style.borderColor = "rgba(30,58,110,0.2)"}
+                  style={{ border: "1.5px solid rgba(163,183,212,0.38)", background: "rgba(255,255,255,0.94)", color: "#1f335b" }}
+                  onFocus={(e) => (e.target.style.borderColor = "#6f95c9")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(163,183,212,0.38)")}
                 />
               </div>
               <button
                 type="submit"
                 disabled={!canSubmit || loading}
                 className="w-full py-4 rounded-xl font-bold text-white text-base flex items-center justify-center gap-2 transition-all disabled:opacity-50"
-                style={{ background: "#1e3a6e", boxShadow: "0 8px 24px rgba(30,58,110,0.25)" }}
-                onMouseEnter={e => { if (canSubmit && !loading) e.currentTarget.style.background = "#162d5a"; }}
-                onMouseLeave={e => e.currentTarget.style.background = "#1e3a6e"}
+                style={{ background: "#9e1c1c" }}
+                onMouseEnter={(e) => {
+                  if (canSubmit && !loading) e.currentTarget.style.background = "#861717";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#9e1c1c";
+                }}
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -129,11 +137,40 @@ export default function SimpleContactSection() {
                   </>
                 )}
               </button>
-              <p className="text-xs text-center" style={{ color: "#94a3b8" }}>
+              <p className="text-center text-xs" style={{ color: "#5b7196" }}>
                 Ich antworte in der Regel innerhalb von 24 Stunden.
               </p>
             </form>
-          )}
+            )}
+          </div>
+
+          <aside className="rounded-2xl border p-6" style={{ borderColor: "rgba(163,183,212,0.28)", background: "rgba(249,252,255,0.9)" }}>
+            <h3 className="mb-4 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
+              Direkter Kontakt
+            </h3>
+            <ul className="space-y-4 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+              <li>
+                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
+                  E-Mail
+                </p>
+                <a href="mailto:mail@nordweb.de" className="transition-colors" style={{ color: "#315286" }}>
+                  mail@nordweb.de
+                </a>
+              </li>
+              <li>
+                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
+                  Telefon (optional)
+                </p>
+                <p>+49 0000 000000</p>
+              </li>
+              <li>
+                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
+                  Standort
+                </p>
+                <p>Flensburg und Umgebung</p>
+              </li>
+            </ul>
+          </aside>
         </motion.div>
       </div>
     </section>

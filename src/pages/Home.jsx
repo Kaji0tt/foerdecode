@@ -1,38 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from "react";
 import HeroSection from "@/components/portfolio/HeroSection";
 import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
-import ShopDrawer from "@/components/portfolio/ShopDrawer";
+import FloatingHeader from "@/components/portfolio/FloatingHeader";
+import ProcessSection from "@/components/portfolio/ProcessSection";
+import PersonalSection from "@/components/portfolio/PersonalSection";
 
-const sectionIds = ["hero", "problem", "portfolio", "pricing", "simple-contact"];
-const sectionEntryThreshold = 0.3;
-const observerThreshold = 0.45;
+const sectionIds = ["hero", "trust", "services", "process", "projects", "personal", "contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
-  const containerRef = useRef(null);
-  const [shopOpen, setShopOpen] = useState(false);
-  const [shopPackage, setShopPackage] = useState(null);
-  const [shopFormData, setShopFormData] = useState(null);
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
     const observer = new IntersectionObserver(
       (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (!visible.length) return;
+
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > sectionEntryThreshold) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.target.id === visible[0].target.id) setActiveSection(entry.target.id);
         });
       },
       {
-        root: container,
-        threshold: observerThreshold,
+        root: null,
+        threshold: [0.2, 0.35, 0.5, 0.65],
+        rootMargin: "-15% 0px -45% 0px",
       }
     );
 
@@ -44,96 +41,51 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  const openShop = (pkg = null, formData = null) => {
-    setShopPackage(pkg);
-    setShopFormData(formData);
-    setShopOpen(true);
-  };
-
   return (
-    <div
-      ref={containerRef}
-      className="h-screen overflow-hidden flex"
-      style={{ scrollBehavior: "smooth", scrollbarWidth: "none", msOverflowStyle: "none", position: "relative", zIndex: 1 }}
-    >
-      {/* Fixed background */}
+    <div className="relative min-h-screen overflow-x-hidden" style={{ scrollBehavior: "smooth", backgroundColor: "#f2f5fb" }}>
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: "linear-gradient(135deg, #8aafd4 0%, #c5d8f0 50%, #e8f0fa 100%)",
           zIndex: 0,
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 78%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, black 0%, black 78%, transparent 100%)",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskSize: "100% 100%",
+          maskSize: "100% 100%",
         }}
-      />
-      <div
-        className="fixed inset-0 pointer-events-none opacity-25"
-        style={{
-          background: "radial-gradient(ellipse 80% 50% at 20% 30%, #93c5fd, transparent), radial-gradient(ellipse 60% 40% at 80% 70%, #bae6fd, transparent)",
-          zIndex: 0,
-        }}
-      />
-
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "hero" ? "hero-active" : "hero-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
-          <HeroSection activeSection={activeSection} />
-        </motion.div>
+      >
+        <div className="absolute inset-0" style={{ background: "#edf2f8" }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 44% at 8% 6%, rgba(125,155,196,0.22), transparent 66%), radial-gradient(ellipse 48% 32% at 88% 14%, rgba(192,60,60,0.12), transparent 74%)",
+          }}
+        />
       </div>
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "problem" ? "problem-active" : "problem-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
+      <FloatingHeader activeSection={activeSection} />
+
+      <main className="relative z-10">
+        <div className="relative">
+          <HeroSection />
+          <div
+            className="pointer-events-none absolute left-0 right-0 top-full z-[1] -mt-px h-32 sm:h-40 lg:h-48"
+            style={{
+              background: "linear-gradient(180deg, rgba(242,245,251,0.96) 0%, rgba(242,245,251,0.6) 42%, rgba(242,245,251,0) 100%)",
+            }}
+            aria-hidden="true"
+          />
+        </div>
+        <div className="relative z-[2]">
           <AboutSection />
-        </motion.div>
-      </div>
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "portfolio" ? "portfolio-active" : "portfolio-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
+          <PricingSection />
+          <ProcessSection />
           <PortfolioSection />
-        </motion.div>
-      </div>
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "pricing" ? "pricing-active" : "pricing-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
-          <PricingSection onOrderClick={openShop} />
-        </motion.div>
-      </div>
-      <div className="w-screen h-screen shrink-0 overflow-hidden">
-        <motion.div
-          key={activeSection === "simple-contact" ? "simple-contact-active" : "simple-contact-idle"}
-          className="w-full h-full"
-          initial={{ x: -80, opacity: 0.6 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
-        >
+          <PersonalSection />
           <SimpleContactSection />
-        </motion.div>
-      </div>
-
-      <ShopDrawer
-        open={shopOpen}
-        onClose={() => setShopOpen(false)}
-        preselectedPackage={shopPackage}
-        formData={shopFormData}
-      />
+        </div>
+      </main>
     </div>
   );
 }

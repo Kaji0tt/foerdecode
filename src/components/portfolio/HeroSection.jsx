@@ -1,242 +1,228 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { createPortal } from "react-dom";
+import { UserCircle2, Wrench, MapPin } from "lucide-react";
 
-const heroNavItems = [
-  { label: "Start", id: "hero" },
-  { label: "Ablauf", id: "problem" },
-  { label: "Beispiele", id: "portfolio" },
-  { label: "Preise", id: "pricing" },
-  { label: "Kontakt", id: "simple-contact" },
+const heroBackgroundImage = new URL("../../../FlensburgDay.png", import.meta.url).href;
+const heroSideImage = new URL("../../../public/ProfSmallSmile.png", import.meta.url).href;
+
+const trustCards = [
+  {
+    title: "Persoenlich statt Agentur",
+    text: "Direkter Kontakt, klare Abstimmung.",
+    Icon: UserCircle2,
+  },
+  {
+    title: "Einfache Wartung",
+    text: "Updates und Pflege ohne Komplexität, entsprechend Ihr Vorstellungen.",
+    Icon: Wrench,
+  },
+  {
+    title: "Lokal und erreichbar",
+    text: "Aus Flensburg, fuer Flensburg und Umgebung.",
+    Icon: MapPin,
+  },
 ];
 
-const heroBackgroundImage = new URL("../../../FlensburgNight.jpg", import.meta.url).href;
-const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
 
-
-/**
- * @param {{ activeSection?: string }} props
- */
-export default function HeroSection({ activeSection }) {
+export default function HeroSection() {
   /** @param {string} id */
   const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
       id="hero"
-      className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden snap-start"
+      className="relative flex min-h-screen items-center overflow-hidden pt-28 sm:pt-32"
     >
       <div
         className="absolute inset-0 bg-cover bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBackgroundImage})`, backgroundPosition: "left top" }}
+        style={{
+          backgroundImage: `url(${heroBackgroundImage})`,
+          backgroundPosition: "center 25%",
+          filter: "blur(3px)",
+          transform: "scale(1.03)",
+        }}
         aria-hidden="true"
       />
 
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: "linear-gradient(180deg, rgba(166, 208, 247, 0.4) 0%, rgba(107, 107, 107, 0.28) 52%, rgba(32,128,124,0.24) 100%)" }}
+        style={{
+          background: "rgba(255,255,255,0.42)",
+        }}
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-14 sm:pt-16 lg:justify-center lg:pt-0 px-6">
-        <div className="w-full max-w-7xl flex flex-col gap-7 lg:gap-8">
-          <div className="flex items-stretch gap-4 sm:gap-6 lg:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 sm:pb-24 lg:pb-28">
+        <div className="grid items-start gap-10 lg:grid-cols-[1.22fr_0.78fr] lg:gap-14">
+          <div className="lg:pr-4">
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, ease: "easeOut" }}
-              className="rounded-3xl p-3 sm:p-4 flex items-center justify-center flex-shrink-0"
-              style={{
-                width: "clamp(92px, 12vw, 156px)",
-                minHeight: "clamp(126px, 18vw, 210px)",
-                background: "rgba(255,255,255,0.75)",
-                border: "1px solid rgba(0,34,85,0.16)",
-                boxShadow: "0 14px 34px rgba(0,34,85,0.1)",
-              }}
+              transition={{ duration: 0.45 }}
+              className="mb-6 text-sm font-medium uppercase tracking-[0.16em]"
+              style={{ color: "#4f648d" }}
             >
-              <img
-                src={foerdeCodeLogo}
-                alt="Foerde Code Logo"
-                className="w-full h-full object-contain"
-              />
+              Websites und digitale Loesungen aus Flensburg
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
+            >
+              <h1
+                className="max-w-[42rem] font-sora text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+                style={{ color: "#1a2f58" }}
+              >
+                Einfache Websites mit starker <span style={{ color: "#ef4444" }}>Wirkung</span>.
+              </h1>
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 60 }}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="font-sora font-bold tracking-tighter leading-[0.9] text-left"
-              style={{ fontSize: "clamp(2.4rem, 8.3vw, 7.1rem)" }}
+              transition={{ duration: 0.6, delay: 0.18 }}
+              className="mt-6 max-w-[38rem]"
             >
-              <span className="block" style={{ color: "#002255" }}>Ihr Geschäft.</span>
-              <span
-                className="block"
+              <p
+                className="text-base leading-relaxed sm:text-lg"
                 style={{
-                  background: "linear-gradient(135deg, #9E0000, #ef4444)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  color: "#3c4f76",
                 }}
               >
-                Ihre Website.
-              </span>
-            </motion.h1>
+                Ich entwickle moderne Websites und digitale Loesungen fuer Unternehmen,
+                Selbststaendige und lokale Projekte. Persoenlich, direkt und ohne Agentur-Umwege.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.22 }}
+              className="mt-10 flex flex-wrap gap-3"
+            >
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-colors"
+                style={{ background: "#9e1c1c" }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "#861717";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "#9e1c1c";
+                }}
+              >
+                Projekt anfragen
+              </button>
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="rounded-xl border px-6 py-3 text-sm font-semibold transition-colors"
+                style={{
+                  borderColor: "rgba(108,133,171,0.45)",
+                  color: "#233965",
+                  background: "rgba(248,251,255,0.78)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(239,245,253,0.95)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(248,251,255,0.78)";
+                }}
+              >
+                Beispiele ansehen
+              </button>
+            </motion.div>
+
+
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.72, delay: 0.12, ease: "easeOut" }}
-            className="w-full max-w-5xl mx-auto rounded-[1.75rem] px-5 py-5 sm:px-7 sm:py-6 lg:px-10 lg:py-8"
-            style={{
-              background: "linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.09) 20%, rgba(88,28,28,0.17) 46%, rgba(24,42,78,0.3) 76%, rgba(10,16,28,0.36) 100%)",
-              border: "1px solid rgba(255,255,255,0.18)",
-              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-              backdropFilter: "blur(24px) saturate(150%)",
-            }}
+            initial={{ opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative flex flex-col lg:mt-10"
           >
-            <p
-              className="text-center font-sora font-bold tracking-tight"
+            <div
+              className="flex flex-col gap-5 rounded-2xl border p-5 sm:p-6"
               style={{
-                color: "rgba(255,255,255,0.95)",
-                fontSize: "clamp(1.8rem, 4.5vw, 3.5rem)",
-                textTransform: "lowercase",
+                borderColor: "rgba(162,181,211,0.28)",
+                background: "rgba(248,251,255,0.74)",
+                boxShadow: "0 18px 40px rgba(26,45,78,0.12)",
               }}
             >
-              förde code
-            </p>
-
-            <div className="mx-auto mt-4 h-px w-full max-w-[560px]" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.72), transparent)" }} />
-
-            <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              {[
-                "Branding passend zu Foerde Code",
-                "Persoenliche Abstimmung statt Agentur-Umwege",
-                "Saubere Umsetzung inkl. technischer Details",
-              ].map((point) => (
+              <div>
                 <div
-                  key={point}
-                  className="rounded-xl"
-                  style={{
-                    background: "rgba(15,31,61,0.3)",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    color: "rgba(255,255,255,0.94)",
-                    fontSize: "clamp(0.78rem,0.78vw,0.92rem)",
-                    padding: "0.62rem 0.74rem",
-                  }}
+                  className="float-right mb-3 ml-4 w-36 overflow-hidden rounded-xl border sm:w-40"
+                  style={{ borderColor: "rgba(154,176,210,0.32)" }}
                 >
-                  {point}
+                  <img
+                    src={heroSideImage}
+                    alt="Portraitbild von Jascha"
+                    className="h-44 w-full object-cover object-top sm:h-48"
+                    loading="eager"
+                  />
                 </div>
-              ))}
-            </div>
 
-            <p
-              className="mt-5 text-center leading-relaxed"
+                <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#ef4444" }}>
+                  Persönlich. Direkt.
+                </p>
+                <p className="mt-3 text-lg font-semibold sm:text-xl" style={{ color: "#1f335b" }}>
+                  Moin, ich bin Jascha.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed" style={{ color: "#40547c" }}>
+                  Ich begleite Unternehmen mit klaren Websites und digitaler Umsetzung, unkompliziert und nahbar.
+                  Von der Struktur bis zum Livegang erhalten Sie eine Loesung, die zu Ihrem Alltag passt und
+                  sich einfach weiterentwickeln laesst.
+                </p>
+                <div className="clear-both" />
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.28 }}
+          className="mt-12 grid gap-3 sm:grid-cols-3 lg:mt-14"
+        >
+          {trustCards.map((card) => (
+            <article
+              key={card.title}
+              className="rounded-lg border px-4 py-3"
               style={{
-                color: "rgba(255,255,255,0.9)",
-                fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
+                borderColor: "rgba(163,183,212,0.28)",
+                color: "#35507a",
+                background: "rgba(249,252,255,0.9)",
               }}
             >
-              Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung, die zu Ihrem Alltag passt.
-            </p>
-          </motion.div>
-
-          {typeof document !== "undefined" && createPortal(
-            <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2 pointer-events-none">
-              <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                className="relative w-full overflow-hidden rounded-[1.75rem] pointer-events-auto"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
-                  border: "1px solid rgba(255,255,255,0.16)",
-                  boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-                  backdropFilter: "blur(24px) saturate(150%)",
-                }}
-              >
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
-                }}
-              />
-              <div
-                className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none"
-                style={{
-                  background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
-                  filter: "blur(10px)",
-                }}
-              />
-              <div
-                className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none"
-                style={{
-                  background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
-                  filter: "blur(14px)",
-                  transform: "rotate(-12deg)",
-                }}
-              />
-              <div
-                className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none"
-                style={{
-                  background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
-                  filter: "blur(18px)",
-                  transform: "rotate(8deg)",
-                }}
-              />
-              <div
-                className="relative z-10 w-full rounded-[1.75rem] px-5 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5 flex flex-col gap-4 lg:gap-0 lg:flex-row lg:items-center lg:justify-between"
-                style={{ backdropFilter: "blur(14px)" }}
-              >
-                {/* Nav items – red sweep left-to-right on hover via background-clip */}
-                <nav className="flex flex-1 flex-wrap items-center gap-x-0 gap-y-2">
-                  {heroNavItems.map((item, idx) => (
-                    <React.Fragment key={item.id}>
-                      <button
-                        onClick={() => scrollToSection(item.id)}
-                        className="font-sora font-bold tracking-tighter cursor-pointer flex-1 text-center"
-                        style={{
-                          fontSize: "clamp(0.78rem, 1.1vw, 1.05rem)",
-                          background: "linear-gradient(to right, #9E0000 50%, #ffffff 50%)",
-                          backgroundSize: "200% 100%",
-                          backgroundPosition: activeSection === item.id ? "0% 0%" : "100% 0%",
-                          WebkitBackgroundClip: "text",
-                          WebkitTextFillColor: "transparent",
-                          backgroundClip: "text",
-                          transition: "background-position 0.45s ease",
-                          border: "none",
-                          paddingInline: "clamp(6px, 0.6vw, 12px)",
-                          paddingBlock: "0.25rem",
-                          minWidth: 0,
-                        }}
-                        onMouseEnter={(e) => { e.currentTarget.style.backgroundPosition = "0% 0%"; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.backgroundPosition = activeSection === item.id ? "0% 0%" : "100% 0%"; }}
-                      >
-                        <motion.span
-                          key={`${item.id}-${activeSection === item.id ? "active" : "idle"}`}
-                          initial={activeSection === item.id ? { opacity: 0.45, x: -14 } : false}
-                          animate={activeSection === item.id ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-                          transition={{ duration: 0.35, ease: "easeOut" }}
-                          className="inline-block"
-                        >
-                        {item.label}
-                        </motion.span>
-                      </button>
-                      {idx < heroNavItems.length - 1 && (
-                        <span style={{ color: "rgba(15,31,61,0.25)", userSelect: "none", fontSize: "0.8rem", flexShrink: 0 }}>·</span>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </nav>
+              <div className="mb-2 flex items-center gap-2">
+                <span
+                  className="inline-flex h-7 w-7 items-center justify-center rounded-md"
+                  style={{ background: "rgba(112,142,186,0.16)" }}
+                >
+                  <card.Icon className="h-4 w-4" style={{ color: "#2f4c79" }} />
+                </span>
+                <h3 className="text-sm font-semibold" style={{ color: "#213a66" }}>
+                  {card.title}
+                </h3>
               </div>
-            </motion.div>
-          </div>,
-          document.body
-          )}
-
+              <p className="text-xs leading-relaxed" style={{ color: "#4a6188" }}>
+                {card.text}
+              </p>
+            </article>
+          ))}
+        </motion.div>
       </div>
-    </div>
 
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[11]" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" className="h-24 w-full sm:h-28 lg:h-32" preserveAspectRatio="none">
+          <path
+            d="M0,8 C180,70 500,89 820,48 C1080,18 1260,10 1440,40 L1440,120 L0,120 Z"
+            fill="rgba(242,245,251,0.96)"
+          />
+        </svg>
+      </div>
     </section>
   );
 }
