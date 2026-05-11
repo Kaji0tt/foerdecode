@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import HeroSection from "@/components/portfolio/HeroSection";
-import AboutSection from "@/components/portfolio/AboutSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import PricingSection from "@/components/portfolio/PricingSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import FloatingHeader from "@/components/portfolio/FloatingHeader";
 import ProcessSection from "@/components/portfolio/ProcessSection";
-import PersonalSection from "@/components/portfolio/PersonalSection";
 
-const sectionIds = ["hero", "trust", "services", "process", "projects", "personal", "contact"];
+const sectionIds = ["hero", "services", "process", "projects", "contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
@@ -78,11 +76,9 @@ export default function Home() {
           />
         </div>
         <div className="relative z-[2]">
-          <AboutSection />
-          <PricingSection />
           <ProcessSection />
+          <PricingSection />
           <PortfolioSection />
-          <PersonalSection />
           <SimpleContactSection />
         </div>
       </main>
