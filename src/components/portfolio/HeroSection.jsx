@@ -256,7 +256,7 @@ export default function HeroSection() {
           </div>
 
           {/* Sticky Notes — vertikal zentriert im verbleibenden Viewport-Raum */}
-          <div className="flex flex-1 items-center">
+          <div className="flex flex-1 items-center pt-8 sm:pt-10 lg:pt-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
