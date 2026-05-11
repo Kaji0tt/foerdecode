@@ -39,163 +39,104 @@ export default function HeroSection({ activeSection }) {
       />
 
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-14 sm:pt-16 lg:justify-center lg:pt-0 px-6">
-        <div className="w-full max-w-7xl flex flex-col gap-6 lg:gap-7">
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] items-stretch gap-8 lg:gap-6 lg:min-h-[min(58vh,540px)]">
-          {/* Main Headline */}
-          <div className="flex flex-col gap-4 lg:gap-5">
+        <div className="w-full max-w-7xl flex flex-col items-center gap-6 lg:gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            className="w-full max-w-6xl flex flex-col lg:flex-row items-center lg:items-stretch justify-center gap-4 lg:gap-6"
+          >
+            <div
+              className="rounded-3xl flex items-center justify-center w-full max-w-[160px] lg:max-w-none lg:w-auto px-4 py-4 lg:py-0"
+              style={{
+                background: "rgba(255,255,255,0.76)",
+                border: "1px solid rgba(0,34,85,0.16)",
+                boxShadow: "0 10px 28px rgba(0,34,85,0.1)",
+              }}
+            >
+              <img
+                src={foerdeCodeLogo}
+                alt="Foerde Code Logo"
+                className="h-20 w-20 sm:h-24 sm:w-24 lg:h-full lg:w-auto object-contain"
+              />
+            </div>
+
+            <h1
+              className="font-sora font-bold tracking-tighter leading-[0.9] text-center lg:text-left"
+              style={{ color: "#002255", fontSize: "clamp(2.5rem, 6.6vw, 7.2rem)" }}
+            >
+              <span className="block">Ihr Geschaeft.</span>
+              <span
+                className="block"
+                style={{
+                  background: "linear-gradient(135deg, #ef4444, #ff6b6b)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                Ihre Website.
+              </span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
+            className="font-sora font-bold tracking-tight text-center"
+            style={{ color: "#002255", fontSize: "clamp(2rem, 5.2vw, 5.2rem)", textTransform: "lowercase" }}
+          >
+            förde code
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0.8 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
+            className="h-px w-full max-w-5xl"
+            style={{ background: "linear-gradient(90deg, rgba(0,34,85,0.05) 0%, rgba(0,34,85,0.35) 18%, rgba(239,68,68,0.44) 50%, rgba(0,34,85,0.35) 82%, rgba(0,34,85,0.05) 100%)" }}
+            aria-hidden="true"
+          />
+
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 rounded-full w-fit pr-4 pl-2 py-2"
-            style={{
-              background: "rgba(255,255,255,0.72)",
-              border: "1px solid rgba(0,34,85,0.16)",
-              boxShadow: "0 10px 28px rgba(0,34,85,0.09)",
-            }}
+            transition={{ duration: 0.7, delay: 0.16, ease: "easeOut" }}
+            className="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-3 gap-3"
           >
-            <img
-              src={foerdeCodeLogo}
-              alt="Foerde Code Logo"
-              className="h-9 w-9 sm:h-10 sm:w-10 object-contain"
-            />
-            <span className="font-sora font-semibold tracking-tight" style={{ color: "#002255", fontSize: "clamp(0.9rem, 0.9vw, 1.05rem)" }}>
-              Foerde Code
-            </span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 60 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="text-6xl sm:text-8xl md:text-[6.5rem] lg:text-[8.5rem] font-bold tracking-tighter leading-[0.86] text-left font-sora"
-            style={{ color: "#002255" }}
-          >
-            <span className="block">Ihr</span>
-            <span className="block">Geschäft.</span>
-            <span
-              className="block"
-              style={{ background: "linear-gradient(135deg, #782121, #a73535)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-            >
-              Ihre
-            </span>
-            <span
-              className="block"
-              style={{ background: "linear-gradient(135deg, #782121, #a73535)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
-            >
-              Website.
-            </span>
-          </motion.h1>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 40, scale: 0.96 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 0.85, delay: 0.15, ease: "easeOut" }}
-            className="h-full relative overflow-hidden rounded-[1.75rem]"
-            style={{
-              boxShadow: "0 18px 60px rgba(5,10,18,0.28), inset 0 1px 0 rgba(255,255,255,0.18)",
-            }}
-          >
-            {/* Background layer WITH mask — glass card fades at the bottom visually */}
-            <div
-              className="absolute inset-0 pointer-events-none rounded-[1.75rem] hero-card-bg-fade"
-              style={{
-                background: "linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.08) 18%, rgba(88,28,28,0.18) 44%, rgba(24,42,78,0.34) 72%, rgba(10,16,28,0.42) 100%)",
-                border: "1px solid rgba(255,255,255,0.16)",
-                backdropFilter: "blur(24px) saturate(150%)",
-              }}
-            >
-              {/* Matching liquid-glass layer from navbar */}
+            {[
+              "Branding passend zu Foerde Code",
+              "Persoenliche Abstimmung statt Agentur-Umwege",
+              "Saubere Umsetzung inkl. technischer Details",
+            ].map((point) => (
               <div
-                className="absolute inset-0 pointer-events-none z-0"
-                style={{
-                  background: "linear-gradient(180deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0.02) 100%)",
-                }}
-              />
-              <div
-                className="absolute -left-8 top-[-55%] h-40 w-40 rounded-full pointer-events-none z-0"
-                style={{
-                  background: "radial-gradient(circle, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.1) 35%, rgba(255,255,255,0.02) 58%, transparent 72%)",
-                  filter: "blur(10px)",
-                }}
-              />
-              <div
-                className="absolute right-[12%] top-[-70%] h-44 w-52 rounded-full pointer-events-none z-0"
-                style={{
-                  background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(120,160,255,0.08) 42%, transparent 74%)",
-                  filter: "blur(14px)",
-                  transform: "rotate(-12deg)",
-                }}
-              />
-              <div
-                className="absolute left-[22%] bottom-[-120%] h-48 w-64 rounded-full pointer-events-none z-0"
-                style={{
-                  background: "radial-gradient(circle, rgba(158,0,0,0.14) 0%, rgba(15,31,61,0.08) 45%, transparent 76%)",
-                  filter: "blur(18px)",
-                  transform: "rotate(8deg)",
-                }}
-              />
-            </div>
-
-            {/* Content layer — NOT affected by the mask above; messages remain fully visible */}
-            <div className="relative z-10 pt-1 lg:pt-2 px-2 sm:px-3 lg:px-4 flex flex-col gap-4 lg:gap-5 h-full">
-
-            <p
-              className="relative z-10 leading-relaxed"
-              style={{
-                color: "rgba(255,255,255,0.82)",
-                fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)",
-              }}
-            >
-              Klare Struktur, starker erster Eindruck und eine moderne Website, die auf Ihr Geschaeft einzahlt.
-            </p>
-
-            <div className="flex-1 w-full min-h-0 flex flex-col justify-between gap-4" style={{ position: "relative", zIndex: 1 }}>
-              <div
+                key={point}
                 className="rounded-2xl"
                 style={{
-                  background: "rgba(255,255,255,0.14)",
-                  border: "1px solid rgba(255,255,255,0.2)",
-                  padding: "clamp(12px,1.1vw,18px)",
+                  background: "rgba(255,255,255,0.68)",
+                  border: "1px solid rgba(0,34,85,0.16)",
+                  color: "#0f1f3d",
+                  fontSize: "clamp(0.78rem,0.9vw,0.96rem)",
+                  padding: "0.8rem 0.9rem",
+                  boxShadow: "0 8px 24px rgba(0,34,85,0.08)",
                 }}
               >
-                <p
-                  className="leading-relaxed"
-                  style={{ color: "rgba(255,255,255,0.88)", fontSize: "clamp(0.92rem, 0.95vw, 1.08rem)" }}
-                >
-                  Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung,
-                  die zu Ihrem Alltag passt.
-                </p>
+                {point}
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                {[
-                  "Branding passend zu Foerde Code",
-                  "Persoenliche Abstimmung statt Agentur-Umwege",
-                  "Saubere Umsetzung inkl. technischer Details",
-                ].map((point) => (
-                  <div
-                    key={point}
-                    className="rounded-xl"
-                    style={{
-                      background: "rgba(15,31,61,0.28)",
-                      border: "1px solid rgba(255,255,255,0.18)",
-                      color: "rgba(255,255,255,0.92)",
-                      fontSize: "clamp(0.78rem,0.78vw,0.92rem)",
-                      padding: "0.58rem 0.72rem",
-                    }}
-                  >
-                    {point}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            </div>
+            ))}
           </motion.div>
 
-          </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
+            className="w-full max-w-4xl text-center leading-relaxed"
+            style={{ color: "#0f1f3d", fontSize: "clamp(0.95rem, 1vw, 1.12rem)" }}
+          >
+            Moderne Websites mussen kein Grossprojekt sein: klare Struktur, starker erster Eindruck und eine Loesung, die zu Ihrem Alltag passt.
+          </motion.p>
+        </div>
 
           {typeof document !== "undefined" && createPortal(
             <div className="fixed bottom-6 left-1/2 z-[100] w-[min(95vw,1120px)] -translate-x-1/2 pointer-events-none">
@@ -291,8 +232,6 @@ export default function HeroSection({ activeSection }) {
           )}
 
       </div>
-    </div>
-
     </section>
   );
 }
