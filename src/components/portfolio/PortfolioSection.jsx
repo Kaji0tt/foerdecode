@@ -23,9 +23,9 @@ function ProjectPreview({ project }) {
   }
 
   return (
-    <div className="relative mb-6 h-64 sm:h-72">
+    <div className="relative mb-6 h-72">
       <div
-        className="absolute inset-x-0 top-0 bottom-5 rounded-xl border p-4 sm:bottom-6"
+        className="absolute inset-x-0 top-0 bottom-5 rounded-xl border p-4"
         style={{
           borderColor: "rgba(163,183,212,0.24)",
           background: "linear-gradient(155deg, rgba(241,246,253,0.98), rgba(229,237,248,0.95))",
@@ -36,11 +36,11 @@ function ProjectPreview({ project }) {
         </div>
 
         {project.desktopImage ? (
-          <div className="h-full w-[calc(100%-4.5rem)] overflow-hidden rounded-lg border bg-white shadow-[0_18px_35px_rgba(88,114,156,0.12)] sm:w-[calc(100%-5.5rem)]" style={{ borderColor: "rgba(163,183,212,0.34)" }}>
+          <div className="h-full w-[calc(100%-4.5rem)] overflow-hidden rounded-lg border bg-white shadow-[0_18px_35px_rgba(88,114,156,0.12)]" style={{ borderColor: "rgba(163,183,212,0.34)" }}>
             <img
               src={project.desktopImage}
               alt={`${project.title} Desktop-Vorschau`}
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-contain object-top"
               loading="lazy"
             />
           </div>
@@ -49,7 +49,7 @@ function ProjectPreview({ project }) {
 
       {project.mobileImage ? (
         <div
-          className="absolute bottom-0 right-3 z-[2] w-[28%] min-w-[92px] max-w-[132px] rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)] sm:right-5"
+          className="absolute bottom-0 right-3 z-[2] w-[28%] min-w-[92px] max-w-[132px] rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
           style={{
             background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
           }}
