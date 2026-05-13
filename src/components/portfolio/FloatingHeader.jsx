@@ -48,7 +48,7 @@ export default function FloatingHeader({ activeSection }) {
             className="flex items-center gap-3 rounded-lg px-1 py-1"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
-            <span className="hidden text-base font-semibold uppercase tracking-[0.14em] sm:block" style={{ color: "#1f335b" }}>
+            <span className="text-base font-semibold uppercase tracking-[0.14em]" style={{ color: "#1f335b" }}>
               FÖRDECODE
             </span>
           </button>

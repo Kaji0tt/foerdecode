@@ -36,7 +36,15 @@ export default function Home() {
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    const onScrollTop = () => {
+      if (window.scrollY === 0) setActiveSection("hero");
+    };
+    window.addEventListener("scroll", onScrollTop, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScrollTop);
+    };
   }, []);
 
   return (
