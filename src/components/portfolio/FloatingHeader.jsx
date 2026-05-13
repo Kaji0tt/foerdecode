@@ -31,7 +31,7 @@ export default function FloatingHeader({ activeSection }) {
       className="fixed left-0 right-0 top-0 z-50"
     >
       <div
-        className="mx-auto mt-4 w-full max-w-7xl rounded-xl px-6 py-2"
+        className="floating-header-shell mx-auto mt-4 w-full max-w-7xl rounded-xl px-4 py-2 sm:px-6"
         style={{
           background: scrolled ? "rgba(245,249,255,0.8)" : "transparent",
           border: scrolled ? "1px solid rgba(151,170,198,0.32)" : "1px solid transparent",
@@ -41,19 +41,19 @@ export default function FloatingHeader({ activeSection }) {
           transition: "background 220ms ease, border-color 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease",
         }}
       >
-        <div className="flex items-center justify-between gap-2">
+        <div className="floating-header-layout flex flex-wrap items-center justify-between gap-x-2 gap-y-2">
           <button
             type="button"
             onClick={() => scrollToSection("hero")}
-            className="flex items-center gap-3 rounded-lg px-1 py-1"
+            className="flex shrink-0 items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
-            <span className="hidden text-base font-semibold uppercase tracking-[0.14em] sm:block" style={{ color: "#1f335b" }}>
+            <span className="floating-header-brand text-base font-semibold uppercase tracking-[0.14em]" style={{ color: "#1f335b" }}>
               FÖRDECODE
             </span>
           </button>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="floating-header-nav flex items-center gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -78,7 +78,7 @@ export default function FloatingHeader({ activeSection }) {
           <button
             type="button"
             onClick={() => scrollToSection("contact")}
-            className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
+            className="shrink-0 rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
             style={{ background: "#9e1c1c" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = "#861717";
@@ -89,22 +89,6 @@ export default function FloatingHeader({ activeSection }) {
           >
             Anfragen
           </button>
-        </div>
-
-        <div className="mt-2 flex w-full justify-center gap-1 md:hidden">
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="rounded-md border-b-2 px-2 py-1 text-xs font-medium"
-              style={{
-                color: "#1e3158",
-                borderBottomColor: activeSection === item.id ? "#dc2626" : "transparent",
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
         </div>
       </div>
     </motion.header>
