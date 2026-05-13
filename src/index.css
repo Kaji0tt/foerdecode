@@ -105,3 +105,21 @@
     mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 80%);
   }
 }
+
+.floating-header-shell {
+  container-type: inline-size;
+}
+
+@container (max-width: 42rem) {
+  .floating-header-nav {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@container (max-width: 26rem) {
+  .floating-header-brand {
+    display: none;
+  }
+}
