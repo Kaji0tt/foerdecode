@@ -45,7 +45,7 @@ export default function FloatingHeader({ activeSection }) {
           <button
             type="button"
             onClick={() => scrollToSection("hero")}
-            aria-label="FÖRDECODE Startseite"
+            aria-label="Zum Seitenanfang scrollen"
             className="flex shrink-0 items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
