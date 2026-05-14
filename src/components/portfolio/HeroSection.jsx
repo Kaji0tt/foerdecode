@@ -140,7 +140,7 @@ export default function HeroSection() {
                 className="max-w-[42rem] font-sora text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
                 style={{ color: "#1a2f58" }}
               >
-                Einfache Lösungen mit starker Wirkung.
+                Einfache Lösungen. Starke Wirkung.
               </h1>
             </motion.div>
 
@@ -156,7 +156,7 @@ export default function HeroSection() {
                   color: "#3c4f76",
                 }}
               >
-                Ich entwickle auf Basis von KI, moderne Websites und digitale Loesungen für Unternehmen,
+                Mittels KI sind technische Lösungen Ich entwickle auf Basis von KI, moderne Websites und digitale Loesungen für Unternehmen,
                 Selbstständige und lokale Projekte. Persönlich, direkt und ohne Agentur-Umwege. <br />
                 Gemeinsam finden wir Lösungen, die zu Ihrem Alltag und Unternehmen passen. Kein Technikwissen notwendig - das Übernehme ich. 
               </p>
@@ -227,11 +227,12 @@ export default function HeroSection() {
                       Moin, ich bin Jascha.
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                      Ich habe in Flensburg Kunst und WiPo studiert und im IT-Service gearbeitet. Die Verbindung aus kreativem Denken und technischem Verständnis prägt meine Arbeit bis heute.
-                      Ich bin davon überzeugt, dass durch die jüngsten Entwicklungen im Bereich der KI, moderne Websites und digitale Lösungen nicht länger teure Agenturprojekte sein müssen —
-                      oft sind klare Konzepte, kreative Ideen und ein gutes Verständnis für Systeme entscheidend.
-                      Eine starke Internetpräsenz sollte für jedes Unternehmen zugänglich sein, unabhängig von der Größe oder Branche. <br />
-                      Ich freue mich auf Ihr Projekt!
+                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — inzwischen widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein ganzes Leben begleitet.<br />
+
+                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher, schneller und individueller umsetzen als noch vor wenigen Jahren. Dadurch entstehen neue Möglichkeiten — auch für kleinere Unternehmen, Selbstständige und lokale Projekte.<br />
+
+                    Mir ist wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag und den Bedürfnissen eines Unternehmens passen. <br />
+                    Falls Sie eine Idee haben oder Unterstützung bei digitalen Prozessen benötigen, freue ich mich von Ihnen zu hören!
                     </p>
                   </div>
 
