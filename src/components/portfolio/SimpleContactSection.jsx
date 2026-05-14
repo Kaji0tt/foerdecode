@@ -39,10 +39,10 @@ export default function SimpleContactSection() {
             Kontakt
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Lassen Sie uns ueber Ihr Projekt sprechen.
+            Lassen Sie uns über Ihr Projekt sprechen.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Schreiben Sie kurz, worum es geht. Ich melde mich zeitnah mit einer klaren Rueckmeldung.
+            Schreiben Sie kurz, worum es geht. Ich melde mich zeitnah.
           </p>
         </motion.div>
 

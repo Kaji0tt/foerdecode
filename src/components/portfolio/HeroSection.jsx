@@ -137,10 +137,14 @@ export default function HeroSection() {
               transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
             >
               <h1
-                className="max-w-[42rem] font-sora text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
-                style={{ color: "#1a2f58" }}
+                className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight"
+                style={{
+                  color: "#1a2f58",
+                  fontSize: "clamp(1.9rem, 7vw, 4.35rem)",
+                }}
               >
-                Einfache Lösungen. Starke Wirkung.
+                <span className="block whitespace-nowrap">Einfache Lösungen.</span>
+                <span className="block whitespace-nowrap">Starke Wirkung.</span>
               </h1>
             </motion.div>
 
@@ -156,9 +160,8 @@ export default function HeroSection() {
                   color: "#3c4f76",
                 }}
               >
-                Mittels KI sind technische Lösungen Ich entwickle auf Basis von KI, moderne Websites und digitale Loesungen für Unternehmen,
-                Selbstständige und lokale Projekte. Persönlich, direkt und ohne Agentur-Umwege. <br />
-                Gemeinsam finden wir Lösungen, die zu Ihrem Alltag und Unternehmen passen. Kein Technikwissen notwendig - das Übernehme ich. 
+              Ich entwickle moderne Websites und unterstütze Unternehmen und Selbstständige bei digitalen Lösungen — persönlich, direkt und ohne unnötige Komplexität. <br />
+              Sie müssen sich nicht mit Technik auskennen. Gemeinsam finden wir eine Lösung, die wirklich zu Ihnen und Ihrem Unternehmen passt.
               </p>
             </motion.div>
 
