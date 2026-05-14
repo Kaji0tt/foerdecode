@@ -221,17 +221,17 @@ export default function HeroSection() {
                   {/* Text */}
                   <div className="flex flex-1 flex-col gap-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#ef4444" }}>
-                      Persönlich. Direkt.
+                      Persönlich. Direkt. Erreichbar.
                     </p>
                     <p className="text-xl font-semibold sm:text-2xl" style={{ color: "#1f335b" }}>
                       Moin, ich bin Jascha.
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — inzwischen widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein ganzes Leben begleitet.<br />
+                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — inzwischen widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein ganzes Leben begleitet.
 
-                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher, schneller und individueller umsetzen als noch vor wenigen Jahren. Dadurch entstehen neue Möglichkeiten — auch für kleinere Unternehmen, Selbstständige und lokale Projekte.<br />
+                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher, schneller und individueller umsetzen als noch vor wenigen Jahren. Dadurch entstehen neue Möglichkeiten — auch für kleinere Unternehmen, Selbstständige und lokale Projekte.
 
-                    Mir ist wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag und den Bedürfnissen eines Unternehmens passen. <br />
+                    Mir ist wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag und den Bedürfnissen eines Unternehmens passen.
                     Falls Sie eine Idee haben oder Unterstützung bei digitalen Prozessen benötigen, freue ich mich von Ihnen zu hören!
                     </p>
                   </div>
