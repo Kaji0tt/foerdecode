@@ -122,7 +122,7 @@ export default function HeroSection() {
         */}
 
         <div className="mx-auto mt-8 flex w-full max-w-7xl flex-1 flex-col px-6 pb-20 sm:mt-12 sm:pb-24 lg:mt-15 lg:pb-28">
-          <div className="grid items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch lg:gap-12">
+          <div className="grid items-start gap-8 lg:grid-cols-[40%_60%] lg:items-stretch lg:gap-12">
             <div className="lg:flex lg:h-full lg:flex-col lg:pr-2">
             <p
               className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] sm:mb-4"
