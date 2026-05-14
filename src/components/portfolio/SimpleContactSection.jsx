@@ -62,7 +62,7 @@ export default function SimpleContactSection() {
                   Nachricht vorbereitet
                 </h3>
                 <p className="text-sm" style={{ color: "#4a6188" }}>
-                  Ihr E-Mail-Programm wurde geoeffnet. Ich antworte in der Regel innerhalb von 24 Stunden.
+                  Ihr E-Mail-Programm wurde geöffnet. Ich antworte in der Regel innerhalb von 24 Stunden.
                 </p>
               </div>
             ) : (
@@ -153,8 +153,8 @@ export default function SimpleContactSection() {
                 <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
                   E-Mail
                 </p>
-                <a href="mailto:mail@nordweb.de" className="transition-colors" style={{ color: "#315286" }}>
-                  mail@nordweb.de
+                <a href="mailto:jascha@foerdecode.de" className="transition-colors" style={{ color: "#315286" }}>
+                  jascha@foerdecode.de
                 </a>
               </li>
               <li>
