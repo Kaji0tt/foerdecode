@@ -41,10 +41,10 @@ export default function PricingSection() {
             Leistungen
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Was ich fuer Ihr Projekt uebernehme.
+            Was ich für Ihr Projekt übernehme.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Uebersichtlich, technisch fundiert und auf das ausgerichtet, was Ihr Unternehmen wirklich braucht.
+            Angepasst an die Ausrichtung der Seite und die Bedürfnisse Ihres Unternehmens.
           </p>
         </motion.div>
 

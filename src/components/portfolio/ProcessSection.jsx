@@ -5,22 +5,22 @@ const steps = [
   {
     number: "01",
     title: "Kurzes Gespraech",
-    text: "Sie erzaehlen, was gebraucht wird und welche Ziele Ihre Website erreichen soll.",
+    text: "Wir lernen uns kennen und besprechen Ihre Ziele und Anforderungen.",
   },
   {
     number: "02",
     title: "Konzept und Struktur",
-    text: "Wir definieren gemeinsam Inhalte, Aufbau und den roten Faden fuer den Auftritt.",
+    text: "Wir definieren Inhalte, Aufbau und den roten Faden. Anschließend bereite ich ein erstes Konzept vor, damit Sie eine klare Vorstellung vom Ergebnis haben.",
   },
   {
     number: "03",
     title: "Umsetzung",
-    text: "Ich setze das Projekt technisch sauber und performant um, inkl. laufender Abstimmung.",
+    text: "Sie entscheiden, ob Ihnen das Konzept gefällt. Falls ja, setze ich das Projekt um. Je nach Umfang, bleiben wir dabei in engem Austausch, damit Sie jederzeit den Überblick behalten und Feedback geben können.",
   },
   {
     number: "04",
     title: "Launch und Betreuung",
-    text: "Die Website geht live und wird auf Wunsch weiter betreut, gepflegt und erweitert.",
+    text: "Die Website oder das Projekt geht live und kann auf Wunsch weiter von mir betreut, gepflegt und erweitert werden - oder wir entwerfen einen Self-Service Ansatz, der sich für Sie richtig anfühlt.",
   },
 ];
 
@@ -39,10 +39,10 @@ export default function ProcessSection() {
             Ablauf
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            So laeuft Ihr Projekt in vier klaren Schritten.
+            So kommen wir zum Ziel.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Transparent, planbar und ohne technische Ueberforderung.
+            Wir lernen uns kennen. Danach entwickle ich ein Konzept, passend zu Ihnen und Ihrem Unternehmen.
           </p>
         </motion.div>
 
