@@ -31,7 +31,7 @@ export default function FloatingHeader({ activeSection }) {
       className="fixed left-0 right-0 top-0 z-50"
     >
       <div
-        className="mx-auto mt-4 w-full max-w-7xl rounded-xl px-6 py-2"
+        className="mx-auto mt-4 w-full max-w-7xl rounded-xl px-4 py-2 sm:px-6"
         style={{
           background: scrolled ? "rgba(245,249,255,0.8)" : "transparent",
           border: scrolled ? "1px solid rgba(151,170,198,0.32)" : "1px solid transparent",
@@ -45,10 +45,10 @@ export default function FloatingHeader({ activeSection }) {
           <button
             type="button"
             onClick={() => scrollToSection("hero")}
-            className="flex items-center gap-3 rounded-lg px-1 py-1"
+            className="flex items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
-            <span className="hidden text-base font-semibold uppercase tracking-[0.14em] sm:block" style={{ color: "#1f335b" }}>
+            <span className="text-sm font-semibold uppercase tracking-[0.12em] max-[430px]:hidden sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
               FÖRDECODE
             </span>
           </button>

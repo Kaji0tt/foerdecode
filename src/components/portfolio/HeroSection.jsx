@@ -227,12 +227,13 @@ export default function HeroSection() {
                       Moin, ich bin Jascha.
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — inzwischen widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein ganzes Leben begleitet.
+                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — heute widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein Leben lang begleitet.
 
-                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher, schneller und individueller umsetzen als noch vor wenigen Jahren. Dadurch entstehen neue Möglichkeiten — auch für kleinere Unternehmen, Selbstständige und lokale Projekte.
+                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher und individueller umsetzen — auch für kleinere Unternehmen und Selbstständige.
 
-                    Mir ist wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag und den Bedürfnissen eines Unternehmens passen.
-                    Falls Sie eine Idee haben oder Unterstützung bei digitalen Prozessen benötigen, freue ich mich von Ihnen zu hören!
+                    Dabei ist mir wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag eines Unternehmens passen.
+
+                    Ich freue mich, von Ihnen zu hören!
                     </p>
                   </div>
 
