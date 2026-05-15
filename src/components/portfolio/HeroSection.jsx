@@ -137,10 +137,10 @@ export default function HeroSection() {
               transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
             >
               <h1
-                className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight"
+                className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight lg:max-w-[31rem] xl:max-w-[42rem]"
                 style={{
                   color: "#1a2f58",
-                  fontSize: "clamp(1.9rem, 7vw, 4.35rem)",
+                  fontSize: "clamp(1.9rem, 5.2vw, 4.1rem)",
                 }}
               >
                 <span className="block whitespace-nowrap">Einfache Lösungen.</span>
