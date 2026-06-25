@@ -8,22 +8,22 @@ const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url)
 
 const trustCards = [
   {
-    title: "Von Mensch zu Mensch",
-    text: "Entwickeln Sie Ihre Online-Präsenz im persönlichen Austausch. Keine Technikwissen notwendig. Ich übernehme die Umsetzung, Sie konzentrieren sich auf Ihr Business.",
+    title: "Persönlich begleitet",
+    text: "Ein Ansprechpartner. Von der Idee bis zur Umsetzung.",
     Icon: UserCircle2,
     tilt: "-1.8deg",
     accent: "#f7e7a3",
   },
   {
-    title: "Einfache Wartung",
-    text: "Updates und Pflege ohne Komplexität, entsprechend Ihr Vorstellungen und Kenntnisse. Entweder im Full-Service oder mit auf Sie zugeschnittenen Lösungen zur Selbstverwaltung.",
+    title: "Einfach & verständlich",
+    text: "Keine Technik. Kein Stress. Ich kümmer mich um die komplette Umsetzung.",
     Icon: Wrench,
     tilt: "1.2deg",
     accent: "#d8ecff",
   },
   {
-    title: "Lokal und erreichbar",
-    text: "Keine Umwege über Agenturen oder Service-Hotlines. Sie erreichen mich direkt per Telefon, E-Mail oder Messenger. Persönlich, schnell und unkompliziert.",
+    title: "Lokal erreichbar",
+    text: "Direkter Kontakt aus Flensburg. Persönlich und schnell erreichbar.",
     Icon: MapPin,
     tilt: "-0.8deg",
     accent: "#f7d7dc",
@@ -140,11 +140,11 @@ export default function HeroSection() {
                 className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight"
                 style={{
                   color: "#1a2f58",
-                  fontSize: "clamp(1.9rem, 7vw, 4.35rem)",
+                  fontSize: "clamp(1.3rem, 6vw, 3.55rem)",
                 }}
               >
-                <span className="block whitespace-nowrap">Einfache Lösungen.</span>
-                <span className="block whitespace-nowrap">Starke Wirkung.</span>
+                <span className="block whitespace-nowrap">Websites für kleine</span>
+                <span className="block whitespace-nowrap">Unternehmen.</span>
               </h1>
             </motion.div>
 
@@ -160,8 +160,8 @@ export default function HeroSection() {
                   color: "#3c4f76",
                 }}
               >
-              Ich entwickle moderne Websites und unterstütze Unternehmen und Selbstständige bei digitalen Lösungen — persönlich, direkt und ohne unnötige Komplexität. <br />
-              Sie müssen sich nicht mit Technik auskennen. Gemeinsam finden wir eine Lösung, die wirklich zu Ihnen und Ihrem Unternehmen passt.
+              Ideal für Restaurants, Selbstständige und lokale Betriebe in Flensburg und Umgebung.<br /> 
+              Ich bringe Sie einfach & schnell online.
               </p>
             </motion.div>
 
@@ -182,7 +182,7 @@ export default function HeroSection() {
                   e.currentTarget.style.background = "#9e1c1c";
                 }}
               >
-                Projekt anfragen
+                Unverbindlich anfragen
               </button>
               <button
                 onClick={() => scrollToSection("projects")}
@@ -230,13 +230,10 @@ export default function HeroSection() {
                       Moin, ich bin Jascha.
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Wie so viele, hat mich das Studium nach Flensburg verschlagen. Studiert habe ich Kunst und Wirtschaft — heute widme ich mich vor allem meiner Begeisterung für IT, die mich schon mein Leben lang begleitet.
-
-                    Besonders spannend finde ich die Verbindung aus Kreativität und Technologie. Viele digitale Lösungen lassen sich heute einfacher und individueller umsetzen — auch für kleinere Unternehmen und Selbstständige.
-
-                    Dabei ist mir wichtig, verständliche Lösungen zu entwickeln, die wirklich zum Alltag eines Unternehmens passen.
-
-                    Ich freue mich, von Ihnen zu hören!
+                    Ich baue Websites für kleine Unternehmen, die online sichtbar werden wollen.
+                    Viele kleine Unternehmer haben keine Zeit oder Lust auf Technik – genau dafür bin ich da.
+                    Sie kümmern sich um Ihr Geschäft, ich mache Ihre Website.
+                    Schnell, unkompliziert und zu einem fairen Preis.
                     </p>
                   </div>
 
