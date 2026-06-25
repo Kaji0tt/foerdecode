@@ -137,7 +137,7 @@ export default function HeroSection() {
               transition={{ duration: 0.65, ease: "easeOut", delay: 0.1 }}
             >
               <h1
-                className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight"
+                className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight lg:max-w-[31rem] xl:max-w-[42rem]"
                 style={{
                   color: "#1a2f58",
                   fontSize: "clamp(1.3rem, 6vw, 3.55rem)",
