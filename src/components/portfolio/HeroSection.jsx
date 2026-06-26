@@ -9,14 +9,14 @@ const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url)
 const trustCards = [
   {
     title: "Persönlich begleitet",
-    text: "Ein Ansprechpartner. Von der Idee bis zur Umsetzung.",
+    text: "Wir entwickeln ein Konzept, dass sich für Sie richtig anfühlt und ich setze es um.",
     Icon: UserCircle2,
     tilt: "-1.8deg",
     accent: "#f7e7a3",
   },
   {
     title: "Einfach & verständlich",
-    text: "Keine Technik. Kein Stress. Ich kümmer mich um die komplette Umsetzung.",
+    text: "Keine Technik. Kein Stress. Ich kümmer mich um die komplette Umsetzung - vom Domainkauf bis zum Postfach.",
     Icon: Wrench,
     tilt: "1.2deg",
     accent: "#d8ecff",
@@ -231,9 +231,9 @@ export default function HeroSection() {
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
                     Ich baue Websites für kleine Unternehmen, die online sichtbar werden wollen.
-                    Viele kleine Unternehmer haben keine Zeit oder Lust auf Technik – genau dafür bin ich da.
+                    Wenn Sie weder Lust noch Zeit für Technik haben, bin ich der richtige Ansprechpartner.
                     Sie kümmern sich um Ihr Geschäft, ich mache Ihre Website.
-                    Schnell, unkompliziert und zu einem fairen Preis.
+                    <br />Schnell, unkompliziert und zu einem fairen Preis.
                     </p>
                   </div>
 
