@@ -38,25 +38,24 @@ function ProjectPreview({ project }) {
 
   if (isMobileOnly) {
     return (
-      <div className="relative mb-6 flex h-[420px] items-center justify-center">
-        <div
-          className="relative z-[2] w-[200px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)] sm:w-[220px]"
-          style={{
-            background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
-          }}
-        >
-          <div className="pointer-events-none absolute left-1/2 top-[10px] z-[3] h-[5px] w-10 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
-          <div className="pointer-events-none absolute right-[10px] top-1/2 z-[3] h-12 w-[3px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
-          <div className="overflow-hidden rounded-[1.65rem] border border-[#3d4758] bg-[#0f1724]">
-            <img
-              src={project.mobileImage}
-              alt={`${project.title} Mobile-Vorschau`}
-              className="aspect-[9/16] h-auto w-full object-contain object-top"
-              loading="lazy"
-            />
-          </div>
-          <div className="pointer-events-none absolute bottom-[10px] left-1/2 z-[3] h-[4px] w-12 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
+      <div
+        className="relative z-[2] h-full max-h-[460px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+        style={{
+          aspectRatio: "9/16",
+          background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
+        }}
+      >
+        <div className="pointer-events-none absolute left-1/2 top-[10px] z-[3] h-[5px] w-10 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
+        <div className="pointer-events-none absolute right-[10px] top-1/2 z-[3] h-12 w-[3px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
+        <div className="h-full overflow-hidden rounded-[1.65rem] border border-[#3d4758] bg-[#0f1724]">
+          <img
+            src={project.mobileImage}
+            alt={`${project.title} Mobile-Vorschau`}
+            className="h-full w-full object-cover object-top"
+            loading="lazy"
+          />
         </div>
+        <div className="pointer-events-none absolute bottom-[10px] left-1/2 z-[3] h-[4px] w-12 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
       </div>
     );
   }
@@ -70,10 +69,8 @@ function ProjectPreview({ project }) {
           background: "linear-gradient(155deg, rgba(241,246,253,0.98), rgba(229,237,248,0.95))",
         }}
       >
-
-
         {project.desktopImage ? (
-          <div className="h-full w-[calc(100%)] overflow-hidden rounded-lg border bg-white shadow-[0_18px_35px_rgba(88,114,156,0.12)] sm:w-[calc(100%)]" style={{ borderColor: "rgba(163,183,212,0.34)" }}>
+          <div className="h-full w-full overflow-hidden rounded-lg border bg-white shadow-[0_18px_35px_rgba(88,114,156,0.12)]" style={{ borderColor: "rgba(163,183,212,0.34)" }}>
             <img
               src={project.desktopImage}
               alt={`${project.title} Desktop-Vorschau`}
@@ -82,28 +79,28 @@ function ProjectPreview({ project }) {
             />
           </div>
         ) : null}
-
-        {project.mobileImage ? (
-          <div
-            className="absolute bottom-15 -right-8 z-[2] w-[36%] min-w-[108px] max-w-[214px] rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)] sm:bottom-24 sm:-right-16"
-            style={{
-              background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
-            }}
-          >
-            <div className="pointer-events-none absolute left-1/2 top-[10px] z-[3] h-[5px] w-10 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
-            <div className="pointer-events-none absolute right-[10px] top-1/2 z-[3] h-12 w-[3px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
-            <div className="overflow-hidden rounded-[1.55rem] border border-[#3d4758] bg-[#0f1724]">
-              <img
-                src={project.mobileImage}
-                alt={`${project.title} Mobile-Vorschau`}
-                className="aspect-[9/16] h-auto w-full object-cover object-top"
-                loading="lazy"
-              />
-            </div>
-            <div className="pointer-events-none absolute bottom-[10px] left-1/2 z-[3] h-[4px] w-12 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
-          </div>
-        ) : null}
       </div>
+
+      {project.mobileImage ? (
+        <div
+          className="absolute top-1/2 right-0 z-[2] w-[8.5rem] -translate-y-1/2 rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+          style={{
+            background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
+          }}
+        >
+          <div className="pointer-events-none absolute left-1/2 top-[8px] z-[3] h-[4px] w-7 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
+          <div className="pointer-events-none absolute right-[8px] top-1/2 z-[3] h-8 w-[2px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
+          <div className="overflow-hidden rounded-[1.55rem] border border-[#3d4758] bg-[#0f1724]">
+            <img
+              src={project.mobileImage}
+              alt={`${project.title} Mobile-Vorschau`}
+              className="aspect-[9/16] h-auto w-full object-cover object-top"
+              loading="lazy"
+            />
+          </div>
+          <div className="pointer-events-none absolute bottom-[8px] left-1/2 z-[3] h-[3px] w-8 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -111,8 +108,11 @@ function ProjectPreview({ project }) {
 const projects = [
   {
     title: "Portfolio Lukas Wojciechowski",
-    description: "Portfolio fuer einen Fotografen und Videografen mit Fokus auf visuelles Storytelling, Stills und Motion.",
-    details: "In ca. 8 Iterationen ist ein sehenswertes Portfolio entstanden. Besonderes Augenmerk lag bei der Umsetzung auf der Anwenderfreundlichkeit bei mobilen Geräten, Windows und Mac.",
+    bullets: [
+      "Domainbestellung und Einrichtung",
+      "Impressum und Datenschutzrichtlinien nach DSGVO",
+      "Responsives Design für Mac, Windows, Android und iOS",
+    ],
     accent: "#9e1c1c",
     href: "https://lukaswojciechowski.de/#/about",
     desktopImage: "/projects/Lukas-Desktop.png",
@@ -121,7 +121,15 @@ const projects = [
   {
     title: "Floralog Webapplikation",
     description: "Eine Webapplikation zur Förderung von Natur- und Pflanzenkenntnissen.",
-    details: "Aus einer Idee und einem Prototypen ist eine voll funktionsfähige, im Playstore verfügbare Webapplikation entstanden. Die App bietet regionale Pflanzendatenbanken, Community-Events, Quizfunktionen und ein Belohnungssystem.",
+    bullets: [
+      "Domainbestellung und Einrichtung",
+      "Mailsystem und Weiterleitung",
+      "Admin-Zugänge zur Verwaltung und Wartung",
+      "Schnittstellen mit externen Dienstleistern (Maps, Pflanzenerkennung, KI)",
+      "Serverstruktur mit Front- und Backend",
+      "Launch im Google Playstore",
+      "Optimierung für Suchmaschinen (SEO)",
+    ],
     accent: "#355f98",
     mobileImage: "/projects/floralog-mobile.png",
   },
@@ -149,7 +157,7 @@ export default function PortfolioSection() {
           </p>
         </motion.div>
 
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
@@ -157,50 +165,36 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.42, delay: index * 0.08 }}
-              className="h-auto rounded-2xl border p-6"
+              className="relative flex h-full flex-col rounded-2xl border p-6 pb-16"
               style={{
                 borderColor: "rgba(163,183,212,0.28)",
                 background: "rgba(249,252,255,0.9)",
               }}
             >
               {project.mobileImage && !project.desktopImage ? (
-                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="sm:flex-1 sm:pr-4">
-                    <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
-                      {project.title}
-                    </h3>
-                    <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                      {project.description}
-                    </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#5b7196" }}>
-                      {project.details}
-                    </p>
-
-                    <button
-                      type="button"
-                      className="mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
-                      style={{ background: project.accent }}
-                      onClick={() => {
-                        if (project.href) {
-                          window.open(project.href, "_blank", "noopener,noreferrer");
-                        }
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.opacity = "0.92";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.opacity = "1";
-                      }}
-                    >
-                      Live ansehen
-                      <ArrowUpRight className="h-4 w-4" />
-                    </button>
+                <>
+                  <div className="flex min-h-0 flex-1 flex-row gap-5">
+                    <div className="flex min-w-0 flex-1 flex-col">
+                      <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
+                        {project.title}
+                      </h3>
+                      <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                        {project.description}
+                      </p>
+                      <ul className="space-y-1.5">
+                        {project.bullets?.map((b) => (
+                          <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                            <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex flex-1 items-center justify-center">
+                      <ProjectPreview project={project} />
+                    </div>
                   </div>
-
-                  <div className="mx-auto sm:mx-0 sm:self-center">
-                    <ProjectPreview project={project} />
-                  </div>
-                </div>
+                </>
               ) : (
                 <>
                   <ProjectPreview project={project} />
@@ -211,31 +205,35 @@ export default function PortfolioSection() {
                   <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                     {project.description}
                   </p>
-                  <p className="text-sm leading-relaxed" style={{ color: "#5b7196" }}>
-                    {project.details}
-                  </p>
-
-                  <button
-                    type="button"
-                    className="mt-5 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
-                    style={{ background: project.accent }}
-                    onClick={() => {
-                      if (project.href) {
-                        window.open(project.href, "_blank", "noopener,noreferrer");
-                      }
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.opacity = "0.92";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.opacity = "1";
-                    }}
-                  >
-                    Live ansehen
-                    <ArrowUpRight className="h-4 w-4" />
-                  </button>
+                  <ul className="space-y-1.5">
+                    {project.bullets?.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                        <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </>
               )}
+              <button
+                type="button"
+                className="absolute bottom-6 left-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
+                style={{ background: project.accent }}
+                onClick={() => {
+                  if (project.href) {
+                    window.open(project.href, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.opacity = "0.92";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.opacity = "1";
+                }}
+              >
+                Live ansehen
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
             </motion.article>
           ))}
         </div>
