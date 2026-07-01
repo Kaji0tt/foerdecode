@@ -38,13 +38,13 @@ export default function PricingSection() {
           className="mb-8 max-w-3xl"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Leistungen
+            Angebot
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Was ich für Ihr Projekt übernehme.
+            Was ich für Sie übernehme.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Angepasst an die Ausrichtung der Seite und die Bedürfnisse Ihres Unternehmens.
+            Angepasst an Ihr Vorhaben – von der einfachen Online-Präsenz bis zur individuellen Lösung.
           </p>
         </motion.div>
 

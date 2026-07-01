@@ -15,9 +15,9 @@ export default function FloatingHeader({ activeSection }) {
 
   const navItems = [
     { label: "Start", id: "hero" },
-    { label: "Ablauf", id: "process" },
-    { label: "Leistungen", id: "services" },
-    { label: "Projekte", id: "projects" },
+    { label: "Angebot", id: "services" },
+    { label: "Beispiele", id: "projects" },
+    { label: "Preise", id: "pricing" },
     { label: "Kontakt", id: "contact" },
   ];
 

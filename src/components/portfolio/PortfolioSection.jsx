@@ -147,13 +147,13 @@ export default function PortfolioSection() {
           className="mb-8 max-w-3xl"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Projekte
+            Beispiele
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
             Beispiele mit klarem Ziel und sichtbarer Verbesserung.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Nicht nur Screenshots, sondern nachvollziehbare Ergebnisse fuer reale Anforderungen aus dem Alltag.
+            Nicht nur Screenshots, sondern nachvollziehbare Ergebnisse für reale Anforderungen aus dem Alltag.
           </p>
         </motion.div>
 
