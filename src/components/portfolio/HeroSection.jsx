@@ -23,7 +23,7 @@ const trustCards = [
   },
   {
     title: "Lokal erreichbar",
-    text: "Direkter Kontakt aus Flensburg. Persönlich und schnell erreichbar.",
+    text: "Direkter Kontakt. Persönlich und schnell erreichbar. Ich bleibe ihr Ansprechpartner, auch nach dem Launch.",
     Icon: MapPin,
     tilt: "-0.8deg",
     accent: "#f7d7dc",

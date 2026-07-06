@@ -1,11 +1,45 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Check, ArrowUpRight } from "lucide-react";
 import { plans } from "@/data/plans";
 
-export default function PreiseSection() {
-  const scrollToContact = () =>
+function RotatingExample({ examples, color }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % examples.length);
+    }, 2200);
+    return () => clearInterval(id);
+  }, [examples.length]);
+
+  return (
+    <div
+      className="relative overflow-hidden flex-1"
+      style={{ height: "1.5rem", marginTop: "0.25rem" }}
+    >
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.4 }}
+          style={{ color: "#4a6188", position: "absolute", inset: 0 }}
+          className="text-sm italic"
+        >
+          {examples[index]}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+export default function PreiseSection({ onPlanSelect }) {
+  const scrollToContact = (message) => {
+    if (onPlanSelect) onPlanSelect(message);
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="pricing" className="relative py-16 sm:py-20">
@@ -87,11 +121,18 @@ export default function PreiseSection() {
                     {f}
                   </li>
                 ))}
+                {plan.expertRotating && plan.expertExamples && (
+                  <li className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                    {/* indent to align with feature text, not icon */}
+                    <span className="h-4 w-4 flex-shrink-0 mt-[3px]" />
+                    <RotatingExample examples={plan.expertExamples} color={plan.color} />
+                  </li>
+                )}
               </ul>
 
               <button
                 type="button"
-                onClick={scrollToContact}
+                onClick={() => scrollToContact(plan.contactMessage)}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 style={{ background: plan.color }}
               >

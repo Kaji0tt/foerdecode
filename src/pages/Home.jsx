@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HeroSection from "@/components/portfolio/HeroSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
-import PricingSection from "@/components/portfolio/PricingSection";
+import AngebotSection from "@/components/portfolio/AngebotSection";
 import PreiseSection from "@/components/portfolio/PreiseSection";
 import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
 import FloatingHeader from "@/components/portfolio/FloatingHeader";
@@ -10,6 +10,7 @@ const sectionIds = ["hero", "services", "projects", "pricing", "contact"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [contactMessage, setContactMessage] = useState("");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,10 +77,10 @@ export default function Home() {
           />
         </div>
         <div className="relative z-[2]">
-          <PricingSection />
+          <AngebotSection />
           <PortfolioSection />
-          <PreiseSection />
-          <SimpleContactSection />
+          <PreiseSection onPlanSelect={setContactMessage} />
+          <SimpleContactSection prefillMessage={contactMessage} />
         </div>
       </main>
     </div>

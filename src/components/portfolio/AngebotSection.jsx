@@ -1,32 +1,31 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MonitorSmartphone, Workflow, RefreshCcw, LifeBuoy } from "lucide-react";
+import { Globe, Palette, Bot, LifeBuoy } from "lucide-react";
 
 const services = [
   {
-    title: "Webdesign",
-    text: "Moderne und responsive Webseiten mit klarer Struktur und starker Wirkung auf Desktop und Mobilgeraeten.",
-    Icon: MonitorSmartphone,
+    title: "Website & Einrichtung",
+    text: "Fertige, responsive Website inkl. Domain, E-Mail-Postfach, Impressum und Datenschutzerklärung nach DSGVO – alles aus einer Hand, ohne technischen Aufwand für Sie.",
+    Icon: Globe,
   },
   {
-    title: "Technische Loesungen",
-    text: "Individuelle Funktionen, Automationen und digitale Prozesse, die wirklich zu Ihrem Arbeitsalltag passen.",
-    Icon: Workflow,
+    title: "Individuelle Gestaltung",
+    text: "Ästhetische Anforderungen sind keine Blackbox. Durch mein Kunststudium verstehe ich gestalterische Ideen und setze sie präzise um – vom ersten Entwurf bis zum fertigen Auftritt.",
+    Icon: Palette,
   },
   {
-    title: "Modernisierung bestehender Seiten",
-    text: "Veraltete Auftritte werden technisch und visuell erneuert, ohne den roten Faden Ihres Unternehmens zu verlieren.",
-    Icon: RefreshCcw,
+    title: "KI & Automatisierung",
+    text: "Als IT-Generalist übersetze ich Ihre Anforderungen in technische Lösungen: individuelle Applikationen, automatisierte Abläufe und smarte Schnittstellen – entwickelt mit KI-Unterstützung.",
+    Icon: Bot,
   },
   {
-    title: "Betreuung und Pflege",
-    text: "Nach dem Launch bleibt Ihre Seite aktuell. Updates, Erweiterungen und laufende Unterstuetzung inklusive.",
+    title: "Betreuung & Wartung",
+    text: "Nach dem Launch bleibe ich Ihr Ansprechpartner. Updates, Erweiterungen, Korrekturen – auf Wunsch mit laufendem Service, damit Sie sich um Ihr Kerngeschäft kümmern können.",
     Icon: LifeBuoy,
   },
 ];
 
-export default function PricingSection() {
-
+export default function AngebotSection() {
   return (
     <section id="services" className="relative py-16 sm:py-20">
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
@@ -41,10 +40,10 @@ export default function PricingSection() {
             Angebot
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Was ich für Sie übernehme.
+            Technik, die gestalterisch denkt.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Angepasst an Ihr Vorhaben – von der einfachen Online-Präsenz bis zur individuellen Lösung.
+            Als IT-Generalist mit einem Studium der Künste verstehe ich beide Seiten: Was etwas gut aussehen soll und was es dafür technisch braucht. Ich übersetze ästhetische Anforderungen in funktionierende Lösungen – und begleite das Ganze von der Idee bis zum laufenden Betrieb.
           </p>
         </motion.div>
 

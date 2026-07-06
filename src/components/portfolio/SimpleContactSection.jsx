@@ -1,13 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Send, CheckCircle } from "lucide-react";
 
-export default function SimpleContactSection() {
+export default function SimpleContactSection({ prefillMessage }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    if (prefillMessage) {
+      setForm(p => ({ ...p, message: prefillMessage }));
+    }
+  }, [prefillMessage]);
 
   const handleChange = (e) => setForm(p => ({ ...p, [e.target.name]: e.target.value }));
 
