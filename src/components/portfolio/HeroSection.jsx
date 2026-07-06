@@ -160,7 +160,7 @@ export default function HeroSection() {
                   color: "#3c4f76",
                 }}
               >
-              Ideal für Restaurants, Selbstständige und lokale Betriebe in Flensburg und Umgebung.<br /> 
+              Ideal für Restaurants, Selbstständige und alle die es werden wollen.<br /> 
               Ich bringe Sie einfach & schnell online.
               </p>
             </motion.div>
@@ -231,7 +231,7 @@ export default function HeroSection() {
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
                     Ich baue Websites für kleine Unternehmen, die online sichtbar werden wollen.
-                    Wenn Sie weder Lust noch Zeit für Technik haben, bin ich der richtige Ansprechpartner.
+                    Als IT-Generalist besitze ich umfangreiche Erfahrung in Webentwicklung, Design und digitaler Kommunikation.
                     Sie kümmern sich um Ihr Geschäft, ich mache Ihre Website.
                     <br />Schnell, unkompliziert und zu einem fairen Preis.
                     </p>
