@@ -39,7 +39,7 @@ function ProjectPreview({ project }) {
   if (isMobileOnly) {
     return (
       <div
-        className="relative z-[2] h-full max-h-[460px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+        className="relative z-[2] w-full max-w-[80px] sm:max-w-[120px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
         style={{
           aspectRatio: "9/16",
           background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
@@ -63,7 +63,7 @@ function ProjectPreview({ project }) {
   return (
     <div className="relative mb-6">
       <div
-        className="relative aspect-video w-[calc(100%-6.25rem)] rounded-xl border p-4"
+        className="relative aspect-video w-[calc(100%-4.75rem)] sm:w-[calc(100%-5.5rem)] rounded-xl border p-1.5 sm:p-4"
         style={{
           borderColor: "rgba(163,183,212,0.24)",
           background: "linear-gradient(155deg, rgba(241,246,253,0.98), rgba(229,237,248,0.95))",
@@ -83,7 +83,7 @@ function ProjectPreview({ project }) {
 
       {project.mobileImage ? (
         <div
-          className="absolute top-1/2 right-0 z-[2] w-[8.5rem] -translate-y-1/2 rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+          className="absolute top-1/2 right-0 z-[2] w-[7rem] sm:w-[7.75rem] -translate-y-[42%] rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
           style={{
             background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
           }}
@@ -110,6 +110,7 @@ const projects = [
     title: "Portfolio Lukas Wojciechowski",
     bullets: [
       "Domainbestellung und Einrichtung",
+      "Mailsystem und Weiterleitung",
       "Impressum und Datenschutzrichtlinien nach DSGVO",
       "Responsives Design für Mac, Windows, Android und iOS",
     ],
@@ -122,13 +123,9 @@ const projects = [
     title: "Floralog Webapplikation",
     description: "Eine Webapplikation zur Förderung von Natur- und Pflanzenkenntnissen.",
     bullets: [
-      "Domainbestellung und Einrichtung",
-      "Mailsystem und Weiterleitung",
-      "Admin-Zugänge zur Verwaltung und Wartung",
       "Schnittstellen mit externen Dienstleistern (Maps, Pflanzenerkennung, KI)",
-      "Serverstruktur mit Front- und Backend",
-      "Launch im Google Playstore",
-      "Optimierung für Suchmaschinen (SEO)",
+      "Serverstruktur mit Front- und Backend (SQL)",
+      "APK mit Launch im Google Playstore",
     ],
     accent: "#355f98",
     mobileImage: "/projects/floralog-mobile.png",
@@ -165,7 +162,7 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.42, delay: index * 0.08 }}
-              className="relative flex h-full flex-col rounded-2xl border p-6 pb-16"
+              className="relative flex h-full flex-col overflow-hidden rounded-2xl border p-6 pb-16"
               style={{
                 borderColor: "rgba(163,183,212,0.28)",
                 background: "rgba(249,252,255,0.9)",
@@ -173,27 +170,53 @@ export default function PortfolioSection() {
             >
               {project.mobileImage && !project.desktopImage ? (
                 <>
-                  <div className="flex min-h-0 flex-1 flex-row gap-5">
-                    <div className="flex min-w-0 flex-1 flex-col">
+                  {/* Titel + Beschreibung links, Mockup oben rechts */}
+                  <div className="mb-4 flex items-start gap-4">
+                    <div className="min-w-0 flex-1">
                       <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
                         {project.title}
                       </h3>
-                      <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                      <p className="text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                         {project.description}
                       </p>
-                      <ul className="space-y-1.5">
-                        {project.bullets?.map((b) => (
-                          <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                            <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
                     </div>
-                    <div className="flex flex-1 items-center justify-center">
-                      <ProjectPreview project={project} />
+
+                    {/* Floating Phone Mockup – oben rechts, leicht rotiert */}
+                    <div
+                      className="flex-shrink-0 w-[72px] sm:w-[88px] rotate-[4deg]"
+                      style={{ filter: "drop-shadow(0 16px 32px rgba(31,45,72,0.38))" }}
+                    >
+                      <div
+                        className="relative rounded-[1.5rem] p-[5px]"
+                        style={{ background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)" }}
+                      >
+                        <div className="pointer-events-none absolute left-1/2 top-[7px] z-[3] h-[3px] w-5 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
+                        <div className="pointer-events-none absolute right-[7px] top-1/2 z-[3] h-7 w-[2px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
+                        <div
+                          className="overflow-hidden rounded-[1.3rem] border border-[#3d4758] bg-[#0f1724]"
+                          style={{ aspectRatio: "9/16" }}
+                        >
+                          <img
+                            src={project.mobileImage}
+                            alt={`${project.title} Mobile-Vorschau`}
+                            className="h-full w-full object-cover object-top"
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className="pointer-events-none absolute bottom-[7px] left-1/2 z-[3] h-[3px] w-6 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
+                      </div>
                     </div>
                   </div>
+
+                  {/* Aufzählungspunkte – volle Breite */}
+                  <ul className="mb-4 space-y-1.5">
+                    {project.bullets?.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                        <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </>
               ) : (
                 <>
@@ -205,7 +228,7 @@ export default function PortfolioSection() {
                   <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                     {project.description}
                   </p>
-                  <ul className="space-y-1.5">
+                  <ul className="mb-4 space-y-1.5">
                     {project.bullets?.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                         <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />

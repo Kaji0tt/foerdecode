@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
 
 export default function FloatingHeader({ activeSection }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -21,7 +23,10 @@ export default function FloatingHeader({ activeSection }) {
     { label: "Kontakt", id: "contact" },
   ];
 
-  const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
   return (
     <motion.header
@@ -33,11 +38,11 @@ export default function FloatingHeader({ activeSection }) {
       <div
         className="mx-auto mt-4 w-full max-w-7xl rounded-xl px-4 py-2 sm:px-6"
         style={{
-          background: scrolled ? "rgba(245,249,255,0.8)" : "transparent",
-          border: scrolled ? "1px solid rgba(151,170,198,0.32)" : "1px solid transparent",
-          backdropFilter: scrolled ? "blur(9px)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(9px)" : "none",
-          boxShadow: scrolled ? "0 10px 26px rgba(26,45,78,0.12)" : "none",
+          background: scrolled ? "rgba(245,249,255,0.8)" : "rgba(245,249,255,0.8)",
+          border: scrolled ? "1px solid rgba(151,170,198,0.32)" : "1px solid rgba(151,170,198,0.32)",
+          backdropFilter: "blur(9px)",
+          WebkitBackdropFilter: "blur(9px)",
+          boxShadow: scrolled ? "0 10px 26px rgba(26,45,78,0.12)" : "0 4px 12px rgba(26,45,78,0.06)",
           transition: "background 220ms ease, border-color 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease",
         }}
       >
@@ -48,7 +53,7 @@ export default function FloatingHeader({ activeSection }) {
             className="flex items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
-            <span className="text-sm font-semibold uppercase tracking-[0.12em] max-[430px]:hidden sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
+            <span className="text-sm font-semibold uppercase tracking-[0.12em] sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
               FÖRDECODE
             </span>
           </button>
@@ -75,37 +80,61 @@ export default function FloatingHeader({ activeSection }) {
             ))}
           </nav>
 
-          <button
-            type="button"
-            onClick={() => scrollToSection("contact")}
-            className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
-            style={{ background: "#9e1c1c" }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#861717";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#9e1c1c";
-            }}
-          >
-            Anfragen
-          </button>
-        </div>
-
-        <div className="mt-2 flex w-full justify-center gap-1 md:hidden">
-          {navItems.map((item) => (
+          <div className="flex items-center gap-2">
             <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              className="rounded-md border-b-2 px-2 py-1 text-xs font-medium"
-              style={{
-                color: "#1e3158",
-                borderBottomColor: activeSection === item.id ? "#dc2626" : "transparent",
+              type="button"
+              onClick={() => scrollToSection("contact")}
+              className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
+              style={{ background: "#9e1c1c" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#861717";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#9e1c1c";
               }}
             >
-              {item.label}
+              Anfragen
             </button>
-          ))}
+
+            <button
+              type="button"
+              onClick={() => setMenuOpen((o) => !o)}
+              className="rounded-lg p-2 md:hidden"
+              style={{ color: "#1e3158" }}
+              aria-label="Navigation öffnen"
+            >
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
+
+        <AnimatePresence>
+          {menuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.22, ease: "easeInOut" }}
+              className="overflow-hidden md:hidden"
+            >
+              <div className="flex flex-col gap-1 pb-2 pt-3">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className="rounded-md border-l-2 px-4 py-2 text-left text-sm font-medium transition-colors"
+                    style={{
+                      color: "#1e3158",
+                      borderLeftColor: activeSection === item.id ? "#dc2626" : "transparent",
+                    }}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

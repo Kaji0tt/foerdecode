@@ -56,7 +56,7 @@ export default function SimpleContactSection({ prefillMessage }) {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.52, delay: 0.12 }}
-          className="grid gap-5 lg:grid-cols-[1.2fr_0.8fr]"
+          className="grid gap-5"
         >
           <div className="rounded-2xl border p-6 sm:p-7" style={{ borderColor: "rgba(163,183,212,0.28)", background: "rgba(249,252,255,0.9)" }}>
             {done ? (
@@ -150,33 +150,6 @@ export default function SimpleContactSection({ prefillMessage }) {
             )}
           </div>
 
-          <aside className="rounded-2xl border p-6" style={{ borderColor: "rgba(163,183,212,0.28)", background: "rgba(249,252,255,0.9)" }}>
-            <h3 className="mb-4 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
-              Direkter Kontakt
-            </h3>
-            <ul className="space-y-4 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-              <li>
-                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
-                  E-Mail
-                </p>
-                <a href="mailto:jascha@foerdecode.de" className="transition-colors" style={{ color: "#315286" }}>
-                  jascha@foerdecode.de
-                </a>
-              </li>
-              <li>
-                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
-                  Telefon (optional)
-                </p>
-                <p>+49 0000 000000</p>
-              </li>
-              <li>
-                <p className="mb-1 font-semibold" style={{ color: "#2f4c79" }}>
-                  Standort
-                </p>
-                <p>Flensburg und Umgebung</p>
-              </li>
-            </ul>
-          </aside>
         </motion.div>
       </div>
     </section>
