@@ -128,6 +128,7 @@ const projects = [
       "APK mit Launch im Google Playstore",
     ],
     accent: "#355f98",
+    href: "https://floralog.de",
     mobileImage: "/projects/floralog-mobile.png",
   },
 ];
@@ -170,20 +171,28 @@ export default function PortfolioSection() {
             >
               {project.mobileImage && !project.desktopImage ? (
                 <>
-                  {/* Titel + Beschreibung links, Mockup oben rechts */}
-                  <div className="mb-4 flex items-start gap-4">
+                  <div className="flex items-start gap-4 md:items-center">
+                    {/* Linke Spalte: Titel + Beschreibung + Bullets */}
                     <div className="min-w-0 flex-1">
                       <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
                         {project.title}
                       </h3>
-                      <p className="text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                      <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                         {project.description}
                       </p>
+                      <ul className="mb-4 space-y-1.5">
+                        {project.bullets?.map((b) => (
+                          <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                            <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
 
-                    {/* Floating Phone Mockup – oben rechts, leicht rotiert */}
+                    {/* Rechte Spalte: Phone Mockup – spannt über gesamte Höhe */}
                     <div
-                      className="flex-shrink-0 w-[72px] sm:w-[88px] rotate-[4deg]"
+                      className="flex-shrink-0 w-[72px] sm:w-[88px] md:w-[216px] rotate-[4deg]"
                       style={{ filter: "drop-shadow(0 16px 32px rgba(31,45,72,0.38))" }}
                     >
                       <div
@@ -207,16 +216,6 @@ export default function PortfolioSection() {
                       </div>
                     </div>
                   </div>
-
-                  {/* Aufzählungspunkte – volle Breite */}
-                  <ul className="mb-4 space-y-1.5">
-                    {project.bullets?.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                        <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
                 </>
               ) : (
                 <>
@@ -228,7 +227,7 @@ export default function PortfolioSection() {
                   <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                     {project.description}
                   </p>
-                  <ul className="mb-4 space-y-1.5">
+                  <ul className="mb-4 grid gap-x-4 gap-y-1.5 md:grid-cols-2">
                     {project.bullets?.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
                         <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
