@@ -83,22 +83,23 @@ function ProjectPreview({ project }) {
 
       {project.mobileImage ? (
         <div
-          className="absolute top-1/2 right-0 z-[2] w-[7rem] sm:w-[7.75rem] -translate-y-[42%] rounded-[1.9rem] p-[5px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+          className="absolute top-1/2 right-0 z-[2] w-[7rem] sm:w-[7.75rem] -translate-y-[42%] rotate-[4deg] rounded-[1.5rem] p-[5px]"
           style={{
             background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
+            filter: "drop-shadow(0 16px 32px rgba(31,45,72,0.38))",
           }}
         >
-          <div className="pointer-events-none absolute left-1/2 top-[8px] z-[3] h-[4px] w-7 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
-          <div className="pointer-events-none absolute right-[8px] top-1/2 z-[3] h-8 w-[2px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
-          <div className="overflow-hidden rounded-[1.55rem] border border-[#3d4758] bg-[#0f1724]">
+          <div className="pointer-events-none absolute left-1/2 top-[7px] z-[3] h-[3px] w-5 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
+          <div className="pointer-events-none absolute right-[7px] top-1/2 z-[3] h-7 w-[2px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
+          <div className="overflow-hidden rounded-[1.3rem] border border-[#3d4758] bg-[#0f1724]" style={{ aspectRatio: "9/16" }}>
             <img
               src={project.mobileImage}
               alt={`${project.title} Mobile-Vorschau`}
-              className="aspect-[9/16] h-auto w-full object-cover object-top"
+              className="h-full w-full object-cover object-top"
               loading="lazy"
             />
           </div>
-          <div className="pointer-events-none absolute bottom-[8px] left-1/2 z-[3] h-[3px] w-8 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
+          <div className="pointer-events-none absolute bottom-[7px] left-1/2 z-[3] h-[3px] w-6 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
         </div>
       ) : null}
     </div>
@@ -171,7 +172,7 @@ export default function PortfolioSection() {
             >
               {project.mobileImage && !project.desktopImage ? (
                 <>
-                  <div className="flex items-start gap-4 md:items-center">
+                  <div className="flex items-start gap-4">
                     {/* Linke Spalte: Titel + Beschreibung + Bullets */}
                     <div className="min-w-0 flex-1">
                       <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
