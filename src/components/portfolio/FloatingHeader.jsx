@@ -4,15 +4,54 @@ import { Menu, X } from "lucide-react";
 
 const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
 
-export default function FloatingHeader({ activeSection }) {
+export default function FloatingHeader({ activeSection, onContactOpen }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const idleTimer = React.useRef(null);
+  const inTopZone = React.useRef(false);
+
+  const startHideTimer = () => {
+    clearTimeout(idleTimer.current);
+    idleTimer.current = setTimeout(() => setVisible(false), 1000);
+  };
+
+  const isInHero = () => window.scrollY < window.innerHeight * 0.85;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      if (isInHero()) {
+        // Im Hero: immer sichtbar
+        setVisible(true);
+        clearTimeout(idleTimer.current);
+      } else {
+        // Außerhalb: nach dem Scrollen wieder verstecken (außer Cursor ist oben)
+        if (!inTopZone.current && !menuOpen) startHideTimer();
+      }
+    };
+
+    const onMouseMove = (e) => {
+      const nowInTop = e.clientY < 80;
+      if (nowInTop && !inTopZone.current) {
+        inTopZone.current = true;
+        setVisible(true);
+        clearTimeout(idleTimer.current);
+      } else if (!nowInTop && inTopZone.current) {
+        inTopZone.current = false;
+        if (!isInHero() && !menuOpen) startHideTimer();
+      }
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("mousemove", onMouseMove);
+      clearTimeout(idleTimer.current);
+    };
   }, []);
 
   const navItems = [
@@ -20,7 +59,6 @@ export default function FloatingHeader({ activeSection }) {
     { label: "Angebot", id: "services" },
     { label: "Beispiele", id: "projects" },
     { label: "Preise", id: "pricing" },
-    { label: "Kontakt", id: "contact" },
   ];
 
   const scrollToSection = (id) => {
@@ -28,12 +66,24 @@ export default function FloatingHeader({ activeSection }) {
     setMenuOpen(false);
   };
 
+  // Wenn Menü offen ist, nicht verschwinden lassen
+  useEffect(() => {
+    if (menuOpen) {
+      clearTimeout(idleTimer.current);
+      setVisible(true);
+    } else {
+      idleTimer.current = setTimeout(() => setVisible(false), 1000);
+    }
+    return () => clearTimeout(idleTimer.current);
+  }, [menuOpen]);
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -14 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : -8 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
       className="fixed left-0 right-0 top-0 z-50"
+      style={{ pointerEvents: visible ? "auto" : "none" }}
     >
       <div
         className="mx-auto mt-4 w-full max-w-7xl rounded-xl px-4 py-2 sm:px-6"
@@ -83,7 +133,7 @@ export default function FloatingHeader({ activeSection }) {
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => { onContactOpen?.(); }}
               className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
               style={{ background: "#9e1c1c" }}
               onMouseEnter={(e) => {

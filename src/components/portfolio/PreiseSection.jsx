@@ -39,7 +39,6 @@ function RotatingExample({ examples, color }) {
 export default function PreiseSection({ onPlanSelect }) {
   const scrollToContact = (message) => {
     if (onPlanSelect) onPlanSelect(message);
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   const popularIndex = plans.findIndex((p) => p.popular);
@@ -65,7 +64,7 @@ export default function PreiseSection({ onPlanSelect }) {
           className="absolute -top-3 left-6 rounded-full px-3 py-1 text-xs font-semibold text-white"
           style={{ background: plan.color }}
         >
-          Beliebteste Wahl
+          Kann man machen!
         </div>
       )}
 
@@ -73,9 +72,14 @@ export default function PreiseSection({ onPlanSelect }) {
         <h3 className="mb-1 font-sora text-lg font-semibold" style={{ color: "#213a66" }}>
           {plan.name}
         </h3>
-        <p className="text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+        <p className="text-sm font-medium leading-relaxed" style={{ color: "#4a6188" }}>
           {plan.tagline}
         </p>
+        {plan.tooltip && (
+          <p className="mt-2 text-sm leading-relaxed" style={{ color: "#6b85ad" }}>
+            {plan.tooltip}
+          </p>
+        )}
       </div>
 
       <div className="mb-3 md:mb-4 flex items-end gap-1">
@@ -83,7 +87,7 @@ export default function PreiseSection({ onPlanSelect }) {
           {plan.price}€
         </span>
         <span className="mb-1 text-sm" style={{ color: "#6b85ad" }}>
-          einmalig
+          +35€ Monat für Full-Service
         </span>
       </div>
 
@@ -125,23 +129,23 @@ export default function PreiseSection({ onPlanSelect }) {
   );
 
   return (
-    <section id="pricing" className="relative py-16 sm:py-20">
+    <section id="pricing" className="relative py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
       <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.45 }}
-          className="mb-8 max-w-3xl"
+          className="mb-8 max-w-none"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
             Preise
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Klare Pakete. Keine versteckten Kosten.
+            Damit kannst' rechnen.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Wählen Sie das Paket, das zu Ihrem Vorhaben passt – oder sprechen Sie mich an, wenn Sie sich unsicher sind.
+            Ein paar Pakete zur groben Orientierung. Mit Full-Service kannst du mich auch jederzeit anhauen, falls was ist.
           </p>
         </motion.div>
 

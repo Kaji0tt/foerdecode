@@ -5,29 +5,29 @@ import { Globe, Palette, Bot, LifeBuoy } from "lucide-react";
 const services = [
   {
     title: "Website & Einrichtung",
-    text: "Fertige, responsive Website inkl. Domain, E-Mail-Postfach, Impressum und Datenschutzerklärung nach DSGVO – alles aus einer Hand, ohne technischen Aufwand für Sie.",
+    text: "Du kriegst eine fertige Website. Domain, E-Mail, Impressum, Datenschutz – alles drin, alles eingerichtet. Du musst nichts wissen.",
     Icon: Globe,
   },
   {
     title: "Individuelle Gestaltung",
-    text: "Ästhetische Anforderungen sind keine Blackbox. Durch mein Kunststudium verstehe ich gestalterische Ideen und setze sie präzise um – vom ersten Entwurf bis zum fertigen Auftritt.",
+    text: "Hast du konkrete Vorstellungen, wie es aussehen soll? Gut. Ich freue mich darauf, deine Vision kennenzulernen – und sie entsprechend deiner Vorstellung umzusetzen.",
     Icon: Palette,
   },
   {
     title: "KI & Automatisierung",
-    text: "Als IT-Generalist übersetze ich Ihre Anforderungen in technische Lösungen: individuelle Applikationen, automatisierte Abläufe und smarte Schnittstellen – entwickelt mit KI-Unterstützung.",
+    text: "Brauchst du mehr als 'ne einfache Seite? Buchungssystem, automatisierte Abläufe, irgendwas Spezielles – ich zeig dir, was mit KI alles möglich ist. Und bau es dir.",
     Icon: Bot,
   },
   {
-    title: "Betreuung & Wartung",
-    text: "Nach dem Launch bleibe ich Ihr Ansprechpartner. Updates, Erweiterungen, Korrekturen – auf Wunsch mit laufendem Service, damit Sie sich um Ihr Kerngeschäft kümmern können.",
+    title: "Beratung & Wartung",
+    text: "Noch nicht sicher, was du brauchst? Kein Problem, wir finden eine Lösung. Auch nach dem Launch bleibe ich als Ansprechpartner für dich da.",
     Icon: LifeBuoy,
   },
 ];
 
 export default function AngebotSection() {
   return (
-    <section id="services" className="relative py-16 sm:py-20">
+    <section id="services" className="relative py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -40,10 +40,10 @@ export default function AngebotSection() {
             Angebot
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Technik, die gestalterisch denkt.
+            Wobei ich helfen kann.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Als IT-Generalist mit einem Studium der Künste verstehe ich beide Seiten: Was etwas gut aussehen soll und was es dafür technisch braucht. Ich übersetze ästhetische Anforderungen in funktionierende Lösungen – und begleite das Ganze von der Idee bis zum laufenden Betrieb.
+            Ich hab Kunst studiert und bin IT-Generalist. Das klingt komisch – ist aber praktisch, wenn man Websites baut, die auch gut aussehen sollen.
           </p>
         </motion.div>
 

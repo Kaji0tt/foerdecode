@@ -1,8 +1,8 @@
 export const plans = [
   {
     name: "Basis",
-    tooltip: "Dieses Paket eignet sich vor allem dann, wenn Sie lediglich eine einfache Online-Präsenz benötigen – damit Sie im Internet schneller gefunden werden oder potenzielle Kunden Ihre Kontaktdaten und Öffnungszeiten abrufen können. Die 3 Feedback-Runden sind in der Regel ausreichend, um alle notwendigen Informationen und Bilder zu aktualisieren und die Seite an Ihre Vorstellungen anzupassen.",
-    price: "129",
+    tooltip: "Du willst einfach gefunden werden – Kontaktdaten, Öffnungszeiten, ein paar Infos. Mehr brauchst du gerade nicht. Die 3 Feedback-Runden reichen dafür gut aus.",
+    price: "189",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst einfach online sein – fertig.",
     shopTagline: "Ideal für eine einfache Online-Präsenz mit Kontaktdaten und Öffnungszeiten.",
@@ -12,19 +12,16 @@ export const plans = [
     rounds: "Bis zu 3 Feedback-Runden",
     roundsNote: "Ideal für überschaubare Änderungen",
     features: [
-      "Leichte Wartbarkeit - ich zeige dir, wie du kleine Änderungen selbst vornehmen kannst",
+      "Fertige Website, ohne viel Schnickschnack",
       "Funktioniert auf allen Geräten – mobilfreundlich & schnell",
-      "Web-Adresse nach Verfügbarkeit (Kosten je nach Adresse)",
     ],
     shopFeatures: [
-      "Fertige Website – von der Idee bis zum Launch",
-      "Anpassungen: Texte, Bilder, Farben, Öffnungszeiten",
+      "Fertige Website, ohne viel Schnickschnack",
       "Funktioniert auf allen Geräten – mobilfreundlich & schnell",
-      "Bei Bedarf, eigene Web-Adresse (Domain) je nach Verfügbarkeit",
     ],
     addon: "zzgl. Wartungs-Kosten",
     cta: "Loslegen",
-    contactMessage: "Hallo, ich interessiere mich für das Basis-Paket (129 €) und würde gerne eine einfache Online-Präsenz für mein Unternehmen erstellen. Könnten Sie sich bei mir melden?",
+    contactMessage: "Hallo, ich interessiere mich für das Basis-Paket (129 €). Meld dich gerne kurz bei mir.",
     maintenance: [
       { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },
       { label: "Eigener Bearbeitungszugang", desc: "Texte, Bilder & Überschriften per Klick selbst anpassen – 30€ / Monat" },
@@ -33,8 +30,8 @@ export const plans = [
   },
   {
     name: "Standard",
-    tooltip: "Dieses Paket eignet sich dann, wenn Sie unter einer eigenen E-Mail-Adresse erreichbar sein möchten oder besondere Anforderungen an bestimmte Details bestehen – etwa eine individuell gestaltete Navigationsleiste oder ein auf mobilen Geräten anders funktionierendes Layout. Mit 8 Feedback-Runden lässt sich der Seite ein echter persönlicher Touch verleihen.",
-    price: "289",
+    tooltip: "Du hast konkrete Vorstellungen – eigene Farben, ein bestimmtes Gefühl. Hier und da ein paar besondere Wünsche? Dafür sollten 8 Runden reichen.",
+    price: "349",
     priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst, dass es wirklich zu dir passt.",
     shopTagline: "Mehr Individualität – eigene E-Mail, persönlicher Look.",
@@ -44,9 +41,7 @@ export const plans = [
     rounds: "Bis zu 8 Feedback-Runden",
     roundsNote: "Für individuelle Gestaltungswünsche",
     features: [
-      "Alles aus Basis",
       "Mehr Freiheit beim Aussehen – wir bauen, was du dir vorstellst",
-      "Deine eigene Web-Adresse ist dabei (z. B. mein-laden.de)",
       "Eigene E-Mail-Adresse (z. B. info@mein-laden.de)",
     ],
     shopFeatures: [
@@ -57,7 +52,7 @@ export const plans = [
     ],
     addon: "zzgl. Wartungs-Kosten",
     cta: "Das klingt gut",
-    contactMessage: "Hallo, ich interessiere mich für das Standard-Paket (289 €). Ich wünsche mir eine individuelle Website mit eigener E-Mail-Adresse. Bitte melden Sie sich bei mir.",
+    contactMessage: "Hallo, ich interessiere mich für das Standard-Paket (289 €). Meld dich gerne kurz bei mir.",
     maintenance: [
       { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },
       { label: "Eigener Bearbeitungszugang", desc: "Texte, Bilder & Überschriften per Klick selbst anpassen – 30€ / Monat" },
@@ -66,9 +61,9 @@ export const plans = [
   },
   {
     name: "Premium",
-    tooltip: "Dieses Paket eignet sich vor allem dann, wenn Sie besondere Funktionen in Ihre Website integrieren möchten – etwa Mitgliederbereiche, Online-Buchungssysteme oder andere Anwendungen, die eine sorgfältige Ausarbeitung erfordern. Bei größeren Projekten empfiehlt sich eine enge Zusammenarbeit, um individuellen Anforderungen und Vorstellungen gerecht zu werden.",
-    price: "599",
-    priceNote: "zzgl. Domain-Kosten · Preis nach Absprache",
+    tooltip: "Du brauchst mehr als 'ne Visitenkarte im Internet. Buchungssystem, Mitgliederbereich, irgendwas Spezielles – wir reden kurz drüber und ich mach's.",
+    price: "639",
+    priceNote: "zzgl. Domain-Kosten",
     tagline: "Du willst, dass die Website wirklich was tut.",
     shopTagline: "Für besondere Funktionen wie Buchungssysteme oder Mitgliederbereiche.",
     color: "#0f1f3d",
@@ -77,7 +72,6 @@ export const plans = [
     rounds: "Bis zu 12 Feedback-Runden",
     roundsNote: "Für komplexe Funktionen & enge Zusammenarbeit",
     features: [
-      "Alles aus Standard",
       "Besondere Funktionen – wir besprechen zusammen, was du brauchst, z. B.:",
     ],
     expertExamples: [
@@ -98,7 +92,7 @@ export const plans = [
     ],
     addon: "zzgl. Wartungs-Kosten",
     cta: "Lass uns reden",
-    contactMessage: "Hallo, ich interessiere mich für das Premium-Paket (599 €). Ich hätte besondere Anforderungen an meine Website und würde mich gerne über die Möglichkeiten austauschen. Bitte melden Sie sich bei mir.",
+    contactMessage: "Hallo, ich interessiere mich für das Premium-Paket (ab 599 €). Ich hab ein paar besondere Anforderungen und würde mich gern mal kurz unterhalten.",
     expertRotating: true,
     maintenance: [
       { label: "Google-Listen-Sync", desc: "Preise & Inhalte automatisch aus Google Workspace übernehmen – 12€ / Monat" },

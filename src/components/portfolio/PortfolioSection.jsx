@@ -136,7 +136,7 @@ const projects = [
 
 export default function PortfolioSection() {
   return (
-    <section id="projects" className="relative py-16 sm:py-20">
+    <section id="projects" className="relative py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
       <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -149,10 +149,10 @@ export default function PortfolioSection() {
             Beispiele
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Beispiele mit klarem Ziel und sichtbarer Verbesserung.
+            Schau selbst.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Nicht nur Screenshots, sondern nachvollziehbare Ergebnisse für reale Anforderungen aus dem Alltag.
+            Nicht ein Stockfoto – alles KI gezauberte Originale! Live und in Farbe.
           </p>
         </motion.div>
 

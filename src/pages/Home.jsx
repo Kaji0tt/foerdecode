@@ -3,14 +3,20 @@ import HeroSection from "@/components/portfolio/HeroSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import AngebotSection from "@/components/portfolio/AngebotSection";
 import PreiseSection from "@/components/portfolio/PreiseSection";
-import SimpleContactSection from "@/components/portfolio/SimpleContactSection";
+import ContactModal from "@/components/portfolio/ContactModal";
 import FloatingHeader from "@/components/portfolio/FloatingHeader";
 
-const sectionIds = ["hero", "services", "projects", "pricing", "contact"];
+const sectionIds = ["hero", "services", "projects", "pricing"];
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [contactOpen, setContactOpen] = useState(false);
   const [contactMessage, setContactMessage] = useState("");
+
+  const openContact = (message = "") => {
+    setContactMessage(message);
+    setContactOpen(true);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -63,11 +69,11 @@ export default function Home() {
           }}
         />
       </div>
-      <FloatingHeader activeSection={activeSection} />
+      <FloatingHeader activeSection={activeSection} onContactOpen={openContact} />
 
       <main className="relative z-10">
         <div className="relative">
-          <HeroSection />
+          <HeroSection onContactOpen={openContact} />
           <div
             className="pointer-events-none absolute left-0 right-0 top-full z-[1] -mt-px h-32 sm:h-40 lg:h-48"
             style={{
@@ -79,10 +85,15 @@ export default function Home() {
         <div className="relative z-[2]">
           <AngebotSection />
           <PortfolioSection />
-          <PreiseSection onPlanSelect={setContactMessage} />
-          <SimpleContactSection prefillMessage={contactMessage} />
+          <PreiseSection onPlanSelect={openContact} />
         </div>
       </main>
+
+      <ContactModal
+        open={contactOpen}
+        onClose={() => setContactOpen(false)}
+        prefillMessage={contactMessage}
+      />
     </div>
   );
 }

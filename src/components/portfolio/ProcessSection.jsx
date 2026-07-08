@@ -26,7 +26,7 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="relative py-16 sm:py-20">
+    <section id="process" className="relative py-16 sm:py-20" style={{ background: "rgb(242,245,251)" }}>
       <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}

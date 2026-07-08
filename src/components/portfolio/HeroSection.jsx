@@ -8,22 +8,22 @@ const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url)
 
 const trustCards = [
   {
-    title: "Persönlich begleitet",
-    text: "Wir entwickeln ein Konzept, dass sich für Sie richtig anfühlt und ich setze es um.",
+    title: "Idee rein, Website raus",
+    text: "Kein Fragebogen, kein Briefing-Dokument. Du erzählst mir was du brauchst, ich setze es um.",
     Icon: UserCircle2,
     tilt: "-1.8deg",
     accent: "#f7e7a3",
   },
   {
-    title: "Einfach & verständlich",
-    text: "Keine Technik. Kein Stress. Ich kümmer mich um die komplette Umsetzung - vom Domainkauf bis zum Postfach.",
+    title: "Kein Technik-Bla-Bla",
+    text: "Ich kümmer mich um alles – vom Domainkauf bis zum Postfach. Du musst nichts wissen.",
     Icon: Wrench,
     tilt: "1.2deg",
     accent: "#d8ecff",
   },
   {
-    title: "Lokal erreichbar",
-    text: "Direkter Kontakt. Persönlich und schnell erreichbar. Ich bleibe ihr Ansprechpartner, auch nach dem Launch.",
+    title: "Ihr nächster freier Mitarbeiter",
+    text: "bin ich. Ruf an, schreib, komm vorbei. Ich bleib dein Ansprechpartner, auch nach dem Launch.",
     Icon: MapPin,
     tilt: "-0.8deg",
     accent: "#f7d7dc",
@@ -31,30 +31,32 @@ const trustCards = [
 ];
 
 
-export default function HeroSection() {
+export default function HeroSection({ onContactOpen }) {
   /** @param {string} id */
   const scrollToSection = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen flex-col overflow-hidden pt-24 sm:pt-28"
+      className="relative flex min-h-screen flex-col pt-24 sm:pt-28"
     >
       <div
-        className="absolute inset-0 bg-cover bg-no-repeat"
+        className="fixed inset-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${heroBackgroundImage})`,
           backgroundPosition: "center 25%",
           filter: "blur(3px)",
           transform: "scale(1.03)",
+          zIndex: -1,
         }}
         aria-hidden="true"
       />
 
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          background: "rgba(255,255,255,0.42)",
+          background: "rgba(255,255,255,0.12)",
+          zIndex: -1,
         }}
         aria-hidden="true"
       />
@@ -128,7 +130,7 @@ export default function HeroSection() {
               className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] sm:mb-4"
               style={{ color: "#425884" }}
             >
-              Websites und digitale Lösungen aus Flensburg
+              Websites und digitales Klimbim aus Flensburg
             </p>
 
             <motion.div
@@ -143,8 +145,8 @@ export default function HeroSection() {
                   fontSize: "clamp(1.3rem, 6vw, 3.55rem)",
                 }}
               >
-                <span className="block whitespace-nowrap">Websites für kleine</span>
-                <span className="block whitespace-nowrap">Unternehmen.</span>
+                <span className="block whitespace-nowrap">Website?</span>
+                <span className="block whitespace-nowrap">Bau ich dir.</span>
               </h1>
             </motion.div>
 
@@ -160,8 +162,7 @@ export default function HeroSection() {
                   color: "#3c4f76",
                 }}
               >
-              Ideal für Restaurants, Selbstständige und alle die es werden wollen.<br /> 
-              Ich bringe Sie einfach & schnell online.
+              Ob Friseursalon, Handwerksbetrieb oder Einzelkämpfer – ich sorge dafür, dass du online gefunden wirst. Ohne Schnickschnack.
               </p>
             </motion.div>
 
@@ -172,7 +173,7 @@ export default function HeroSection() {
               className="mt-10 flex flex-wrap gap-3"
             >
               <button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => onContactOpen?.()}
                 className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-colors"
                 style={{ background: "#9e1c1c" }}
                 onMouseEnter={(e) => {
@@ -182,7 +183,7 @@ export default function HeroSection() {
                   e.currentTarget.style.background = "#9e1c1c";
                 }}
               >
-                Unverbindlich anfragen
+                Meld dich einfach
               </button>
               <button
                 onClick={() => scrollToSection("projects")}
@@ -224,16 +225,13 @@ export default function HeroSection() {
                   {/* Text */}
                   <div className="flex flex-1 flex-col gap-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#ef4444" }}>
-                      Persönlich. Direkt. Erreichbar.
+                      Vibe-Coding aus Flensburg.
                     </p>
                     <p className="text-xl font-semibold sm:text-2xl" style={{ color: "#1f335b" }}>
                       Moin, ich bin Jascha.
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Ich baue Websites für kleine Unternehmen, die online sichtbar werden wollen.
-                    Als IT-Generalist besitze ich umfangreiche Erfahrung in Webentwicklung, Design und digitaler Kommunikation.
-                    Sie kümmern sich um Ihr Geschäft, ich mache Ihre Website.
-                    <br />Schnell, unkompliziert und zu einem fairen Preis.
+                    Mit Technik aufgewachsen, Kunst studiert – und dann kam die KI. Mit der versteh ich mich ganz gut und die kann 'ne ganze Menge. <br />Damit bleiben Ergebnisse in einem bezahlbaren Rahmen, ohne dass die Qualität darunter leidet. <br />Egal ob Vision oder eine einfache Website - 
                     </p>
                   </div>
 
