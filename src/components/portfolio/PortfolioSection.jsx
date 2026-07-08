@@ -152,7 +152,7 @@ export default function PortfolioSection() {
             Schau selbst.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Nicht ein Stockfoto – alles KI gezauberte Originale! Live und in Farbe.
+            Kein einziges Stockfoto – alles KI gezauberte Originale! Live und in Farbe.
           </p>
         </motion.div>
 

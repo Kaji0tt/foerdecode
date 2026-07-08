@@ -34,7 +34,7 @@ export default function AngebotSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-120px" }}
           transition={{ duration: 0.45 }}
-          className="mb-8 max-w-3xl"
+          className="mb-8"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
             Angebot
@@ -43,7 +43,7 @@ export default function AngebotSection() {
             Wobei ich helfen kann.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Ich hab Kunst studiert und bin IT-Generalist. Das klingt komisch – ist aber praktisch, wenn man Websites baut, die auch gut aussehen sollen.
+            Ich hab Kunst studiert und bin IT-Generalist. Ich weiß, wie es gut aussieht - und was es braucht, damit es funktioniert.
           </p>
         </motion.div>
 
