@@ -63,7 +63,7 @@ function ProjectPreview({ project }) {
   return (
     <div className="relative mb-6">
       <div
-        className="relative aspect-video w-[calc(100%-4.75rem)] sm:w-[calc(100%-5.5rem)] rounded-xl border p-1.5 sm:p-4"
+        className="relative aspect-video w-[calc(100%-3rem)] sm:w-[calc(100%-5.5rem)] rounded-xl border p-1.5 sm:p-4"
         style={{
           borderColor: "rgba(163,183,212,0.24)",
           background: "linear-gradient(155deg, rgba(241,246,253,0.98), rgba(229,237,248,0.95))",
@@ -83,7 +83,7 @@ function ProjectPreview({ project }) {
 
       {project.mobileImage ? (
         <div
-          className="absolute top-1/2 right-0 z-[2] w-[7rem] sm:w-[7.75rem] -translate-y-[42%] rotate-[4deg] rounded-[1.5rem] p-[5px]"
+          className="absolute top-1/2 right-0 z-[2] w-[4.5rem] sm:w-[7.75rem] -translate-y-[42%] rotate-[4deg] rounded-[1.5rem] p-[5px]"
           style={{
             background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
             filter: "drop-shadow(0 16px 32px rgba(31,45,72,0.38))",
