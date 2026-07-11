@@ -39,7 +39,7 @@ function ProjectPreview({ project }) {
   if (isMobileOnly) {
     return (
       <div
-        className="relative z-[2] w-full max-w-[80px] sm:max-w-[120px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+        className="relative z-[2] mb-4 w-full max-w-[80px] sm:max-w-[120px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
         style={{
           aspectRatio: "9/16",
           background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
@@ -172,51 +172,22 @@ export default function PortfolioSection() {
             >
               {project.mobileImage && !project.desktopImage ? (
                 <>
-                  <div className="flex items-start gap-4">
-                    {/* Linke Spalte: Titel + Beschreibung + Bullets */}
-                    <div className="min-w-0 flex-1">
-                      <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
-                        {project.title}
-                      </h3>
-                      <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                        {project.description}
-                      </p>
-                      <ul className="mb-4 space-y-1.5">
-                        {project.bullets?.map((b) => (
-                          <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                            <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
-                            {b}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <ProjectPreview project={project} />
 
-                    {/* Rechte Spalte: Phone Mockup – spannt über gesamte Höhe */}
-                    <div
-                      className="flex-shrink-0 w-[72px] sm:w-[88px] md:w-[216px] rotate-[4deg]"
-                      style={{ filter: "drop-shadow(0 16px 32px rgba(31,45,72,0.38))" }}
-                    >
-                      <div
-                        className="relative rounded-[1.5rem] p-[5px]"
-                        style={{ background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)" }}
-                      >
-                        <div className="pointer-events-none absolute left-1/2 top-[7px] z-[3] h-[3px] w-5 -translate-x-1/2 rounded-full bg-[#0b111a] opacity-90" />
-                        <div className="pointer-events-none absolute right-[7px] top-1/2 z-[3] h-7 w-[2px] -translate-y-1/2 rounded-full bg-[#445066] opacity-80" />
-                        <div
-                          className="overflow-hidden rounded-[1.3rem] border border-[#3d4758] bg-[#0f1724]"
-                          style={{ aspectRatio: "9/16" }}
-                        >
-                          <img
-                            src={project.mobileImage}
-                            alt={`${project.title} Mobile-Vorschau`}
-                            className="h-full w-full object-cover object-top"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div className="pointer-events-none absolute bottom-[7px] left-1/2 z-[3] h-[3px] w-6 -translate-x-1/2 rounded-full bg-[#cfd6e4] opacity-80" />
-                      </div>
-                    </div>
-                  </div>
+                  <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
+                    {project.title}
+                  </h3>
+                  <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                    {project.description}
+                  </p>
+                  <ul className="mb-4 space-y-1.5">
+                    {project.bullets?.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                        <span className="mt-[7px] h-2 w-2 flex-shrink-0 rounded-full" style={{ background: project.accent }} />
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
                 </>
               ) : (
                 <>
