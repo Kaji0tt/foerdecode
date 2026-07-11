@@ -39,7 +39,7 @@ function ProjectPreview({ project }) {
   if (isMobileOnly) {
     return (
       <div
-        className="relative z-[2] mb-4 w-full max-w-[80px] sm:max-w-[120px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
+        className="relative z-[2] flex-shrink-0 w-full max-w-[80px] sm:max-w-[120px] rounded-[1.9rem] p-[6px] shadow-[0_22px_40px_rgba(31,45,72,0.28)]"
         style={{
           aspectRatio: "9/16",
           background: "linear-gradient(180deg, #2f3746 0%, #161d29 100%)",
@@ -172,14 +172,17 @@ export default function PortfolioSection() {
             >
               {project.mobileImage && !project.desktopImage ? (
                 <>
-                  <ProjectPreview project={project} />
-
-                  <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
-                    {project.title}
-                  </h3>
-                  <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
-                    {project.description}
-                  </p>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
+                        {project.title}
+                      </h3>
+                      <p className="mb-3 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
+                        {project.description}
+                      </p>
+                    </div>
+                    <ProjectPreview project={project} />
+                  </div>
                   <ul className="mb-4 space-y-1.5">
                     {project.bullets?.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm leading-relaxed" style={{ color: "#4a6188" }}>
