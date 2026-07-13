@@ -64,7 +64,7 @@ export default function PreiseSection({ onPlanSelect }) {
           className="absolute -top-3 left-6 rounded-full px-3 py-1 text-xs font-semibold text-white"
           style={{ background: plan.color }}
         >
-          Kann man machen!
+          Most Popular!
         </div>
       )}
 
@@ -87,7 +87,7 @@ export default function PreiseSection({ onPlanSelect }) {
           {plan.price}€
         </span>
         <span className="mb-1 text-sm" style={{ color: "#6b85ad" }}>
-          +35€ Monat für Full-Service
+          +35 / month for full service
         </span>
       </div>
 
@@ -139,13 +139,13 @@ export default function PreiseSection({ onPlanSelect }) {
           className="mb-8 max-w-none"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Preise
+            Pricing
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Damit kannst' rechnen.
+            Simple, Transparent Pricing.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Ein paar Pakete zur groben Orientierung. Mit Full-Service kannst du mich auch jederzeit anhauen, falls was ist.
+            Placeholder pricing intro. Choose the plan that fits your needs. All plans include ongoing support.
           </p>
         </motion.div>
 
@@ -161,7 +161,7 @@ export default function PreiseSection({ onPlanSelect }) {
             </div>
           </div>
           <p className="mt-4 text-center text-xs" style={{ color: "#8aa0c0" }}>
-            Wischen zum Wechseln
+            Swipe to switch
           </p>
         </div>
 

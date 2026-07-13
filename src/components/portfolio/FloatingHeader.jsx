@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
+const placeholderLogo = new URL("../../../public/placeholder-logo.svg", import.meta.url).href;
 
 export default function FloatingHeader({ activeSection, onContactOpen }) {
   const [scrolled, setScrolled] = useState(false);
@@ -55,10 +55,10 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
   }, []);
 
   const navItems = [
-    { label: "Start", id: "hero" },
-    { label: "Angebot", id: "services" },
-    { label: "Beispiele", id: "projects" },
-    { label: "Preise", id: "pricing" },
+    { label: "Home", id: "hero" },
+    { label: "Services", id: "services" },
+    { label: "Portfolio", id: "projects" },
+    { label: "Pricing", id: "pricing" },
   ];
 
   const scrollToSection = (id) => {
@@ -102,9 +102,9 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
             onClick={() => scrollToSection("hero")}
             className="flex items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
-            <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
+            <img src={placeholderLogo} alt="Brand Logo" className="h-8 w-auto" />
             <span className="text-sm font-semibold uppercase tracking-[0.12em] sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
-              FÖRDECODE
+              YOUR BRAND
             </span>
           </button>
 
@@ -143,7 +143,7 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
                 e.currentTarget.style.background = "#9e1c1c";
               }}
             >
-              Anfragen
+              Contact
             </button>
 
             <button

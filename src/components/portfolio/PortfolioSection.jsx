@@ -108,29 +108,25 @@ function ProjectPreview({ project }) {
 
 const projects = [
   {
-    title: "Portfolio Lukas Wojciechowski",
+    title: "Project One – Placeholder Title",
     bullets: [
-      "Domainbestellung und Einrichtung",
-      "Mailsystem und Weiterleitung",
-      "Impressum und Datenschutzrichtlinien nach DSGVO",
-      "Responsives Design für Mac, Windows, Android und iOS",
+      "Placeholder feature or deliverable one",
+      "Placeholder feature or deliverable two",
+      "Placeholder feature or deliverable three",
+      "Responsive design for all devices",
     ],
     accent: "#9e1c1c",
-    href: "https://lukaswojciechowski.de/#/about",
-    desktopImage: "/projects/Lukas-Desktop.png",
-    mobileImage: "/projects/Lukas-Mobile.png",
+    href: "#",
   },
   {
-    title: "Floralog Webapplikation",
-    description: "Eine Webapplikation zur Förderung von Natur- und Pflanzenkenntnissen.",
+    title: "Project Two – Placeholder Title",
+    description: "A placeholder description for the second project. Summarise what it is, who it was built for, and what makes it notable.",
     bullets: [
-      "Schnittstellen mit externen Dienstleistern (Maps, Pflanzenerkennung, KI)",
-      "Serverstruktur mit Front- und Backend (SQL)",
-      "APK mit Launch im Google Playstore",
+      "Third-party API integrations",
+      "Custom backend and database",
+      "Mobile app / PWA",
     ],
     accent: "#355f98",
-    href: "https://floralog.de",
-    mobileImage: "/projects/floralog-mobile.png",
   },
 ];
 
@@ -146,13 +142,13 @@ export default function PortfolioSection() {
           className="mb-8 max-w-3xl"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Beispiele
+            Portfolio
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Schau selbst.
+            Our Work.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Kein einziges Stockfoto – alles KI gezauberte Originale! Live und in Farbe.
+            Placeholder portfolio intro. Showcase your best projects here and add real screenshots and links.
           </p>
         </motion.div>
 
@@ -217,7 +213,7 @@ export default function PortfolioSection() {
                 className="absolute bottom-6 left-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
                 style={{ background: project.accent }}
                 onClick={() => {
-                  if (project.href) {
+                  if (project.href && project.href !== "#") {
                     window.open(project.href, "_blank", "noopener,noreferrer");
                   }
                 }}
@@ -228,7 +224,7 @@ export default function PortfolioSection() {
                   e.currentTarget.style.opacity = "1";
                 }}
               >
-                Live ansehen
+                View Project
                 <ArrowUpRight className="h-4 w-4" />
               </button>
             </motion.article>

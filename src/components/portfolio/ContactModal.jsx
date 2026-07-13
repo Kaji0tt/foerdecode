@@ -39,11 +39,11 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    const subject = encodeURIComponent(`Neue Anfrage von ${form.name}`);
+    const subject = encodeURIComponent(`New enquiry from ${form.name}`);
     const body = encodeURIComponent(
       `Name: ${form.name}\nE-Mail: ${form.email}\n\n${form.message}`
     );
-    window.location.href = `mailto:mail@nordweb.de?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@yourbrand.com?subject=${subject}&body=${body}`;
     setDone(true);
   };
 
@@ -110,10 +110,10 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                     <CheckCircle className="h-7 w-7" style={{ color: "#2f4c79" }} />
                   </div>
                   <h3 className="mb-2 font-sora text-xl font-bold" style={{ color: "#213a66" }}>
-                    Nachricht vorbereitet
+                    Message Ready
                   </h3>
                   <p className="text-sm" style={{ color: "#4a6188" }}>
-                    Dein E-Mail-Programm wurde geöffnet. Ich meld mich schnell zurück.
+                    Your email client has been opened. We'll get back to you shortly.
                   </p>
                 </div>
               ) : (
@@ -123,16 +123,16 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                       className="mb-1 text-xs font-semibold uppercase tracking-[0.12em]"
                       style={{ color: "#4f648d" }}
                     >
-                      Kontakt
+                      Contact
                     </p>
                     <h2
                       className="font-sora text-2xl font-bold"
                       style={{ color: "#1f335b" }}
                     >
-                      Meld dich einfach.
+                      Get in Touch.
                     </h2>
                     <p className="mt-1.5 text-sm" style={{ color: "#4a6188" }}>
-                      Kurze Nachricht reicht. Ich antworte schnell.
+                      Drop us a short message. We'll respond quickly.
                     </p>
                   </div>
 
@@ -149,7 +149,7 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                           name="name"
                           value={form.name}
                           onChange={handleChange}
-                          placeholder="z. B. Max Mustermann"
+                          placeholder="e.g. Jane Smith"
                           className="h-11 w-full rounded-xl px-4 text-sm outline-none transition-all"
                           style={{
                             border: "1.5px solid rgba(163,183,212,0.38)",
@@ -174,7 +174,7 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                           type="email"
                           value={form.email}
                           onChange={handleChange}
-                          placeholder="max@beispiel.de"
+                          placeholder="jane@example.com"
                           className="h-11 w-full rounded-xl px-4 text-sm outline-none transition-all"
                           style={{
                             border: "1.5px solid rgba(163,183,212,0.38)",
@@ -200,7 +200,7 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                         value={form.message}
                         onChange={handleChange}
                         rows={4}
-                        placeholder="Was möchtest du wissen?"
+                        placeholder="What can we help you with?"
                         className="w-full resize-none rounded-xl px-4 py-3 text-sm outline-none transition-all"
                         style={{
                           border: "1.5px solid rgba(163,183,212,0.38)",
@@ -226,7 +226,7 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                       }}
                     >
                       <Send className="h-4 w-4" />
-                      Nachricht vorbereiten
+                      Send Message
                     </button>
                   </form>
                 </>

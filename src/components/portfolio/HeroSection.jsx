@@ -2,28 +2,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import { UserCircle2, Wrench, MapPin } from "lucide-react";
 
-const heroBackgroundImage = new URL("../../../FlensburgDay.png", import.meta.url).href;
-const heroSideImage = new URL("../../../public/ProfSmallSmile.png", import.meta.url).href;
-const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
+const placeholderLogo = new URL("../../../public/placeholder-logo.svg", import.meta.url).href;
 
 const trustCards = [
   {
-    title: "Idee rein, Website raus",
-    text: "Kein Fragebogen, kein Briefing-Dokument. Du erzählst mir was du brauchst, ich setze es um.",
+    title: "Feature One",
+    text: "Placeholder text describing the first key feature or benefit of your product or service. Replace this with your actual value proposition.",
     Icon: UserCircle2,
     tilt: "-1.8deg",
     accent: "#f7e7a3",
   },
   {
-    title: "Kein Technik-Bla-Bla",
-    text: "Ich kümmer mich um alles – vom Domainkauf bis zum Postfach. Du musst nichts wissen.",
+    title: "Feature Two",
+    text: "Placeholder text describing the second key feature. Highlight what makes your offering unique and valuable to customers.",
     Icon: Wrench,
     tilt: "1.2deg",
     accent: "#d8ecff",
   },
   {
-    title: "Ihr nächster freier Mitarbeiter",
-    text: "bin ich. Ruf an, schreib, komm vorbei. Ich bleib dein Ansprechpartner, auch nach dem Launch.",
+    title: "Feature Three",
+    text: "Placeholder text for the third feature. Use this space to describe your support, commitment, or another key differentiator.",
     Icon: MapPin,
     tilt: "-0.8deg",
     accent: "#f7d7dc",
@@ -40,89 +38,17 @@ export default function HeroSection({ onContactOpen }) {
       id="hero"
       className="relative flex min-h-screen flex-col pt-24 sm:pt-28"
     >
+      {/* Placeholder hero background – replace with your own image */}
       <div
-        className="fixed inset-0 bg-cover bg-no-repeat"
+        className="fixed inset-0"
         style={{
-          backgroundImage: `url(${heroBackgroundImage})`,
-          backgroundPosition: "center 25%",
-          filter: "blur(3px)",
-          transform: "scale(1.03)",
-          zIndex: -1,
-        }}
-        aria-hidden="true"
-      />
-
-      <div
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          background: "rgba(255,255,255,0.12)",
+          background: "linear-gradient(135deg, #c7d8f0 0%, #dde8f7 40%, #e8eff8 70%, #f0f4fb 100%)",
           zIndex: -1,
         }}
         aria-hidden="true"
       />
 
       <div className="relative z-10 flex w-full flex-1 flex-col">
-        {/*
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-          className="-mt-8 w-full py-2 sm:-mt-12 sm:py-3 lg:-mt-15"
-        >
-          <div className="mx-auto w-full max-w-7xl px-6">
-            <div
-              className="mx-auto flex w-fit max-w-full items-center"
-              style={{ gap: "clamp(0.7rem, 1.7vw, 2rem)" }}
-            >
-              <img
-                src={foerdeCodeLogo}
-                alt="Foerde Code Logo"
-                className="w-auto shrink-0"
-                style={{ height: "clamp(2.6rem, 6.8vw, 6rem)" }}
-                loading="eager"
-              />
-
-              <div className="min-w-0">
-                <p
-                  className="font-sora font-bold leading-[0.95]"
-                  style={{
-                    fontSize: "clamp(2rem, 6.2vw, 5.2rem)",
-                    letterSpacing: "clamp(0.01em, 0.2vw, 0.04em)",
-                  }}
-                >
-                  <span style={{ color: "#153368" }}>FÖRDE</span>
-                  <span style={{ color: "#b42327" }}>CODE</span>
-                </p>
-
-                <div className="mt-2 sm:mt-3">
-                  <p
-                    className="text-center font-semibold uppercase"
-                    style={{
-                      color: "#425884",
-                      fontSize: "clamp(0.54rem, 1.05vw, 0.8rem)",
-                      letterSpacing: "clamp(0.1em, 0.35vw, 0.16em)",
-                    }}
-                  >
-                    Websites und digitale Loesungen aus Flensburg
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </motion.div>
-
-        <div className="mx-auto mt-3 w-full max-w-7xl px-6 sm:mt-4 lg:mt-5" aria-hidden="true">
-          <div
-            className="h-px w-full"
-            style={{
-              background:
-                "linear-gradient(90deg, rgba(64,93,134,0) 0%, rgba(64,93,134,0.24) 22%, rgba(64,93,134,0.24) 78%, rgba(64,93,134,0) 100%)",
-            }}
-          />
-        </div>
-        */}
-
         <div className="mx-auto mt-8 flex w-full max-w-7xl flex-1 flex-col px-6 pb-20 sm:mt-12 sm:pb-24 lg:mt-15 lg:pb-28">
           <div className="grid items-start gap-8 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-12">
             <div className="lg:flex lg:h-full lg:flex-col lg:pr-2">
@@ -130,7 +56,7 @@ export default function HeroSection({ onContactOpen }) {
               className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] sm:mb-4"
               style={{ color: "#425884" }}
             >
-              Websites und digitales Klimbim aus Flensburg
+              Tagline · Location · Industry
             </p>
 
             <motion.div
@@ -145,8 +71,8 @@ export default function HeroSection({ onContactOpen }) {
                   fontSize: "clamp(1.3rem, 6vw, 3.55rem)",
                 }}
               >
-                <span className="block whitespace-nowrap">Website?</span>
-                <span className="block whitespace-nowrap">Bau ich dir.</span>
+                <span className="block whitespace-nowrap">Your Headline</span>
+                <span className="block whitespace-nowrap">Goes Here.</span>
               </h1>
             </motion.div>
 
@@ -162,7 +88,7 @@ export default function HeroSection({ onContactOpen }) {
                   color: "#3c4f76",
                 }}
               >
-              Ob Friseursalon, Handwerksbetrieb oder Einzelkämpfer – ich sorge dafür, dass du online gefunden wirst. Ohne Schnickschnack.
+              Placeholder subheadline. Describe your main offering in one or two sentences. Who you help, what you do, and why it matters.
               </p>
             </motion.div>
 
@@ -183,7 +109,7 @@ export default function HeroSection({ onContactOpen }) {
                   e.currentTarget.style.background = "#9e1c1c";
                 }}
               >
-                Meld dich einfach
+                Get in Touch
               </button>
               <button
                 onClick={() => scrollToSection("projects")}
@@ -200,13 +126,13 @@ export default function HeroSection({ onContactOpen }) {
                   e.currentTarget.style.background = "rgba(248,251,255,0.78)";
                 }}
               >
-                Beispiele ansehen
+                See Examples
               </button>
             </motion.div>
 
           </div>
 
-            {/* Profil-Panel — rechte Spalte neben dem Text */}
+            {/* Profile/intro panel – right column */}
             <motion.div
               initial={{ opacity: 0, x: 18 }}
               animate={{ opacity: 1, x: 0 }}
@@ -225,17 +151,17 @@ export default function HeroSection({ onContactOpen }) {
                   {/* Text */}
                   <div className="flex flex-1 flex-col gap-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#ef4444" }}>
-                      Vibe-Coding aus Flensburg.
+                      Your Tagline Here.
                     </p>
                     <p className="text-xl font-semibold sm:text-2xl" style={{ color: "#1f335b" }}>
-                      Moin, ich bin Jascha.
+                      Hi, I'm [Name].
                     </p>
                     <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Mit Technik aufgewachsen, Kunst studiert – und dann kam die KI. Mit der versteh ich mich ganz gut und die kann 'ne ganze Menge. <br />Damit bleiben Ergebnisse in einem bezahlbaren Rahmen, ohne dass die Qualität darunter leidet. <br />Egal ob Vision oder eine einfache Website - 
+                      Placeholder bio text. Describe who you are, your background, and what drives you. Replace this with your own story and personality. Keep it concise and engaging.
                     </p>
                   </div>
 
-                  {/* Bild */}
+                  {/* Placeholder profile image */}
                   <div
                     className="shrink-0 overflow-hidden rounded-2xl border lg:w-52 xl:w-60"
                     style={{
@@ -243,19 +169,22 @@ export default function HeroSection({ onContactOpen }) {
                       boxShadow: "0 8px 24px rgba(26,45,78,0.13)",
                     }}
                   >
-                    <img
-                      src={heroSideImage}
-                      alt="Portraitbild von Jascha"
-                      className="h-48 w-full object-cover object-top lg:h-56 xl:h-64"
-                      loading="eager"
-                    />
+                    <div
+                      className="h-48 w-full lg:h-56 xl:h-64 flex items-center justify-center"
+                      style={{ background: "linear-gradient(135deg, #dce8f7, #c9d9ef)" }}
+                    >
+                      <svg viewBox="0 0 80 100" className="w-24 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="40" cy="32" rx="20" ry="22" fill="#7a9abf"/>
+                        <path d="M0 100 C0 72 80 72 80 100" fill="#7a9abf"/>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* Sticky Notes — vertikal zentriert im verbleibenden Viewport-Raum */}
+          {/* Feature cards */}
           <div className="flex flex-1 items-center pt-8 sm:pt-10 lg:pt-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}

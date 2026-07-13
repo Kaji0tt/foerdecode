@@ -4,23 +4,23 @@ import { Globe, Palette, Bot, LifeBuoy } from "lucide-react";
 
 const services = [
   {
-    title: "Website & Einrichtung",
-    text: "Du kriegst eine fertige Website. Domain, E-Mail, Impressum, Datenschutz – alles drin, alles eingerichtet. Du musst nichts wissen.",
+    title: "Service One",
+    text: "Placeholder description for your first service. Explain what you offer, who it's for, and the key benefit. Replace this with your actual service.",
     Icon: Globe,
   },
   {
-    title: "Individuelle Gestaltung",
-    text: "Hast du konkrete Vorstellungen, wie es aussehen soll? Gut. Ich freue mich darauf, deine Vision kennenzulernen – und sie entsprechend deiner Vorstellung umzusetzen.",
+    title: "Service Two",
+    text: "Placeholder description for your second service. Highlight what makes this offering special and how it helps your customers.",
     Icon: Palette,
   },
   {
-    title: "KI & Automatisierung",
-    text: "Brauchst du mehr als 'ne einfache Seite? Buchungssystem, automatisierte Abläufe, irgendwas Spezielles – ich zeig dir, was mit KI alles möglich ist. Und bau es dir.",
+    title: "Service Three",
+    text: "Placeholder description for your third service. Describe the unique value and the problem it solves for your target audience.",
     Icon: Bot,
   },
   {
-    title: "Beratung & Wartung",
-    text: "Noch nicht sicher, was du brauchst? Kein Problem, wir finden eine Lösung. Auch nach dem Launch bleibe ich als Ansprechpartner für dich da.",
+    title: "Service Four",
+    text: "Placeholder description for your fourth service. Use this space to cover support, consultation, or any additional offering.",
     Icon: LifeBuoy,
   },
 ];
@@ -37,13 +37,13 @@ export default function AngebotSection() {
           className="mb-8"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Angebot
+            Services
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Wobei ich helfen kann.
+            What We Offer.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Ich hab Kunst studiert und bin IT-Generalist. Ich weiß, wie es gut aussieht - und was es braucht, damit es funktioniert.
+            Placeholder section intro. Describe your expertise and what you bring to the table for your clients.
           </p>
         </motion.div>
 
