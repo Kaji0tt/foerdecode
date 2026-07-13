@@ -116,7 +116,7 @@ const projects = [
       "Responsive design for all devices",
     ],
     accent: "#9e1c1c",
-    href: "#",
+    href: null,
   },
   {
     title: "Project Two – Placeholder Title",
@@ -213,7 +213,7 @@ export default function PortfolioSection() {
                 className="absolute bottom-6 left-6 inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors"
                 style={{ background: project.accent }}
                 onClick={() => {
-                  if (project.href && project.href !== "#") {
+                  if (project.href) {
                     window.open(project.href, "_blank", "noopener,noreferrer");
                   }
                 }}

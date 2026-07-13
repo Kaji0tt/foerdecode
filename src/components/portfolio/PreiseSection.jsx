@@ -84,7 +84,7 @@ export default function PreiseSection({ onPlanSelect }) {
 
       <div className="mb-3 md:mb-4 flex items-end gap-1">
         <span className="font-sora text-3xl font-bold md:text-4xl" style={{ color: plan.color }}>
-          {plan.price}€
+          {plan.price}
         </span>
         <span className="mb-1 text-sm" style={{ color: "#6b85ad" }}>
           +35 / month for full service

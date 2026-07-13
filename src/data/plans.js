@@ -23,9 +23,9 @@ export const plans = [
     cta: "Get Started",
     contactMessage: "Hi, I'm interested in the Starter plan. Please get in touch.",
     maintenance: [
-      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – 12 / month" },
-      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – 30 / month" },
-      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – 50 / month" },
+      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – $12 / month" },
+      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – $30 / month" },
+      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – $50 / month" },
     ],
   },
   {
@@ -54,9 +54,9 @@ export const plans = [
     cta: "That sounds good",
     contactMessage: "Hi, I'm interested in the Professional plan. Please get in touch.",
     maintenance: [
-      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – 12 / month" },
-      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – 30 / month" },
-      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – 50 / month" },
+      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – $12 / month" },
+      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – $30 / month" },
+      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – $50 / month" },
     ],
   },
   {
@@ -95,9 +95,9 @@ export const plans = [
     contactMessage: "Hi, I'm interested in the Enterprise plan. I have some special requirements and would love a quick chat.",
     expertRotating: true,
     maintenance: [
-      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – 12 / month" },
-      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – 30 / month" },
-      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – 50 / month" },
+      { label: "Content Sync", desc: "Automatically pull prices & content from your workspace – $12 / month" },
+      { label: "Self-edit access", desc: "Edit texts, images & headings yourself with a few clicks – $30 / month" },
+      { label: "Full management", desc: "Up to 4 feedback rounds per month, we handle everything – $50 / month" },
     ],
   },
 ];
@@ -129,4 +129,4 @@ export const maintenanceOptions = [
 
 export const maintenanceMonthly = "from 19 / month";
 
-export const changeServiceNote = "Change service: For 20 you can submit additional requests for corrections, changes and/or maintenance of the website at any time.";
+export const changeServiceNote = "Change service: For an additional fee you can submit extra requests for corrections, changes and/or maintenance of the website at any time.";
