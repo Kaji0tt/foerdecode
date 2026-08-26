@@ -1,0 +1,66 @@
+{
+  "name": "ContactRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name des Absenders"
+    },
+    "email": {
+      "type": "string",
+      "description": "E-Mail des Absenders"
+    },
+    "business": {
+      "type": "string",
+      "description": "Beschreibung des Gesch\u00e4fts"
+    },
+    "important": {
+      "type": "string",
+      "description": "Was ist dem Kunden auf der Website wichtig"
+    },
+    "colors": {
+      "type": "string",
+      "description": "Farbw\u00fcnsche / Farbcodes"
+    },
+    "selected_package": {
+      "type": "string",
+      "enum": [
+        "Basis",
+        "Standard",
+        "Expert"
+      ],
+      "description": "Gew\u00e4hltes Paket"
+    },
+    "demo_html": {
+      "type": "string",
+      "description": "KI-generiertes Demo HTML"
+    },
+    "contact_method": {
+      "type": "string",
+      "description": "Bevorzugter Kontaktweg"
+    },
+    "phone_number": {
+      "type": "string",
+      "description": "Telefonnummer des Kunden"
+    },
+    "message": {
+      "type": "string",
+      "description": "Vorformulierte Nachricht des Kunden"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "neu",
+        "beantwortet",
+        "abgeschlossen"
+      ],
+      "default": "neu",
+      "description": "Bearbeitungsstatus der Anfrage"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "business"
+  ]
+}
