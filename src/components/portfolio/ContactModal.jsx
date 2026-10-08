@@ -80,7 +80,10 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
             style={{ pointerEvents: "none" }}
           >
             <div
-              className="relative w-full max-w-lg rounded-2xl border p-6 sm:p-8"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-title"
+              className="relative max-h-full w-full max-w-lg overflow-y-auto rounded-2xl border p-6 sm:p-8"
               style={{
                 borderColor: "rgba(163,183,212,0.3)",
                 background: "rgba(245,249,255,0.97)",
@@ -109,11 +112,11 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                   >
                     <CheckCircle className="h-7 w-7" style={{ color: "#2f4c79" }} />
                   </div>
-                  <h3 className="mb-2 font-sora text-xl font-bold" style={{ color: "#213a66" }}>
+                  <h3 id="contact-title" className="mb-2 font-sora text-xl font-bold" style={{ color: "#213a66" }}>
                     Nachricht vorbereitet
                   </h3>
                   <p className="text-sm" style={{ color: "#4a6188" }}>
-                    Dein E-Mail-Programm wurde geöffnet. Ich meld mich schnell zurück.
+                    Die Nachricht wurde an dein E-Mail-Programm übergeben. Bitte dort prüfen und selbst absenden. Hier wurde nichts versendet.
                   </p>
                 </div>
               ) : (
@@ -126,13 +129,14 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                       Kontakt
                     </p>
                     <h2
+                      id="contact-title"
                       className="font-sora text-2xl font-bold"
                       style={{ color: "#1f335b" }}
                     >
-                      Meld dich einfach.
+                      Rückruf-Ablauf besprechen.
                     </h2>
                     <p className="mt-1.5 text-sm" style={{ color: "#4a6188" }}>
-                      Kurze Nachricht reicht. Ich antworte schnell.
+                      Erzähl mir kurz von deinem Betrieb und deinem bisherigen Ablauf. Bitte keine Kundendaten oder Notfallanfragen eintragen. Dieses Formular bereitet nur eine E-Mail vor.
                     </p>
                   </div>
 
@@ -140,12 +144,14 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                       <div>
                         <label
+                          htmlFor="contact-name"
                           className="mb-1.5 block text-sm font-semibold"
                           style={{ color: "#2f4c79" }}
                         >
                           Name *
                         </label>
                         <input
+                          id="contact-name"
                           name="name"
                           value={form.name}
                           onChange={handleChange}
@@ -164,12 +170,14 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                       </div>
                       <div>
                         <label
+                          htmlFor="contact-email"
                           className="mb-1.5 block text-sm font-semibold"
                           style={{ color: "#2f4c79" }}
                         >
                           E-Mail *
                         </label>
                         <input
+                          id="contact-email"
                           name="email"
                           type="email"
                           value={form.email}
@@ -190,12 +198,14 @@ export default function ContactModal({ open, onClose, prefillMessage }) {
                     </div>
                     <div>
                       <label
+                        htmlFor="contact-message"
                         className="mb-1.5 block text-sm font-semibold"
                         style={{ color: "#2f4c79" }}
                       >
                         Nachricht *
                       </label>
                       <textarea
+                        id="contact-message"
                         name="message"
                         value={form.message}
                         onChange={handleChange}

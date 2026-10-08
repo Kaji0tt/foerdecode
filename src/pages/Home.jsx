@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import HeroSection from "@/components/portfolio/HeroSection";
 import PortfolioSection from "@/components/portfolio/PortfolioSection";
 import AngebotSection from "@/components/portfolio/AngebotSection";
-import PreiseSection from "@/components/portfolio/PreiseSection";
 import ContactModal from "@/components/portfolio/ContactModal";
 import FloatingHeader from "@/components/portfolio/FloatingHeader";
 
-const sectionIds = ["hero", "services", "projects", "pricing"];
+const sectionIds = ["hero", "services", "about", "projects"];
+const founderImage = new URL("../../public/ProfSmallSmile.png", import.meta.url).href;
+const callbackMessage = "Ich möchte den Rückruf-Ablauf für verpasste Anrufe und Webanfragen besprechen. Mein Betrieb, Einsatzgebiet und bisheriger Ablauf: ";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("hero");
   const [contactOpen, setContactOpen] = useState(false);
   const [contactMessage, setContactMessage] = useState("");
 
-  const openContact = (message = "") => {
+  const openContact = (message = callbackMessage) => {
     setContactMessage(message);
     setContactOpen(true);
   };
@@ -83,9 +84,48 @@ export default function Home() {
           />
         </div>
         <div className="relative z-[2]">
-          <AngebotSection />
+          <AngebotSection onContactOpen={openContact} />
+          <section id="about" className="scroll-mt-24 py-16 sm:py-20">
+            <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-2">
+              <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6 sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#4f648d]">Ergänzend: Websites</p>
+                <h2 className="mt-3 font-sora text-2xl font-bold text-[#1f335b]">Die Website als Anfrageweg.</h2>
+                <p className="mt-4 text-sm leading-relaxed text-[#4a6188]">
+                  Eine verständliche Website und ein passendes Anfrageformular können den Rückruf-Ablauf unterstützen. Gestaltung, Einrichtung und Wartung bleiben Teil meiner Arbeit – aber eine neue Website ist nicht automatisch Voraussetzung für diesen Ablauf.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-[#4a6188]">
+                  Die Projekte unten zeigen bisherige Website- und Entwicklungsarbeit, keine Kundenergebnisse für den Rückruf-Service.
+                </p>
+              </article>
+              <article className="flex flex-col gap-5 rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6 sm:flex-row sm:p-8">
+                <div className="flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#4f648d]">Dein Ansprechpartner in Flensburg</p>
+                  <h2 className="mt-3 font-sora text-2xl font-bold text-[#1f335b]">Moin, ich bin Jascha.</h2>
+                  <p className="mt-4 text-sm leading-relaxed text-[#4a6188]">
+                    Mit Technik aufgewachsen, Kunst studiert und heute IT-Generalist. Ich verbinde Gestaltung und Entwicklung und bespreche mit dir, wo KI im Betriebsalltag sinnvoll unterstützen kann – und wo Menschen übernehmen müssen.
+                  </p>
+                </div>
+                <img
+                  src={founderImage}
+                  alt="Portraitbild von Jascha"
+                  className="h-48 w-36 shrink-0 rounded-2xl object-cover object-top"
+                  loading="lazy"
+                />
+              </article>
+            </div>
+          </section>
           <PortfolioSection />
-          <PreiseSection onPlanSelect={openContact} />
+          <footer className="px-6 py-12 text-center text-[#1f335b]">
+            <h2 className="font-sora text-2xl font-bold">Passt der Rückruf-Ablauf zu deinem Betrieb?</h2>
+            <p className="mt-3 text-sm text-[#4a6188]">Lass uns mit deinem Alltag anfangen, nicht mit einem Website-Paket.</p>
+            <button
+              type="button"
+              onClick={() => openContact()}
+              className="mt-5 rounded-xl bg-[#9e1c1c] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#861717]"
+            >
+              Rückruf-Ablauf besprechen
+            </button>
+          </footer>
         </div>
       </main>
 

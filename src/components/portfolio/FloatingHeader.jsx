@@ -13,7 +13,9 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
 
   const startHideTimer = () => {
     clearTimeout(idleTimer.current);
-    idleTimer.current = setTimeout(() => setVisible(false), 1000);
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      idleTimer.current = setTimeout(() => setVisible(false), 1000);
+    }
   };
 
   const isInHero = () => window.scrollY < window.innerHeight * 0.85;
@@ -21,6 +23,7 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 12);
+      setVisible(true);
       if (isInHero()) {
         // Im Hero: immer sichtbar
         setVisible(true);
@@ -52,13 +55,13 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
       window.removeEventListener("mousemove", onMouseMove);
       clearTimeout(idleTimer.current);
     };
-  }, []);
+  }, [menuOpen]);
 
   const navItems = [
     { label: "Start", id: "hero" },
-    { label: "Angebot", id: "services" },
-    { label: "Beispiele", id: "projects" },
-    { label: "Preise", id: "pricing" },
+    { label: "Ablauf", id: "services" },
+    { label: "Über mich", id: "about" },
+    { label: "Projekte", id: "projects" },
   ];
 
   const scrollToSection = (id) => {
@@ -71,8 +74,8 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
     if (menuOpen) {
       clearTimeout(idleTimer.current);
       setVisible(true);
-    } else {
-      idleTimer.current = setTimeout(() => setVisible(false), 1000);
+    } else if (!isInHero()) {
+      startHideTimer();
     }
     return () => clearTimeout(idleTimer.current);
   }, [menuOpen]);
@@ -103,7 +106,7 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
             className="flex items-center gap-2 rounded-lg px-1 py-1 sm:gap-3"
           >
             <img src={foerdeCodeLogo} alt="Foerde Code Logo" className="h-8 w-auto" />
-            <span className="text-sm font-semibold uppercase tracking-[0.12em] sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
+            <span className="text-xs font-semibold uppercase tracking-[0.08em] sm:text-base sm:tracking-[0.14em]" style={{ color: "#1f335b" }}>
               FÖRDECODE
             </span>
           </button>
@@ -134,7 +137,8 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
             <button
               type="button"
               onClick={() => { onContactOpen?.(); }}
-              className="rounded-lg px-3 py-2 text-sm font-semibold text-white transition-colors sm:px-4"
+              aria-label="Rückruf-Ablauf besprechen"
+              className="rounded-lg px-2 py-2 text-xs font-semibold text-white transition-colors sm:px-4 sm:text-sm"
               style={{ background: "#9e1c1c" }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#861717";
@@ -143,7 +147,8 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
                 e.currentTarget.style.background = "#9e1c1c";
               }}
             >
-              Anfragen
+              <span className="md:hidden">Besprechen</span>
+              <span className="hidden md:inline">Rückruf-Ablauf besprechen</span>
             </button>
 
             <button
@@ -151,7 +156,8 @@ export default function FloatingHeader({ activeSection, onContactOpen }) {
               onClick={() => setMenuOpen((o) => !o)}
               className="rounded-lg p-2 md:hidden"
               style={{ color: "#1e3158" }}
-              aria-label="Navigation öffnen"
+              aria-label={menuOpen ? "Navigation schließen" : "Navigation öffnen"}
+              aria-expanded={menuOpen}
             >
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>

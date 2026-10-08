@@ -112,7 +112,7 @@ const projects = [
     bullets: [
       "Domainbestellung und Einrichtung",
       "Mailsystem und Weiterleitung",
-      "Impressum und Datenschutzrichtlinien nach DSGVO",
+      "Einbindung von Impressum und Datenschutzhinweisen",
       "Responsives Design für Mac, Windows, Android und iOS",
     ],
     accent: "#9e1c1c",
@@ -136,7 +136,7 @@ const projects = [
 
 export default function PortfolioSection() {
   return (
-    <section id="projects" className="relative py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
+    <section id="projects" className="relative scroll-mt-24 py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
       <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -146,13 +146,13 @@ export default function PortfolioSection() {
           className="mb-8 max-w-3xl"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Beispiele
+            Bisherige Entwicklungsarbeit
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Schau selbst.
+            Websites & Projekte.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Kein einziges Stockfoto – alles KI gezauberte Originale! Live und in Farbe.
+            Ein Einblick in Gestaltung und technische Umsetzung. Diese Projekte sind keine Referenzen für den Rückruf-Ablauf und belegen keine Ergebnisse dieses Angebots.
           </p>
         </motion.div>
 
