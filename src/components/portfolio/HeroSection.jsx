@@ -162,7 +162,7 @@ export default function HeroSection({ onContactOpen }) {
                   color: "#3c4f76",
                 }}
               >
-              Ob Friseursalon, Handwerksbetrieb oder Einzelkämpfer – ich sorge dafür, dass du online gefunden wirst. Ohne Schnickschnack.
+              Für Heizungs-, Sanitär-, Elektro-, Dach-, Schädlingsbekämpfungs- und Sanierungsbetriebe: Eine KI-gestützte Lösung nimmt verpasste Anrufe und Webanfragen auf, erfasst Serviceart, Dringlichkeit, Postleitzahl und gewünschte Rückrufzeit und bereitet eine Zusammenfassung für die persönliche Übergabe vor.
               </p>
             </motion.div>
 
@@ -173,7 +173,11 @@ export default function HeroSection({ onContactOpen }) {
               className="mt-10 flex flex-wrap gap-3"
             >
               <button
-                onClick={() => onContactOpen?.()}
+                onClick={() =>
+                  onContactOpen?.(
+                    "Ich möchte über eine KI-gestützte Lösung sprechen, die verpasste Anrufe und Webanfragen aufnimmt, Serviceart, Dringlichkeit, Postleitzahl und gewünschte Rückrufzeit erfasst und eine Zusammenfassung für die persönliche Übergabe vorbereitet. Mein Betrieb und Anliegen: "
+                  )
+                }
                 className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-colors"
                 style={{ background: "#9e1c1c" }}
                 onMouseEnter={(e) => {
@@ -183,7 +187,7 @@ export default function HeroSection({ onContactOpen }) {
                   e.currentTarget.style.background = "#9e1c1c";
                 }}
               >
-                Meld dich einfach
+                Rückruf-Ablauf besprechen
               </button>
               <button
                 onClick={() => scrollToSection("projects")}
