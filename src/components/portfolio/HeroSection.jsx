@@ -1,30 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { UserCircle2, Wrench, MapPin } from "lucide-react";
+import { PhoneMissed, ClipboardList, UserCircle2 } from "lucide-react";
 
 const heroBackgroundImage = new URL("../../../FlensburgDay.png", import.meta.url).href;
-const heroSideImage = new URL("../../../public/ProfSmallSmile.png", import.meta.url).href;
-const foerdeCodeLogo = new URL("../../../Förde Code Logo.svg", import.meta.url).href;
 
 const trustCards = [
   {
-    title: "Idee rein, Website raus",
-    text: "Kein Fragebogen, kein Briefing-Dokument. Du erzählst mir was du brauchst, ich setze es um.",
-    Icon: UserCircle2,
+    title: "Anfrage auffangen",
+    text: "Verpasster Anruf oder Webanfrage: ein strukturierter Einstieg statt verstreuter Nachrichten.",
+    Icon: PhoneMissed,
     tilt: "-1.8deg",
     accent: "#f7e7a3",
   },
   {
-    title: "Kein Technik-Bla-Bla",
-    text: "Ich kümmer mich um alles – vom Domainkauf bis zum Postfach. Du musst nichts wissen.",
-    Icon: Wrench,
+    title: "Rückruf vorbereiten",
+    text: "Serviceart, selbst genannte Dringlichkeit, Einsatz-PLZ und Rückrufwunsch zusammenfassen.",
+    Icon: ClipboardList,
     tilt: "1.2deg",
     accent: "#d8ecff",
   },
   {
-    title: "Ihr nächster freier Mitarbeiter",
-    text: "bin ich. Ruf an, schreib, komm vorbei. Ich bleib dein Ansprechpartner, auch nach dem Launch.",
-    Icon: MapPin,
+    title: "Menschen entscheiden",
+    text: "Dein Team prüft die Zusammenfassung und übernimmt den persönlichen Rückruf.",
+    Icon: UserCircle2,
     tilt: "-0.8deg",
     accent: "#f7d7dc",
   },
@@ -55,7 +53,7 @@ export default function HeroSection({ onContactOpen }) {
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: "rgba(255,255,255,0.12)",
+          background: "rgba(255,255,255,0.72)",
           zIndex: -1,
         }}
         aria-hidden="true"
@@ -124,13 +122,13 @@ export default function HeroSection({ onContactOpen }) {
         */}
 
         <div className="mx-auto mt-8 flex w-full max-w-7xl flex-1 flex-col px-6 pb-20 sm:mt-12 sm:pb-24 lg:mt-15 lg:pb-28">
-          <div className="grid items-start gap-8 lg:grid-cols-[45%_55%] lg:items-stretch lg:gap-12">
+          <div className="grid items-start gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-12">
             <div className="lg:flex lg:h-full lg:flex-col lg:pr-2">
             <p
               className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] sm:mb-4"
               style={{ color: "#425884" }}
             >
-              Websites und digitales Klimbim aus Flensburg
+              Für kleine Heizungs- & Sanitärbetriebe · aus Flensburg
             </p>
 
             <motion.div
@@ -142,11 +140,11 @@ export default function HeroSection({ onContactOpen }) {
                 className="max-w-[42rem] font-sora font-bold leading-[1.08] tracking-tight lg:max-w-[31rem] xl:max-w-[42rem]"
                 style={{
                   color: "#1a2f58",
-                  fontSize: "clamp(1.3rem, 6vw, 3.55rem)",
+                  fontSize: "clamp(2rem, 6vw, 3.55rem)",
                 }}
               >
-                <span className="block whitespace-nowrap">Website?</span>
-                <span className="block whitespace-nowrap">Bau ich dir.</span>
+                <span className="block">Verpasster Anruf?</span>
+                <span className="block">Klarer Rückruf.</span>
               </h1>
             </motion.div>
 
@@ -162,7 +160,7 @@ export default function HeroSection({ onContactOpen }) {
                   color: "#3c4f76",
                 }}
               >
-              Für Heizungs-, Sanitär-, Elektro-, Dach-, Schädlingsbekämpfungs- und Sanierungsbetriebe: Eine KI-gestützte Lösung nimmt verpasste Anrufe und Webanfragen auf, erfasst Serviceart, Dringlichkeit, Postleitzahl und gewünschte Rückrufzeit und bereitet eine Zusammenfassung für die persönliche Übergabe vor.
+                Du bist beim Kunden, das Telefon klingelt. Ich entwickle mit dir einen KI-gestützten Ablauf, der verpasste Anrufe und Webanfragen auffängt und Rückrufe vorbereitet: Serviceart, vom Anrufer genannte Dringlichkeit, Einsatz-Postleitzahl und Rückrufwunsch. Dein Team prüft die Zusammenfassung und übernimmt persönlich.
               </p>
             </motion.div>
 
@@ -175,7 +173,7 @@ export default function HeroSection({ onContactOpen }) {
               <button
                 onClick={() =>
                   onContactOpen?.(
-                    "Ich möchte über eine KI-gestützte Lösung sprechen, die verpasste Anrufe und Webanfragen aufnimmt, Serviceart, Dringlichkeit, Postleitzahl und gewünschte Rückrufzeit erfasst und eine Zusammenfassung für die persönliche Übergabe vorbereitet. Mein Betrieb und Anliegen: "
+                    "Ich möchte den Rückruf-Ablauf für verpasste Anrufe und Webanfragen besprechen. Mein Betrieb, Einsatzgebiet und bisheriger Ablauf: "
                   )
                 }
                 className="rounded-xl px-6 py-3 text-sm font-semibold text-white transition-colors"
@@ -190,7 +188,7 @@ export default function HeroSection({ onContactOpen }) {
                 Rückruf-Ablauf besprechen
               </button>
               <button
-                onClick={() => scrollToSection("projects")}
+                onClick={() => scrollToSection("demo")}
                 className="rounded-xl border px-6 py-3 text-sm font-semibold transition-colors"
                 style={{
                   borderColor: "rgba(108,133,171,0.45)",
@@ -204,18 +202,18 @@ export default function HeroSection({ onContactOpen }) {
                   e.currentTarget.style.background = "rgba(248,251,255,0.78)";
                 }}
               >
-                Beispiele ansehen
+                Demo-Ablauf ansehen
               </button>
             </motion.div>
 
           </div>
 
-            {/* Profil-Panel — rechte Spalte neben dem Text */}
             <motion.div
               initial={{ opacity: 0, x: 18 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="self-center"
+              id="demo"
+              className="self-center scroll-mt-28"
             >
               <div
                 className="overflow-hidden rounded-[2rem] border"
@@ -225,35 +223,36 @@ export default function HeroSection({ onContactOpen }) {
                   boxShadow: "0 18px 40px rgba(26,45,78,0.12)",
                 }}
               >
-                <div className="flex flex-col items-start gap-6 px-6 pb-6 pt-6 sm:px-7 sm:pb-7 sm:pt-7 lg:flex-row lg:items-center lg:px-8 lg:pb-8 lg:pt-8">
-                  {/* Text */}
-                  <div className="flex flex-1 flex-col gap-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#ef4444" }}>
-                      Vibe-Coding aus Flensburg.
-                    </p>
-                    <p className="text-xl font-semibold sm:text-2xl" style={{ color: "#1f335b" }}>
-                      Moin, ich bin Jascha.
-                    </p>
-                    <p className="text-sm leading-relaxed" style={{ color: "#40547c" }}>
-                    Mit Technik aufgewachsen, Kunst studiert – und dann kam die KI. Mit der versteh ich mich ganz gut und die kann 'ne ganze Menge. <br />Damit bleiben Ergebnisse in einem bezahlbaren Rahmen, ohne dass die Qualität darunter leidet. <br />Egal ob Vision oder eine einfache Website - 
-                    </p>
+                <div className="p-6 sm:p-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em]" style={{ color: "#9e1c1c" }}>
+                    Synthetisches Beispiel · keine echten Kundendaten
+                  </p>
+                  <h2 className="mt-3 font-sora text-xl font-semibold sm:text-2xl" style={{ color: "#1f335b" }}>
+                    So könnte die Übergabe aussehen.
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "#40547c" }}>
+                    Beispielquelle: verpasster Anruf. Eine Webanfrage würde dieselben Angaben strukturiert erfassen.
+                  </p>
+                  <dl className="mt-6 space-y-4 text-sm" style={{ color: "#40547c" }}>
+                    {[
+                      ["Serviceart", "Heizungsreparatur – Heizung bleibt kalt"],
+                      ["Dringlichkeit laut Anrufer", "„Möglichst heute“ – nicht fachlich bewertet"],
+                      ["Postleitzahl des Einsatzorts", "24937 (fiktiver Einsatz)"],
+                      ["Rückrufwunsch", "Telefonisch, nach 15 Uhr"],
+                    ].map(([label, value]) => (
+                      <div key={label} className="border-b border-[#dce4ef] pb-3">
+                        <dt className="font-semibold" style={{ color: "#1f335b" }}>{label}</dt>
+                        <dd className="mt-1">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <div className="mt-5 rounded-xl bg-[#e8eef7] p-4 text-sm" style={{ color: "#1f335b" }}>
+                    <p className="font-semibold">Nächster Schritt: Prüfung durch dein Team</p>
+                    <p className="mt-1 leading-relaxed">Angaben prüfen, offene Fragen klären, persönlich zurückrufen. Noch kein Termin und kein Angebot.</p>
                   </div>
-
-                  {/* Bild */}
-                  <div
-                    className="shrink-0 overflow-hidden rounded-2xl border lg:w-52 xl:w-60"
-                    style={{
-                      borderColor: "rgba(154,176,210,0.4)",
-                      boxShadow: "0 8px 24px rgba(26,45,78,0.13)",
-                    }}
-                  >
-                    <img
-                      src={heroSideImage}
-                      alt="Portraitbild von Jascha"
-                      className="h-48 w-full object-cover object-top lg:h-56 xl:h-64"
-                      loading="eager"
-                    />
-                  </div>
+                  <p className="mt-4 text-xs leading-relaxed" style={{ color: "#40547c" }}>
+                    Nur eine Illustration, kein Live-System. Es wird kein Anruf ausgelöst und keine Anfrage gespeichert.
+                  </p>
                 </div>
               </div>
             </motion.div>

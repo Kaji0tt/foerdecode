@@ -1,33 +1,28 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Palette, Bot, LifeBuoy } from "lucide-react";
+import { PhoneMissed, ClipboardList, UserCircle2 } from "lucide-react";
 
 const services = [
   {
-    title: "Website & Einrichtung",
-    text: "Du kriegst eine fertige Website. Domain, E-Mail, Impressum, Datenschutz – alles drin, alles eingerichtet. Du musst nichts wissen.",
-    Icon: Globe,
+    title: "1. Anruf oder Webanfrage auffangen",
+    text: "Wir prüfen, wie nach einem verpassten Anruf eine Anfrage aufgenommen werden kann und wie dein Webformular dazu passt. Telefonie, Erreichbarkeit und mögliche Anbindungen klären wir vor einer Umsetzung.",
+    Icon: PhoneMissed,
   },
   {
-    title: "Individuelle Gestaltung",
-    text: "Hast du konkrete Vorstellungen, wie es aussehen soll? Gut. Ich freue mich darauf, deine Vision kennenzulernen – und sie entsprechend deiner Vorstellung umzusetzen.",
-    Icon: Palette,
+    title: "2. Die nötigen Angaben erfassen",
+    text: "Serviceart, Dringlichkeit nach eigener Aussage, Postleitzahl des Einsatzorts und gewünschte Rückrufzeit bzw. Kontaktweg – plus die für den Rückruf nötigen Kontaktdaten. Fehlende oder unklare Angaben bleiben als solche sichtbar.",
+    Icon: ClipboardList,
   },
   {
-    title: "KI & Automatisierung",
-    text: "Brauchst du mehr als 'ne einfache Seite? Buchungssystem, automatisierte Abläufe, irgendwas Spezielles – ich zeig dir, was mit KI alles möglich ist. Und bau es dir.",
-    Icon: Bot,
-  },
-  {
-    title: "Beratung & Wartung",
-    text: "Noch nicht sicher, was du brauchst? Kein Problem, wir finden eine Lösung. Auch nach dem Launch bleibe ich als Ansprechpartner für dich da.",
-    Icon: LifeBuoy,
+    title: "3. Geprüft an Menschen übergeben",
+    text: "Die KI bereitet eine Zusammenfassung vor, keine Entscheidung. Eine zuständige Person im Betrieb prüft sie vor der weiteren Bearbeitung und übernimmt Rückruf, fachliche Einschätzung, Angebot und Terminabstimmung.",
+    Icon: UserCircle2,
   },
 ];
 
-export default function AngebotSection() {
+export default function AngebotSection({ onContactOpen }) {
   return (
-    <section id="services" className="relative py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
+    <section id="services" className="relative scroll-mt-24 py-16 sm:py-20" style={{ background: "rgba(242,245,251, 0.76)" }}>
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -37,17 +32,17 @@ export default function AngebotSection() {
           className="mb-8"
         >
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.14em]" style={{ color: "#4f648d" }}>
-            Angebot
+            Der Rückruf-Ablauf
           </p>
           <h2 className="font-sora text-3xl font-bold tracking-tight sm:text-4xl" style={{ color: "#1f335b" }}>
-            Wobei ich helfen kann.
+            Vom Erstkontakt zur persönlichen Antwort.
           </h2>
           <p className="mt-4 text-base leading-relaxed" style={{ color: "#4a6188" }}>
-            Ich hab Kunst studiert und bin IT-Generalist. Ich weiß, wie es gut aussieht - und was es braucht, damit es funktioniert.
+            Für kleine lokale Heizungs-, Klima- und Sanitärbetriebe, deren Team unterwegs ist. Ziel ist, Rückrufe mit den nötigen Angaben vorzubereiten und unnötige Rückfragen zu reduzieren. Elektro-, Dach- und andere benachbarte Handwerksbetriebe können nach Prüfung ihres Ablaufs ebenfalls passen.
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 lg:grid-cols-3">
           {services.map((service, index) => (
             <motion.article
               key={service.title}
@@ -78,6 +73,41 @@ export default function AngebotSection() {
               </p>
             </motion.article>
           ))}
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
+            <h3 className="font-sora text-xl font-semibold text-[#213a66]">Klare Grenzen, keine falschen Versprechen.</h3>
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-[#4a6188]">
+              <li>Keine Umsatzgarantie und keine Garantie, jede Anfrage zu erfassen oder einen Rückruf in einer bestimmten Zeit zu erreichen.</li>
+              <li>Kein Notdienst und keine Notfallbewertung. Bei akuter Gefahr die zuständige Notrufstelle kontaktieren – nicht auf diesen Ablauf warten.</li>
+              <li>Keine verbindlichen Diagnosen oder endgültigen Angebote durch die KI. Fachliche Prüfung und finale Preise kommen vom Betrieb.</li>
+              <li>Keine Buchungs- oder Termingarantie. Verfügbarkeit und Zusagen klärt dein Team persönlich.</li>
+            </ul>
+          </article>
+          <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
+            <h3 className="font-sora text-xl font-semibold text-[#213a66]">Daten & Verantwortung vorab klären.</h3>
+            <p className="mt-4 text-sm leading-relaxed text-[#4a6188]">
+              Vor einem Einsatz klären wir, welche Daten wirklich nötig sind, wer Zugriff erhält und wann sie gelöscht werden. Ebenso zu prüfen: eingesetzte Anbieter, Datenflüsse, Rechtsgrundlage, Informationspflichten und gegebenenfalls Verträge zur Auftragsverarbeitung.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#4a6188]">
+              Gesprächsaufzeichnung ist nicht vorausgesetzt. Falls sie erwogen wird, müssen Zulässigkeit und erforderliche Einwilligungen gesondert geprüft werden. Das ist keine Rechtsberatung und keine Zusicherung von Datenschutz-Compliance.
+            </p>
+          </article>
+        </div>
+
+        <div className="mt-8 rounded-2xl bg-[#1f335b] p-6 text-white sm:p-8">
+          <h3 className="font-sora text-xl font-semibold">Erst den Alltag verstehen, dann den Umfang festlegen.</h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#e1e9f5]">
+            Wir besprechen deinen bisherigen Rückrufprozess, Einsatzgebiet, Anfragewege und Zuständigkeiten. Daraus ergibt sich, ob der Ablauf passt und welche Einrichtung und laufende Betreuung sinnvoll sind. Umfang und Kosten werden individuell vereinbart.
+          </p>
+          <button
+            type="button"
+            onClick={() => onContactOpen?.("Ich möchte den Rückruf-Ablauf besprechen. Mein Betrieb, Einsatzgebiet und bisheriger Ablauf: ")}
+            className="mt-5 rounded-xl bg-[#9e1c1c] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#861717]"
+          >
+            Rückruf-Ablauf besprechen
+          </button>
         </div>
       </div>
     </section>
