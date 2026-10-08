@@ -65,41 +65,6 @@ export default function AngebotSection({ onContactOpen }) {
               <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg" style={{ background: "rgba(112,142,186,0.16)" }}>
                 <service.Icon className="h-5 w-5" style={{ color: "#2f4c79" }} />
               </div>
-
-              <div className="mt-8 grid gap-6 md:grid-cols-2">
-                <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
-                  <h3 className="font-sora text-xl font-semibold text-[#213a66]">Klare Grenzen, keine falschen Versprechen.</h3>
-                  <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-[#4a6188]">
-                    <li>Keine Umsatzgarantie und keine Garantie, jede Anfrage zu erfassen oder einen Rückruf in einer bestimmten Zeit zu erreichen.</li>
-                    <li>Kein Notdienst und keine Notfallbewertung. Bei akuter Gefahr die zuständige Notrufstelle kontaktieren – nicht auf diesen Ablauf warten.</li>
-                    <li>Keine verbindlichen Diagnosen oder endgültigen Angebote durch die KI. Fachliche Prüfung und finale Preise kommen vom Betrieb.</li>
-                    <li>Keine Buchungs- oder Termingarantie. Verfügbarkeit und Zusagen klärt dein Team persönlich.</li>
-                  </ul>
-                </article>
-                <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
-                  <h3 className="font-sora text-xl font-semibold text-[#213a66]">Daten & Verantwortung vorab klären.</h3>
-                  <p className="mt-4 text-sm leading-relaxed text-[#4a6188]">
-                    Vor einem Einsatz klären wir, welche Daten wirklich nötig sind, wer Zugriff erhält und wann sie gelöscht werden. Ebenso zu prüfen: eingesetzte Anbieter, Datenflüsse, Rechtsgrundlage, Informationspflichten und gegebenenfalls Verträge zur Auftragsverarbeitung.
-                  </p>
-                  <p className="mt-3 text-sm leading-relaxed text-[#4a6188]">
-                    Gesprächsaufzeichnung ist nicht vorausgesetzt. Falls sie erwogen wird, müssen Zulässigkeit und erforderliche Einwilligungen gesondert geprüft werden. Das ist keine Rechtsberatung und keine Zusicherung von Datenschutz-Compliance.
-                  </p>
-                </article>
-              </div>
-
-              <div className="mt-8 rounded-2xl bg-[#1f335b] p-6 text-white sm:p-8">
-                <h3 className="font-sora text-xl font-semibold">Erst den Alltag verstehen, dann den Umfang festlegen.</h3>
-                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#e1e9f5]">
-                  Wir besprechen deinen bisherigen Rückrufprozess, Einsatzgebiet, Anfragewege und Zuständigkeiten. Daraus ergibt sich, ob der Ablauf passt und welche Einrichtung und laufende Betreuung sinnvoll sind. Umfang und Kosten werden individuell vereinbart.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => onContactOpen?.("Ich möchte den Rückruf-Ablauf besprechen. Mein Betrieb, Einsatzgebiet und bisheriger Ablauf: ")}
-                  className="mt-5 rounded-xl bg-[#9e1c1c] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#861717]"
-                >
-                  Rückruf-Ablauf besprechen
-                </button>
-              </div>
               <h3 className="mb-3 font-sora text-xl font-semibold" style={{ color: "#213a66" }}>
                 {service.title}
               </h3>
@@ -108,6 +73,41 @@ export default function AngebotSection({ onContactOpen }) {
               </p>
             </motion.article>
           ))}
+        </div>
+
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
+            <h3 className="font-sora text-xl font-semibold text-[#213a66]">Klare Grenzen, keine falschen Versprechen.</h3>
+            <ul className="mt-4 list-disc space-y-3 pl-5 text-sm leading-relaxed text-[#4a6188]">
+              <li>Keine Umsatzgarantie und keine Garantie, jede Anfrage zu erfassen oder einen Rückruf in einer bestimmten Zeit zu erreichen.</li>
+              <li>Kein Notdienst und keine Notfallbewertung. Bei akuter Gefahr die zuständige Notrufstelle kontaktieren – nicht auf diesen Ablauf warten.</li>
+              <li>Keine verbindlichen Diagnosen oder endgültigen Angebote durch die KI. Fachliche Prüfung und finale Preise kommen vom Betrieb.</li>
+              <li>Keine Buchungs- oder Termingarantie. Verfügbarkeit und Zusagen klärt dein Team persönlich.</li>
+            </ul>
+          </article>
+          <article className="rounded-2xl border border-[#d5dfee] bg-[#f9fcff] p-6">
+            <h3 className="font-sora text-xl font-semibold text-[#213a66]">Daten & Verantwortung vorab klären.</h3>
+            <p className="mt-4 text-sm leading-relaxed text-[#4a6188]">
+              Vor einem Einsatz klären wir, welche Daten wirklich nötig sind, wer Zugriff erhält und wann sie gelöscht werden. Ebenso zu prüfen: eingesetzte Anbieter, Datenflüsse, Rechtsgrundlage, Informationspflichten und gegebenenfalls Verträge zur Auftragsverarbeitung.
+            </p>
+            <p className="mt-3 text-sm leading-relaxed text-[#4a6188]">
+              Gesprächsaufzeichnung ist nicht vorausgesetzt. Falls sie erwogen wird, müssen Zulässigkeit und erforderliche Einwilligungen gesondert geprüft werden. Das ist keine Rechtsberatung und keine Zusicherung von Datenschutz-Compliance.
+            </p>
+          </article>
+        </div>
+
+        <div className="mt-8 rounded-2xl bg-[#1f335b] p-6 text-white sm:p-8">
+          <h3 className="font-sora text-xl font-semibold">Erst den Alltag verstehen, dann den Umfang festlegen.</h3>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-[#e1e9f5]">
+            Wir besprechen deinen bisherigen Rückrufprozess, Einsatzgebiet, Anfragewege und Zuständigkeiten. Daraus ergibt sich, ob der Ablauf passt und welche Einrichtung und laufende Betreuung sinnvoll sind. Umfang und Kosten werden individuell vereinbart.
+          </p>
+          <button
+            type="button"
+            onClick={() => onContactOpen?.("Ich möchte den Rückruf-Ablauf besprechen. Mein Betrieb, Einsatzgebiet und bisheriger Ablauf: ")}
+            className="mt-5 rounded-xl bg-[#9e1c1c] px-6 py-3 text-sm font-semibold transition-colors hover:bg-[#861717]"
+          >
+            Rückruf-Ablauf besprechen
+          </button>
         </div>
       </div>
     </section>
